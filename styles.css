@@ -1,0 +1,61 @@
+
+h1, h2, h3, p {
+	font-family: 'Raleway', sans-serif;
+}
+
+h1 {
+	font-weight: 600;
+}
+
+h2, h3, p {
+	font-weight: 400;
+}
+
+h1, h2 {
+	text-align: center;
+}
+
+div.sea {
+	
+	max-width: 840px;
+	margin: auto;
+}
+
+div.ship {
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+#bio {
+	margin: 100px 0px;
+}
+
+#avatar {
+	width: 100px;
+	height: 100px;
+	border-radius: 50px;
+	display: block;
+	margin: auto;
+}
+
+.button-stack {
+	margin: 50px 0px;
+	text-align: center;
+}
+
+.inline-button {
+	transition: color 0.5s;
+	color: black;
+	padding: 0px 10px;
+	display: inline-block;
+}
+
+.inline-button:hover {
+	color: #aaffff;
+}
+
+.project {
+	width: 100%;
+	height: 300px;
+	background-color: #aaffff;
+}
