@@ -11,26 +11,92 @@
 		<div class="ship">
 
 			<div id="bio">
-				<img id="avatar" src="http://www.gravatar.com/avatar/9f6b611621d0badefd28429ea60299c7?s=100" />
+
+				<div id="avatar">
+					<img src="img/df.jpg" />
+				</div>
+
 				<h1>David da Silva Contín</h1>
 				<h2>Full Stack Developer</h2>
 			</div>
 
-			<div class="button-stack">
-				<a class="inline-button" href="http://github.com/dasilvacontin">
-					<i class="fa fa-github fa-5x"></i>
+			<div id="button-stack">
+
+				<a class="inline-button" href="http://github.com/dasilvacontin" target="_blank">
+					<i class="fa fa-github fa-4x"></i>
 				</a>
 
-				<a class="inline-button" href="http://github.com/dasilvacontin">
-					<i class="fa fa-github fa-5x"></i>
+				<a class="inline-button" href="mailto:dasilvacontin@gmail.com">
+					<i class="fa fa-at fa-4x"></i>
 				</a>
+
+				<a class="inline-button" href="https://twitter.com/dasilvacontin" target="_blank">
+					<i class="fa fa-twitter fa-4x"></i>
+				</a>
+
+				<a class="inline-button" href="https://www.linkedin.com/in/dasilvacontin" target="_blank">
+					<i class="fa fa-linkedin-square fa-4x"></i>
+				</a>
+
 			</div>
 
-			<div class="project">
-			</div>
+			<h1>some projects</h1>
+
+			<div id="projects"></div>
+
+			<p id="signature">w0l0l0</p>
 
 		</div>
 	</div>
 
+	<script id="project-template" type="x-tmpl-mustache">
+		<div class="project-image"></div>
+		<h3>{{ name }}</h3>
+		<p>{{ desc }}</p>
+		{{#github}}<p><i class="fa fa-github-alt fa-fw"></i> <a href="{{ github.url }}" target="_blank">{{ github.cleanUrl }}</p>{{/github}}
+	</script>
+	<script src="js/mustache.js"></script>
+	<script>
+
+		var projectTemplate;
+		var projects;
+
+		function loadProject(obj) {
+
+			if (!projectTemplate) {
+				projectTemplate = document.getElementById("project-template").innerHTML;
+				Mustache.parse(projectTemplate);
+			}
+
+			if (!projects) {
+				projects = document.getElementById("projects");
+			}
+
+			var node = document.createElement("div");
+			node.className = "project";
+			node.innerHTML = Mustache.render(projectTemplate, obj);
+			projects.appendChild(node);
+
+		}
+
+		loadProject({
+			name: "enitor",
+			desc: "Lorem fistrum ahorarr benemeritaar a wan te voy a borrar el cerito. Apetecan la caidita benemeritaar apetecan la caidita diodeno mamaar papaar papaar no te digo trigo por no llamarte Rodrigor condemor diodeno. Qué dise usteer fistro amatomaa ese hombree quietooor sexuarl fistro te voy a borrar el cerito. Mamaar está la cosa muy malar me cago en tus muelas pupita benemeritaar la caidita está la cosa muy malar a wan me cago en tus muelas hasta luego Lucas. Jarl llevame al sircoo fistro te va a hasé pupitaa te va a hasé pupitaa ese pedazo de jarl mamaar se calle ustée.",
+			github: {
+				url: "https://github.com/dasilvacontin/enitor",
+				cleanUrl: "github.com/dasilvacontin/enitor"
+			}
+		});
+
+		loadProject({
+			name: "ludumpad",
+			desc: "Lorem fistrum ahorarr benemeritaar a wan te voy a borrar el cerito. Apetecan la caidita benemeritaar apetecan la caidita diodeno mamaar papaar papaar no te digo trigo por no llamarte Rodrigor condemor diodeno. Qué dise usteer fistro amatomaa ese hombree quietooor sexuarl fistro te voy a borrar el cerito. Mamaar está la cosa muy malar me cago en tus muelas pupita benemeritaar la caidita está la cosa muy malar a wan me cago en tus muelas hasta luego Lucas. Jarl llevame al sircoo fistro te va a hasé pupitaa te va a hasé pupitaa ese pedazo de jarl mamaar se calle ustée.",
+			github: {
+				url: "https://github.com/dasilvacontin/ludumpad-client",
+				cleanUrl: "github.com/dasilvacontin/ludumpad-client"
+			}
+		});
+
+	</script>
 </body>
 </html>
