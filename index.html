@@ -50,10 +50,13 @@
 	</div>
 
 	<script id="project-template" type="x-tmpl-mustache">
-		<div class="project-image"></div>
+		<div class="project-image" style="background-image: url('{{ img }}')"></div>
 		<h3>{{ name }}</h3>
 		<p>{{ desc }}</p>
-		{{#github}}<p><i class="fa fa-github-alt fa-fw"></i> <a href="{{ github.url }}" target="_blank">{{ github.cleanUrl }}</p>{{/github}}
+		{{#downloads}}<p><i class="fa fa-cloud-download fa-fw"></i> {{ downloads }}</p>{{/downloads}}
+		{{#players}}<p><i class="fa fa-gamepad fa-fw"></i> {{ players }}</p>{{/players}}
+		{{#website}}<p><i class="fa fa-link fa-fw"></i> <a href="{{ website.url }}" target="_blank">{{ website.cleanUrl }}</a></p>{{/website}}
+		{{#github}}<p><i class="fa fa-github-alt fa-fw"></i> <a href="{{ github.url }}" target="_blank">{{ github.cleanUrl }}</a></p>{{/github}}
 	</script>
 	<script src="js/mustache.js"></script>
 	<script>
@@ -81,7 +84,13 @@
 
 		loadProject({
 			name: "enitor",
+			img: "img/enitor-small.jpg",
 			desc: "Lorem fistrum ahorarr benemeritaar a wan te voy a borrar el cerito. Apetecan la caidita benemeritaar apetecan la caidita diodeno mamaar papaar papaar no te digo trigo por no llamarte Rodrigor condemor diodeno. Qué dise usteer fistro amatomaa ese hombree quietooor sexuarl fistro te voy a borrar el cerito. Mamaar está la cosa muy malar me cago en tus muelas pupita benemeritaar la caidita está la cosa muy malar a wan me cago en tus muelas hasta luego Lucas. Jarl llevame al sircoo fistro te va a hasé pupitaa te va a hasé pupitaa ese pedazo de jarl mamaar se calle ustée.",
+			website: {
+				url: "http://bluecodestudio.com/enitor",
+				cleanUrl: "bluecodestudio.com/enitor"
+			},
+			players: "1-9 players",
 			github: {
 				url: "https://github.com/dasilvacontin/enitor",
 				cleanUrl: "github.com/dasilvacontin/enitor"
@@ -91,10 +100,37 @@
 		loadProject({
 			name: "ludumpad",
 			desc: "Lorem fistrum ahorarr benemeritaar a wan te voy a borrar el cerito. Apetecan la caidita benemeritaar apetecan la caidita diodeno mamaar papaar papaar no te digo trigo por no llamarte Rodrigor condemor diodeno. Qué dise usteer fistro amatomaa ese hombree quietooor sexuarl fistro te voy a borrar el cerito. Mamaar está la cosa muy malar me cago en tus muelas pupita benemeritaar la caidita está la cosa muy malar a wan me cago en tus muelas hasta luego Lucas. Jarl llevame al sircoo fistro te va a hasé pupitaa te va a hasé pupitaa ese pedazo de jarl mamaar se calle ustée.",
+			website: {
+				url: "http://ludumpad.com/",
+				cleanUrl: "ludumpad.com"
+			},
 			github: {
 				url: "https://github.com/dasilvacontin/ludumpad-client",
 				cleanUrl: "github.com/dasilvacontin/ludumpad-client"
 			}
+		});
+
+		loadProject({
+			name: "kipos",
+			img: "http://bluecodestudio.com/wp-content/uploads/2012/11/iOS-Simulator-Screen-shot-Nov-20-2012-7.57.18-PM.png",
+			desc: "Lorem fistrum ahorarr benemeritaar a wan te voy a borrar el cerito. Apetecan la caidita benemeritaar apetecan la caidita diodeno mamaar papaar papaar no te digo trigo por no llamarte Rodrigor condemor diodeno. Qué dise usteer fistro amatomaa ese hombree quietooor sexuarl fistro te voy a borrar el cerito. Mamaar está la cosa muy malar me cago en tus muelas pupita benemeritaar la caidita está la cosa muy malar a wan me cago en tus muelas hasta luego Lucas. Jarl llevame al sircoo fistro te va a hasé pupitaa te va a hasé pupitaa ese pedazo de jarl mamaar se calle ustée.",
+			website: {
+				url: "https://itunes.apple.com/us/app/kipos-virtual-pet-simulator/id494638587?mt=8",
+				cleanUrl: "Kipos on the App Store"
+			},
+			players: "1 player",
+			downloads: "Over 80,000 downloads on the App Store"
+		});
+
+		loadProject({
+			name: "cellvorsum",
+			img: "http://distilleryimage9.s3.amazonaws.com/165f0514b1e511e28aa822000a1fd52c_7.jpg",
+			desc: "Lorem fistrum ahorarr benemeritaar a wan te voy a borrar el cerito. Apetecan la caidita benemeritaar apetecan la caidita diodeno mamaar papaar papaar no te digo trigo por no llamarte Rodrigor condemor diodeno. Qué dise usteer fistro amatomaa ese hombree quietooor sexuarl fistro te voy a borrar el cerito. Mamaar está la cosa muy malar me cago en tus muelas pupita benemeritaar la caidita está la cosa muy malar a wan me cago en tus muelas hasta luego Lucas. Jarl llevame al sircoo fistro te va a hasé pupitaa te va a hasé pupitaa ese pedazo de jarl mamaar se calle ustée.",
+			website: {
+				url: "http://bluecodestudio.com/airrider3-ludumdare26/",
+				cleanUrl: "bluecodestudio.com/airrider3-ludumdare26"
+			},
+			players: "1 player"
 		});
 
 	</script>
