@@ -4,6 +4,7 @@
 	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 	<link href='http://fonts.googleapis.com/css?family=Raleway:600,400' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" type="text/css" href="styles.css">
+	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
 </head>
 <body>
 
@@ -13,7 +14,7 @@
 			<div id="bio">
 
 				<div id="avatar">
-					<img src="img/df.jpg" />
+					<img src="img/df.png" />
 				</div>
 
 				<h1>David da Silva Contín</h1>
@@ -40,9 +41,13 @@
 
 			</div>
 
-			<h1>some projects</h1>
+			<h1>some projects/games</h1>
 
 			<div id="projects"></div>
+
+			<h1 class="cut">other stuff</h1>
+
+			<div id="stuff"></div>
 
 			<p id="signature">w0l0l0</p>
 
@@ -50,7 +55,7 @@
 	</div>
 
 	<script id="project-template" type="x-tmpl-mustache">
-		<div class="project-image" style="background-image: url('{{ img }}')"></div>
+		{{#img}}<div class="project-image" style="background-image: url('{{ img }}')"></div>{{/img}}
 		<h3>{{ name }}</h3>
 		<p>{{ desc }}</p>
 		{{#downloads}}<p><i class="fa fa-cloud-download fa-fw"></i> {{ downloads }}</p>{{/downloads}}
@@ -60,29 +65,27 @@
 	</script>
 	<script src="js/mustache.js"></script>
 	<script>
+        
+        var avatar = document.getElementById("avatar");
+        avatar.onclick = function () {
+            window.open("https://www.youtube.com/watch?v=SEOscGdcXZU", "_blank");
+        };
 
-		var projectTemplate;
-		var projects;
+		var projectTemplate = document.getElementById("project-template").innerHTML;
+		Mustache.parse(projectTemplate);
+		var projects = document.getElementById("projects");
+		var stuff = document.getElementById("stuff");
 
-		function loadProject(obj) {
-
-			if (!projectTemplate) {
-				projectTemplate = document.getElementById("project-template").innerHTML;
-				Mustache.parse(projectTemplate);
-			}
-
-			if (!projects) {
-				projects = document.getElementById("projects");
-			}
+		function loadProject(container, obj) {
 
 			var node = document.createElement("div");
 			node.className = "project";
 			node.innerHTML = Mustache.render(projectTemplate, obj);
-			projects.appendChild(node);
+			container.appendChild(node);
 
 		}
 
-		loadProject({
+		loadProject(projects, {
 			name: "enitor",
 			img: "img/enitor-small.jpg",
 			desc: "Lorem fistrum ahorarr benemeritaar a wan te voy a borrar el cerito. Apetecan la caidita benemeritaar apetecan la caidita diodeno mamaar papaar papaar no te digo trigo por no llamarte Rodrigor condemor diodeno. Qué dise usteer fistro amatomaa ese hombree quietooor sexuarl fistro te voy a borrar el cerito. Mamaar está la cosa muy malar me cago en tus muelas pupita benemeritaar la caidita está la cosa muy malar a wan me cago en tus muelas hasta luego Lucas. Jarl llevame al sircoo fistro te va a hasé pupitaa te va a hasé pupitaa ese pedazo de jarl mamaar se calle ustée.",
@@ -97,8 +100,8 @@
 			}
 		});
 
-		loadProject({
-			name: "ludumpad",
+		loadProject(projects, {
+			name: "LudumPad",
 			desc: "Lorem fistrum ahorarr benemeritaar a wan te voy a borrar el cerito. Apetecan la caidita benemeritaar apetecan la caidita diodeno mamaar papaar papaar no te digo trigo por no llamarte Rodrigor condemor diodeno. Qué dise usteer fistro amatomaa ese hombree quietooor sexuarl fistro te voy a borrar el cerito. Mamaar está la cosa muy malar me cago en tus muelas pupita benemeritaar la caidita está la cosa muy malar a wan me cago en tus muelas hasta luego Lucas. Jarl llevame al sircoo fistro te va a hasé pupitaa te va a hasé pupitaa ese pedazo de jarl mamaar se calle ustée.",
 			website: {
 				url: "http://ludumpad.com/",
@@ -110,8 +113,8 @@
 			}
 		});
 
-		loadProject({
-			name: "kipos",
+		loadProject(projects, {
+			name: "Kipos",
 			img: "http://bluecodestudio.com/wp-content/uploads/2012/11/iOS-Simulator-Screen-shot-Nov-20-2012-7.57.18-PM.png",
 			desc: "Lorem fistrum ahorarr benemeritaar a wan te voy a borrar el cerito. Apetecan la caidita benemeritaar apetecan la caidita diodeno mamaar papaar papaar no te digo trigo por no llamarte Rodrigor condemor diodeno. Qué dise usteer fistro amatomaa ese hombree quietooor sexuarl fistro te voy a borrar el cerito. Mamaar está la cosa muy malar me cago en tus muelas pupita benemeritaar la caidita está la cosa muy malar a wan me cago en tus muelas hasta luego Lucas. Jarl llevame al sircoo fistro te va a hasé pupitaa te va a hasé pupitaa ese pedazo de jarl mamaar se calle ustée.",
 			website: {
@@ -122,7 +125,7 @@
 			downloads: "Over 80,000 downloads on the App Store"
 		});
 
-		loadProject({
+		loadProject(projects, {
 			name: "cellvorsum",
 			img: "http://distilleryimage9.s3.amazonaws.com/165f0514b1e511e28aa822000a1fd52c_7.jpg",
 			desc: "Lorem fistrum ahorarr benemeritaar a wan te voy a borrar el cerito. Apetecan la caidita benemeritaar apetecan la caidita diodeno mamaar papaar papaar no te digo trigo por no llamarte Rodrigor condemor diodeno. Qué dise usteer fistro amatomaa ese hombree quietooor sexuarl fistro te voy a borrar el cerito. Mamaar está la cosa muy malar me cago en tus muelas pupita benemeritaar la caidita está la cosa muy malar a wan me cago en tus muelas hasta luego Lucas. Jarl llevame al sircoo fistro te va a hasé pupitaa te va a hasé pupitaa ese pedazo de jarl mamaar se calle ustée.",
@@ -131,6 +134,33 @@
 				cleanUrl: "bluecodestudio.com/airrider3-ludumdare26"
 			},
 			players: "1 player"
+		});
+
+		loadProject(stuff, {
+			name: "CanvasDye",
+			desc: "Lorem fistrum ahorarr benemeritaar a wan te voy a borrar el cerito. Apetecan la caidita benemeritaar apetecan la caidita diodeno mamaar papaar papaar no te digo trigo por no llamarte Rodrigor condemor diodeno. Qué dise usteer fistro amatomaa ese hombree quietooor sexuarl fistro te voy a borrar el cerito. Mamaar está la cosa muy malar me cago en tus muelas pupita benemeritaar la caidita está la cosa muy malar a wan me cago en tus muelas hasta luego Lucas. Jarl llevame al sircoo fistro te va a hasé pupitaa te va a hasé pupitaa ese pedazo de jarl mamaar se calle ustée.",
+			github: {
+				url: "https://github.com/dasilvacontin/CanvasDye",
+				cleanUrl: "github.com/dasilvacontin/CanvasDye"
+			}
+		});
+
+		loadProject(stuff, {
+			name: "subclass-error",
+			desc: "Lorem fistrum ahorarr benemeritaar a wan te voy a borrar el cerito. Apetecan la caidita benemeritaar apetecan la caidita diodeno mamaar papaar papaar no te digo trigo por no llamarte Rodrigor condemor diodeno. Qué dise usteer fistro amatomaa ese hombree quietooor sexuarl fistro te voy a borrar el cerito. Mamaar está la cosa muy malar me cago en tus muelas pupita benemeritaar la caidita está la cosa muy malar a wan me cago en tus muelas hasta luego Lucas. Jarl llevame al sircoo fistro te va a hasé pupitaa te va a hasé pupitaa ese pedazo de jarl mamaar se calle ustée.",
+			github: {
+				url: "https://github.com/dasilvacontin/subclass-error",
+				cleanUrl: "github.com/dasilvacontin/subclass-error"
+			}
+		});
+
+		loadProject(stuff, {
+			name: "eximo.js",
+			desc: "Lorem fistrum ahorarr benemeritaar a wan te voy a borrar el cerito. Apetecan la caidita benemeritaar apetecan la caidita diodeno mamaar papaar papaar no te digo trigo por no llamarte Rodrigor condemor diodeno. Qué dise usteer fistro amatomaa ese hombree quietooor sexuarl fistro te voy a borrar el cerito. Mamaar está la cosa muy malar me cago en tus muelas pupita benemeritaar la caidita está la cosa muy malar a wan me cago en tus muelas hasta luego Lucas. Jarl llevame al sircoo fistro te va a hasé pupitaa te va a hasé pupitaa ese pedazo de jarl mamaar se calle ustée.",
+			github: {
+				url: "https://github.com/dasilvacontin/Eximo.js",
+				cleanUrl: "github.com/dasilvacontin/Eximo.js"
+			}
 		});
 
 	</script>

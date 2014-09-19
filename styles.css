@@ -45,18 +45,16 @@ a:hover {
 #avatar {
 	display: block;
 	margin: auto;
-	width: 120px;
-	height: 120px;
-	border-radius: 60px;
+	width: 128px;
+	height: 128px;
+	border-radius: 64px;
 	background-color: black;
 	overflow: hidden;
 }
 
 #avatar > img {
-	width: 100px;
-	height: 100px;
-	padding: 14px 10px 6px;
-	-webkit-filter: grayscale(1);
+	width: 128px;
+	height: 128px;
 }
 
 #button-stack {
@@ -90,6 +88,10 @@ a:hover {
 
 .project > p {
 	text-align: justify;
+}
+
+.cut {
+	margin-top: 200px;
 }
 
 #signature {
