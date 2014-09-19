@@ -96,7 +96,7 @@
                     url: "http://dasilvacont.in/ld48-29/",
                     cleanUrl: "dasilvacont.in/ld48-29"
                 },
-                players: "10+ players via online multiplayer",
+                players: "10+ players using ludumpad",
                 github: {
                     url: "https://github.com/dasilvacontin/ld48-29",
                     cleanUrl: "github.com/dasilvacontin/ld48-29"
@@ -122,8 +122,8 @@
                 desc: "WIP racing game for Pebble, inspired in F-Zero. Made in C. I'm looking forward make a Swift and a JS port.",
                 players: "1 player",
                 github: {
-                    url: "https://github.com/dasilvacontin/rule-34",
-                    cleanUrl: "github.com/dasilvacontin/rule-34"
+                    url: "https://github.com/dasilvacontin/pzero",
+                    cleanUrl: "github.com/dasilvacontin/pzero"
                 }
             },
             "enitor": {
@@ -263,8 +263,16 @@
         });
         
         signature.addEventListener("mouseover", function () {
+            
             var wololo = new Audio("snd/wololo.mp3");
             wololo.play();
+            
+            //random chance of rick roll ftw
+            if (Math.random() < 0.05) {
+                console.log("goes");
+                window.location = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+                return;
+            }
             
             var color = getRandomColor();
             document.body.style.background = color;
@@ -279,6 +287,7 @@
                 "color": ColorLuminance(color, 0.7),
                 "text-decoration": "none"
             });
+            
         });
 
 	</script>
