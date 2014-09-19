@@ -55,7 +55,7 @@
 	</div>
 
 	<script id="project-template" type="x-tmpl-mustache">
-		{{#img}}<div class="project-image" style="background-image: url('{{ img }}')"></div>{{/img}}
+		{{#img}}<div class="project-image"><img src="{{ img }}" /></div>{{/img}}
 		<h3>{{ name }}</h3>
 		<p>{{ desc }}</p>
 		{{#downloads}}<p><i class="fa fa-cloud-download fa-fw"></i> {{ downloads }}</p>{{/downloads}}
@@ -64,6 +64,7 @@
 		{{#github}}<p><i class="fa fa-github-alt fa-fw"></i> <a href="{{ github.url }}" target="_blank">{{ github.cleanUrl }}</a></p>{{/github}}
 	</script>
 	<script src="js/mustache.js"></script>
+    <script src="js/jss.min.js"></script>
 	<script>
         
         var avatar = document.getElementById("avatar");
@@ -75,6 +76,7 @@
 		Mustache.parse(projectTemplate);
 		var projects = document.getElementById("projects");
 		var stuff = document.getElementById("stuff");
+        var signature = document.getElementById("signature");
 
 		function loadProject(container, obj) {
 
@@ -84,84 +86,200 @@
 			container.appendChild(node);
 
 		}
+        
+        var database = {
+            "ld48-29": {
+                name: "ld48-29",
+                img: "img/ld48-29.jpg",
+                desc: "Lorem fistrum ahorarr benemeritaar a wan te voy a borrar el cerito. Apetecan la caidita benemeritaar apetecan la caidita diodeno mamaar papaar papaar no te digo trigo por no llamarte Rodrigor condemor diodeno. Qué dise usteer fistro amatomaa ese hombree quietooor sexuarl fistro te voy a borrar el cerito. Mamaar está la cosa muy malar me cago en tus muelas pupita benemeritaar la caidita está la cosa muy malar a wan me cago en tus muelas hasta luego Lucas. Jarl llevame al sircoo fistro te va a hasé pupitaa te va a hasé pupitaa ese pedazo de jarl mamaar se calle ustée.",
+                website: {
+                    url: "http://dasilvacont.in/ld48-29/",
+                    cleanUrl: "dasilvacont.in/ld48-29"
+                },
+                players: "10+ players via online multiplayer",
+                github: {
+                    url: "https://github.com/dasilvacontin/ld48-29",
+                    cleanUrl: "github.com/dasilvacontin/ld48-29"
+                }
+            },
+            "rule#34": {
+                name: "rule#34",
+                img: "img/rule34.jpg",
+                desc: "Lorem fistrum ahorarr benemeritaar a wan te voy a borrar el cerito. Apetecan la caidita benemeritaar apetecan la caidita diodeno mamaar papaar papaar no te digo trigo por no llamarte Rodrigor condemor diodeno. Qué dise usteer fistro amatomaa ese hombree quietooor sexuarl fistro te voy a borrar el cerito. Mamaar está la cosa muy malar me cago en tus muelas pupita benemeritaar la caidita está la cosa muy malar a wan me cago en tus muelas hasta luego Lucas. Jarl llevame al sircoo fistro te va a hasé pupitaa te va a hasé pupitaa ese pedazo de jarl mamaar se calle ustée.",
+                website: {
+                    url: "http://dasilvacont.in/rule-34/",
+                    cleanUrl: "dasilvacont.in/rule-34"
+                },
+                players: "1 player",
+                github: {
+                    url: "https://github.com/dasilvacontin/rule-34",
+                    cleanUrl: "github.com/dasilvacontin/rule-34"
+                }
+            },
+            "pzero": {
+                name: "pzero",
+                img: "img/pzero.jpg",
+                desc: "WIP racing game for Pebble, inspired in F-Zero. Made in C. I'm looking forward make a Swift and a JS port.",
+                players: "1 player",
+                github: {
+                    url: "https://github.com/dasilvacontin/rule-34",
+                    cleanUrl: "github.com/dasilvacontin/rule-34"
+                }
+            },
+            "enitor": {
+                name: "enitor",
+                img: "img/enitor-small.jpg",
+                desc: "Lorem fistrum ahorarr benemeritaar a wan te voy a borrar el cerito. Apetecan la caidita benemeritaar apetecan la caidita diodeno mamaar papaar papaar no te digo trigo por no llamarte Rodrigor condemor diodeno. Qué dise usteer fistro amatomaa ese hombree quietooor sexuarl fistro te voy a borrar el cerito. Mamaar está la cosa muy malar me cago en tus muelas pupita benemeritaar la caidita está la cosa muy malar a wan me cago en tus muelas hasta luego Lucas. Jarl llevame al sircoo fistro te va a hasé pupitaa te va a hasé pupitaa ese pedazo de jarl mamaar se calle ustée.",
+                website: {
+                    url: "http://bluecodestudio.com/enitor",
+                    cleanUrl: "bluecodestudio.com/enitor"
+                },
+                players: "1-9 players",
+                github: {
+                    url: "https://github.com/dasilvacontin/enitor",
+                    cleanUrl: "github.com/dasilvacontin/enitor"
+                }
+            },
+            "LudumPad": {
+                name: "LudumPad",
+                img: "img/lp.jpg",
+                desc: "Lorem fistrum ahorarr benemeritaar a wan te voy a borrar el cerito. Apetecan la caidita benemeritaar apetecan la caidita diodeno mamaar papaar papaar no te digo trigo por no llamarte Rodrigor condemor diodeno. Qué dise usteer fistro amatomaa ese hombree quietooor sexuarl fistro te voy a borrar el cerito. Mamaar está la cosa muy malar me cago en tus muelas pupita benemeritaar la caidita está la cosa muy malar a wan me cago en tus muelas hasta luego Lucas. Jarl llevame al sircoo fistro te va a hasé pupitaa te va a hasé pupitaa ese pedazo de jarl mamaar se calle ustée.",
+                website: {
+                    url: "http://ludumpad.com/",
+                    cleanUrl: "ludumpad.com"
+                },
+                github: {
+                    url: "https://github.com/dasilvacontin/ludumpad-client",
+                    cleanUrl: "github.com/dasilvacontin/ludumpad-client"
+                }
+            },
+            "Kipos": {
+                name: "Kipos",
+                img: "img/kipos.jpg",
+                desc: "Lorem fistrum ahorarr benemeritaar a wan te voy a borrar el cerito. Apetecan la caidita benemeritaar apetecan la caidita diodeno mamaar papaar papaar no te digo trigo por no llamarte Rodrigor condemor diodeno. Qué dise usteer fistro amatomaa ese hombree quietooor sexuarl fistro te voy a borrar el cerito. Mamaar está la cosa muy malar me cago en tus muelas pupita benemeritaar la caidita está la cosa muy malar a wan me cago en tus muelas hasta luego Lucas. Jarl llevame al sircoo fistro te va a hasé pupitaa te va a hasé pupitaa ese pedazo de jarl mamaar se calle ustée.",
+                website: {
+                    url: "https://itunes.apple.com/us/app/kipos-virtual-pet-simulator/id494638587?mt=8",
+                    cleanUrl: "Kipos on the App Store"
+                },
+                players: "1 player",
+                downloads: "Over 80,000 downloads on the App Store"
+            },
+            "cellvorsum": {
+                name: "cellvorsum",
+                img: "http://distilleryimage9.s3.amazonaws.com/165f0514b1e511e28aa822000a1fd52c_7.jpg",
+                desc: "Lorem fistrum ahorarr benemeritaar a wan te voy a borrar el cerito. Apetecan la caidita benemeritaar apetecan la caidita diodeno mamaar papaar papaar no te digo trigo por no llamarte Rodrigor condemor diodeno. Qué dise usteer fistro amatomaa ese hombree quietooor sexuarl fistro te voy a borrar el cerito. Mamaar está la cosa muy malar me cago en tus muelas pupita benemeritaar la caidita está la cosa muy malar a wan me cago en tus muelas hasta luego Lucas. Jarl llevame al sircoo fistro te va a hasé pupitaa te va a hasé pupitaa ese pedazo de jarl mamaar se calle ustée.",
+                website: {
+                    url: "http://bluecodestudio.com/airrider3-ludumdare26/",
+                    cleanUrl: "bluecodestudio.com/airrider3-ludumdare26"
+                },
+                players: "1 player"
+            },
+            "subclass-error": {
+                name: "subclass-error",
+                desc: "JS workaround for subclassing errors. Both instanceof and stack are functional.",
+                github: {
+                    url: "https://www.npmjs.org/package/subclass-error",
+                    cleanUrl: "npmjs.org/package/subclass-error"
+                },
+                downloads: "Over 190 downloads on npm"
+            },
+            "CanvasDye": {
+                name: "CanvasDye",
+                desc: "A simple function to tint PNG images using Javascript, very useful for projects/games using HTML5 Canvas.",
+                github: {
+                    url: "https://github.com/dasilvacontin/CanvasDye",
+                    cleanUrl: "github.com/dasilvacontin/CanvasDye"
+                }
+            },
+            "Eximo.js": {
+                name: "Eximo.js",
+                desc: "SpriteSheet loader for HTML5 canvas (compatible with TexturePacker). It currently lacks support for spritesheets that are trimmed and/or have rotated sprites.",
+                website: {
+                    url: "http://bluecodestudio.com/html5-game-sample/",
+                    cleanUrl: "Example"
+                },
+                github: {
+                    url: "https://github.com/dasilvacontin/Eximo.js",
+                    cleanUrl: "github.com/dasilvacontin/Eximo.js"
+                }
+            }
+        }; //end of database
+        
+        
+        //So that I can order the projects moving a single line:
+        
+        var projectList = [
+            "ld48-29",
+            "rule#34",
+            "pzero",
+            "enitor",
+            "LudumPad",
+            "Kipos",
+            "cellvorsum"
+        ];
+        
+        var stuffList = [
+            "subclass-error",
+            "CanvasDye",
+            "Eximo.js"
+        ];
+        
+        function getRandomColor() {
+            var letters = '0123456789ABCDEF'.split('');
+            var color = '#';
+            for (var i = 0; i < 6; i++ ) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+        
+        // http://www.sitepoint.com/javascript-generate-lighter-darker-color/
+        function ColorLuminance(hex, lum) {
 
-		loadProject(projects, {
-			name: "enitor",
-			img: "img/enitor-small.jpg",
-			desc: "Lorem fistrum ahorarr benemeritaar a wan te voy a borrar el cerito. Apetecan la caidita benemeritaar apetecan la caidita diodeno mamaar papaar papaar no te digo trigo por no llamarte Rodrigor condemor diodeno. Qué dise usteer fistro amatomaa ese hombree quietooor sexuarl fistro te voy a borrar el cerito. Mamaar está la cosa muy malar me cago en tus muelas pupita benemeritaar la caidita está la cosa muy malar a wan me cago en tus muelas hasta luego Lucas. Jarl llevame al sircoo fistro te va a hasé pupitaa te va a hasé pupitaa ese pedazo de jarl mamaar se calle ustée.",
-			website: {
-				url: "http://bluecodestudio.com/enitor",
-				cleanUrl: "bluecodestudio.com/enitor"
-			},
-			players: "1-9 players",
-			github: {
-				url: "https://github.com/dasilvacontin/enitor",
-				cleanUrl: "github.com/dasilvacontin/enitor"
-			}
-		});
+            // validate hex string
+            hex = String(hex).replace(/[^0-9a-f]/gi, '');
+            if (hex.length < 6) {
+                hex = hex[0]+hex[0]+hex[1]+hex[1]+hex[2]+hex[2];
+            }
+            lum = lum || 0;
 
-		loadProject(projects, {
-			name: "LudumPad",
-			desc: "Lorem fistrum ahorarr benemeritaar a wan te voy a borrar el cerito. Apetecan la caidita benemeritaar apetecan la caidita diodeno mamaar papaar papaar no te digo trigo por no llamarte Rodrigor condemor diodeno. Qué dise usteer fistro amatomaa ese hombree quietooor sexuarl fistro te voy a borrar el cerito. Mamaar está la cosa muy malar me cago en tus muelas pupita benemeritaar la caidita está la cosa muy malar a wan me cago en tus muelas hasta luego Lucas. Jarl llevame al sircoo fistro te va a hasé pupitaa te va a hasé pupitaa ese pedazo de jarl mamaar se calle ustée.",
-			website: {
-				url: "http://ludumpad.com/",
-				cleanUrl: "ludumpad.com"
-			},
-			github: {
-				url: "https://github.com/dasilvacontin/ludumpad-client",
-				cleanUrl: "github.com/dasilvacontin/ludumpad-client"
-			}
-		});
+            // convert to decimal and change luminosity
+            var rgb = "#", c, i;
+            for (i = 0; i < 3; i++) {
+                c = parseInt(hex.substr(i*2,2), 16);
+                c = Math.round(Math.min(Math.max(0, c + (c * lum)), 255)).toString(16);
+                rgb += ("00"+c).substr(c.length);
+            }
 
-		loadProject(projects, {
-			name: "Kipos",
-			img: "http://bluecodestudio.com/wp-content/uploads/2012/11/iOS-Simulator-Screen-shot-Nov-20-2012-7.57.18-PM.png",
-			desc: "Lorem fistrum ahorarr benemeritaar a wan te voy a borrar el cerito. Apetecan la caidita benemeritaar apetecan la caidita diodeno mamaar papaar papaar no te digo trigo por no llamarte Rodrigor condemor diodeno. Qué dise usteer fistro amatomaa ese hombree quietooor sexuarl fistro te voy a borrar el cerito. Mamaar está la cosa muy malar me cago en tus muelas pupita benemeritaar la caidita está la cosa muy malar a wan me cago en tus muelas hasta luego Lucas. Jarl llevame al sircoo fistro te va a hasé pupitaa te va a hasé pupitaa ese pedazo de jarl mamaar se calle ustée.",
-			website: {
-				url: "https://itunes.apple.com/us/app/kipos-virtual-pet-simulator/id494638587?mt=8",
-				cleanUrl: "Kipos on the App Store"
-			},
-			players: "1 player",
-			downloads: "Over 80,000 downloads on the App Store"
-		});
-
-		loadProject(projects, {
-			name: "cellvorsum",
-			img: "http://distilleryimage9.s3.amazonaws.com/165f0514b1e511e28aa822000a1fd52c_7.jpg",
-			desc: "Lorem fistrum ahorarr benemeritaar a wan te voy a borrar el cerito. Apetecan la caidita benemeritaar apetecan la caidita diodeno mamaar papaar papaar no te digo trigo por no llamarte Rodrigor condemor diodeno. Qué dise usteer fistro amatomaa ese hombree quietooor sexuarl fistro te voy a borrar el cerito. Mamaar está la cosa muy malar me cago en tus muelas pupita benemeritaar la caidita está la cosa muy malar a wan me cago en tus muelas hasta luego Lucas. Jarl llevame al sircoo fistro te va a hasé pupitaa te va a hasé pupitaa ese pedazo de jarl mamaar se calle ustée.",
-			website: {
-				url: "http://bluecodestudio.com/airrider3-ludumdare26/",
-				cleanUrl: "bluecodestudio.com/airrider3-ludumdare26"
-			},
-			players: "1 player"
-		});
-
-		loadProject(stuff, {
-			name: "CanvasDye",
-			desc: "Lorem fistrum ahorarr benemeritaar a wan te voy a borrar el cerito. Apetecan la caidita benemeritaar apetecan la caidita diodeno mamaar papaar papaar no te digo trigo por no llamarte Rodrigor condemor diodeno. Qué dise usteer fistro amatomaa ese hombree quietooor sexuarl fistro te voy a borrar el cerito. Mamaar está la cosa muy malar me cago en tus muelas pupita benemeritaar la caidita está la cosa muy malar a wan me cago en tus muelas hasta luego Lucas. Jarl llevame al sircoo fistro te va a hasé pupitaa te va a hasé pupitaa ese pedazo de jarl mamaar se calle ustée.",
-			github: {
-				url: "https://github.com/dasilvacontin/CanvasDye",
-				cleanUrl: "github.com/dasilvacontin/CanvasDye"
-			}
-		});
-
-		loadProject(stuff, {
-			name: "subclass-error",
-			desc: "Lorem fistrum ahorarr benemeritaar a wan te voy a borrar el cerito. Apetecan la caidita benemeritaar apetecan la caidita diodeno mamaar papaar papaar no te digo trigo por no llamarte Rodrigor condemor diodeno. Qué dise usteer fistro amatomaa ese hombree quietooor sexuarl fistro te voy a borrar el cerito. Mamaar está la cosa muy malar me cago en tus muelas pupita benemeritaar la caidita está la cosa muy malar a wan me cago en tus muelas hasta luego Lucas. Jarl llevame al sircoo fistro te va a hasé pupitaa te va a hasé pupitaa ese pedazo de jarl mamaar se calle ustée.",
-			github: {
-				url: "https://github.com/dasilvacontin/subclass-error",
-				cleanUrl: "github.com/dasilvacontin/subclass-error"
-			}
-		});
-
-		loadProject(stuff, {
-			name: "eximo.js",
-			desc: "Lorem fistrum ahorarr benemeritaar a wan te voy a borrar el cerito. Apetecan la caidita benemeritaar apetecan la caidita diodeno mamaar papaar papaar no te digo trigo por no llamarte Rodrigor condemor diodeno. Qué dise usteer fistro amatomaa ese hombree quietooor sexuarl fistro te voy a borrar el cerito. Mamaar está la cosa muy malar me cago en tus muelas pupita benemeritaar la caidita está la cosa muy malar a wan me cago en tus muelas hasta luego Lucas. Jarl llevame al sircoo fistro te va a hasé pupitaa te va a hasé pupitaa ese pedazo de jarl mamaar se calle ustée.",
-			github: {
-				url: "https://github.com/dasilvacontin/Eximo.js",
-				cleanUrl: "github.com/dasilvacontin/Eximo.js"
-			}
-		});
+            return rgb;
+        }
+        
+        projectList.forEach(function (projectName) {
+            loadProject(projects, database[projectName]);
+        });
+        
+        stuffList.forEach(function (smthName) {
+            loadProject(stuff, database[smthName]);
+        });
+        
+        signature.addEventListener("mouseover", function () {
+            var wololo = new Audio("snd/wololo.mp3");
+            wololo.play();
+            
+            var color = getRandomColor();
+            document.body.style.background = color;
+            jss.set("h1, h2, h3, p", {
+                "color": "white"
+            });
+            jss.set("a", {
+                "color": ColorLuminance(color, 0.5),
+                "text-decoration": "none"
+            });
+            jss.set("a:hover, .inline-button:hover", {
+                "color": ColorLuminance(color, 0.7),
+                "text-decoration": "none"
+            });
+        });
 
 	</script>
 </body>

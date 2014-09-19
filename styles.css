@@ -1,4 +1,9 @@
 
+body {
+    padding: 0px;
+    margin: 0px;
+}
+
 h1, h2, h3, p, a {
 	font-family: 'Raleway', sans-serif;
 }
@@ -80,10 +85,14 @@ a:hover {
 
 .project-image {
 	width: 100%;
-	height: 100px;
+    min-height: 100px;
+    max-height: 200px;
 	background-color: #00dddd;
-	background-size: cover;
-	background-position: center;
+    overflow: hidden;
+}
+
+.project-image > img {
+    width: 100%;
 }
 
 .project > p {
