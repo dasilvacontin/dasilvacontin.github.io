@@ -68,7 +68,7 @@ a:hover {
 }
 
 .inline-button {
-	transition: color 0.5s;
+	transition: color 0.25s;
 	color: black;
 	margin: 0px 10px;
 	display: inline-block;

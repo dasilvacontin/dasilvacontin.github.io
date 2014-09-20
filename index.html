@@ -57,7 +57,7 @@
 	<script id="project-template" type="x-tmpl-mustache">
 		{{#img}}<div class="project-image"><img src="{{ img }}" /></div>{{/img}}
 		<h3>{{ name }}</h3>
-		<p>{{ desc }}</p>
+		<p>{{{desc}}}</p>
 		{{#downloads}}<p><i class="fa fa-cloud-download fa-fw"></i> {{ downloads }}</p>{{/downloads}}
 		{{#players}}<p><i class="fa fa-gamepad fa-fw"></i> {{ players }}</p>{{/players}}
 		{{#website}}<p><i class="fa fa-link fa-fw"></i> <a href="{{ website.url }}" target="_blank">{{ website.cleanUrl }}</a></p>{{/website}}
@@ -105,7 +105,7 @@
             "rule#34": {
                 name: "rule#34",
                 img: "img/rule34.jpg",
-                desc: "Lorem fistrum ahorarr benemeritaar a wan te voy a borrar el cerito. Apetecan la caidita benemeritaar apetecan la caidita diodeno mamaar papaar papaar no te digo trigo por no llamarte Rodrigor condemor diodeno. Qué dise usteer fistro amatomaa ese hombree quietooor sexuarl fistro te voy a borrar el cerito. Mamaar está la cosa muy malar me cago en tus muelas pupita benemeritaar la caidita está la cosa muy malar a wan me cago en tus muelas hasta luego Lucas. Jarl llevame al sircoo fistro te va a hasé pupitaa te va a hasé pupitaa ese pedazo de jarl mamaar se calle ustée.",
+                desc: "Game created in 0 hours for the 0h game jam. My random topic was 'rule #34'. I was very tempted to re-roll.</p><p>It has become one of my favorite own games. I absolutely love the tension when it has been a while since the last pink picture.</p><p>I've ported the game to Swift (in less than a day) and, after some finishing touches, I'll publish it on the App Store. The Swift version has music, sound effects, it was made using SpriteKit and has GameCenter support, with achievements and highscores.",
                 website: {
                     url: "http://dasilvacont.in/rule-34/",
                     cleanUrl: "dasilvacont.in/rule-34"
@@ -134,7 +134,7 @@
                     url: "http://bluecodestudio.com/enitor",
                     cleanUrl: "bluecodestudio.com/enitor"
                 },
-                players: "1-9 players",
+                players: "1-9 players w/ gamepad support",
                 github: {
                     url: "https://github.com/dasilvacontin/enitor",
                     cleanUrl: "github.com/dasilvacontin/enitor"
@@ -143,7 +143,7 @@
             "LudumPad": {
                 name: "LudumPad",
                 img: "img/lp.jpg",
-                desc: "Lorem fistrum ahorarr benemeritaar a wan te voy a borrar el cerito. Apetecan la caidita benemeritaar apetecan la caidita diodeno mamaar papaar papaar no te digo trigo por no llamarte Rodrigor condemor diodeno. Qué dise usteer fistro amatomaa ese hombree quietooor sexuarl fistro te voy a borrar el cerito. Mamaar está la cosa muy malar me cago en tus muelas pupita benemeritaar la caidita está la cosa muy malar a wan me cago en tus muelas hasta luego Lucas. Jarl llevame al sircoo fistro te va a hasé pupitaa te va a hasé pupitaa ese pedazo de jarl mamaar se calle ustée.",
+                desc: "LudumPad is an open-source library that lets you use mobile devices as controllers for your game with just a few lines of code.</p><p>In general, it lets you connect any device to your app/game. I've shown the prototype to a lot of people and all of them were excited about the experience.</p><p>I'm working on a release version with <a href='http://www.jorgeglez.me/' target='_blank'>Glez</a>, a friend who currently works at <a href='http://thenextweb.com/' target='_blank'>TNW</a>.",
                 website: {
                     url: "http://ludumpad.com/",
                     cleanUrl: "ludumpad.com"
@@ -156,13 +156,13 @@
             "Kipos": {
                 name: "Kipos",
                 img: "img/kipos.jpg",
-                desc: "Lorem fistrum ahorarr benemeritaar a wan te voy a borrar el cerito. Apetecan la caidita benemeritaar apetecan la caidita diodeno mamaar papaar papaar no te digo trigo por no llamarte Rodrigor condemor diodeno. Qué dise usteer fistro amatomaa ese hombree quietooor sexuarl fistro te voy a borrar el cerito. Mamaar está la cosa muy malar me cago en tus muelas pupita benemeritaar la caidita está la cosa muy malar a wan me cago en tus muelas hasta luego Lucas. Jarl llevame al sircoo fistro te va a hasé pupitaa te va a hasé pupitaa ese pedazo de jarl mamaar se calle ustée.",
+                desc: "Kipos is an unfinished iOS game I developed for my highschool research project. The game is about taking care of creatures with which you play minigames.</p><p>I still update it whenever I have enough free time, and I look forward to completing it someday. Music by Filippo Vicarelli, Sound Effects by Torley.",
                 website: {
                     url: "https://itunes.apple.com/us/app/kipos-virtual-pet-simulator/id494638587?mt=8",
                     cleanUrl: "Kipos on the App Store"
                 },
                 players: "1 player",
-                downloads: "Over 80,000 downloads on the App Store"
+                downloads: "Over 80,000 downloads on the App Store, and a rating average of 4,5/5 stars"
             },
             "cellvorsum": {
                 name: "cellvorsum",
@@ -172,7 +172,7 @@
                     url: "http://bluecodestudio.com/airrider3-ludumdare26/",
                     cleanUrl: "bluecodestudio.com/airrider3-ludumdare26"
                 },
-                players: "1 player"
+                players: "1 player w/ gamepad support"
             },
             "subclass-error": {
                 name: "subclass-error",
@@ -209,12 +209,12 @@
         //So that I can order the projects moving a single line:
         
         var projectList = [
+            "Kipos",
+            "LudumPad",
             "ld48-29",
             "rule#34",
             "pzero",
             "enitor",
-            "LudumPad",
-            "Kipos",
             "cellvorsum"
         ];
         
@@ -262,10 +262,11 @@
             loadProject(stuff, database[smthName]);
         });
         
+        var wololo = new Audio("snd/wololo.mp3");
         signature.addEventListener("mouseover", function () {
             
-            var wololo = new Audio("snd/wololo.mp3");
             wololo.play();
+            wololo = new Audio("snd/wololo.mp3");
             
             //random chance of rick roll ftw
             if (Math.random() < 0.05) {
