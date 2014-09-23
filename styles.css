@@ -1,11 +1,17 @@
 
-body {
-    padding: 0px;
-    margin: 0px;
+@import url(//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css);
+@import url(http://fonts.googleapis.com/css?family=Raleway:600,400);
+
+* {
+	margin: 0;
+	padding: 0;
+	-moz-text-size-adjust: none;
+	-webkit-text-size-adjust:none;
 }
 
-h1, h2, h3, p, a {
+h1, h2, h3, p {
 	font-family: 'Raleway', sans-serif;
+	margin: 20px 0px;
 }
 
 h1, h3 {
@@ -14,6 +20,10 @@ h1, h3 {
 
 h2, p, a {
 	font-weight: 400;
+}
+
+p {
+	text-align: justify;
 }
 
 a {
@@ -25,56 +35,45 @@ a:hover {
 	color: #00dddd;
 }
 
-.sea {
+.ditto {
+	-webkit-animation: tachan 1s ease-out 0s;
 	max-width: 840px;
 	margin: 100px auto 0px;
-}
-
-.ship {
-	-webkit-animation: tachan 1s ease-out 0s;
-	padding-left: 20px;
-	padding-right: 20px;
+	padding: 0px 30px;
 }
 
 @-webkit-keyframes tachan { from { opacity: 0 } to { opacity: 1 } }
 
-#bio > p {
-    font-size: 20px;
-}
-
-#bio > h1, h2 {
+.top > h1, h2 {
 	text-align: center;
 }
 
-#avatar {
+.top p {
+    font-size: 20px;
+}
+
+.top img {
 	display: block;
 	margin: auto;
 	width: 128px;
 	height: 128px;
 	border-radius: 64px;
-	background-color: black;
-	overflow: hidden;
 }
 
-#avatar > img {
-	width: 128px;
-	height: 128px;
-}
-
-#button-stack {
+.links {
 	margin: 100px 0px;
 	text-align: center;
 }
 
-.inline-button {
+.links a {
 	transition: color 0.25s;
-	color: black;
-	margin: 0px 10px;
+	margin: 10px;
 	display: inline-block;
 	vertical-align: middle;
+	color: black;
 }
 
-.inline-button:hover {
+.links a:hover {
 	color: #3884FF;
 }
 
@@ -82,31 +81,19 @@ a:hover {
 	margin: 100px 0px;
 }
 
-.project-image {
+.project img {
 	width: 100%;
-    min-height: 100px;
-    max-height: 200px;
-	background-color: #00dddd;
-    overflow: hidden;
-}
-
-.project-image > img {
-    width: 100%;
-}
-
-.project > p {
-	text-align: justify;
 }
 
 .small-cut {
-    margin: 90px 0px;
+    margin: 90px 0px 100px;
 }
 
 .cut {
-	margin: 200px 0px 100px;
+	margin: 190px 0px 100px;
 }
 
-#signature {
+.signature {
 	text-align: center;
 	margin: 100px 0px;
 }
