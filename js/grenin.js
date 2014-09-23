@@ -88,7 +88,7 @@ function ColorLuminance(hex, lum) {
 
 var signature = document.getElementById("signature");
 var wololo = new Audio("snd/wololo.mp3");
-signature.addEventListener("mouseover", function () {
+signature.onclick = function () {
     
     wololo.play();
     wololo = new Audio("snd/wololo.mp3");
@@ -96,7 +96,7 @@ signature.addEventListener("mouseover", function () {
     //random chance of rick roll ftw
     if (Math.random() < 0.05) {
         console.log("goes");
-        window.location = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+        window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ", "_blank");
         return;
     }
     
@@ -114,4 +114,4 @@ signature.addEventListener("mouseover", function () {
         "text-decoration": "none"
     });
     
-});
+}

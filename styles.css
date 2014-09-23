@@ -96,4 +96,5 @@ a:hover {
 #signature {
 	text-align: center;
 	margin: 100px 0px;
+	cursor: pointer;
 }
