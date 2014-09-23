@@ -26,9 +26,8 @@ a:hover {
 }
 
 .sea {
-	
 	max-width: 840px;
-	margin: auto;
+	margin: 100px auto 0px;
 }
 
 .ship {
@@ -39,8 +38,8 @@ a:hover {
 
 @-webkit-keyframes tachan { from { opacity: 0 } to { opacity: 1 } }
 
-#bio {
-	margin: 100px 0px;
+#bio > p {
+    font-size: 20px;
 }
 
 #bio > h1, h2 {
@@ -99,8 +98,12 @@ a:hover {
 	text-align: justify;
 }
 
+.small-cut {
+    margin: 90px 0px;
+}
+
 .cut {
-	margin-top: 200px;
+	margin: 200px 0px 100px;
 }
 
 #signature {
