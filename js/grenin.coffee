@@ -22,6 +22,9 @@ window.onload = () ->
         opacity: '1'
         transition: 'opacity 1s'
 
+# in case your browser is a turtle
+setTimeout window.onload, 2000
+    
 avatar = document.getElementById 'avatar'
 avatar.onclick = () ->
     window.open 'https://www.youtube.com/watch?v=SEOscGdcXZU', '_blank'

@@ -13,6 +13,8 @@
     });
   };
 
+  setTimeout(window.onload, 2000);
+
   avatar = document.getElementById('avatar');
 
   avatar.onclick = function() {
