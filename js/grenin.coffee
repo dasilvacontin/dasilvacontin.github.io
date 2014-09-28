@@ -1,0 +1,93 @@
+
+# So that I can order the projects moving a single line:
+
+projectList = [
+    "Kipos",
+    "LudumPad",
+    "ld48-29",
+    "rule#34",
+    "pzero",
+    "enitor",
+    "cellvorsum"
+]
+
+stuffList = [
+    "subclass-error",
+    "CanvasDye",
+    "Eximo.js"
+]
+
+window.onload = () ->
+    jss.set '.ditto',
+        opacity: '1'
+        transition: 'opacity 1s'
+
+avatar = document.getElementById 'avatar'
+avatar.onclick = () ->
+    window.open 'https://www.youtube.com/watch?v=SEOscGdcXZU', '_blank'
+
+projectTmpl = document.getElementById('project-tmpl').innerHTML
+Mustache.parse projectTmpl
+
+projectContainer = document.getElementById 'projects'
+stuffContainer = document.getElementById 'stuff'
+
+loadProjectInto = (obj, container) ->
+    node = document.createElement 'div'
+    node.className = 'project'
+    node.innerHTML = Mustache.render projectTmpl, obj
+    container.appendChild node
+
+reqListener = () ->
+    database = JSON.parse @responseText
+    projectList.forEach (projectName) ->
+        loadProjectInto database[projectName], projectContainer
+    stuffList.forEach (smthName) ->
+        loadProjectInto database[smthName], stuffContainer
+
+dbReq = new XMLHttpRequest()
+dbReq.onload = reqListener
+dbReq.open 'get', '/js/projects.json', true
+dbReq.send()
+
+getRandomColor = () ->
+    letters = '0123456789ABCDEF'.split ''
+    color = '#'
+    for i in [0..5]
+        color += letters[Math.floor(Math.random() * 16)]
+    color
+
+# http://www.sitepoint.com/javascript-generate-lighter-darker-color/
+ColorLuminance = (hex, lum = 0) ->
+    hex = String(hex).replace /[^0-9a-f]/gi, ''
+    hex = hex[0]+hex[0]+hex[1]+hex[1]+hex[2]+hex[2] if hex.length < 6
+    rgb = '#'
+    for i in [0..2]
+        c = parseInt (hex.substr i*2, 2), 16
+        c = Math.round(Math.min(Math.max(0, c + c*lum), 255)).toString(16)
+        rgb += ('00' + c).substr c.length
+    rgb
+
+signature = document.getElementById 'signature'
+wololo = new Audio 'snd/wololo.mp3'
+
+signature.onclick = () ->
+    
+    wololo.play()
+    wololo = new Audio 'snd/wololo.mp3'
+    
+    #random chance of rick roll ftw
+    if Math.random < 0.05
+        console.log 'goes'
+        window.open 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', '_blank'
+        return
+        
+    color = getRandomColor()
+    document.body.style.background = color
+    jss.set 'h1, h2, h3, p', color: 'white'
+    jss.set 'a, .links a',
+        color: ColorLuminance color, 0.5
+        'text-decoration': 'none'
+    jss.set 'a:hover, .links a:hover',
+        color: ColorLuminance color, 0.7
+        'text-decoration': 'none'

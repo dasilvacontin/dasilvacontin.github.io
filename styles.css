@@ -36,13 +36,11 @@ a:hover {
 }
 
 .ditto {
-	-webkit-animation: tachan 1s ease-out 0s;
+    opacity: 0;
 	max-width: 840px;
 	margin: 100px auto 0px;
 	padding: 0px 30px;
 }
-
-@-webkit-keyframes tachan { from { opacity: 0 } to { opacity: 1 } }
 
 .top > h1, h2 {
 	text-align: center;
