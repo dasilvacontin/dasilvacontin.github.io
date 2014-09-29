@@ -92,7 +92,7 @@
     var color;
     wololo.play();
     wololo = new Audio('snd/wololo.mp3');
-    if (Math.random < 0.05) {
+    if (Math.random() < 0.05) {
       console.log('goes');
       window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ', '_blank');
       return;
