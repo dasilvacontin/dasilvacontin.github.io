@@ -1,4 +1,7 @@
 
+jss = require 'jss-browserify'
+Mustache = require 'mustache'
+
 # So that I can order the projects moving a single line:
 
 projectList = [

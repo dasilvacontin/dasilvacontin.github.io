@@ -1,0 +1,37 @@
+{
+  "name": "dasilvacontin.github.io",
+  "version": "1.0.0",
+  "description": "My personal website / project hub.",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dasilvacontin/dasilvacontin.github.io.git"
+  },
+  "author": "David da Silva Contín <dasilvacontin@gmail.com> (http://dasilvacont.in/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dasilvacontin/dasilvacontin.github.io/issues"
+  },
+  "homepage": "https://github.com/dasilvacontin/dasilvacontin.github.io",
+  "browserify": {
+    "transform": [
+      "coffeeify"
+    ]
+  },
+  "devDependencies": {
+    "browserify": "^5.12.1",
+    "coffeeify": "^0.7.0",
+    "gulp": "^3.8.8",
+    "gulp-clean": "^0.3.1",
+    "gulp-uglify": "^1.0.1",
+    "jss-browserify": "^0.6.0",
+    "mustache": "^0.8.2",
+    "rimraf": "^2.2.8",
+    "streamify": "^0.2.4",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.0.0"
+  }
+}
