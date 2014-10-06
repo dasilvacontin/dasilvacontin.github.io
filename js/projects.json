@@ -67,7 +67,7 @@
     "Kipos": {
         "name": "Kipos",
         "img": "img/kipos.jpg",
-        "desc": "Kipos is an unfinished iOS game I developed for my highschool research project. The game is about taking care of creatures with which you play minigames.</p><p>I still update it whenever I have enough free time, and I look forward to completing it someday. Music by Filippo Vicarelli, Sound Effects by Torley.",
+        "desc": "Kipos is an unfinished iOS game I developed for my highschool research project. The game is about taking care of creatures with which you play minigames.</p><p>I still update it whenever I have enough free time, and I look forward to completing it someday.",
         "website": {
             "url": "https://itunes.apple.com/us/app/kipos-virtual-pet-simulator/id494638587?mt=8",
             "cleanUrl": "Kipos on the App Store"

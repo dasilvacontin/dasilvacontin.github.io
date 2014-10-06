@@ -1,6 +1,8 @@
 
+fs = require 'fs'
 jss = require 'jss-browserify'
-Mustache = require 'mustache'
+Handlebars = require 'handlebars'
+
 
 # So that I can order the projects moving a single line:
 
@@ -20,10 +22,11 @@ stuffList = [
     "Eximo.js"
 ]
 
+
 window.onload = () ->
     jss.set '.ditto',
-        opacity: '1'
         transition: 'opacity 1s'
+        opacity: '1'
 
 # in case your browser is a turtle
 setTimeout window.onload, 2000
@@ -32,24 +35,20 @@ avatar = document.getElementById 'avatar'
 avatar.onclick = () ->
     window.open 'https://www.youtube.com/watch?v=SEOscGdcXZU', '_blank'
 
-projectTmpl = document.getElementById('project-tmpl').innerHTML
-Mustache.parse projectTmpl
+projectsTemplateSource = fs.readFileSync 'hbs/projectsTemplate.hbs', 'utf-8'
+projectsTemplate = Handlebars.compile projectsTemplateSource
 
 projectContainer = document.getElementById 'projects'
 stuffContainer = document.getElementById 'stuff'
 
-loadProjectInto = (obj, container) ->
-    node = document.createElement 'div'
-    node.className = 'project'
-    node.innerHTML = Mustache.render projectTmpl, obj
-    container.appendChild node
-
 reqListener = () ->
     database = JSON.parse @responseText
-    projectList.forEach (projectName) ->
-        loadProjectInto database[projectName], projectContainer
-    stuffList.forEach (smthName) ->
-        loadProjectInto database[smthName], stuffContainer
+    
+    projectList = (database[projectName] for projectName in projectList)
+    stuffList = (database[projectName] for projectName in stuffList)
+        
+    projectContainer.innerHTML = projectsTemplate projectList
+    stuffContainer.innerHTML = projectsTemplate stuffList
 
 dbReq = new XMLHttpRequest()
 dbReq.onload = reqListener
@@ -74,9 +73,9 @@ ColorLuminance = (hex, lum = 0) ->
         rgb += ('00' + c).substr c.length
     rgb
 
-signature = document.getElementById 'signature'
 wololo = new Audio 'snd/wololo.mp3'
 
+signature = document.getElementById 'signature'
 signature.onclick = () ->
     
     wololo.play()

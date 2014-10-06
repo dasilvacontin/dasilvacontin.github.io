@@ -1,0 +1,20 @@
+{{#each this}}
+    <div class="project">
+        
+        {{#if img}}<img src="{{ img }}" />{{/if}}
+        
+        <h3>{{ name }}</h3>
+        <p>{{{desc}}}</p>
+        
+        {{#if downloads}}<p><i class="fa fa-cloud-download fa-fw"></i> {{ downloads }}</p>{{/if}}
+        {{#if players}}<p><i class="fa fa-gamepad fa-fw"></i> {{ players }}</p>{{/if}}
+        
+        {{#with website}}
+            <p><i class="fa fa-link fa-fw"></i> <a href="{{ url }}">{{ cleanUrl }}</a></p>
+        {{/with}}
+        {{#with github}}
+            <p><i class="fa fa-github-alt fa-fw"></i> <a href="{{ url }}">{{ cleanUrl }}</a></p>
+        {{/with}}
+        
+    </div>
+{{/each}}

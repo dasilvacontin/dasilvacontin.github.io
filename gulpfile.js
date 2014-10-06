@@ -1,34 +1,37 @@
 
-var browserify = require('browserify');
 var gulp = require('gulp');
-var uglify = require('gulp-uglify');
+var webserver = require('gulp-webserver');
+var browserify = require('browserify');
 var source = require('vinyl-source-stream');
 var buffer = require('vinyl-buffer');
-var rimraf = require('rimraf');
+var uglify = require('gulp-uglify');
 
 gulp.task('browserify', function () {
     
     return browserify({
         entries: './js/grenin.coffee',
-        transforms: ['.coffee']
+        transforms: ['.coffee', 'brfs']
     }).bundle()
-
+    
     .pipe(source('bundle.js'))
     .pipe(buffer())
     .pipe(uglify())
     .pipe(gulp.dest('./js/'));
-   
-});
-
-gulp.task('clean', function () {
-    return rimraf('js/bundle.js', function () {
-        console.log('clean as a whistle!');
-    });
+    
 });
 
 gulp.task('default', function() {
+    
     gulp.run('browserify');
     gulp.watch('js/grenin.coffee', function() {
+        console.log('\nchange detected!');
         gulp.run('browserify');
     });
+    
+    gulp.src('.')
+    .pipe(webserver({
+        livereload: true,
+        open: true
+    }));
+    
 });
