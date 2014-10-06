@@ -37,9 +37,9 @@ a:hover {
 
 .ditto {
     opacity: 0;
-	max-width: 840px;
-	margin: 100px auto 0px;
-	padding: 0px 30px;
+    max-width: 840px;
+    margin: 100px auto 0px;
+    padding: 0px 30px;
 }
 
 .top > h1, h2 {
@@ -51,11 +51,11 @@ a:hover {
 }
 
 .top img {
-	display: block;
-	margin: auto;
-	width: 128px;
-	height: 128px;
-	border-radius: 64px;
+    display: block;
+    margin: auto;
+    width: 128px;
+    height: 128px;
+    border-radius: 64px;
 }
 
 .links {
