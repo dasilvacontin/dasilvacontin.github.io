@@ -20,18 +20,17 @@ gulp.task('browserify', function () {
     
 });
 
-gulp.task('default', function() {
-    
-    gulp.run('browserify');
-    gulp.watch('js/grenin.coffee', function() {
-        console.log('\nchange detected!');
-        gulp.run('browserify');
-    });
-    
+gulp.task('watch', function () {
+    gulp.watch('js/grenin.coffee', ['browserify']);
+});
+
+gulp.task('server', function () {
     gulp.src('.')
     .pipe(webserver({
         livereload: true,
         open: true
     }));
-    
 });
+
+gulp.task('default', ['browserify', 'watch', 'server']);
+
