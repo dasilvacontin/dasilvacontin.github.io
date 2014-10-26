@@ -54,10 +54,10 @@
     "LudumPad": {
         "name": "LudumPad",
         "img": "img/lp.jpg",
-        "desc": "LudumPad is an open-source library that lets you use mobile devices as controllers for your game with just a few lines of code.</p><p>In general, it lets you connect any device to your app/game. I've shown the prototype to a lot of people and all of them were excited about the experience.</p><p>I'm working on a release version with <a href='http://www.jorgeglez.me/' target='_blank'>Glez</a>, a friend who currently works at <a href='http://thenextweb.com/' target='_blank'>TNW</a>.",
+        "desc": "An open-source library that lets you use mobile devices as game controllers with just a few lines of code.</p><p>I won the 1st Prize at the Innovation Mashup Hackathon (Barcelona MWC2014) combining LudumPad, NFC, and other APIs.</p><p>I'm working on a release version with <a href='http://www.jorgeglez.me/' target='_blank'>Glez</a>, a UI/UX designer who works at <a href='http://thenextweb.com/' target='_blank'>TNW</a>.",
         "website": {
-            "url": "http://ludumpad.com/",
-            "cleanUrl": "ludumpad.com"
+            "url": "http://ludumpad.github.io",
+            "cleanUrl": "ludumpad.github.io"
         },
         "github": {
             "url": "https://github.com/dasilvacontin/ludumpad-client",
