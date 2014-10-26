@@ -59,8 +59,13 @@ a:hover {
 }
 
 .links {
-	margin: 100px 0px;
+	margin: 70px 0px;
 	text-align: center;
+}
+
+.link-pair {
+    display: inline-block;
+    vertical-align: middle;
 }
 
 .links a {
