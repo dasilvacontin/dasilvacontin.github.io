@@ -88,6 +88,12 @@ a:hover {
 	width: 100%;
 }
 
+.text-link {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
 .small-cut {
     margin: 90px 0px 100px;
 }
