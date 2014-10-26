@@ -38,7 +38,7 @@ a:hover {
 .ditto {
     opacity: 0;
     max-width: 840px;
-    margin: 100px auto 0px;
+    margin: 150px auto 0px;
     padding: 0px 30px;
 }
 
@@ -94,12 +94,8 @@ a:hover {
     text-overflow: ellipsis;
 }
 
-.small-cut {
-    margin: 90px 0px 100px;
-}
-
 .cut {
-	margin: 190px 0px 100px;
+	margin: 150px 0px 100px;
 }
 
 #signature {
