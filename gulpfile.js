@@ -21,7 +21,10 @@ gulp.task('browserify', function () {
 });
 
 gulp.task('watch', function () {
-    gulp.watch('js/grenin.coffee', ['browserify']);
+    gulp.watch([
+        'js/*.coffee',
+        'hbs/*'
+    ], ['browserify']);
 });
 
 gulp.task('server', function () {
