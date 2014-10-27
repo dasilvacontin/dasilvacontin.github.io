@@ -23,7 +23,7 @@ stuffList = [
 ]
 
 
-window.onload = () ->
+window.onload = ->
     jss.set '.ditto',
         transition: 'opacity 1s'
         opacity: '1'
@@ -32,7 +32,7 @@ window.onload = () ->
 setTimeout window.onload, 2000
     
 avatar = document.getElementById 'avatar'
-avatar.onclick = () ->
+avatar.onclick = ->
     window.open 'https://www.youtube.com/watch?v=SEOscGdcXZU', '_blank'
 
 projectsTemplateSource = fs.readFileSync 'hbs/projectsTemplate.hbs', 'utf-8'
@@ -41,7 +41,7 @@ projectsTemplate = Handlebars.compile projectsTemplateSource
 projectContainer = document.getElementById 'projects'
 stuffContainer = document.getElementById 'stuff'
 
-reqListener = () ->
+reqListener = ->
     database = JSON.parse @responseText
     
     projectList = (database[projectName] for projectName in projectList)
