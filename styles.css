@@ -9,6 +9,37 @@
 	-webkit-text-size-adjust:none;
 }
 
+html, body {
+	height: 100%;
+}
+
+@media (max-height: 534px) {
+
+	.ditto {
+		height: 100%;
+	}
+
+	.top {
+		margin-top: 0px !important;
+		height: 100%;
+		position: relative;
+	}
+
+	.links {
+		margin-top: 35px !important;
+	}
+
+	.snorlax {
+
+		position: relative;
+		top: 50%;
+		-webkit-transform: translateY(-50%);
+		-ms-transform: translateY(-50%);
+		transform: translateY(-50%);
+
+	}
+}
+
 h1, h2, h3, p {
 	font-family: 'Raleway', sans-serif;
 	margin: 20px 0px;
@@ -38,15 +69,20 @@ a:hover {
 .ditto {
     opacity: 0;
     max-width: 840px;
-    margin: 150px auto 0px;
+    margin-left: auto;
+    margin-right: auto;
     padding: 0px 30px;
 }
 
-.top > h1, h2 {
+.top {
+	margin-top: 150px;
+}
+
+.top h1, .top h2 {
 	text-align: center;
 }
 
-.top p {
+.hello p {
     font-size: 20px;
 }
 
