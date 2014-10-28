@@ -73,13 +73,17 @@ ColorLuminance = (hex, lum = 0) ->
         rgb += ('00' + c).substr c.length
     rgb
 
-wololo = new Audio 'snd/wololo.mp3'
+preloadedSound = (src) ->
+    audio = new Audio src
+    audio.preload = true
+    audio
 
+wololo = preloadedSound 'snd/wololo.mp3'
 signature = document.getElementById 'signature'
 signature.onclick = () ->
     
     wololo.play()
-    wololo = new Audio 'snd/wololo.mp3'
+    wololo = preloadedSound 'snd/wololo.mp3'
     
     #random chance of rick roll ftw
     if Math.random() < 0.05
