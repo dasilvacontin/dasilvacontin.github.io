@@ -15,10 +15,6 @@ html, body {
 
 @media (max-height: 534px) {
 
-	.ditto {
-		height: 100%;
-	}
-
 	.top {
 		margin-top: 0px !important;
 		height: 100%;
@@ -71,7 +67,7 @@ a:hover {
     max-width: 840px;
     margin-left: auto;
     margin-right: auto;
-    padding: 0px 30px 1px;
+    padding: 0px 30px 100px;
 }
 
 .top {
@@ -136,6 +132,6 @@ a:hover {
 
 #signature {
 	text-align: center;
-	margin: 100px 0px;
+	margin.top: 100px;
 	cursor: pointer;
 }
