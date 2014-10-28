@@ -24,7 +24,7 @@ stuffList = [
 
 
 window.onload = ->
-    jss.set '.ditto',
+    jss.set 'body',
         transition: 'opacity 1s'
         opacity: '1'
 

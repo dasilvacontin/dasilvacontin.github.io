@@ -13,6 +13,10 @@ html, body {
 	height: 100%;
 }
 
+body {
+	opacity: 0;
+}
+
 @media (max-height: 534px) {
 
 	.top {
@@ -63,7 +67,6 @@ a:hover {
 }
 
 .ditto {
-    opacity: 0;
     max-width: 840px;
     margin-left: auto;
     margin-right: auto;
