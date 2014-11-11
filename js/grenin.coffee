@@ -17,6 +17,7 @@ projectList = [
 ]
 
 stuffList = [
+    "Mocha",
     "subclass-error",
     "CanvasDye",
     "Eximo.js"

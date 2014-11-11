@@ -92,7 +92,7 @@
             "url": "https://www.npmjs.org/package/subclass-error",
             "cleanUrl": "npmjs.org/package/subclass-error"
         },
-        "downloads": "Over 200 downloads on npm"
+        "downloads": "Over 260 downloads on npm"
     },
     "CanvasDye": {
         "name": "CanvasDye",
@@ -113,5 +113,18 @@
             "url": "https://github.com/dasilvacontin/Eximo.js",
             "cleanUrl": "github.com/dasilvacontin/Eximo.js"
         }
+    },
+    "Mocha": {
+        "name": "Mocha",
+        "desc": "I actively contribute to Mocha, a simple, flexible, fun JavaScript test framework for node.js and the browser.",
+        "website": {
+            "url": "http://mochajs.org/",
+            "cleanUrl": "mochajs.org"
+        },
+        "github": {
+            "url": "https://github.com/mochajs/mocha",
+            "cleanUrl": "github.com/mochajs/mocha"
+        },
+        "downloads": "9,422,433 downloads on npm"
     }
 }
