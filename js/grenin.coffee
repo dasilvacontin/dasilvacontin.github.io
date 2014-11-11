@@ -24,6 +24,9 @@ stuffList = [
 ]
 
 
+new WOW()
+.init()
+
 window.onload = ->
     jss.set 'body',
         transition: 'opacity 1s'
