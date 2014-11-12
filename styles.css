@@ -147,3 +147,32 @@ ul {
 	margin-top: 100px;
 	cursor: pointer;
 }
+
+.ribbon {
+
+	position: absolute;
+	top: 44px;
+	right: -50px;
+	width: 200px;
+
+	-webkit-transform: rotate(45deg);
+	-moz-transform: rotate(45deg);
+	-o-transform: rotate(45deg);
+	-ms-transform: rotate(45deg);
+	transform: rotate(45deg);
+
+	text-align: center;
+	font-size: 12px;
+	color: white;
+	background-color: black;
+	padding: 6px;
+	border: 1px dashed white;
+	outline: 2px solid black;
+	z-index: 1;
+	transition: color 0.2s, border-color 0.2s;
+}
+
+.ribbon:hover {
+	color: #00dddd;
+	border-color: #00dddd;
+}

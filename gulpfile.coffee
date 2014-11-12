@@ -28,6 +28,7 @@ gulp.task 'watch', ->
 gulp.task 'server', ->
     gulp.src '.'
     .pipe webserver {
+        port: 8080,
         livereload: true,
         open: true
     }
