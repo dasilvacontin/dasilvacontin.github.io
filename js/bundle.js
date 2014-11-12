@@ -128,11 +128,14 @@ doUp = function() {
     '-webkit-transition': 'opacity 1s',
     opacity: '1'
   });
-  return jss.set('.moveUp', {
+  jss.set('.moveUp', {
     transition: 'transform 1s',
     '-webkit-transition': '-webkit-transform 1s',
     transform: 'translateY(0px)',
     '-webkit-transform': 'translateY(0px)'
+  });
+  return jss.set('#avatar', {
+    opacity: '0'
   });
 };
 
@@ -159,16 +162,12 @@ immediate = function(cb) {
       return;
     }
     loaded = true;
+    doUp();
     elapsed = +(new Date) - elapsed;
     if (elapsed < logo_wait) {
-      setTimeout(showLogo, logo_wait - elapsed);
+      return setTimeout(showLogo, logo_wait - elapsed);
     } else {
-      showLogo();
-    }
-    if (elapsed < up_wait) {
-      return setTimeout(doUp, up_wait - elapsed);
-    } else {
-      return doUp();
+      return showLogo();
     }
   };
   setTimeout(window.onload, 2000);

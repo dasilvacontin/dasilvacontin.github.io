@@ -108,6 +108,9 @@ doUp = ->
         transform: 'translateY(0px)'
         '-webkit-transform': 'translateY(0px)'
 
+    jss.set '#avatar',
+        opacity: '0'
+
 showLogo = ->
     jss.set '#avatar',
         transition: 'opacity 1s'
@@ -126,17 +129,14 @@ immediate = (cb) -> setTimeout cb, 1
         return if loaded
         loaded = true
 
+        doUp()
+
         elapsed = +new Date - elapsed
         
         if elapsed < logo_wait
             setTimeout showLogo, logo_wait - elapsed
         else
             showLogo()
-
-        if elapsed < up_wait
-            setTimeout doUp, up_wait - elapsed
-        else
-            doUp()
 
     # in case your browser is a turtle
     setTimeout window.onload, 2000
