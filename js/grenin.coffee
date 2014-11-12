@@ -24,9 +24,6 @@ stuffList = [
 ]
 
 
-new WOW()
-.init()
-
 window.onload = ->
     jss.set 'body',
         transition: 'opacity 1s'
@@ -53,6 +50,9 @@ reqListener = ->
         
     projectContainer.innerHTML = projectsTemplate projectList
     stuffContainer.innerHTML = projectsTemplate stuffList
+
+    new WOW()
+    .init()
 
 dbReq = new XMLHttpRequest()
 dbReq.onload = reqListener
