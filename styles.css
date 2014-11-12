@@ -69,14 +69,8 @@ a:hover {
 	color: #00dddd;
 }
 
-.loader-cover {
-	position: absolute;
-	z-index: -1;
-	background-color: blue;
-}
-
 .loader {
-	background-color: black;
+	background-color: #00dddd;
 	position: absolute;
 	top: 0px;
 	left: 0px;

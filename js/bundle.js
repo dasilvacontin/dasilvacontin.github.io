@@ -129,8 +129,8 @@ doUp = function() {
     opacity: '1'
   });
   jss.set('.moveUp', {
-    transition: 'transform 1s',
-    '-webkit-transition': '-webkit-transform 1s',
+    transition: 'transform 3s',
+    '-webkit-transition': '-webkit-transform 3s',
     transform: 'translateY(0px)',
     '-webkit-transform': 'translateY(0px)'
   });
@@ -174,10 +174,11 @@ immediate = function(cb) {
   return immediate(function() {
     elapsed = +(new Date);
     return jss.set('.loader', {
-      transition: 'transform 1s ease-out',
-      '-webkit-transition': '-webkit-transform 1s ease-out',
+      transition: 'transform 1s ease-out, background-color 1s',
+      '-webkit-transition': '-webkit-transform 1s ease-out, background-color 1s',
       transform: 'scale(1)',
-      '-webkit-transform': 'scale(1)'
+      '-webkit-transform': 'scale(1)',
+      'background-color': 'black'
     });
   });
 })();
