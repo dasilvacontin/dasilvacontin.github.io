@@ -38,6 +38,10 @@ body {
 		transform: translateY(-50%);
 
 	}
+
+	.hello p, .hello li {
+	    font-size: 18px !important;
+	}
 }
 
 * {
@@ -74,7 +78,7 @@ a:hover {
     max-width: 840px;
     margin-left: auto;
     margin-right: auto;
-    padding: 0px 30px 100px;
+    padding: 0px 10% 100px;
 }
 
 .top {
