@@ -1,0 +1,24 @@
+{
+  "name": "dasilvacontin.github.io",
+  "version": "0.0.0",
+  "homepage": "https://github.com/dasilvacontin/dasilvacontin.github.io",
+  "authors": [
+    "David da Silva <daviddasilvacontin@me.com>"
+  ],
+  "moduleType": [
+    "node"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "animate.css": "~3.2.0",
+    "WOW": "~1.0.2"
+  }
+}

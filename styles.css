@@ -40,17 +40,21 @@ body {
 	}
 }
 
-h1, h2, h3, p {
+* {
 	font-family: 'Raleway', sans-serif;
+	font-weight: 400;
+}
+
+h1, h2, h3, p, li {
 	margin: 20px 0px;
+}
+
+li {
+	margin-left: 20px;
 }
 
 h1, h3 {
 	font-weight: 600;
-}
-
-h2, p, a {
-	font-weight: 400;
 }
 
 p {
@@ -82,8 +86,12 @@ a:hover {
 	text-align: center;
 }
 
-.hello p {
+.hello p, .hello li {
     font-size: 20px;
+}
+
+ul {
+	margin: 50px 0px;
 }
 
 .top img {
