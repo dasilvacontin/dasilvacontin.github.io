@@ -13,16 +13,11 @@ html, body {
 	height: 100%;
 }
 
-body {
-	opacity: 0;
-}
-
 @media (max-height: 534px) {
 
 	.top {
 		margin-top: 0px !important;
 		height: 100%;
-		position: relative;
 	}
 
 	.links {
@@ -74,6 +69,32 @@ a:hover {
 	color: #00dddd;
 }
 
+.loader-cover {
+	position: absolute;
+	z-index: -1;
+	background-color: blue;
+}
+
+.loader {
+	background-color: black;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	z-index: -1;
+	-webkit-transform: scale(0);
+	transform: scale(0);
+}
+
+.dc-fadeIn {
+	opacity: 0;
+}
+
+.moveUp {
+	-webkit-transform: translateY(50px);
+	transform: translateY(50px);
+}
+
 .ditto {
     max-width: 840px;
     margin-left: auto;
@@ -84,6 +105,7 @@ a:hover {
 .top {
 	margin-top: 150px;
 	padding: 0px 30px;
+	position: relative;
 }
 
 .top h1, .top h2 {
@@ -98,7 +120,7 @@ ul {
 	margin: 50px 0px;
 }
 
-.top img {
+.top .avatar {
     display: block;
     margin: auto;
     width: 128px;

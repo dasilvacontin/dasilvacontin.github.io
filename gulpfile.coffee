@@ -15,8 +15,8 @@ gulp.task 'browserify', ->
     .bundle()
     
     .pipe source 'bundle.js'
-    .pipe buffer()
-    .pipe uglify()
+    # .pipe buffer()
+    # .pipe uglify()
     .pipe gulp.dest './js/'
 
 gulp.task 'watch', ->
@@ -29,7 +29,6 @@ gulp.task 'server', ->
     gulp.src '.'
     .pipe webserver {
         port: 8080,
-        livereload: true,
         open: true
     }
 

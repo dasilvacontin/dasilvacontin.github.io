@@ -1,6 +1,6 @@
 
 fs = require 'fs'
-jss = require 'jss-browserify'
+window.jss = jss = require 'jss-browserify'
 Handlebars = require 'handlebars'
 
 
@@ -22,15 +22,6 @@ stuffList = [
     "CanvasDye",
     "Eximo.js"
 ]
-
-
-window.onload = ->
-    jss.set 'body',
-        transition: 'opacity 1s'
-        opacity: '1'
-
-# in case your browser is a turtle
-setTimeout window.onload, 2000
     
 avatar = document.getElementById 'avatar'
 avatar.onclick = ->
@@ -104,3 +95,57 @@ signature.onclick = () ->
     jss.set 'a:hover, .links a:hover',
         color: ColorLuminance color, 0.7
         'text-decoration': 'none'
+
+doUp = ->
+    jss.set '.dc-fadeIn',
+        transition: 'opacity 1s'
+        '-webkit-transition': 'opacity 1s'
+        opacity: '1'
+
+    jss.set '.moveUp',
+        transition: 'transform 1s'
+        '-webkit-transition': '-webkit-transform 1s'
+        transform: 'translateY(0px)'
+        '-webkit-transform': 'translateY(0px)'
+
+showLogo = ->
+    jss.set '#avatar',
+        transition: 'opacity 1s'
+        '-webkit-transition': 'opacity 1s'
+        opacity: '1'
+
+immediate = (cb) -> setTimeout cb, 1
+(->
+    elapsed = 0
+    logo_wait = 750
+    up_wait = 1100
+    loaded = false
+
+    window.onload = ->
+
+        return if loaded
+        loaded = true
+
+        elapsed = +new Date - elapsed
+        
+        if elapsed < logo_wait
+            setTimeout showLogo, logo_wait - elapsed
+        else
+            showLogo()
+
+        if elapsed < up_wait
+            setTimeout doUp, up_wait - elapsed
+        else
+            doUp()
+
+    # in case your browser is a turtle
+    setTimeout window.onload, 2000
+
+    immediate ->
+        elapsed = +new Date
+        jss.set '.loader',
+            transition: 'transform 1s ease-out'
+            '-webkit-transition': '-webkit-transform 1s ease-out'
+            transform: 'scale(1)'
+            '-webkit-transform': 'scale(1)'
+)()
