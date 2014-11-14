@@ -30,7 +30,7 @@
     "pzero": {
         "name": "pzero",
         "img": "img/pzero.jpg",
-        "desc": "WIP racing game for Pebble, inspired in F-Zero. Made in C. I'm looking forward make a Swift and a JS port.",
+        "desc": "WIP racing game for Pebble, inspired in F-Zero. Made in C. I'm looking forward to making a Swift and a JS port.",
         "players": "1 player",
         "github": {
             "url": "https://github.com/dasilvacontin/pzero",
@@ -40,7 +40,7 @@
     "enitor": {
         "name": "enitor",
         "img": "img/enitor-small.jpg",
-        "desc": "A game I made during 2013's summer for playing with my cousins.</p><p>I'm looking forward to improve the game and make some ports.",
+        "desc": "A game I made during 2013's summer for playing with my cousins.</p><p>I'm looking forward to improving the game and making some ports.",
         "website": {
             "url": "http://bluecodestudio.com/enitor",
             "cleanUrl": "bluecodestudio.com/enitor"
