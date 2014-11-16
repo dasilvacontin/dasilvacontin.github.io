@@ -109,7 +109,7 @@ signature.onclick = function() {
   }
   color = getRandomColor();
   document.body.style.background = color;
-  jss.set('h1, h2, h3, p', {
+  jss.set('h1, h2, h3, p, li', {
     color: 'white'
   });
   jss.set('a, .links a', {
