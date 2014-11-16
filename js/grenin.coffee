@@ -22,7 +22,8 @@ stuffList = [
     "CanvasDye",
     "Eximo.js"
 ]
-    
+
+
 avatar = document.getElementById 'avatar'
 avatar.onclick = ->
     window.open 'https://www.youtube.com/watch?v=SEOscGdcXZU', '_blank'
@@ -88,7 +89,8 @@ signature.onclick = () ->
         
     color = getRandomColor()
     document.body.style.background = color
-    jss.set 'h1, h2, h3, p', color: 'white'
+    jss.set 'h1, h2, h3, p, li',
+        color: 'white'
     jss.set 'a, .links a',
         color: ColorLuminance color, 0.5
         'text-decoration': 'none'
