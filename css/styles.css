@@ -1,0 +1,147 @@
+@import url(//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css);
+@import url(http://fonts.googleapis.com/css?family=Raleway:600,400);
+.ribbon {
+  position: absolute;
+  top: 44px;
+  right: -50px;
+  width: 200px;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  text-align: center;
+  font-size: 12px;
+  padding: 6px;
+  color: white;
+  background-color: black;
+  border: 1px dashed white;
+  outline: 2px solid black;
+  z-index: 1; }
+  .ribbon:hover {
+    color: #00dddd;
+    border-color: #00dddd; }
+
+* {
+  margin: 0;
+  padding: 0;
+  -moz-text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 400; }
+
+html, body {
+  height: 100%; }
+
+@media (max-height: 534px) {
+  .top {
+    margin-top: 0px !important;
+    height: 100%; }
+
+  .links {
+    margin-top: 35px !important; }
+
+  .snorlax {
+    position: relative;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%); }
+
+  .hello p, .hello li {
+    font-size: 18px !important; } }
+h1, h2, h3, p, li {
+  margin: 20px 0px; }
+
+li {
+  margin-left: 20px; }
+
+h1, h3 {
+  font-weight: 600; }
+
+p {
+  text-align: justify; }
+
+a {
+  color: #0060D6;
+  text-decoration: none; }
+
+a:hover {
+  color: #00dddd; }
+
+.loader {
+  background-color: #00dddd;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  z-index: -1;
+  -webkit-transform: scale(0);
+          transform: scale(0); }
+
+.dc-fadeIn {
+  opacity: 0; }
+
+.moveUp {
+  -webkit-transform: translateY(50px);
+          transform: translateY(50px); }
+
+.ditto {
+  max-width: 840px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0px 10% 100px; }
+
+.top {
+  margin-top: 150px;
+  padding: 0px 30px;
+  position: relative; }
+
+.top h1, .top h2 {
+  text-align: center; }
+
+.hello p, .hello li {
+  font-size: 20px; }
+
+ul {
+  margin: 50px 0px; }
+
+.top .avatar {
+  display: block;
+  margin: auto;
+  width: 128px;
+  height: 128px;
+  border-radius: 64px; }
+
+.links {
+  margin: 70px 0px;
+  text-align: center; }
+
+.link-pair {
+  display: inline-block;
+  vertical-align: middle; }
+
+.links a {
+  transition: color 0.25s;
+  margin: 10px;
+  display: inline-block;
+  vertical-align: middle;
+  color: black; }
+
+.links a:hover {
+  color: #3884FF; }
+
+.project {
+  margin: 100px 0px; }
+
+.project img {
+  width: 100%; }
+
+.text-link {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis; }
+
+.cut {
+  margin: 150px 0px 100px; }
+
+#signature {
+  text-align: center;
+  margin-top: 100px;
+  cursor: pointer; }

@@ -1,12 +1,15 @@
 
 @import url(//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css);
 @import url(http://fonts.googleapis.com/css?family=Raleway:600,400);
+@import 'ribbon';
 
 * {
 	margin: 0;
 	padding: 0;
 	-moz-text-size-adjust: none;
 	-webkit-text-size-adjust:none;
+	font-family: 'Raleway', sans-serif;
+	font-weight: 400;
 }
 
 html, body {
@@ -37,11 +40,6 @@ html, body {
 	.hello p, .hello li {
 	    font-size: 18px !important;
 	}
-}
-
-* {
-	font-family: 'Raleway', sans-serif;
-	font-weight: 400;
 }
 
 h1, h2, h3, p, li {
@@ -76,7 +74,6 @@ a:hover {
 	left: 0px;
 	right: 0px;
 	z-index: -1;
-	-webkit-transform: scale(0);
 	transform: scale(0);
 }
 
@@ -85,7 +82,6 @@ a:hover {
 }
 
 .moveUp {
-	-webkit-transform: translateY(50px);
 	transform: translateY(50px);
 }
 
@@ -166,33 +162,4 @@ ul {
 	text-align: center;
 	margin-top: 100px;
 	cursor: pointer;
-}
-
-.ribbon {
-
-	position: absolute;
-	top: 44px;
-	right: -50px;
-	width: 200px;
-
-	-webkit-transform: rotate(45deg);
-	-moz-transform: rotate(45deg);
-	-o-transform: rotate(45deg);
-	-ms-transform: rotate(45deg);
-	transform: rotate(45deg);
-
-	text-align: center;
-	font-size: 12px;
-	color: white;
-	background-color: black;
-	padding: 6px;
-	border: 1px dashed white;
-	outline: 2px solid black;
-	z-index: 1;
-	transition: color 0.2s, border-color 0.2s;
-}
-
-.ribbon:hover {
-	color: #00dddd;
-	border-color: #00dddd;
 }
