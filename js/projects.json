@@ -126,5 +126,9 @@
             "cleanUrl": "github.com/mochajs/mocha"
         },
         "downloads": "9,854,904 downloads on npm"
+    },
+    "L8RYO": {
+      "name": "L8RYO",
+      "desc": "Yo service that reminds you of random unread articles in your Pocket account."
     }
 }
