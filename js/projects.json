@@ -114,9 +114,23 @@
             "cleanUrl": "github.com/dasilvacontin/Eximo.js"
         }
     },
+    "Mustache.js" : {
+        "name": "Mustache.js",
+        "desc": "I'm a Maintainer/Collaborator for Mustache.js, a library for minimal templating with {{mustaches}} in JavaScript.",
+        "webiste": {
+            "url" : "http://mustache.github.io/",
+            "cleanUrl" : "mustache.github.io"
+        },
+        "github": {
+            "url": "https://github.com/janl/mustache.js",
+            "cleanUrl": "github.com/janl/mustache.js"
+        },
+        "downloads": "1,279,622 downloads on npm",
+        "stars": "7,142"
+    },
     "Mocha": {
         "name": "Mocha",
-        "desc": "I actively contribute to Mocha, a simple, flexible, fun JavaScript test framework for node.js and the browser.",
+        "desc": "I actively contribute to Mocha (top #15 contributor), a simple, flexible, fun JavaScript test framework for node.js and the browser.",
         "website": {
             "url": "http://mochajs.org/",
             "cleanUrl": "mochajs.org"
@@ -125,10 +139,15 @@
             "url": "https://github.com/mochajs/mocha",
             "cleanUrl": "github.com/mochajs/mocha"
         },
-        "downloads": "10,114,553 downloads on npm"
+        "downloads": "10,609,239 downloads on npm",
+        "stars": "5,669"
     },
     "L8RYO": {
-      "name": "L8RYO",
-      "desc": "Yo service that reminds you of random unread articles in your Pocket account."
+        "name": "L8RYO",
+        "desc": "Yo service that reminds you of random unread articles in your Pocket account.",
+        "website": {
+            "url": "http://challengepost.com/software/l8ryo",
+            "cleanUrl": "challengepost.com/software/l8ryo"
+        }
     }
 }

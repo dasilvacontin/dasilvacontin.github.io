@@ -8,9 +8,9 @@ Handlebars = require 'handlebars'
 
 projectList = [
     "Kipos",
-    "L8RYO",
     "LudumPad",
     "ld48-29",
+    "L8RYO",
     "rule#34",
     "pzero",
     "enitor",
@@ -18,6 +18,7 @@ projectList = [
 ]
 
 stuffList = [
+    "Mustache.js",
     "Mocha",
     "subclass-error",
     "CanvasDye",
