@@ -30,13 +30,10 @@
 html, body {
   height: 100%; }
 
-@media (max-height: 534px) {
+@media (max-height: 585px) {
   .top {
     margin-top: 0px !important;
     height: 100%; }
-
-  .links {
-    margin-top: 35px !important; }
 
   .snorlax {
     position: relative;
@@ -110,7 +107,6 @@ ul {
   border-radius: 64px; }
 
 .links {
-  margin: 70px 0px;
   text-align: center; }
 
 .link-pair {
@@ -118,14 +114,18 @@ ul {
   vertical-align: middle; }
 
 .links a {
+  font-size: 12px;
   transition: color 0.25s;
-  margin: 10px;
+  margin: 4px;
   display: inline-block;
   vertical-align: middle;
   color: black; }
 
 .links a:hover {
   color: #3884FF; }
+
+.main {
+  margin-top: 80px; }
 
 .project {
   margin: 100px 0px; }

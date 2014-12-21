@@ -92,19 +92,11 @@
             "url": "https://www.npmjs.org/package/subclass-error",
             "cleanUrl": "npmjs.org/package/subclass-error"
         },
-        "downloads": "Over 284 downloads on npm"
+        "downloads": "Over 300 downloads on npm"
     },
-    "CanvasDye": {
-        "name": "CanvasDye",
-        "desc": "A simple function to tint PNG images using Javascript, very useful for projects/games using HTML5 Canvas.",
-        "github": {
-            "url": "https://github.com/dasilvacontin/CanvasDye",
-            "cleanUrl": "github.com/dasilvacontin/CanvasDye"
-        }
-    },
-    "Eximo.js": {
-        "name": "Eximo.js",
-        "desc": "SpriteSheet loader for HTML5 canvas (compatible with TexturePacker). It currently lacks support for spritesheets that are trimmed and/or have rotated sprites.",
+    "eximo.js": {
+        "name": "eximo.js",
+        "desc": "Minimal spritesheet loader for HTML5 canvas (compatible with TexturePacker). It currently lacks support for spritesheets that are trimmed and/or have rotated sprites.",
         "website": {
             "url": "http://bluecodestudio.com/html5-game-sample/",
             "cleanUrl": "Example"
@@ -114,9 +106,9 @@
             "cleanUrl": "github.com/dasilvacontin/Eximo.js"
         }
     },
-    "Mustache.js" : {
-        "name": "Mustache.js",
-        "desc": "I'm a Maintainer/Collaborator for Mustache.js, a library for minimal templating with {{mustaches}} in JavaScript.",
+    "mustache.js" : {
+        "name": "mustache.js",
+        "desc": "I'm a Maintainer/Collaborator for mustache.js, a library for minimal templating with {{mustaches}} in JavaScript.",
         "webiste": {
             "url" : "http://mustache.github.io/",
             "cleanUrl" : "mustache.github.io"
@@ -125,12 +117,12 @@
             "url": "https://github.com/janl/mustache.js",
             "cleanUrl": "github.com/janl/mustache.js"
         },
-        "downloads": "1,279,622 downloads on npm",
-        "stars": "7,142"
+        "downloads": "1,311,995 downloads on npm",
+        "stars": "7,154"
     },
-    "Mocha": {
-        "name": "Mocha",
-        "desc": "I actively contribute to Mocha (top #15 contributor), a simple, flexible, fun JavaScript test framework for node.js and the browser.",
+    "mocha": {
+        "name": "mocha",
+        "desc": "I actively contribute to mocha (top #15 contributor), a simple, flexible, fun JavaScript test framework for node.js and the browser.",
         "website": {
             "url": "http://mochajs.org/",
             "cleanUrl": "mochajs.org"
@@ -139,8 +131,8 @@
             "url": "https://github.com/mochajs/mocha",
             "cleanUrl": "github.com/mochajs/mocha"
         },
-        "downloads": "10,609,239 downloads on npm",
-        "stars": "5,669"
+        "downloads": "10,833,968 downloads on npm",
+        "stars": "5,702"
     },
     "L8RYO": {
         "name": "L8RYO",

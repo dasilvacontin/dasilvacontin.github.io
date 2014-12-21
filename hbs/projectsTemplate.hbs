@@ -6,7 +6,9 @@
         <h3>{{ name }}</h3>
         <p>{{{desc}}}</p>
         
-        {{#if downloads}}<p><i class="fa fa-cloud-download fa-fw"></i> {{ downloads }}</p>{{/if}}
+        {{#if downloads}}<p>
+        <i class="fa fa-cloud-download fa-fw"></i> {{ downloads }}{{#if stars}}, {{ stars }}<i class="fa fa-star"></i> on Github{{/if}}
+        </p>{{/if}}
         {{#if players}}<p><i class="fa fa-gamepad fa-fw"></i> {{ players }}</p>{{/if}}
         
         {{#with website}}

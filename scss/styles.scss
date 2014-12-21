@@ -16,15 +16,11 @@ html, body {
 	height: 100%;
 }
 
-@media (max-height: 534px) {
+@media (max-height: 585px) {
 
 	.top {
 		margin-top: 0px !important;
 		height: 100%;
-	}
-
-	.links {
-		margin-top: 35px !important;
 	}
 
 	.snorlax {
@@ -40,6 +36,7 @@ html, body {
 	.hello p, .hello li {
 	    font-size: 18px !important;
 	}
+
 }
 
 h1, h2, h3, p, li {
@@ -119,7 +116,6 @@ ul {
 }
 
 .links {
-	margin: 70px 0px;
 	text-align: center;
 }
 
@@ -129,8 +125,9 @@ ul {
 }
 
 .links a {
+	font-size: 12px;
 	transition: color 0.25s;
-	margin: 10px;
+	margin: 4px;
 	display: inline-block;
 	vertical-align: middle;
 	color: black;
@@ -138,6 +135,10 @@ ul {
 
 .links a:hover {
 	color: #3884FF;
+}
+
+.main {
+	margin-top: 80px;
 }
 
 .project {

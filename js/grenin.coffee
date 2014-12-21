@@ -18,11 +18,10 @@ projectList = [
 ]
 
 stuffList = [
-    "Mustache.js",
-    "Mocha",
+    "mocha",
+    "mustache.js",
     "subclass-error",
-    "CanvasDye",
-    "Eximo.js"
+    "eximo.js"
 ]
 
 
@@ -86,10 +85,10 @@ signature.onclick = () ->
     #random chance of rick roll ftw
     if Math.random() < 0.05
         console.log 'goes'
-        window.open 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', '_blank'
+        window.open 'https://www.youtube.com/watch?v=BROWqjuTM0g', '_blank'
         return
         
-    color = getRandomColor()
+    color = ColorLuminance getRandomColor(), 0
     document.body.style.background = color
     jss.set 'h1, h2, h3, p, li',
         color: 'white'
@@ -154,3 +153,26 @@ immediate = (cb) -> setTimeout cb, 1
             '-webkit-transform': 'scale(1)'
             'background-color': 'black'
 )()
+
+replaceHTML = (id, lambda) ->
+    document.getElementById id
+    .innerHTML = lambda()
+
+getRandomName = ->
+    rnd = Math.random()
+    if rnd > 0.75
+        return 'デイビッド'
+    'David da Silva Contín'
+
+labels = [
+    'Full Stack Engineer',
+    'Innovation Enthusiast',
+    'Product Designer',
+    'Open Source Addict'
+]
+
+getRandomLabel = ->
+    labels[Math.floor(Math.random() * labels.length)]
+
+replaceHTML 'say-my-name', getRandomName
+replaceHTML 'self-label', getRandomLabel
