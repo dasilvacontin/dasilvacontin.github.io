@@ -117,12 +117,12 @@
             "url": "https://github.com/janl/mustache.js",
             "cleanUrl": "github.com/janl/mustache.js"
         },
-        "downloads": "1,311,995 downloads on npm",
-        "stars": "7,154"
+        "downloads": "1,534,374 downloads on npm",
+        "stars": "7,316"
     },
     "mocha": {
         "name": "mocha",
-        "desc": "I actively contribute to mocha (top #15 contributor), a simple, flexible, fun JavaScript test framework for node.js and the browser.",
+        "desc": "I'm a Maintainer/Collaborator for mocha (top #10 contributor), a simple, flexible, fun JavaScript test framework for node.js and the browser.",
         "website": {
             "url": "http://mochajs.org/",
             "cleanUrl": "mochajs.org"
@@ -131,8 +131,8 @@
             "url": "https://github.com/mochajs/mocha",
             "cleanUrl": "github.com/mochajs/mocha"
         },
-        "downloads": "10,833,968 downloads on npm",
-        "stars": "5,702"
+        "downloads": "Over 12,705,050 downloads on npm",
+        "stars": "5,944"
     },
     "L8RYO": {
         "name": "L8RYO",
