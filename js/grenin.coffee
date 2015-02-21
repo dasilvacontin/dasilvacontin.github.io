@@ -78,16 +78,19 @@ preloadedSound = (src) ->
 wololo = preloadedSound 'snd/wololo.mp3'
 signature = document.getElementById 'signature'
 signature.onclick = () ->
-    
+
     wololo.play()
     wololo = preloadedSound 'snd/wololo.mp3'
-    
+
     #random chance of rick roll ftw
     if Math.random() < 0.05
         console.log 'goes'
+        req = new XMLHttpRequest
+        req.open 'GET', 'http://kipos.me:8083', true
+        req.send null
         window.open 'https://www.youtube.com/watch?v=BROWqjuTM0g', '_blank'
         return
-        
+
     color = ColorLuminance getRandomColor(), 0
     document.body.style.background = color
     jss.set 'h1, h2, h3, p, li',
