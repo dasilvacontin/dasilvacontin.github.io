@@ -4,7 +4,8 @@ window.jss = jss = require 'jss-browserify'
 Handlebars = require 'handlebars'
 
 
-# So that I can order the projects moving a single line:
+
+# lists so that I can order the projects easily:
 
 projectList = [
     "Kipos",
@@ -25,9 +26,16 @@ stuffList = [
 ]
 
 
+
+# link to df video
+
 avatar = document.getElementById 'avatar'
 avatar.onclick = ->
     window.open 'https://www.youtube.com/watch?v=SEOscGdcXZU', '_blank'
+
+
+
+# generate html for projects
 
 projectsTemplateSource = fs.readFileSync 'hbs/projectsTemplate.hbs', 'utf-8'
 projectsTemplate = Handlebars.compile projectsTemplateSource
@@ -51,6 +59,10 @@ dbReq = new XMLHttpRequest()
 dbReq.onload = reqListener
 dbReq.open 'get', '/js/projects.json', true
 dbReq.send()
+
+
+
+# w0l0l0 button color change / rickroll / etc
 
 getRandomColor = () ->
     letters = '0123456789ABCDEF'.split ''
@@ -85,9 +97,7 @@ signature.onclick = () ->
     #random chance of rick roll ftw
     if Math.random() < 0.05
         console.log 'goes'
-        req = new XMLHttpRequest
-        req.open 'GET', 'http://kipos.me:8083', true
-        req.send null
+        reqyo 'RICKROLLD'
         window.open 'https://www.youtube.com/watch?v=BROWqjuTM0g', '_blank'
         return
 
@@ -101,6 +111,10 @@ signature.onclick = () ->
     jss.set 'a:hover, .links a:hover',
         color: ColorLuminance color, 0.7
         'text-decoration': 'none'
+
+
+
+# avatar intro animation
 
 doUp = ->
     jss.set '.dc-fadeIn',
@@ -161,6 +175,10 @@ replaceHTML = (id, lambda) ->
     document.getElementById id
     .innerHTML = lambda()
 
+
+
+# random name / title
+
 getRandomName = ->
     rnd = Math.random()
     if rnd > 0.75
@@ -179,3 +197,14 @@ getRandomLabel = ->
 
 replaceHTML 'say-my-name', getRandomName
 replaceHTML 'self-label', getRandomLabel
+
+
+
+# yo notication request
+
+reqyo = (action) ->
+        req = new XMLHttpRequest
+        req.open 'GET', 'http://kipos.me:8083/' + action, true
+        req.send null
+
+reqyo 'STALKD'
