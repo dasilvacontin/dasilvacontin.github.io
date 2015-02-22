@@ -1,5 +1,6 @@
 import requests
 from flask import Flask
+from flask.ext.cors import cross_origin
 app = Flask(__name__)
 
 tokens = {}
@@ -15,6 +16,7 @@ def reqyo(token):
     )
 
 @app.route("/<action>")
+@cross_origin()
 def react(action):
     token = tokens.get(action, haxd_token)
     reqyo(token)
