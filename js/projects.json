@@ -92,7 +92,7 @@
             "url": "https://www.npmjs.org/package/subclass-error",
             "cleanUrl": "npmjs.org/package/subclass-error"
         },
-        "downloads": "Over 300 downloads on npm"
+        "downloads": "699 downloads on npm"
     },
     "eximo.js": {
         "name": "eximo.js",
@@ -117,8 +117,8 @@
             "url": "https://github.com/janl/mustache.js",
             "cleanUrl": "github.com/janl/mustache.js"
         },
-        "downloads": "1,534,374 downloads on npm",
-        "stars": "7,316"
+        "downloads": "1,745,418 downloads on npm",
+        "stars": "7,438"
     },
     "mocha": {
         "name": "mocha",
@@ -131,8 +131,8 @@
             "url": "https://github.com/mochajs/mocha",
             "cleanUrl": "github.com/mochajs/mocha"
         },
-        "downloads": "Over 12,705,050 downloads on npm",
-        "stars": "5,944"
+        "downloads": "Over 14,422,938 downloads on npm",
+        "stars": "6,191"
     },
     "L8RYO": {
         "name": "L8RYO",
