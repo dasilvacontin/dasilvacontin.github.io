@@ -45,10 +45,10 @@ stuffContainer = document.getElementById 'stuff'
 
 reqListener = ->
     database = JSON.parse @responseText
-    
+
     projectList = (database[projectName] for projectName in projectList)
     stuffList = (database[projectName] for projectName in stuffList)
-        
+
     projectContainer.innerHTML = projectsTemplate projectList
     stuffContainer.innerHTML = projectsTemplate stuffList
 
@@ -136,6 +136,12 @@ showLogo = ->
         transition: 'opacity 1s'
         '-webkit-transition': 'opacity 1s'
         opacity: '1'
+    setTimeout ->
+        jss.set '.loader',
+            transition: 'opacity 0.5s'
+            '-webkit-transition': 'opacity 0.5s'
+            opacity: '0'
+    , 500
 
 immediate = (cb) -> setTimeout cb, 1
 (->
@@ -152,7 +158,7 @@ immediate = (cb) -> setTimeout cb, 1
         doUp()
 
         elapsed = +new Date - elapsed
-        
+
         if elapsed < logo_wait
             setTimeout showLogo, logo_wait - elapsed
         else
