@@ -9,6 +9,7 @@ Handlebars = require 'handlebars'
 
 projectList = [
     "Kipos",
+    "KairosHacks",
     "LudumPad",
     "ld48-29",
     "L8RYO",

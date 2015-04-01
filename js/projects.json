@@ -141,5 +141,14 @@
             "url": "http://challengepost.com/software/l8ryo",
             "cleanUrl": "challengepost.com/software/l8ryo"
         }
+    },
+    "KairosHacks": {
+        "name": "KairosHacks Organiser, Speaker, Judge",
+        "img": "img/yo-python-talk-kairoshacks.png",
+        "desc": "<ul><p>I helped organising KairosHacks, the first student hackathon in Spain. Over 200 students attended as hackers.</p><li>I gave a talk about Yo and Python that served as an introduction to APIs for newcomers.</li><li>I closed sponsorship deals with Google, GitHub, Yo and Gamedonia.</li><li>I was a judge for: 'Best Hack' category, 'Best Use Of Yo API' award, and 'Best Game' award.</li><li>I designed the staff t-shirt and the event's signs under a heavy time constraint.</li><p>The final sponsor list was: Skyscanner, 4 Years From Now, Mobile World Capital Barcelona, Mobile World Congress, Google Developer Group Barcelona, Barcelona Activa, m-startup-barcelona, GSMA, Zurich, Global Hackathon Seoul, Major League Hacking, Bloomberg, Entrepreneurs First, Gamedonia, Estrella Damm, GitHub, Yo.</p></ul>",
+        "website": {
+            "url": "http://kairossociety.org/khacks/",
+            "cleanUrl": "kairossociety.org/khacks"
+        }
     }
 }
