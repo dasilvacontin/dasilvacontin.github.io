@@ -150,5 +150,10 @@
             "url": "http://kairossociety.org/khacks/",
             "cleanUrl": "kairossociety.org/khacks"
         }
+    },
+    "animus": {
+        "name": "animus",
+        "img": "img/animus.png",
+        "desc": "The element of a person that enables them to be aware of the world and their experiences, to think, and to feel."
     }
 }

@@ -8,6 +8,7 @@ Handlebars = require 'handlebars'
 # lists so that I can order the projects easily:
 
 projectList = [
+    "animus",
     "Kipos",
     "KairosHacks",
     "LudumPad",
