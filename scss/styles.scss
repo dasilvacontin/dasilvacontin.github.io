@@ -1,5 +1,4 @@
-
-@import url(//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css);
+@import url(http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css);
 @import url(http://fonts.googleapis.com/css?family=Raleway:600,400);
 @import 'ribbon';
 
@@ -10,6 +9,7 @@
 	-webkit-text-size-adjust:none;
 	font-family: 'Raleway', sans-serif;
 	font-weight: 400;
+	font-size: 16px;
 }
 
 html, body {
@@ -24,17 +24,11 @@ html, body {
 	}
 
 	.snorlax {
-
 		position: relative;
 		top: 50%;
 		-webkit-transform: translateY(-50%);
 		-ms-transform: translateY(-50%);
 		transform: translateY(-50%);
-
-	}
-
-	.hello p, .hello li {
-	    font-size: 18px !important;
 	}
 
 }
@@ -48,17 +42,25 @@ li {
 	margin-left: 20px;
 }
 
-h1, h3 {
+h1, h2, h3, strong, a {
 	font-weight: 600;
+}
+
+h1 {
+	font-size: 32px;
+}
+
+h2 {
+	font-size: 25px;
+	margin: 70px 0px 40px;
 }
 
 a {
 	color: #0060D6;
 	text-decoration: none;
-}
-
-a:hover {
-	color: #00dddd;
+	&:hover {
+		color: #00dddd;
+	}
 }
 
 .loader {
@@ -83,11 +85,12 @@ a:hover {
     max-width: 840px;
     margin-left: auto;
     margin-right: auto;
-    padding: 0px 10% 100px;
+    padding: 0px 50px 100px;
 }
 
 .top {
 	margin-top: 150px;
+	margin-bottom: 115px;
 	padding: 0px 30px;
 	position: relative;
 }
@@ -96,12 +99,8 @@ a:hover {
 	text-align: center;
 }
 
-.hello p, .hello li {
-    font-size: 20px;
-}
-
-ul {
-	margin: 50px 0px;
+#say-my-name {
+	margin-top: 25px;
 }
 
 .top .avatar {
@@ -138,22 +137,14 @@ ul {
 	margin-top: 80px;
 }
 
-.project {
-	margin: 100px 0px;
-}
-
-.project img {
-	width: 100%;
+.project a {
+	font-weight: 600;
 }
 
 .text-link {
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-}
-
-.cut {
-	margin: 150px 0px 100px;
 }
 
 #signature {
