@@ -1,6 +1,5 @@
 @import url(http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css);
 @import url(http://fonts.googleapis.com/css?family=Raleway:600,400);
-@import 'ribbon';
 
 * {
 	margin: 0;
@@ -33,34 +32,8 @@ html, body {
 
 }
 
-h1, h2, h3, p, li {
-	margin: 20px 0px;
-	line-height: 30px;
-}
-
-li {
-	margin-left: 20px;
-}
-
-h1, h2, h3, strong, a {
-	font-weight: 600;
-}
-
-h1 {
-	font-size: 32px;
-}
-
-h2 {
-	font-size: 25px;
+.section-title {
 	margin: 70px 0px 40px;
-}
-
-a {
-	color: #0060D6;
-	text-decoration: none;
-	&:hover {
-		color: #00dddd;
-	}
 }
 
 .loader {
@@ -73,14 +46,6 @@ a {
 	transform: scale(0);
 }
 
-.dc-fadeIn {
-	opacity: 0;
-}
-
-.moveUp {
-	transform: translateY(50px);
-}
-
 .ditto {
     max-width: 840px;
     margin-left: auto;
@@ -88,36 +53,8 @@ a {
     padding: 0px 50px 100px;
 }
 
-.top {
-	margin-top: 150px;
-	margin-bottom: 115px;
-	padding: 0px 30px;
-	position: relative;
-}
-
-.top h1, .top h2 {
-	text-align: center;
-}
-
-#say-my-name {
-	margin-top: 25px;
-}
-
-.top .avatar {
-    display: block;
-    margin: auto;
-    width: 128px;
-    height: 128px;
-    border-radius: 64px;
-}
-
 .links {
 	text-align: center;
-}
-
-.link-pair {
-    display: inline-block;
-    vertical-align: middle;
 }
 
 .links a {
@@ -137,18 +74,8 @@ a {
 	margin-top: 80px;
 }
 
-.project a {
-	font-weight: 600;
-}
-
 .text-link {
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-}
-
-#signature {
-	text-align: center;
-	margin-top: 100px;
-	cursor: pointer;
 }
