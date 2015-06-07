@@ -1,0 +1,6 @@
+---
+name: subclass-error
+short-description: JavasScript Error subclasser. Both instanceof and stack are functional.
+ext-url: https://github.com/dasilvacontin/subclass-error
+score: 5
+---

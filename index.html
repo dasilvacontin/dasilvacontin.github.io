@@ -6,32 +6,60 @@ layout: default
 
   <p>Hi there! I'm David da Silva, a developer with big ambitions. Adding my bit to the world is one of them, but hopefully I can make it a byte.</p>
 
-  <h2 class="section-title">projects / games</h2>
+  <section>
+    <h2 class="section-title">posts</h2>
 
-  <ul class="post-list">
-    {% for project in site.projects %}
-      <li>
-        <p><a>{{ project.name }}</a> - {{ project.description }}</p>
-      </li>
-    {% endfor %}
-  </ul>
+    <ul class="post-list">
+      {% for post in site.posts %}
+        <li>
+          <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
 
-  <h2 class="section-title">open source</h2>
+          <h2>
+            <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+          </h2>
+        </li>
+      {% endfor %}
+    </ul>
 
-  <h2 class="section-title">posts</h2>
+    <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
+  </section>
 
-  <ul class="post-list">
-    {% for post in site.posts %}
-      <li>
-        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
+  <section>
+    <h2 class="section-title">projects</h2>
 
-        <h2>
-          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-        </h2>
-      </li>
-    {% endfor %}
-  </ul>
+    <ul class="post-list">
+      {% assign sorted_projects = (site.projects | sort: 'score') %}
+      {% for project in sorted_projects reversed %}
+        <li>
+          <p><a href="{{ project.ext-url }}" target="_blank">{{ project.name }}</a> - {{ project.short-description }}</p>
+        </li>
+      {% endfor %}
+    </ul>
+  </section>
 
-  <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
+  <section>
+    <h2 class="section-title">games</h2>
 
+    <ul class="post-list">
+      {% assign sorted_games = (site.games | sort: 'score') %}
+      {% for game in sorted_games reversed %}
+        <li>
+          <p><a href="{{ game.ext-url }}" target="_blank">{{ game.name }}</a> - {{ game.short-description }}</p>
+        </li>
+      {% endfor %}
+    </ul>
+  </section>
+
+  <section>
+    <h2 class="section-title">open source</h2>
+
+    <ul class="post-list">
+      {% assign sorted_oss = (site.open-source | sort: 'score') %}
+      {% for oss in sorted_oss reversed %}
+        <li>
+          <p><a href="{{ oss.ext-url }}" target="_blank">{{ oss.name }}</a> - {{ oss.short-description }}</p>
+        </li>
+      {% endfor %}
+    </ul>
+  </section>
 </div>

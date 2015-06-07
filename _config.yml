@@ -12,3 +12,8 @@ github_username:  dasilvacontin
 
 # Build settings
 markdown: kramdown
+
+collections:
+- projects
+- games
+- open-source
