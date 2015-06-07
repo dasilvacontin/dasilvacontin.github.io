@@ -1,7 +1,7 @@
 
 fs = require 'fs'
 window.jss = jss = require 'jss-browserify'
-Handlebars = require 'handlebars'
+Mustache = require 'mustache'
 
 
 
@@ -39,8 +39,7 @@ avatar.onclick = ->
 
 # generate html for projects
 
-projectsTemplateSource = fs.readFileSync 'hbs/projectsTemplate.hbs', 'utf-8'
-projectsTemplate = Handlebars.compile projectsTemplateSource
+projectsTemplate = fs.readFileSync 'mu/projects.mu', 'utf-8'
 
 projectContainer = document.getElementById 'projects'
 stuffContainer = document.getElementById 'stuff'
@@ -51,8 +50,8 @@ reqListener = ->
     projectList = (database[projectName] for projectName in projectList)
     stuffList = (database[projectName] for projectName in stuffList)
 
-    projectContainer.innerHTML = projectsTemplate projectList
-    stuffContainer.innerHTML = projectsTemplate stuffList
+    projectContainer.innerHTML = Mustache.render projectsTemplate, projectList
+    stuffContainer.innerHTML = Mustache.render projectsTemplate, stuffList
 
 dbReq = new XMLHttpRequest()
 dbReq.onload = reqListener
