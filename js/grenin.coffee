@@ -185,26 +185,18 @@ replaceHTML = (id, lambda) ->
 
 
 
-# random name / title
+# random name
 
 getRandomName = ->
     rnd = Math.random()
     if rnd > 0.75
         return 'デイビッド'
-    'David da Silva Contín'
-
-labels = [
-    'Full Stack Engineer',
-    'Innovation Enthusiast',
-    'Product Designer',
-    'Open Source Addict'
-]
+    'dasilvacontin'
 
 getRandomLabel = ->
     labels[Math.floor(Math.random() * labels.length)]
 
 replaceHTML 'say-my-name', getRandomName
-replaceHTML 'self-label', getRandomLabel
 
 
 
