@@ -54,9 +54,6 @@ reqListener = ->
     projectContainer.innerHTML = projectsTemplate projectList
     stuffContainer.innerHTML = projectsTemplate stuffList
 
-    new WOW()
-    .init()
-
 dbReq = new XMLHttpRequest()
 dbReq.onload = reqListener
 dbReq.open 'get', '/js/projects.json', true
