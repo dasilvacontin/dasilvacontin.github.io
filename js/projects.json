@@ -1,159 +1,73 @@
 {
     "ld48-29": {
         "name": "ld48-29",
-        "img": "img/ld48-29.jpg",
-        "desc": "Unfinished game jam entry for the 29th LudumDare. Made with pixi.js in less than 15h. Graphics generated via code.</p><p>It will become a turn based game where players play locally on a big screen and send a sequence of actions from their smartphone.</p><p>You can test some placeholder actions: 'WASD' for movement, 'QE' for rotation, 'O' for shooting, 'P' for shockwave.",
-        "website": {
-            "url": "http://dasilvacont.in/ld48-29/",
-            "cleanUrl": "dasilvacont.in/ld48-29"
-        },
-        "players": "10+ players using ludumpad",
-        "github": {
-            "url": "https://github.com/dasilvacontin/ld48-29",
-            "cleanUrl": "github.com/dasilvacontin/ld48-29"
-        }
+        "desc": "unfinished game jam entry for the 29th LudumDare. Made with pixi.js in less than 15h. Graphics generated via code.",
+        "url": "http://dasilvacont.in/ld48-29/"
     },
     "rule#34": {
         "name": "rule#34",
-        "img": "img/rule34.jpg",
-        "desc": "Game created in 0 hours for the 0h game jam. My random topic was 'rule #34'. I was very tempted to re-roll.</p><p>It has become one of my favorite own games. I absolutely love the tension when it has been a while since the last pink picture.</p><p>I've ported the game to Swift (in less than a day) and, after some finishing touches, I'll publish it on the App Store. The Swift version has music, sound effects, it was made using SpriteKit and has GameCenter support, with achievements and highscores.",
-        "website": {
-            "url": "http://dasilvacont.in/rule-34/",
-            "cleanUrl": "dasilvacont.in/rule-34"
-        },
-        "players": "1 player",
-        "github": {
-            "url": "https://github.com/dasilvacontin/rule-34",
-            "cleanUrl": "github.com/dasilvacontin/rule-34"
-        }
+        "desc": "game created in 0 hours for the 0h game jam. My random topic was 'rule #34'. I was very tempted to re-roll. It has become one of my favorite own games.",
+        "url": "http://dasilvacont.in/rule-34/"
     },
     "pzero": {
         "name": "pzero",
-        "img": "img/pzero.jpg",
-        "desc": "WIP racing game for Pebble, inspired in F-Zero. Made in C. I'm looking forward to making a Swift and a JS port.",
-        "players": "1 player",
-        "github": {
-            "url": "https://github.com/dasilvacontin/pzero",
-            "cleanUrl": "github.com/dasilvacontin/pzero"
-        }
+        "desc": "WIP racing game for Pebble, inspired in F-Zero. Made in C.",
+        "url": "https://github.com/dasilvacontin/pzero"
     },
     "enitor": {
         "name": "enitor",
-        "img": "img/enitor-small.jpg",
-        "desc": "A game I made during 2013's summer for playing with my cousins.</p><p>I'm looking forward to improving the game and making some ports.",
-        "website": {
-            "url": "http://bluecodestudio.com/enitor",
-            "cleanUrl": "bluecodestudio.com/enitor"
-        },
-        "players": "1-9 players w/ gamepad support",
-        "github": {
-            "url": "https://github.com/dasilvacontin/enitor",
-            "cleanUrl": "github.com/dasilvacontin/enitor"
-        }
+        "desc": "a game I made during 2013's summer for playing with my cousins.",
+        "url": "http://bluecodestudio.com/enitor"
     },
     "LudumPad": {
         "name": "LudumPad",
-        "img": "img/lp.jpg",
-        "desc": "An open-source library that lets you use mobile devices as game controllers with just a few lines of code.</p><p>I won the 1st Prize at the Innovation Mashup Hackathon (Barcelona MWC2014) combining LudumPad, NFC, and other APIs.</p><p>I'm working on a release version with <a href='http://www.jorgeglez.me/' target='_blank'>Glez</a>, a UI/UX designer who works at <a href='http://thenextweb.com/' target='_blank'>TNW</a>.",
-        "website": {
-            "url": "http://ludumpad.github.io",
-            "cleanUrl": "ludumpad.github.io"
-        },
-        "github": {
-            "url": "https://github.com/dasilvacontin/ludumpad-client",
-            "cleanUrl": "github.com/dasilvacontin/ludumpad-client"
-        }
+        "desc": "an open-source library that lets you use mobile devices as game controllers with just a few lines of code.",
+        "url": "http://ludumpad.github.io"
     },
     "Kipos": {
         "name": "Kipos",
-        "img": "img/kipos.jpg",
-        "desc": "Kipos is an unfinished iOS game I developed for my highschool research project. The game is about taking care of creatures with which you play minigames.</p><p>I still update it whenever I have enough free time, and I look forward to completing it someday.",
-        "website": {
-            "url": "https://itunes.apple.com/us/app/kipos-virtual-pet-simulator/id494638587?mt=8",
-            "cleanUrl": "Kipos on the App Store"
-        },
-        "players": "1 player",
-        "downloads": "Over 80,000 downloads on the App Store, and a rating average of 4,5/5 stars"
+        "desc": "an unfinished iOS game bout taking care of creatures with which you play minigames. Over 80,000 downloads on the App Store, and a rating average of 4,5/5 stars.",
+        "url": "https://itunes.apple.com/us/app/kipos-virtual-pet-simulator/id494638587?mt=8"
     },
     "cellvorsum": {
         "name": "cellvorsum",
-        "img": "img/cellvorsum.jpg",
-        "desc": "Game jam entry for the 26th Ludum Dare.",
-        "website": {
-            "url": "http://bluecodestudio.com/airrider3-ludumdare26/",
-            "cleanUrl": "bluecodestudio.com/airrider3-ludumdare26"
-        },
-        "players": "1 player w/ gamepad support"
+        "desc": "game jam entry for the 26th Ludum Dare.",
+        "url": "http://bluecodestudio.com/airrider3-ludumdare26/"
     },
     "subclass-error": {
         "name": "subclass-error",
         "desc": "JS workaround for subclassing errors. Both instanceof and stack are functional.",
-        "github": {
-            "url": "https://www.npmjs.org/package/subclass-error",
-            "cleanUrl": "npmjs.org/package/subclass-error"
-        },
-        "downloads": "875 downloads on npm"
+        "url": "https://www.npmjs.org/package/subclass-error"
     },
     "eximo.js": {
         "name": "eximo.js",
-        "desc": "Minimal spritesheet loader for HTML5 canvas (compatible with TexturePacker). It currently lacks support for spritesheets that are trimmed and/or have rotated sprites.",
-        "website": {
-            "url": "http://bluecodestudio.com/html5-game-sample/",
-            "cleanUrl": "Example"
-        },
-        "github": {
-            "url": "https://github.com/dasilvacontin/Eximo.js",
-            "cleanUrl": "github.com/dasilvacontin/Eximo.js"
-        }
+        "desc": "minimal spritesheet loader (compatible with TexturePacker).",
+        "url": "https://github.com/dasilvacontin/Eximo.js"
     },
     "mustache.js" : {
         "name": "mustache.js",
         "desc": "I'm a Maintainer/Collaborator for mustache.js, a library for minimal templating with {{mustaches}} in JavaScript.",
-        "webiste": {
-            "url" : "http://mustache.github.io/",
-            "cleanUrl" : "mustache.github.io"
-        },
-        "github": {
-            "url": "https://github.com/janl/mustache.js",
-            "cleanUrl": "github.com/janl/mustache.js"
-        },
-        "downloads": "2M downloads on npm",
-        "stars": "Over 7k"
+        "url": "https://github.com/janl/mustache.js"
     },
     "mocha": {
         "name": "mocha",
-        "desc": "I'm a Maintainer/Collaborator for mocha (top #10 contributor), a simple, flexible, fun JavaScript test framework for node.js and the browser.",
-        "website": {
-            "url": "http://mochajs.org/",
-            "cleanUrl": "mochajs.org"
-        },
-        "github": {
-            "url": "https://github.com/mochajs/mocha",
-            "cleanUrl": "github.com/mochajs/mocha"
-        },
-        "downloads": "Over 15M downloads on npm",
-        "stars": "Over 6k"
+        "desc": "I'm a Maintainer/Collaborator for mocha, a simple, flexible, fun JavaScript test framework for node.js and the browser.",
+        "url": "https://github.com/mochajs/mocha"
     },
     "L8RYO": {
         "name": "L8RYO",
         "desc": "Yo service that reminds you of random unread articles in your Pocket account.",
-        "website": {
-            "url": "http://challengepost.com/software/l8ryo",
-            "cleanUrl": "challengepost.com/software/l8ryo"
-        }
+        "url": "http://challengepost.com/software/l8ryo"
     },
     "KairosHacks": {
-        "name": "KairosHacks Organiser, Speaker, Judge",
+        "name": "KairosHacks",
         "img": "img/yo-python-talk-kairoshacks.png",
-        "desc": "<ul><p>I helped organising KairosHacks, the first student hackathon in Spain. Over 200 students attended as hackers.</p><li>I gave a talk about Yo and Python that served as an introduction to APIs for newcomers.</li><li>I closed sponsorship deals with Google, GitHub, Yo and Gamedonia.</li><li>I was a judge for: 'Best Hack' category, 'Best Use Of Yo API' award, and 'Best Game' award.</li><li>I designed the staff t-shirt and the event's signs under a heavy time constraint.</li><p>The final sponsor list was: Skyscanner, 4 Years From Now, Mobile World Capital Barcelona, Mobile World Congress, Google Developer Group Barcelona, Barcelona Activa, m-startup-barcelona, GSMA, Zurich, Global Hackathon Seoul, Major League Hacking, Bloomberg, Entrepreneurs First, Gamedonia, Estrella Damm, GitHub, Yo.</p></ul>",
-        "website": {
-            "url": "http://kairossociety.org/khacks/",
-            "cleanUrl": "kairossociety.org/khacks"
-        }
+        "desc": "organiser, speaker and judge at the first student hackathon in Spain. Over 200 students attended as hackers.",
+        "url": "http://kairossociety.org/khacks/"
     },
     "animus": {
-        "name": "animus",
-        "img": "img/animus.png",
-        "desc": "The element of a person that enables them to be aware of the world and their experiences, to think, and to feel."
+        "name": "Animus",
+        "desc": "The element of a person that enables them to be aware of the world and their experiences, to think, and to feel.",
+        "url": "https://github.com/dasilvacontin/animus"
     }
 }
