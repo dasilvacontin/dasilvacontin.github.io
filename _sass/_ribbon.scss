@@ -1,0 +1,35 @@
+$ribbon-color: black;
+$ribbon-lining: white;
+$ribbon-lining-hover: #00dddd;
+
+.ribbon {
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	width: 150px;
+	height: 150px;
+	overflow: hidden;
+	a {
+		position: absolute;
+		top: 44px;
+		right: -50px;
+		width: 200px;
+
+		transform: rotate(45deg);
+
+		text-align: center;
+		font-size: 12px;
+		font-weight: 400;
+		padding: 6px;
+		color: $ribbon-lining;
+		background-color: $ribbon-color;
+		border: 1px dashed $ribbon-lining;
+		outline: 2px solid $ribbon-color;
+		z-index: 1;
+
+		&:hover {
+			color: $ribbon-lining-hover;
+			border-color: $ribbon-lining-hover;
+		}
+	}
+}

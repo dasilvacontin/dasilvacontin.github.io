@@ -1,0 +1,81 @@
+@import url(http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css);
+@import url(http://fonts.googleapis.com/css?family=Raleway:600,400);
+
+* {
+	margin: 0;
+	padding: 0;
+	-moz-text-size-adjust: none;
+	-webkit-text-size-adjust:none;
+	font-family: 'Raleway', sans-serif;
+	font-weight: 400;
+	font-size: 16px;
+}
+
+html, body {
+	height: 100%;
+}
+
+@media (max-height: 585px) {
+
+	.top {
+		margin-top: 0px !important;
+		height: 100%;
+	}
+
+	.snorlax {
+		position: relative;
+		top: 50%;
+		-webkit-transform: translateY(-50%);
+		-ms-transform: translateY(-50%);
+		transform: translateY(-50%);
+	}
+
+}
+
+.section-title {
+	margin: 70px 0px 40px;
+}
+
+.loader {
+	background-color: #00dddd;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	z-index: -1;
+	transform: scale(0);
+}
+
+.ditto {
+    max-width: 840px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0px 50px 100px;
+}
+
+.links {
+	text-align: center;
+}
+
+.links a {
+	font-size: 12px;
+	transition: color 0.25s;
+	margin: 4px;
+	display: inline-block;
+	vertical-align: middle;
+	color: black;
+}
+
+.links a:hover {
+	color: #3884FF;
+}
+
+.main {
+	margin-top: 80px;
+}
+
+.text-link {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
