@@ -38,10 +38,6 @@
 /**
  * Page content
  */
-.page-content {
-    padding: $spacing-unit 0;
-}
-
 .page-heading {
     font-size: 20px;
 }
@@ -85,8 +81,6 @@
 }
 
 .post-content {
-    margin-bottom: $spacing-unit;
-
     h2 {
         margin: 80px 0px 30px;
         font-size: 32px;
