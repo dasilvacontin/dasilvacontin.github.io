@@ -122,3 +122,24 @@
         margin: 15px 0px;
     }
 }
+
+/**
+ * Carnival
+ */
+// Animate article slide when Carnival comment is open
+article {
+    position: relative;
+    left: 0px;
+    transition: left 0.5s;
+}
+
+// Animate Carnival comment when selecting a different p
+.carnival > ol {
+    transition: top 0.5s;
+}
+
+// Overwrite Carnival's font for consistency
+article .carnival-comment p {
+    font-family: inherit;
+}
+

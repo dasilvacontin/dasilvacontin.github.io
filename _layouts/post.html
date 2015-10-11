@@ -13,3 +13,15 @@ layout: default
   </article>
 
 </div>
+
+<script src="https://carnivalapp.io/sites/392/init.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  Carnival.init({
+    enabled: true,
+    article_author: "",
+    article_selector: "article",
+    block_selector: ":scope > p, :scope > blockquote"
+  });
+})
+</script>
