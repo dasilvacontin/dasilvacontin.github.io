@@ -2,21 +2,30 @@
 layout: post
 title: Squashing pushed commits after the code review
 categories: git software development
+goals:
+  1. explain what does 'squashing commits' mean
+  2. explain the benefits of squashing commits
+  3. explain how to squash commits in a pushed branch
 ---
 
-During the review process of a [Pull Request], reviewers and maintainers are likely to point out code quality improvements or bugs in your changes. To address these comments, you push additional commits to the pull request's branch.
+During the review process of a [Pull Request], reviewers and maintainers are likely to point out code quality improvements or bugs in your changes. To address these comments, you push additional commits to the Pull Request's branch.
+
+Yep, Pull Requests get updated with every update in their branch – no need to close the PR and open a new one. It's preferable to gather all the iterations and discussion about the proposed changes in a single place, a single Pull Request.
 
 Once the reviewers are happy with the changes, you'll probably hear something like:
 
-> please squash (please)
+> please squash _(oh god please)_
 
 They actually mean you should squash _commits_. So...
 
-## What is squashing commits?
+## What does "squash commits" mean?
 
+> to squash
 > 1. crush or squeeze (something) with force so that it becomes flat, soft, or out of shape.
 
-Squashing commits means combining commits that are part of the same change. Squashing creates a new commit by combining two or more commits, and replaces them in your branch with the combined one.
+To "squash commits" means to combine commits resulting in a smaller ammount of commits. You 
+
+Squashing commits means combining commits. You combine commits that are part of the same change into a single commit. Squashing creates a new commit by combining two or more commits, and replaces them in your branch with the combined one.
 
 Commits hold a reference to their `parent` commit (like in a [linked list]), so commits that follow the ones you squashed will have to be rewriten to update their `parent` reference.
 
