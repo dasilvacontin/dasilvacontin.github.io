@@ -2,66 +2,14 @@
 layout: default
 ---
 
-<div class="home">
-
-  <p>Hi there! I'm David da Silva, a developer with big ambitions. Adding my bit to the world is one of them, but hopefully I can make it a byte.</p>
-
-  <!--
-  <section>
-    <h2 class="section-title">posts</h2>
-
-    <ul class="post-list">
-      {% for post in site.posts %}
-        <li>
-          <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
-
-          <h2>
-            <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-          </h2>
-        </li>
-      {% endfor %}
-    </ul>
-
-    <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
-  </section>
-  -->
-
-  <section>
-    <h2 class="section-title">projects</h2>
-
-    <ul class="post-list">
-      {% assign sorted_projects = (site.projects | sort: 'score') %}
-      {% for project in sorted_projects reversed %}
-        <li>
-          <p><a href="{{ project.ext-url }}" target="_blank">{{ project.name }}</a> - {{ project.short-description }}</p>
-        </li>
-      {% endfor %}
-    </ul>
-  </section>
-
-  <section>
-    <h2 class="section-title">games</h2>
-
-    <ul class="post-list">
-      {% assign sorted_games = (site.games | sort: 'score') %}
-      {% for game in sorted_games reversed %}
-        <li>
-          <p><a href="{{ game.ext-url }}" target="_blank">{{ game.name }}</a> - {{ game.short-description }}</p>
-        </li>
-      {% endfor %}
-    </ul>
-  </section>
-
-  <section>
-    <h2 class="section-title">open source</h2>
-
-    <ul class="post-list">
-      {% assign sorted_oss = (site.open-source | sort: 'score') %}
-      {% for oss in sorted_oss reversed %}
-        <li>
-          <p><a href="{{ oss.ext-url }}" target="_blank">{{ oss.name }}</a> - {{ oss.short-description }}</p>
-        </li>
-      {% endfor %}
-    </ul>
-  </section>
+<div class="bio">
+  <p>Placeholder website until I come up with something cool.</p>
+  <p>Currently exploring Product Design and working on <a href="https://github.com/dasilvacontin/ludumpad" data-gif="https://github.com/dasilvacontin/ludumpad/raw/master/boxhead.gif">LudumPad</a>. Hit me up if you'd like to discuss any of that!</p>
+  <p>Lately playing <a href="http://xboxdvr.com/gamer/AirRider3/video/18124790/embed" data-gif="http://i.imgur.com/sKd60gs.gif">Rocket League</a> and <a href="http://xboxdvr.com/gamer/AirRider3/video/18124943/embed" data-gif="http://i.imgur.com/DZBdgbj.gif">Overwatch</a>.</p>
+  <p>have feedback or something to say? <a href="https://twitter.com/dasilvacontin" data-gif="http://i.giphy.com/wM1gZSIdIJCE0.gif" data-cinema="no thanks">ich omnom tweets!</a></p>
+  <p>prefer a large formal default message? <a href="https://linkedin.com/in/dasilvacontin" data-gif="http://i.giphy.com/MIY4jpusckRmU.gif" data-cinema="nein">stinked in</a></p>
+  </ul>
 </div>
+<div id="repos" class="wrapper"></div>
+
+<script src="js/bundle.js"></script>
