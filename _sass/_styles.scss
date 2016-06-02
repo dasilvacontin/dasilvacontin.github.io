@@ -1,67 +1,114 @@
-@import url(http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css);
-@import url(http://fonts.googleapis.com/css?family=Raleway:600,400);
-
-* {
-	margin: 0;
-	padding: 0;
-	-moz-text-size-adjust: none;
-	-webkit-text-size-adjust:none;
-	font-family: 'Raleway', sans-serif;
-	font-weight: 400;
-	font-size: 16px;
+body {
+  margin: 100px 0;
+  padding: 0;
+  background-color: #F7F9FB;
+  color: #62628A;
+  text-align: center;
+  font-family: monospace;
 }
 
-@media (max-height: 585px) {
+header { margin: 40px 0; }
 
-	.top {
-		margin-top: 0px !important;
-		height: 100%;
-	}
+#avatar {
+  display: inline-block; /* for a smaller hover area */
+  width: 200px;
+  height: 200px;
+  border-radius: 15px;
+  background: #111 url(http://gravatar.com/avatar/9f6b611621d0badefd28429ea60299c7?s=512) no-repeat center center;
+  background-size: cover;
+  transition: width 0.5s;
+}
+#avatar.cinema { width: 430px }
 
-	.snorlax {
-		position: relative;
-		top: 50%;
-		-webkit-transform: translateY(-50%);
-		-ms-transform: translateY(-50%);
-		transform: translateY(-50%);
-	}
-
+h1 {
+  display: inline-block; /* otherwise hover area is huge */
+  margin: 20px 0;
+  color: rgba(171, 201, 255, 0.82);
 }
 
-.section-title {
-	margin: 70px 0px 40px;
+p, li {
+  font-size: 12px;
+  line-height: 20px;
+  margin: 10px 0;
 }
 
-.ditto {
-    max-width: 840px;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 0px 50px 100px;
+a {
+  color: inherit;
+  text-decoration: none;
 }
 
-.links {
-	text-align: center;
+ul { padding: 0 }
+
+.wrapper {
+  margin: 0 auto;
+  text-align: left;
+  max-width: calc(3 * 230px);
+  width: 100%;
 }
 
-.links a {
-	font-size: 12px;
-	transition: color 0.25s;
-	margin: 4px;
-	display: inline-block;
-	vertical-align: middle;
-	color: black;
+.bio {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0 40px;
+  max-width: 510px;
+  margin: 0 auto;
+  margin-bottom: 75px;
+  text-align: justify;
+}
+.bio a { color: #ABC9FF }
+
+#repos {
+  transition: opacity 0.3s;
+  opacity: 0;
+}
+.repo {
+  display: inline-block;
+  width: 200px;
+  margin: 15px;
+  margin-top: 0;
+  padding-top: 15px; /* for better hover area */
+  vertical-align: top;
+  text-align: center;
+  cursor: help;
+}
+.repo img { width: 32px; }
+.repo--name {
+  font-weight: 700;
+  position: relative;
+}
+.repo--name[data-stars]::after {
+  content: attr(data-stars);
+  color: rgba(171, 201, 255, 0.5);
+  padding-left: 7px;
+  position: absolute;
 }
 
-.links a:hover {
-	color: #3884FF;
+a:hover, a:hover h1, a:hover div {
+  animation: hue-rotate 1.5s linear infinite;
 }
 
-.main {
-	margin-top: 80px;
+@keyframes hue-rotate {
+  from {
+    -webkit-filter: hue-rotate(0);
+  }
+  to {
+    -webkit-filter: hue-rotate(360deg);
+  }
 }
 
-.text-link {
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
+@media (max-width: 689px) {
+  .wrapper {
+    max-width: calc(2 * 230px);
+  }
+}
+
+@media (max-width: 459px) {
+  .wrapper {
+    max-width: 230px;
+  }
+}
+
+/* ugly emojis */
+img.gh-emoji.gh-emoji-iphone {
+  margin-left: -5px;
 }
