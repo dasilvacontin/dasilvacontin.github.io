@@ -3,9 +3,9 @@ layout: post
 title: Squashing pushed commits after the code review
 categories: git software development
 goals:
-  1. explain what does 'squashing commits' mean
-  2. explain the benefits of squashing commits
-  3. explain how to squash commits in a pushed branch
+  - what does 'squashing commits' mean
+  - the benefits of squashing commits
+  - how to squash commits in a pushed branch
 ---
 
 During the review process of a [Pull Request], reviewers and maintainers are likely to point out code quality improvements or bugs in your changes. To address these comments, you push additional commits to the Pull Request's branch.
