@@ -9,14 +9,26 @@ const hypnoClip = new Howl({
 })
 let hypnoPlaying = false
 
-const repoReq = request({
-  uri: 'https://api.github.com/users/dasilvacontin/repos',
-  qs: { 'per_page': 100 },
-  headers: {
-    'User-Agent': 'request-promise'
-  },
-  json: true
-})
+function getRepos (page = 1) : Promise {
+  return new Promise((resolve, reject) => {
+    request({
+      uri: 'https://api.github.com/users/dasilvacontin/repos',
+      qs: { page, 'per_page': 100 },
+      headers: {
+        'User-Agent': 'request-promise'
+      },
+      json: true,
+      resolveWithFullResponse: true
+    })
+    .then(response => {
+      const repos = response.body
+      return response.headers.link.match('rel="next"')
+       ? getRepos(page + 1).then(remaining => repos.concat(remaining))
+       : repos
+    })
+    .then(resolve, reject)
+  })
+}
 
 function renderRepo (r) {
   let emojiTags = ''
@@ -80,7 +92,7 @@ function renderRepos (repos) {
 }
 
 load()
-.then(() => repoReq)
+.then(_ => getRepos())
 .then(repos => {
   return repos
   .filter(repo => !repo.fork && (repo.description || '').match(/:.+:/))
