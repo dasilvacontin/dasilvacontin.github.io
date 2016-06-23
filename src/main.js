@@ -9,7 +9,50 @@ const hypnoClip = new Howl({
 })
 let hypnoPlaying = false
 
-function getRepos (page = 1) : Promise {
+let linkTimeout = null
+function patchClipLoop () {
+  linkTimeout = setTimeout(() => {
+    hypnoClip.pos(1)
+    patchClipLoop()
+  }, 9 * 1000)
+}
+
+const avatar = document.getElementById('avatar')
+function linkMouseEnter (e) {
+  if (hypnoPlaying) return
+  clearTimeout(linkTimeout)
+  hypnoPlaying = e.target
+
+  const gif = this.dataset.gif
+  if (!gif) {
+    hypnoClip.play()
+    patchClipLoop()
+    return
+  }
+
+  avatar.style.backgroundImage = `url(${gif})`
+  if (this.dataset.cinema) return
+  avatar.className += 'cinema'
+}
+function linkMouseLeave (e) {
+  if (e.target !== hypnoPlaying) return
+  clearTimeout(linkTimeout)
+  hypnoPlaying = false
+  hypnoClip.stop()
+
+  avatar.style.backgroundImage = avatar.className = ''
+}
+
+function addListenersInContainer (node) {
+  const links = Array.from(node.getElementsByTagName('a'))
+  links.forEach(link => {
+    link.addEventListener('mouseenter', linkMouseEnter)
+    link.addEventListener('mouseleave', linkMouseLeave)
+  })
+}
+
+function getRepos ({ base = [], page = 1, progress = () => {} }) : Promise {
+  progress(base)
   return new Promise((resolve, reject) => {
     request({
       uri: 'https://api.github.com/users/dasilvacontin/repos',
@@ -21,13 +64,25 @@ function getRepos (page = 1) : Promise {
       resolveWithFullResponse: true
     })
     .then(response => {
-      const repos = response.body
+      const repos = base.concat(response.body)
       return response.headers.link.match('rel="next"')
-       ? getRepos(page + 1).then(remaining => repos.concat(remaining))
-       : repos
+        ? getRepos({ base: repos, page: page + 1, progress })
+        : repos
     })
     .then(resolve, reject)
   })
+}
+
+function filterRepos (repos) {
+  return repos
+  .filter(repo => !repo.fork && (repo.description || '').match(/:.+:/))
+  .map(r => ({
+    name: r.name,
+    description: r.description,
+    stars: r.stargazers_count,
+    url: r.html_url
+  }))
+  .sort((r1, r2) => r1.stars >= r2.stars ? -1 : 1)
 }
 
 function renderRepo (r) {
@@ -44,65 +99,18 @@ function renderRepo (r) {
   '</a>'
 }
 
-var linkTimeout = null
-function patchClipLoop () {
-  linkTimeout = setTimeout(() => {
-    hypnoClip.pos(1)
-    patchClipLoop()
-  }, 9 * 1000)
-}
-
-const avatar = document.getElementById('avatar')
-function linkMouseEnter (e) {
-  if (hypnoPlaying) return
-  // disable if it gets too annoying when watching a game gif
-  // if (this.dataset.game) return
-  clearTimeout(linkTimeout)
-  hypnoPlaying = e.target
-
-  const gif = this.dataset.gif
-  if (!gif) {
-    hypnoClip.play()
-    patchClipLoop()
-    return
-  }
-  avatar.style.backgroundImage = `url(${gif})`
-  if (this.dataset.cinema) return
-  avatar.className += 'cinema'
-}
-function linkMouseLeave (e) {
-  if (e.target !== hypnoPlaying) return
-  clearTimeout(linkTimeout)
-  hypnoPlaying = false
-  hypnoClip.stop()
-
-  avatar.style.backgroundImage = avatar.className = ''
-}
-
 const repoContainer = document.getElementById('repos')
 function renderRepos (repos) {
+  repos = filterRepos(repos)
+  console.log(`rendering ${repos.length} repos`, new Date())
   repoContainer.innerHTML = repos.map(renderRepo).join('')
   repoContainer.style.opacity = 1
-
-  const links = Array.from(document.getElementsByTagName('a'))
-  links.forEach(link => {
-    link.addEventListener('mouseenter', linkMouseEnter)
-    link.addEventListener('mouseleave', linkMouseLeave)
-  })
+  addListenersInContainer(repoContainer)
 }
 
+addListenersInContainer(document)
+
 load()
-.then(_ => getRepos())
-.then(repos => {
-  return repos
-  .filter(repo => !repo.fork && (repo.description || '').match(/:.+:/))
-  .map(r => ({
-    name: r.name,
-    description: r.description,
-    stars: r.stargazers_count,
-    url: r.html_url
-  }))
-  .sort((r1, r2) => r1.stars >= r2.stars ? -1 : 1)
-})
+getRepos({ progress: renderRepos })
 .then(renderRepos)
-.catch(err => console.error(err))
+.catch(console.error.bind(console))

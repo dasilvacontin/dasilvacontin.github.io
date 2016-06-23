@@ -73633,13 +73633,13 @@ function extend() {
 },{}],484:[function(require,module,exports){
 'use strict';
 
-var _from = require('babel-runtime/core-js/array/from');
-
-var _from2 = _interopRequireDefault(_from);
-
 var _promise = require('babel-runtime/core-js/promise');
 
 var _promise2 = _interopRequireDefault(_promise);
+
+var _from = require('babel-runtime/core-js/array/from');
+
+var _from2 = _interopRequireDefault(_from);
 
 var _requestPromise = require('request-promise');
 
@@ -73658,37 +73658,6 @@ var hypnoClip = new _howler.Howl({
 });
 var hypnoPlaying = false;
 
-function getRepos() {
-  var page = arguments.length <= 0 || arguments[0] === undefined ? 1 : arguments[0];
-
-  return new _promise2.default(function (resolve, reject) {
-    (0, _requestPromise2.default)({
-      uri: 'https://api.github.com/users/dasilvacontin/repos',
-      qs: { page: page, 'per_page': 100 },
-      headers: {
-        'User-Agent': 'request-promise'
-      },
-      json: true,
-      resolveWithFullResponse: true
-    }).then(function (response) {
-      var repos = response.body;
-      return response.headers.link.match('rel="next"') ? getRepos(page + 1).then(function (remaining) {
-        return repos.concat(remaining);
-      }) : repos;
-    }).then(resolve, reject);
-  });
-}
-
-function renderRepo(r) {
-  var emojiTags = '';
-  r.description = r.description.replace(/^((?::[^:]+:)+)(.+)/g, function (_, emoji, rest) {
-    emojiTags = (0, _ghEmoji.parse)(emoji);
-    return rest.trim();
-  });
-
-  return '<a class="repo" href="' + r.url + '">' + ('<div class="repo--emoji">' + emojiTags + '</div>') + ('<p><span class="repo--name" data-stars="' + (r.stars ? r.stars + '★' : '') + '">' + r.name + '</span><br>') + (r.description + '</p>') + '</a>';
-}
-
 var linkTimeout = null;
 function patchClipLoop() {
   linkTimeout = setTimeout(function () {
@@ -73700,8 +73669,6 @@ function patchClipLoop() {
 var avatar = document.getElementById('avatar');
 function linkMouseEnter(e) {
   if (hypnoPlaying) return;
-  // disable if it gets too annoying when watching a game gif
-  // if (this.dataset.game) return
   clearTimeout(linkTimeout);
   hypnoPlaying = e.target;
 
@@ -73711,6 +73678,7 @@ function linkMouseEnter(e) {
     patchClipLoop();
     return;
   }
+
   avatar.style.backgroundImage = 'url(' + gif + ')';
   if (this.dataset.cinema) return;
   avatar.className += 'cinema';
@@ -73724,21 +73692,40 @@ function linkMouseLeave(e) {
   avatar.style.backgroundImage = avatar.className = '';
 }
 
-var repoContainer = document.getElementById('repos');
-function renderRepos(repos) {
-  repoContainer.innerHTML = repos.map(renderRepo).join('');
-  repoContainer.style.opacity = 1;
-
-  var links = (0, _from2.default)(document.getElementsByTagName('a'));
+function addListenersInContainer(node) {
+  var links = (0, _from2.default)(node.getElementsByTagName('a'));
   links.forEach(function (link) {
     link.addEventListener('mouseenter', linkMouseEnter);
     link.addEventListener('mouseleave', linkMouseLeave);
   });
 }
 
-(0, _ghEmoji.load)().then(function (_) {
-  return getRepos();
-}).then(function (repos) {
+function getRepos(_ref) {
+  var _ref$base = _ref.base;
+  var base = _ref$base === undefined ? [] : _ref$base;
+  var _ref$page = _ref.page;
+  var page = _ref$page === undefined ? 1 : _ref$page;
+  var _ref$progress = _ref.progress;
+  var progress = _ref$progress === undefined ? function () {} : _ref$progress;
+
+  progress(base);
+  return new _promise2.default(function (resolve, reject) {
+    (0, _requestPromise2.default)({
+      uri: 'https://api.github.com/users/dasilvacontin/repos',
+      qs: { page: page, 'per_page': 100 },
+      headers: {
+        'User-Agent': 'request-promise'
+      },
+      json: true,
+      resolveWithFullResponse: true
+    }).then(function (response) {
+      var repos = base.concat(response.body);
+      return response.headers.link.match('rel="next"') ? getRepos({ base: repos, page: page + 1, progress: progress }) : repos;
+    }).then(resolve, reject);
+  });
+}
+
+function filterRepos(repos) {
   return repos.filter(function (repo) {
     return !repo.fork && (repo.description || '').match(/:.+:/);
   }).map(function (r) {
@@ -73751,8 +73738,30 @@ function renderRepos(repos) {
   }).sort(function (r1, r2) {
     return r1.stars >= r2.stars ? -1 : 1;
   });
-}).then(renderRepos).catch(function (err) {
-  return console.error(err);
-});
+}
+
+function renderRepo(r) {
+  var emojiTags = '';
+  r.description = r.description.replace(/^((?::[^:]+:)+)(.+)/g, function (_, emoji, rest) {
+    emojiTags = (0, _ghEmoji.parse)(emoji);
+    return rest.trim();
+  });
+
+  return '<a class="repo" href="' + r.url + '">' + ('<div class="repo--emoji">' + emojiTags + '</div>') + ('<p><span class="repo--name" data-stars="' + (r.stars ? r.stars + '★' : '') + '">' + r.name + '</span><br>') + (r.description + '</p>') + '</a>';
+}
+
+var repoContainer = document.getElementById('repos');
+function renderRepos(repos) {
+  repos = filterRepos(repos);
+  console.log('rendering ' + repos.length + ' repos', new Date());
+  repoContainer.innerHTML = repos.map(renderRepo).join('');
+  repoContainer.style.opacity = 1;
+  addListenersInContainer(repoContainer);
+}
+
+addListenersInContainer(document);
+
+(0, _ghEmoji.load)();
+getRepos({ progress: renderRepos }).then(renderRepos).catch(console.error.bind(console));
 
 },{"babel-runtime/core-js/array/from":26,"babel-runtime/core-js/promise":27,"gh-emoji":184,"howler":211,"request-promise":412}]},{},[484]);
