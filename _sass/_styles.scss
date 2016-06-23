@@ -4,7 +4,7 @@ body {
   background-color: #F7F9FB;
   color: #62628A;
   text-align: center;
-  font-family: monospace;
+  font-family: 'Inconsolata', monospace;
 }
 
 header { margin: 40px 0; }
@@ -22,12 +22,13 @@ header { margin: 40px 0; }
 
 h1 {
   display: inline-block; /* otherwise hover area is huge */
-  margin: 20px 0;
+  font-size: 27px;
+  margin: 15px 0;
   color: rgba(171, 201, 255, 0.82);
 }
 
 p, li {
-  font-size: 12px;
+  font-size: 14px;
   line-height: 20px;
   margin: 10px 0;
 }
