@@ -65,19 +65,25 @@ let mousePressed = false
 let pressChangeTimestamp = Date.now()
 let currentRadius = 190
 let speak = true
-document.addEventListener('mousemove', e => {
+function mouseMove (e) {
     mouseX = e.pageX
     mouseY = e.pageY
     speak = true
-})
-document.addEventListener('mousedown', _ => {
+}
+function mouseDown (e) {
     mousePressed = true
     pressChangeTimestamp = Date.now()
-})
-document.addEventListener('mouseup', _ => {
+}
+function mouseUp (e) {
     mousePressed = false
     pressChangeTimestamp = Date.now()
-})
+}
+document.addEventListener('mousemove', mouseMove)
+document.addEventListener('touchmove', mouseMove)
+document.addEventListener('mousedown', mouseDown)
+document.addEventListener('touchdown', mouseDown)
+document.addEventListener('mouseup', mouseUp)
+document.addEventListener('touchup', mouseUp)
 
 let alpha = 0
 function loop () {
