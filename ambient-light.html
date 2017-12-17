@@ -69,6 +69,7 @@ function mouseMove (e) {
     mouseX = e.pageX
     mouseY = e.pageY
     speak = true
+    e.preventDefault() // to avoid scroll in phone
 }
 function mouseDown (e) {
     mousePressed = true
