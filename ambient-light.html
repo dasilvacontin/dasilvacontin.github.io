@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<style>
+    html, body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+    }
+
+    canvas {
+        width: 100%;
+        height: 100%;
+    }
+</style>
+<body>
+<script>
+// full page ambient lamp
+const canvas = document.createElement('canvas')
+const ctx = canvas.getContext('2d')
+document.body.appendChild(canvas)
+
+let width = window.innerWidth
+let height = window.innerHeight
+
+function distancePtoP (p1, p2) {
+    return Math.sqrt(Math.pow(p1.x - p2.x, 2) + Math.pow(p1.y - p2.y, 2))
+}
+
+function render (points, triangleHeight) {
+    ctx.clearRect(0,0,width,height)
+    if (ctx.globalAlpha == 0) return
+
+    const [rP, gP, bP] = points
+    ctx.save()
+    ctx.translate(width/2,height/2)
+    for (let x = -200; x <= 200; ++x) {
+        for (let y = -200; y <= 200; ++y) {
+            const point = { x, y }
+            if (distancePtoP(point, {x:0, y:0}) > 200) continue
+            const [r,g,b] = [
+                Math.floor(255*(distancePtoP(point, rP)/triangleHeight)),
+                Math.floor(255*(distancePtoP(point, gP)/triangleHeight)),
+                Math.floor(255*(distancePtoP(point, bP)/triangleHeight))
+            ]
+            if (Math.floor(x + width/2) == mouseX &&
+                Math.floor(y + height/2) == mouseY &&
+                mousePressed) {
+                console.log({ mouseX, mouseY })
+                console.log({ r, g, b })
+                document.body.style.background = `rgb(${r}, ${g}, ${b})`
+                speak = false
+            }
+            if (r > 255 && g > 255 && b > 255) continue
+            ctx.fillStyle = `rgb(${r},${g},${b})`
+            ctx.fillRect(x,y,1,1)
+        }
+    }
+    ctx.restore()
+}
+
+let mouseX = width/2, mouseY = height/2
+let mousePressed = false
+let pressChangeTimestamp = Date.now()
+let currentRadius = 190
+let speak = true
+document.addEventListener('mousemove', e => {
+    mouseX = e.pageX
+    mouseY = e.pageY
+    speak = true
+})
+document.addEventListener('mousedown', _ => {
+    mousePressed = true
+    pressChangeTimestamp = Date.now()
+})
+document.addEventListener('mouseup', _ => {
+    mousePressed = false
+    pressChangeTimestamp = Date.now()
+})
+
+let alpha = 0
+function loop () {
+    requestAnimationFrame(loop)
+    // rgb
+    const radius = 190
+    const now = Date.now()
+    if (alpha < 1 && mousePressed) {
+        alpha += (now - pressChangeTimestamp)/1000
+        pressChangeTimestamp = now
+        alpha = Math.min(alpha, 1)
+    }
+    if (alpha > 0 && !mousePressed) {
+        alpha -= (now - pressChangeTimestamp)/1000
+        pressChangeTimestamp = now
+        alpha = Math.max(0, alpha)
+    }
+    ctx.globalAlpha = alpha
+    /*
+    if (currentRadius < radius && mousePressed) {
+        currentRadius += (now - pressChangeTimestamp) / 10
+        pressChangeTimestamp = now
+        currentRadius = Math.min(currentRadius, radius)
+    }
+    if (currentRadius > 0 && !mousePressed) {
+        currentRadius -= (now - pressChangeTimestamp) / 10
+        pressChangeTimestamp = now
+        currentRadius = Math.max(0, currentRadius)
+    }
+    */
+    const triangleHeight = currentRadius * 1.6
+    const sides = 3
+    const points = []
+    let angle = 90 * Math.PI / 180
+    for (let i = 0; i < sides; ++i) {
+        angle += 2*Math.PI/sides
+        const point = {
+            x: currentRadius * Math.cos(angle),
+            y: currentRadius * Math.sin(angle)
+        }
+        points.push(point)
+    }
+
+    render(points, triangleHeight)
+}
+loop()
+
+window.onresize = function () {
+    const { innerWidth, innerHeight, devicePixelRatio } = window
+    canvas.width = innerWidth * devicePixelRatio
+    canvas.height = innerHeight * devicePixelRatio
+    width = innerWidth
+    height = innerHeight
+    ctx.scale(devicePixelRatio, devicePixelRatio)
+}
+window.onresize()
+
+</script>
+</body>
+</html>
