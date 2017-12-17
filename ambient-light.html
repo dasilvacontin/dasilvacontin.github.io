@@ -81,9 +81,9 @@ function mouseUp (e) {
 document.addEventListener('mousemove', mouseMove)
 document.addEventListener('touchmove', mouseMove)
 document.addEventListener('mousedown', mouseDown)
-document.addEventListener('touchdown', mouseDown)
+document.addEventListener('touchstart', mouseDown)
 document.addEventListener('mouseup', mouseUp)
-document.addEventListener('touchup', mouseUp)
+document.addEventListener('touchend', mouseUp)
 
 let alpha = 0
 function loop () {
