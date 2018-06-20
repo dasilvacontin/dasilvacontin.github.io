@@ -2,4 +2,5 @@ _site
 node_modules
 .sass-cache
 .idea
+.DS_Store
 
