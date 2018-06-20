@@ -1,15 +1,522 @@
----
-layout: default
----
+<html lang="en">
 
-<div class="bio">
-  <p>Placeholder website until I come up with something cool.</p>
-  <p>Currently exploring Product Design and working on <a href="https://github.com/dasilvacontin/ludumpad" data-gif="https://github.com/dasilvacontin/ludumpad/raw/master/boxhead.gif">LudumPad</a>. Hit me up if you'd like to discuss any of that!</p>
-  <p>Lately playing <a href="http://xboxdvr.com/gamer/AirRider3/video/22411596" data-gif="http://i.imgur.com/lRU0Yro.gif">Rocket League</a> and <a href="http://xboxdvr.com/gamer/AirRider3/video/18124943/embed" data-gif="http://i.imgur.com/DZBdgbj.gif">Overwatch</a>.</p>
-  <p>Have feedback or something to say? <a href="https://twitter.com/dasilvacontin" data-gif="http://i.giphy.com/wM1gZSIdIJCE0.gif" data-cinema="no thanks">ich omnom tweets!</a></p>
-  <p>Prefer a large formal default message? <a href="https://linkedin.com/in/dasilvacontin" data-gif="http://i.giphy.com/MIY4jpusckRmU.gif" data-cinema="nein">stinked in</a></p>
-  </ul>
-</div>
-<div id="repos" class="wrapper"></div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>dasilvacontin</title>
+    <style>
+        html, body { padding: 0; margin: 0; }
+        body {
+            max-width: 550px;
+            margin: 85px auto;
+            padding: 0 25px;
+            font-family: sans-serif;
+            background: #fafaff;
+            background: white;
+            color: #555577;
+            line-height: 150%;
+        }
 
-<script src="js/bundle.js"></script>
+        h1 {
+            text-align: center;
+            margin-bottom: 70px;
+        }
+
+        h2 span, h3 span { font-weight: normal }
+
+        h2 {
+            margin-top: 80px;
+        }
+
+        h3 {
+            margin: 1em 0 0.8em;
+        }
+
+        iframe { border: none; padding: 8px 0 }
+
+        strike {
+            opacity: 0.5;
+        }
+
+        img.avatar {
+            display: block;
+            width: 150px;
+            margin: auto;
+            border-radius: 150px;
+        }
+
+        ul.single-line {
+            line-height: 80%;
+        }
+        li {
+            margin: 10px 0;
+        }
+        li.read .name { font-style: italic }
+
+        span.location, span.author {
+           font-size: 11px;
+           color: #cacaca;
+        }
+        span.author::before { content: 'by ' }
+        span.location::before { content: 'at '}
+        span.progress { color: #ccccff; font-size: 70% }
+        span.prize, span.smaller {
+            font-size: 80%;
+            line-height: 127%;
+        }
+        span.ht::before { content: 'h/t ' }
+
+        .project {
+            margin: 70px 0;
+        }
+        .project:first-of-type {
+            margin-top: 40px;
+        }
+
+        div.image {
+            height: 350px;
+            background-size: cover;
+        }
+        a { color: blue; text-decoration: underline }
+
+
+        @media screen and (max-width: 700px) {
+            div.image {
+                background-position: center !important;
+            }
+        }
+    </style>
+    <script type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
+</head>
+
+<body>
+    <img class="avatar" src="images/avatar.jpg">
+    <!-- <h1>dasilvacontin</h1> -->
+    <h1>デイビッド</h1>
+
+    <p>Hi! My name is David da Silva.</p>
+    
+    <p>I made this website to <strike>show-off my design skills</strike> display the case studies of some of my favourite projects / experiencies. It is by far not as complete as I'd like, but I don't have time to work on it right now.</p>
+    
+    <p>Some of my passions are:</p>
+    
+    <ul>
+        <li>multiplayer games, its networking algorithms, and team strategy (e.g.&nbsp;in&nbsp;e-sports)</li>
+
+        <li>interaction design, experience design, product design. <br>understanding human behavior.</li>
+
+        <li>VR/AR/XR (whatever people use these days). Immersion!! You are inside!! It's part of your world!! You can interact with everything!! 🤯</li>
+
+        <li>making knowledge accessible – written in a way that is easier to follow for a larger audience, and easier to understand through (if possible interactible) visualizations</li>
+    </ul>
+
+    <p>I have working experience as:</p>
+
+    <ul>
+        <li>Software Engineer Intern, Improbable (3mo)</li>
+        <li>Front-end Developer, Toggl (1y)</li>
+        <li>Multiplayer Online Games Course Teacher, VGAFIB (6 editions)</li>
+        <li>Lead Designer, HackUPC (4 editions)</li>
+        <li>Core Member, Mocha.js (>1y)</li>
+        <li>Mobile Developer, Incubio (6mo)</li>
+        <li>Freelance</li>
+    </ul>
+
+    <p>Which doesn't say much about what I did at the place, I know.<br>
+    You can find out a bit more on <a href="https://www.linkedin.com/in/dasilvacontin/" target="_blank">LinkedIn</a>, or just ask me directly.</p>
+    <p>Other social channels:
+        <a href="https://twitter.com/dasilvacontin" target="_blank">Twitter</a>
+        •
+        <a href="https://instagram.com/dasilvacontin" target="_blank">Instagram</a>
+        •
+        <a href="https://www.twitch.tv/airrider3" target="_blank">Twitch</a>
+        •
+        <a href="https://www.youtube.com/user/AirRider3" target="_blank">YouTube</a>
+        •
+        <a href="mailto:dasilvacontin@gmail.com">E-mail</a>
+    </p>
+
+
+    <!--
+    <h2>Blog posts &amp; articles</h2>
+
+    <p>I only recently started writing – perfection is a show stopper. I decided it was better to have a loose / informal style, that would let me output almost directly what goes through my mind, than to have a very nice and refined style. What I care is outputting value. "Perfect writing" only slows down until it becomes dreadful to write anything. <span h-t="https://twitter.com/peppernom">"Fun sucker"</span>.</p>
+
+    <ul>
+        <li><a href="">#artpluscode: what it is, how I got started, and thoughts so far</a></li>
+
+        <li><a href="">dissecting #artpluscode #4</a></li>
+
+        <li><a href="https://docs.google.com/document/d/15lpJdRYuN_qJKeIQ21rcWUO5PNTNgbxZTXLnBTzBbTg/edit?usp=sharing">How to make a Node.js daemon for OSX</a></li>
+
+        <li><a href="https://docs.improbable.io/reference/12.2/unitysdk/recipes/player-movement">Introduction to multiplayer player movement using Unity3D and SpatialOS</a></li>
+    </ul>
+    -->
+
+    <h2>Gamedev / Product Design projects</h2>
+
+    <p>These are some of my most treasured projects or experiences. Sadly, I haven't had the time to write a proper description for each of them, nor to add all of them here, but I can def chat about them if you ask me!</p>
+
+    <div class="project">
+        <div class="image" style="
+        background-image: url(images/dementiacare.jpg);
+        background-position-y: 521px
+        "></div>
+        <h3>
+            DementiaCare<br>
+            <span>
+                Product Design &amp; System Architecture
+            </span><br>
+            <span class="prize">
+                2nd Prize HackMed 2018
+            </span>
+        </h3>
+
+        <p>HackMed 2018 has been my favorite hackathon. I went alone and teamed up with the people I shared a table with, which ended up being exactly the kind of people I was looking for: lovely people from diverse backgrounds.</p>
+
+        <ul>
+            <li>Alice Smith, major in Biomedical Engineering</li>
+            <li>Alex Shmerg Schudel, major in Maths</li>
+            <li>Joelle Cheong, major in Politics and Sociology</li>
+        </ul>
+
+        <p>Description WIP.</p>
+
+        <!-- <p>Tip: record conversations. Instead of trying to write a transcript / note of the most important points, rely that to the recording, and note down instead topics and questions to follow up.</p> -->
+    </div>
+
+    <div class="project">
+        <div class="image" style="
+        background-image: url(images/artpluscode.png);
+        "></div>
+        <h3>
+            #artpluscode: programmatic art experiments<br>
+        </h3>
+
+        <p>Generated using JavaScript and HTML5 Canvas. I publish them first on my <a href="https://www.instagram.com/dasilvacontin/" target="_blank">Instagram</a> account, and sometimes I stream their creation on <a href="https://www.twitch.tv/airrider3" target="_blank">Twitch</a> and upload the recordings to <a href="https://youtu.be/e35u50J_TWQ?t=4m56s" target="_blank">YouTube</a>. All the code is released on <a href="http://github.com/dasilvacontin/artpluscode" target="_blank">GitHub</a>.</p>
+        
+        <p>The <a href="http://dasilvacont.in/artpluscode/" target="_blank">#artpluscode wall</a> website is probably the best way to view them, but it doesn't have every single piece released on Instagram.</p>
+    </div>
+
+    <div class="project">
+        <div class="image" style="
+        background-image: url(images/lifesaber2.jpg);
+        background-position-y: -16px;
+        background-size: cover;
+        "></div>
+
+        <h3>
+            LifeSaber<br>
+            <span>
+                Product Design
+            </span><br>
+            <span class="prize">
+                1st Prize PennApps 2015 Winter (~1300 participants)
+            </span>
+        </h3>
+
+        <p>Every year around <a href="https://cpr.heart.org/AHAECC/CPRAndECC/ResuscitationScience/UCM_477263_AHA-Cardiac-Arrest-Statistics.jsp%5bR=301,L,NC%5d" target="_blank">600,000 people</a> are going to have a cardiac arrest, heart disease alone is the leading cause of death in the US, claiming 600,000 lives per year. The chances of surviving are 4x if a first responder is in the scene, but only ~20% of the people know what to do.</p>
+                
+        <p>LifeSaber is an Android and Android-wear app that solves this problem, by making anyone a first responder and life saver, doing the following:</p>
+        
+        <ul>
+            <li>Guides anyone through correct CPR, with user friendly smartwatch interface
+                <ul>
+                    <li>Follows protocol to determine if CPR is needed</li>
+                    <li>Gives haptic and audible feedback to keep pushes in synch</li>
+                </ul>
+            </li>
+            <li>Automatically calls 911</li>
+            <li>Alerts nearby app users to provide assistance
+                <ul>
+                    <li>Sends nearby Automated External Defibrillator (AED) locations</li>
+                    <li>Sends incident location</li>
+                </ul>
+            </li>
+        </ul>
+        
+        <p>We used <a href="http://www.med.upenn.edu/myheartmap/#.WyqGbxL7S_A" target="_blank">UPenn's MyHeartMap AED database</a> and dumped it into MongoDB to get the nearest defibrilators to a person.</p>
+
+        <blockquote class="twitter-tweet" data-lang="xx-lc"><p lang="en" dir="ltr">Making lifesaver vibrate at the correct bpm for CPR is incredibly genius. <a href="https://twitter.com/hashtag/PennApps?src=hash&amp;ref_src=twsrc%5Etfw">#PennApps</a></p>&mdash; Steph Hippo (@stephhippo) <a href="https://twitter.com/stephhippo/status/556907339492511746?ref_src=twsrc%5Etfw">January 18, 2015</a></blockquote>
+
+        <blockquote class="twitter-tweet" data-lang="xx-lc"><p lang="en" dir="ltr">Lifesaber is a really solid health hack. <a href="http://t.co/uaJ4DHGNpY">http://t.co/uaJ4DHGNpY</a> <a href="https://twitter.com/hashtag/pennapps?src=hash&amp;ref_src=twsrc%5Etfw">#pennapps</a></p>&mdash; Nick DiRienzo (@nickdirienzo) <a href="https://twitter.com/nickdirienzo/status/556907000454713344?ref_src=twsrc%5Etfw">January 18, 2015</a></blockquote>
+
+        <blockquote class="twitter-tweet" data-lang="xx-lc"><p lang="en" dir="ltr">Wow. That was a tough decision. Congrats to Lifesaber, Curiosity, and Fruit Ninja - VR style. <a href="https://twitter.com/PennApps?ref_src=twsrc%5Etfw">@PennApps</a></p>&mdash; Corey Farrell (@THEFOAGUY) <a href="https://twitter.com/THEFOAGUY/status/556920660396900352?ref_src=twsrc%5Etfw">January 18, 2015</a></blockquote>
+
+        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+    </div>
+
+    <div class="project">
+        <div class="image" style="
+        background-image: url(https://commondatastorage.googleapis.com/improbable-docs/docs2/reference/5d22ef011bff4301/assets/unitysdk/recipes/unity-player-movement/3.2-moving-the-player.gif);
+        "></div>
+        <h3>
+            SpatialOS Networking Design Guides<br>
+            <span>
+                Research, Prototyping, Copywriting, &amp; User Validation
+            </span><br>
+            <span class="smaller">Improbable</span>
+        </h3>
+    </div>
+
+    <div class="project">
+        <div style="width:100%;height:0;padding-bottom:56%;position:relative;"><iframe src="https://giphy.com/embed/2fIaVLyiG7bL5wAEAP" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div>
+
+        <h3>
+            EscapeRoom
+            <br>
+            <span>
+                Interaction Design &amp; Prototyping
+            </span>
+            <br>
+            <span class="prize">START Hack 2016</span>
+        </h3>
+
+        <p>Long story short, Logitech put at our disposal a Tobbi Eye Tracker. I started thinking about new interactions in games that could use them, or existing ones that could be improved through its use.</p>
+        
+        <p>I had recently been playing Tomb Raider on the Xbox ONE, and I remembered these two aspects of the game that left me wishing for a better experience:</p>
+
+        <ul>
+            <li>I didn't need to observe the environment and think about what could be collected or interacted with, because those items would flash/shine in an obvious way, making me fall into a "detect shining things" mode. Or I would just end up walking next to everything just in case a context menu would pop up.</li>
+
+            <li>when inspecting a relic to find an engraved description or detail on it (a kind of puzzle this game has), sometimes the game would consider that I had found it and unlock it for me, even if I visually hadn't noticed the detail, simply because after rotating the relic I had coincidentally stopped rotating it with the detail facing the camera. Boom! Challenge gone, for free. So fun.</li>
+        </ul>
+
+        <p>See, the problem here is capturing the player's intent. How do I discern between the player walking next to the bottle just because the bottle is on their way, or because the player wants to interact with the bottle? How do I confirm to the player that they can indeed interact with the item, without giving away that it's an interactable item when the player had no intention of interacting with it? This is specially hard in a 3rd person controller-based game – first-person games can at least get away with using the center of the screen as a pointer.</p>
+            
+        <p>The relic puzzle has a similar problem: even if the engraved detail is visible on the screen, even on its center, it doesn't mean that the player has noticed it. A simple addition like making the player press a button when the detail is right in the center of the screen would have avoided this problem.</p>
+
+        <p>Back to the hackathon, these two aspects were perfect test candidates for being improved with an Eye Tracker, which would be used as a pointing device to understand the player's intent: if the player is next to the bottle, and their eyes are pointing to the bottle, it is very likely that they want to interact with the bottle, so bring up that context menu. In the relic puzzle, if they fixate their eyes on the engraved text, that means that they have noticed it.</p>
+
+        <p>Sounds great and exciting, right? Sadly, we couldn't get much working at the hackathon. It was a 24h one, we aimed too big instead of focusing and making incremental progress, we had hardware issues with our laptops and the Leap Motion (with which I wanted to be able to rotate the relic using my hand), I needed a lot of sleep time, and we didn't organize too well (integrating like 4 parallel Unity projects, hello darkness my old friend).</p>
+
+    </div>
+
+    <div class="project">
+        <div style="width:100%;height:0;padding-bottom:56%;position:relative;"><iframe src="https://giphy.com/embed/1ynmFEZ8EJUe6FTNpJ" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div>
+        <h3>
+            Overcharge, GGJ18<br>
+            <span>
+                Game Design, Thruster UI, and Networking Code
+            </span>
+        </h3>
+
+        <p>The theme was "Transmission". Inspiration:</p>
+
+        <iframe
+            width="100%"
+            src="https://www.youtube.com/embed//0lVCO4gW940?start=151&end=187"
+        ></iframe>
+    </div>
+
+    <div class="project">
+        <div class="image" style=" background-image: url(images/MOG-2018-Poster.png)">
+        </div>
+
+        <h3>
+            "Multiplayer Online Game Development" Course<br>
+            <span>
+                Everything
+            </span><br>
+            <span class="smaller">Sixth Edition</span>
+        </h3>
+
+        <p>This June 25-29 I'll be holding in Barcelona the Sixth Edition of the course. You can sign up and find more info <a href="http://cursos.vgafib.com/" target="_blank">here</a>. And if you know of anyone that could be interested, please, let them know! I would have loved to attend a course like this one when I was younger, personally – it would have propelled me so much.</p>
+
+        <p>Here's a short summary of the contents (as seen on the poster):</p>
+        
+        <p>JavaScript & Canvas & Spritesheets & Node.js & Socket.io &
+        Deployment & NPC & Accounts & Chat & Leaderboards & Persistence &
+        Client-side v.s. Server-side Authority & Client-side prediction & Server reconciliation &
+        Dead Reckoning & Interpolation & Lockstep & Simulation Rollback & Uniform Grids.</p>
+    </div>
+
+    <div class="project">
+        <div style="width:100%;height:0;padding-bottom:56%;position:relative;"><iframe src="https://giphy.com/embed/B1DwRPTJSj0iGK24NB" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div>
+        <h3>
+            Physics-based Sonic Riders<br>
+            <span>Everything but the 3D assets and music/sfx</span>
+        </h3>
+
+        <p>My first solo Unity project, a homage to one of my favorite games. The controls are very hard, similar to drone racing (yaw, pitch &amp; roll).</p>
+
+        <p>I worked on this in preparation for Improbable's interview – I had barely touched Unity before, and an assigment required modifications to a Unity project. During the internship, I quickly added multiplayer support using Improbable's SpatialOS, to test how it was to integrate the SDK into an existing game.</p>
+
+        <p>Fun bug I had: I made the jump force depend on `deltaTime`, so I sometimes had radically different jump heights (playing on a laptop contributed). Through this I learnt that one-off forces should <i>not</i> depend on time.</p>
+    </div>
+
+    <blockquote class="twitter-tweet" data-lang="xx-lc"><p lang="en" dir="ltr">Wrote this AI in &lt; 1h using ML (slightly custom kNN). It is trained by observing a real player drive, and trying to replicate what the player would do in the same situation (stores memories as [pos, vel, inputs], during execution finds closest memory to situation, and mimics). <a href="https://t.co/o1qIM8Q7yz">pic.twitter.com/o1qIM8Q7yz</a></p>&mdash; David da Silva (@dasilvacontin) <a href="https://twitter.com/dasilvacontin/status/1003899557237977088?ref_src=twsrc%5Etfw">June 5, 2018</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+
+    <h2>Reads 2018</h2>
+
+    <h3>Active
+        <span class="progress">(progress)</span>
+    </h3>
+    <ul class="single-line">
+        <li class="read">
+            <span class="name">Computer Networking: A Top Down Approach</span>
+            <span class="progress">(25%, 188/767)</span>
+            <br>
+            <span class="author">James F. Kurose, Keith W. Ross</span>
+        </li>
+
+        <li class="read">
+            <span class="name">Psycho-Pass: Inspector Shinya Kogami Volume.One</span>
+            <span class="progress">(25%, 38/150)</span>
+            <br>
+            <span class="author">Midori Gotou, Natsuo Sai</span>
+        </li>
+    </ul>
+
+    <h3>Inactive
+        <span class="progress">(progress)</span>
+    </h3>
+    <ul class="single-line">
+        <li class="read">
+            <span class="name">Psicología Para Dummies</span>
+            <span class="progress">(12%, 40/318)</span>
+            <br>
+            <span class="author">Adam Cash</span>
+        </li>
+
+        <li class="read">
+            <span class="name">The Design of Everyday Things</span>
+            <span class="progress">(10%, 50/500)</span>
+            <br>
+            <span class="author">Donald A. Norman</span>
+        </li>
+
+        <li class="read">
+            <span class="name">FORM+CODE In Design, Art, and Architecture</span>
+            <span class="progress">(46%, 79/171)</span>
+            <br>
+            <span class="author">Casey Reas, Chandler McWilliams, LUST</span>
+        </li>
+        <li class="read">
+            <span class="name">Artificial Intelligence for Games</span>
+            <span class="progress">(5%, 45/838)</span>
+            <br>
+            <span class="author">Ian Millington</span>
+        </li>
+        <li class="read">
+            <span class="name">Distributed Systems: Concepts and Design</span>
+            <span class="progress">(8%, 82/981)</span>
+            <br>
+            <span class="author">George Coulouris, Jean Dollimore, Tim Kindberg, Gordon Blair</span>
+        </li>
+    </ul>
+
+    <h3>Completed</h3>
+    <ul class="single-line">
+        <li class="read">
+            <span class="name">Cat Person</span>
+            <br>
+            <span class="author">Kristen Roupenian</span>
+        </li>
+    </ul>
+
+    <h3>Backlog</h3>
+    <ul class="single-line">
+        <li class="read">
+            <span class="name">Operative Design: A Catalogue of Spatial Verbs</span>
+            <br>
+            <span class="author">Anthony Di Mari, Nora Yoo</span>
+        </li>
+        <li class="read">
+            <span class="name">Conditional Design: An Introduction to Elemental Architecture</span>
+            <br>
+            <span class="author">Anthony Di Mari</span>
+        </li>
+        <li class="read">
+            <span class="name">Generative Design: Visualize, Program, and Create with Processing</span>
+            <br>
+            <span class="author">Harmut Bohnacker, Benedikt Gross, Julia Laub</span>
+        </li>
+    </ul>
+
+
+    <h2>Exhibitions & Events 2018</h2>
+
+    <h3>Attended</h3>
+    <ul class="single-line">
+        <li>
+            <span class="name">Sou Fujimoto: Futuros do Futuro</span>
+            <br>
+            <span class="location">Japan House, São Paulo</span>
+        </li>
+        <li>
+            <span class="name">GameJamBCN (Global Game Jam host)</span>
+            <br>
+            <span class="location">UPC, Barcelona</span>
+        </li>
+        <li>
+            <span class="name">HackMed</span>
+            <br>
+            <span class="location">The Diamond, Sheffield</span>
+        </li>
+        <li>
+            <span class="name">Hard Truths: Prize-Winning Photography from The New York Times</span>
+            <br>
+            <span class="location">Sotheby's, London</span>
+        </li>
+        <li>
+            <span class="name">Keiichiro Shibuya + Hatsune Miku Vocaloid Opera "THE END"</span>
+            <br>
+            <span class="location">L'Auditori, Barcelona</span>
+        </li>
+    </ul>
+
+    <h2>Movies 2018</h2>
+
+    <h3>Seen</h3>
+    <ul class="single-line">
+        <li>
+            <span class="name">Three Billboards Outside Ebbing, Missouri</span>
+            <br>
+            <span class="author">Martin McDonagh</span>
+            <span class="location">Manchester</span>
+        </li>
+
+        <li>
+            <span class="name">Lost in Translation, h/t <a href="https://twitter.com/martgnz">martgnz</a></span>
+            <br>
+            <span class="author">Sofia Coppola</span>
+        </li>
+
+        <li>
+            <span class="name">Catch Me If You Can</span>
+            <br>
+            <span class="author">Steven Spielberg</span>
+        </li>
+    </ul>
+
+    <h3>To-See</h3>
+    <ul class="single-line">
+        <li>
+            <span class="name">Megazone 23</span>
+        
+            <span class="ht">
+                <a href="https://twitter.com/Foone/status/990083553978286080">foone</a>
+            </span>
+        </li>
+    </ul>
+
+    <h3 style="opacity: 0">lol</h3>
+    <p>Think there's a book / event / movie that I would really enjoy? <a href="https://twitter.com/dasilvacontin" target="_blank">Let me know!</a></p>
+
+    <br>
+    <video  
+    width="100%"
+    poster="https://instagram.fmad3-4.fna.fbcdn.net/vp/aac9f414720e5639f47cff06d105e580/5B2D70D7/t51.2885-15/e15/31310900_122185691984821_2759036559444410368_n.jpg"
+    autoplay
+    loop
+    src="https://instagram.fmad3-4.fna.fbcdn.net/vp/9cfa8c9407dfc02cf6d27186bf2c90cb/5B2C7CAF/t50.2886-16/32062771_595652040799091_5160523980624363520_n.mp4" 
+    type="video/mp4"></video>
+    <p>#artpluscode #17. View more on my <a href="https://www.instagram.com/dasilvacontin/" target="_blank">Instagram</a>.</p>
+</body>
+</html>
