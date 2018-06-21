@@ -1,0 +1,209 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>dasilvacontin</title>
+    <style>
+        html, body { padding: 0; margin: 0; }
+        body {
+            max-width: 550px;
+            margin: 85px auto;
+            padding: 0 25px;
+            font-family: sans-serif;
+            background: #fafaff;
+            background: white;
+            color: #555577;
+            line-height: 150%;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 70px;
+            line-height: initial;
+        }
+
+        h2 span, h3 span { font-weight: normal }
+
+        h2 {
+            margin-top: 80px;
+        }
+
+        h3 {
+            margin: 1em 0 0.8em;
+        }
+
+        iframe { border: none; padding: 8px 0 }
+
+        strike {
+            opacity: 0.5;
+        }
+
+        img.avatar {
+            display: block;
+            width: 150px;
+            margin: auto;
+            border-radius: 150px;
+        }
+
+        ul.single-line {
+            line-height: 80%;
+        }
+        li {
+            margin: 10px 0;
+        }
+        li.read .name { font-style: italic }
+
+        span.location, span.author {
+           font-size: 11px;
+           color: #cacaca;
+        }
+        span.author::before { content: 'by ' }
+        span.location::before { content: 'at '}
+        span.progress { color: #ccccff; font-size: 70% }
+        span.prize, span.smaller {
+            font-size: 80%;
+            line-height: 127%;
+            opacity: 0.7;
+        }
+        span.ht::before { content: 'h/t ' }
+
+        .project {
+            margin: 70px 0;
+        }
+        .project:first-of-type {
+            margin-top: 40px;
+        }
+
+        div.image {
+            height: 350px;
+            background-size: cover;
+        }
+        a { color: blue; text-decoration: underline }
+
+
+        @media screen and (max-width: 700px) {
+            div.image {
+                background-position: center !important;
+            }
+        }
+    </style>
+    <script type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
+</head>
+
+<body>
+
+    <h1>Curso de<br>Desarrollo de Juegos<br>Multijugador Online<br>
+        <span class="smaller">Sexta Edición</span>
+    </h1>
+
+    <img
+    style="max-width: 100%;"
+    src="/images/MOG-2018-Poster.png">
+
+    <p><b>Fecha</b>: el 25 al 29 de Junio.</p>
+    <p><b>Horario</b>: Mañanas de 9:00 a 13:30, o Tardes de 15:30 a 20:00.</p>
+    <p><b>Duración</b>: 20 horas presenciales (4 horas diarias, 1 semana) + 16 horas no presenciales.</p>
+    <p><b>Idioma</b>: Castellano.</p>
+    <p><b>Precio</b>: 79€, si vienes con un amigo. Precio por defecto, 99€.</p>
+
+    <p>Curso impartido y creado por <a href="http://dasilvacont.in/" target="_blank">David da Silva Contín</a>. Ha trabajado en <a href="https://improbable.io/" target="_blank">Improbable</a>, dónde investigó y escribió guías de diseño sobre Movimiento, Inteligencia Artificial, y Ecosistemas, para su funcionamiento en juegos multijugador online ejecutados sobre un sistema distribuído, como <a href="https://improbable.io/games" target="_blank">SpatialOS</a>. También ha sido activo en la comunidad de JavaScript, siendo Core Member y Maintainer de <a href="https://github.com/mochajs/mocha">Mocha.js</a> (~130 PRs evaluadas), y mentor en NodeSchool y hackathons.</p>
+
+    <div>
+        <p>Alguna duda o pregunta? Envíame un mensaje por <a href="https://twitter.com/dasilvacontin" target="_blank">Twitter</a> o por <a href="mailto:dasilvacontin@gmail.com">e-mail</a>!</p>
+
+        <a href="https://goo.gl/forms/GjRYikjXfeGHgfgY2" target="_blank">Para inscribirte, haz click aquí.</a>
+    </div>
+
+
+    <h2>Descripción</h2>
+
+    <p>El objetivo principal de este curso es aprender a crear juegos multijugador online para cualquier plataforma, sin importar el lenguaje o framework utilizado. Esto significa que, aunque los ejercicios y proyecto final serán realizados con un cliente HTML5 y un servidor Node.js, el conocimiento adquirido sobre diseño de juegos multijugador online y algoritmos varios es aplicable a cualquier lenguaje de programación y plataforma – no se utiliza un framework o plugin que te abstrae todo el código de networking, si no que se conocerán los diferentes métodos y algoritmos disponibles, sus trade-offs, y cómo implantarlos.</p>
+
+    <p>El stack de desarrollo HTML5 + Node.js + Socket.io es ágil, cross-platform, y no necesita instalación por parte del cliente – perfecto para iterar, probar diferentes técnicas o algoritmos, prototipar, gamejams, MVP, etc.</p>
+
+    <h2>Temario</h2>
+
+    <ul>
+        <li>Creación de videojuegos en el navegador  (4h + 2h no presenciales):
+            <ul>
+                <li>Introducción a la programación con JavaScript</li>
+                <li>Introducción al renderizado mediante HTML5 Canvas</li>
+                <li>Uso de Spritesheets</li>
+                <li>Interficies de input: keyboard y mouse</li>
+                <li>Arquitectura y funcionamiento de un juego</li>
+                <li>Elaboración de un juego simple</li>
+            </ul>
+        </li>
+
+        <li>
+            Introducción al desarrollo de juegos multijugador online (4h + 2h no presenciales):
+            <ul>
+                <li>Funcionamiento de internet y direccionamiento IP</li>
+                <li>Funcionamiento de sockets y puertos</li>
+                <li>TCP y UDP</li>
+                <li>Introducción a Node.js y npm</li> 
+                <li>Introducción a Express.js, y el funcionamiento del protocolo HTTP y de los servidores web</li>
+                <li>Introducción a Socket.io</li>
+                <li>Arquitectura simple para el funcionamiento de un juego multijugador online</li>
+                <li>Introducción a los aspectos a considerar al diseñar la arquitectura y funcionamiento de un juego multijugador online</li>
+                <li>Elaboración de un juego multijugador online de arquitectura simple</li>
+                <li>Despliegue del sistema a producción continuo (continuous deployment) mediante GitHub y Heroku</li>
+            </ul>
+        </li>
+
+        <li>Algoritmos y diseño del aspecto red de un juego (2h + 4h no presenciales)
+
+            <p>Se explicarán diferentes algoritmos y técnicas usadas en juegos multijugador online para resolver problemas inherentes que estos presentan, sus pros, contras, con la ayuda de visualizaciones interactivas. Se comentará su implementación y se proveerá de código de ejemplo. El alumno pondrá en práctica el conocimiento ya sea mediante experimentos por cuenta propia o por su uso en el proyecto final.</p>
+
+            <ul>
+                <li>Client-side authority frente a Server-side authority</li>
+                <li>Client-side prediction. Dead reckoning</li>
+                <li>Server reconciliation</li>
+                <li>Estado lógico frente a estado visual. Interpolación.</li>
+                <li>Sincronización sólo mediante intercambio de inputs. Lockstep y simulaciones deterministas con rollback.</li>
+                <li>Load scaling mediante uniform grids.</li>
+                <li>Técnicas de optimización de ancho de banda. Propiedades deterministas, Server Dead Reckoning, y Hierarchical Replication.</li>
+                <li>Partición del mundo mediante un servidor distribuido y funcionamiento de las fronteras entre particiones.</li>
+            </ul>
+        </li>
+
+        <li>
+                Funcionalidades comunes en juegos multijugador online (40min + 2h no presenciales)
+
+            <ul>
+                <li>IA / NPC</li>
+                <li>Chat</li>
+                <li>Introducción a SQL</li>
+                <li>Login y Registro. Ranking.</li>
+                <li>Persistencia del estado del juego.</li>
+            </ul>
+        </li>
+
+        <li>Proyecto final: desarrollo de un juego multijugador online (9h 20min + 6h no presenciales)
+            
+            <p>El alumno pone en práctica los conocimientos adquiridos mediante su integración en un juego multijugador online. Con ayuda del profesor, escoge qué técnicas y algoritmos utilizar en función del tipo de juego que desea desarrollar; o en función de las técnicas y algoritmos que quiere poner en práctica, encuentra un tipo de juego para el que éstos sean una buena elección. El profesor resolverá dudas, problemas, y dará indicaciones de cómo implementar (o directamente implementará para dar ejemplo) aquellas funcionalidades que se le pida.</p>
+
+            <p>Antes de finalizar el curso se realizará una presentación de los juegos desarrollados, en la que cada alumno presentará su juego, explicará las decisiones de diseño tomadas, algoritmos utilizados, y se procederá al playtest del juego, en el que todos los alumnos probarán el juego simultáneamente a través de su navegador.</p>
+
+            <p>(Opcional) Una semana más tarde se realiza otro playtest, en el que los alumnos y el profesor quedan de forma online (a través de un chat) para probar los proyectos de nuevo. Se realiza para motivar a los alumnos a la continuación de su proyecto, consolidar conocimientos adquiridos, ir más allá. El profesor estará disponible toda la semana para ser consultado respecto a dudas.</p>
+        </li>
+    </ul>
+
+    <h2>Conocimientos previos</h2>
+
+    <ul>
+        <li>Conceptos y experiencia en programación básica, equivalente a la asignatura de grado de ingeniería informática de la UPC Programación 1.</li>
+
+        <li>Conocimientos básicos de Git y GitHub.</li>
+    </ul>
+
+    <div>
+        <p>Alguna duda o pregunta? Envíame un mensaje por <a href="https://twitter.com/dasilvacontin" target="_blank">Twitter</a> o por <a href="mailto:dasilvacontin@gmail.com">e-mail</a>!</p>
+
+        <a href="https://goo.gl/forms/GjRYikjXfeGHgfgY2" target="_blank">Para inscribirte, haz click aquí.</a>
+    </div>
+
+</body>
+</html>
