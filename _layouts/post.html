@@ -49,6 +49,86 @@
   {% include footer.html %}
 
   </div><!-- wallpaper -->
+  <script>
+    let startedPullY = null
+    let pullDistance = 0
+    let isPulling = false
+
+    function getScreenY (e) {
+      return e.pageY - document.body.scrollTop
+    }
+
+    function obtainStartPullY (e) {
+      const y = getScreenY(e)
+      if (document.body.scrollTop === 0 && startedPullY == null) {
+        isPulling = true
+        startedPullY = y
+      }
+    }
+    
+    function updatePullDistance (e) {
+      if (isPulling) {
+      const y = getScreenY(e)
+        pullDistance = (y - startedPullY)
+      } else {
+        pullDistance = 0
+      }
+    }
+
+    function checkPullRelease (e) {
+      const y = getScreenY(e)
+      if (e.touches.length === 0 || y < startedPullY) {
+        startedPullY = null
+        isPulling = false
+        pullDistance = 0
+      }
+    }
+
+    document.addEventListener('touchstart', function (e) {
+      obtainStartPullY(e)
+    })
+    document.addEventListener('touchmove', function (e) {
+      checkPullRelease(e)
+      obtainStartPullY(e)
+      updatePullDistance(e)
+    })
+    document.addEventListener('touchend', function (e) {
+      checkPullRelease(e)
+    })
+
+    const f = Math.floor
+    const backHeader = document.getElementsByClassName('go-home-bar')[0]
+    const pulledColor = [91, 197, 253]//[59, 209, 253]//[0, 0, 255]
+    const dasilvaMagenta = [122, 45, 255] 
+    let currentColor = dasilvaMagenta.slice(0)
+    let targetColor = dasilvaMagenta.slice(0)
+
+    function updateHeaderColor () {
+      requestAnimationFrame(updateHeaderColor)
+
+      const factor = Math.min(1, pullDistance/(window.innerHeight*3/4))
+      if (isPulling) {
+        targetColor = targetColor.map((_, i) =>
+          (pulledColor[i] - dasilvaMagenta[i]) * factor + dasilvaMagenta[i]
+        )
+      } else {
+        targetColor = dasilvaMagenta
+      }
+
+      currentColor = currentColor.map((curr, i) =>
+        curr + (targetColor[i] - curr) / 5
+      )
+
+      const color = `rgb(${f(currentColor[0])}, ${f(currentColor[1])}, ${f(currentColor[2])})`
+
+      document.body.style.background = color
+      backHeader.style.background = color
+
+      console.log({top: document.body.scrollTop, isPulling, startedPullY, pullDistance, color})
+    }
+    requestAnimationFrame(updateHeaderColor)
+
+  </script>
 </body>
 
 </html>
