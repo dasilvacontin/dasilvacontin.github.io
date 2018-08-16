@@ -1,0 +1,196 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
+    <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
+
+    <!-- <link rel="stylesheet" href="{{ "/css/heracro.css" | prepend: site.baseurl }}"> -->
+    <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
+    <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}" />
+
+    <style>
+        html, body { padding: 0; margin: 0; }
+        body {
+            max-width: 550px;
+            margin: 85px auto;
+            padding: 0 25px;
+            font-family: sans-serif;
+            background: #fafaff;
+            background: white;
+            color: #555577;
+            line-height: 150%;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 70px;
+            line-height: 130%;
+        }
+
+        h2 span, h3 span { font-weight: normal }
+
+        h2 {
+            margin-top: 80px;
+        }
+
+        h3 {
+            margin: 1em 0 0.8em;
+        }
+
+        iframe { border: none; padding: 8px 0 }
+
+        strike {
+            opacity: 0.5;
+        }
+
+        img.avatar {
+            display: block;
+            width: 150px;
+            margin: auto;
+            border-radius: 150px;
+        }
+
+        ul.single-line {
+            line-height: 80%;
+        }
+        li {
+            margin: 10px 0;
+        }
+        li.read .name { font-style: italic }
+
+        span.location, span.author {
+           font-size: 11px;
+           color: #cacaca;
+        }
+        span.author::before { content: 'by ' }
+        span.location::before { content: 'at '}
+        span.progress { color: #ccccff; font-size: 70% }
+        span.prize, span.smaller {
+            font-size: 80%;
+            line-height: 127%;
+        }
+        span.ht::before { content: 'h/t ' }
+
+        .project {
+            margin: 70px 0;
+        }
+        .project:first-of-type {
+            margin-top: 40px;
+        }
+
+        div.image {
+            height: 350px;
+            background-size: cover;
+        }
+        a { color: blue; text-decoration: underline }
+
+        /** POST PAGE **/
+        .page-post {
+            max-width: none;
+            margin: 0;
+            padding: 0;
+        }
+        .go-home-bar {
+            display: block;
+            height: 24px;
+            background: #7A2DFF;
+            color: #D5D4FF !important;
+            text-decoration: none;
+            text-align: center;
+            font-style: oblique;
+            font-size: 12px;
+            line-height: 24px;
+            margin-bottom: 48px;
+        }
+
+        small img.avatar {
+            width: 50px;
+        }
+        small p {
+            text-align: center;
+            margin-bottom: 0;
+            font-size: 16px;
+        }
+
+        .page-post h1 {
+            font-size: 24px;
+            line-height: 32px;
+            font-weight: normal;
+            margin: 8px 0;
+        }
+        .page-post p.post-meta {
+            text-align: center;
+            font-size: 12px;
+            line-height: 16px;
+            margin: 4px 0;
+        }
+        .page-post a {
+            text-decoration: none;
+            color: #6764FF;
+            transition: 0.2s color;
+        }
+        .page-post a:hover {
+            color: #4bddff;
+        }
+        .page-post a path {
+            transition: 0.2s fill;
+        }
+        .page-post a:hover path {
+            fill: #4bddff; 
+        }
+
+        .container {
+            max-width: 560px;
+            margin: auto;
+        }
+
+        .post-header {
+            margin-bottom: 48px;
+        }
+
+        .page-post blockquote {
+            border-left: 4px solid #D5D4FF;
+            margin-left: 0;
+            margin-right: 0;
+            font-style: oblique;
+        }
+
+        .page-post blockquote p {
+            margin-left: 12px;
+        }
+
+        .author-about {
+            background: #F7F7FF;
+            padding-top: 22px;
+            padding-bottom: 48px;
+        }
+        .author-about__content {
+            position: relative;
+        }
+        .author-about__avatar {
+            position: absolute;
+            top: 0;
+            left: -64px;
+            width: 48px;
+            border-radius: 48px;
+        }
+
+        @media screen and (max-width: 700px) {
+            div.image {
+                background-position: center !important;
+            }
+        }
+    </style>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-55080027-1"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-55080027-1');
+    </script>
+</head>
