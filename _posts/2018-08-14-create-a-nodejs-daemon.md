@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Making an OSX daemon using JavaScript,<br> gotchas included"
+title: "Making an OSX daemon using&nbsp;JavaScript,<br> gotchas included"
 date: 2018-08-14 21:14:00
 categories: jekyll update
 comments: true
