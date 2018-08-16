@@ -143,6 +143,7 @@
 
         .container {
             max-width: 560px;
+            padding: 0 24px;
             margin: auto;
         }
 
@@ -166,8 +167,12 @@
             padding-top: 22px;
             padding-bottom: 48px;
         }
+        .author-about small {
+            display: block;
+        }
         .author-about__content {
             position: relative;
+            padding-bottom: 24px;
         }
         .author-about__avatar {
             position: absolute;
@@ -180,6 +185,20 @@
         @media screen and (max-width: 700px) {
             div.image {
                 background-position: center !important;
+            }
+
+        }
+
+
+        @media screen and (max-width: 729px) {
+            .author-about small {
+                text-align: center;
+            }
+            .author-about__avatar {
+                position: initial;
+                display: block;
+                margin: 24px auto -8px;
+                width: 64px;
             }
         }
     </style>
