@@ -116,7 +116,7 @@
 
         .page-post small {
             font-size: 12px;
-
+            line-height: 16px;
         }
         .page-post small img.avatar {
             width: 50px;
@@ -184,6 +184,9 @@
             padding-top: 22px;
             padding-bottom: 48px;
         }
+        .autho-about p {
+            margin: 1em 0;
+        }
         .author-about small {
             display: block;
         }
@@ -191,12 +194,18 @@
             position: relative;
             padding-bottom: 24px;
         }
-        .author-about__avatar {
+        .author-about__avatar-centered {
+            margin: auto;
+            display: block;
+            width: 64px;
+            border-radius: 100px;
+        }
+        .author-about__avatar-floating {
             position: absolute;
             top: 0;
             left: -64px;
             width: 48px;
-            border-radius: 48px;
+            border-radius: 100px;
         }
 
         @media screen and (max-width: 700px) {
@@ -208,14 +217,19 @@
 
 
         @media screen and (max-width: 729px) {
-            .author-about small {
-                text-align: center;
+            .author-about {
+                padding-top: 32px;
             }
-            .author-about__avatar {
-                position: initial;
-                display: block;
-                margin: 24px auto -8px;
-                width: 64px;
+            .author-about small {
+                margin-bottom: -14px;
+            }
+            .author-about__avatar-floating {
+                display: none;
+            }
+        }
+        @media screen and (min-width: 730px) {
+            .author-about__avatar-centered {
+                display: none;
             }
         }
     </style>
