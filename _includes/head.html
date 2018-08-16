@@ -11,7 +11,11 @@
     <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}" />
 
     <style>
-        html, body { padding: 0; margin: 0; }
+        html, body {
+            padding: 0;
+            margin: 0;
+            overflow-x: hidden;
+        }
         body {
             max-width: 550px;
             margin: 85px auto;
@@ -92,7 +96,6 @@
             margin: 0;
             padding: 0;
             background: #7A2DFF;
-            overflow-x: hidden;
         }
         .wallpaper {
             background: white;
