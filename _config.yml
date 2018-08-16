@@ -9,4 +9,5 @@ twitter_username: dasilvacontin
 github_username:  dasilvacontin
 
 # Build settings
+permalink: /blog/:year/:month/:day/:title
 markdown: kramdown
