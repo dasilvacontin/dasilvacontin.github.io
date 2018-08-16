@@ -82,7 +82,7 @@ h/t to https://medium.com/@fahimhossain_16989/adding-startup-scripts-to-launch-d
 
 1: I don’t actually use sindresorhus’ fkill. I use a function that uses fzf – I got it from its examples page. Here’s the definition:
 
-{% highlight bash %}
+{% highlight bash linenos %}
 fkill() {
   pid=$(ps -ef | sed 1d | fzf -m | awk '{print $2}')
 

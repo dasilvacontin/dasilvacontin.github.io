@@ -10,6 +10,7 @@
     <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
     <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}" />
 
+    <link rel="stylesheet" type="text/css" href="/syntax.css"></link>
     <style>
         html, body {
             padding: 0;
@@ -159,6 +160,10 @@
             fill: #4bddff; 
         }
 
+        .post-content {
+            margin: 48px 0;
+        }
+
         .container {
             max-width: 560px;
             padding: 0 24px;
@@ -207,6 +212,15 @@
             left: -64px;
             width: 48px;
             border-radius: 100px;
+        }
+
+        .page-post .highlight {
+            background: #f7f7ff;
+            margin: 0;
+            overflow-x: scroll;
+        }
+        .highlight .lineno {
+            padding: 0 12px;
         }
 
         @media screen and (max-width: 700px) {
