@@ -4,6 +4,7 @@ title: "When best is not best"
 date: 2018-10-24 16:50:17
 comments: true
 reading-time: 2
+excerpt: "Perfectionism is a show-stopper. I have many drafts of blog posts, but I didn't finish them because writing them became dreadful. Producing the best content one is able to output can take a long time, and even worse, it can make the task, the writing, so dreadful, that one is left without the will to continue. You just want to get back to creating, or doing something fun. The initial spark gets smashed by perfectionism."
 ---
 
 Boo!
