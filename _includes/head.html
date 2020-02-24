@@ -36,6 +36,7 @@
     <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}" />
 
     <link rel="stylesheet" type="text/css" href="/syntax.css"></link>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,400i,700&display=swap" rel="stylesheet">
     <style>
         html, body {
             padding: 0;
@@ -44,15 +45,129 @@
             -webkit-text-size-adjust: 100%;
         }
         body {
-            max-width: 550px;
-            margin: 85px auto;
-            padding: 0 25px;
-            font-family: sans-serif;
-            background: #fafaff;
-            background: white;
-            color: #555577;
-            line-height: 150%;
+            margin: 0;
+            padding: 0 12em;
+            font-family: 'Roboto', sans-serif;
+            color: black;
+            font-size: 8px;
+            line-height: 170%;
         }
+
+        .wrapper {
+            max-width: 128em;
+            display: flex;
+            margin: 36em auto;
+        }
+        .left-column {
+            width: 25em;
+            margin-right: 14em;
+            margin-bottom: 9em;
+        }
+        .right-column {
+            max-width: 89em;
+        }
+
+        p, .button > a {
+            font-size: 3.5em;
+            line-height: 170%;
+        }
+        p {
+            margin: calc(8em/3.5) 0;
+        }
+        p:first-child {
+            margin-top: 0;
+        }
+
+        a {
+            font-weight: 500;
+            color: black;
+            text-decoration: none;
+            position: relative;
+        }
+        a.twitter > svg {
+            position: absolute;
+            top: 0.9em;
+            left: 0;
+        }
+        a.email > svg {
+            position: absolute;
+            top: 0.9em;
+            left: -0.14em;
+        }
+        .button {
+            padding: 2em 0;
+        }
+        .button > a {
+            display: inline-block;
+            padding: calc(2em/3.5) calc(4em/3.5);
+            background: lightgray;
+            font-size: 3.5em;
+            line-height: 170%;
+            border-radius: calc(1.125em/3.5);
+            font-weight: bold;
+            transition: border-radius .3s ease-in-out;
+        }
+        .primary.button > a {
+            background: #FFD953;
+        }
+        .primary.button > a:hover, .primary.button > a:focus {
+            border-radius: 1.8em;
+        }
+        .primary.button > a:active {
+            background: hsla(47, 100%, 46%, 1);
+        }
+
+        a.twitter > svg, a.email > svg {
+            /* transition: transform 0.3s ease-in-out; */
+            transform-origin: bottom left;
+            z-index: -1;
+        }
+        a.twitter:hover > svg, a.twitter:focus > svg,
+        a.email:hover > svg, a.email:focus > svg {
+            transform: scaleY(2.7);
+        }
+        a.twitter, a.email, .button > a {
+            outline: none;
+        }
+
+        img {
+            width: 25em;
+            height: 25em;
+        }
+
+        .big-gap {
+            margin-top: calc(192em/8/3.5);
+        }
+
+        .quotes p {
+            margin: calc(4em/3.5) 0;
+            font-style: italic;
+        }
+        
+        @media (max-width: 1023px) {
+            .wrapper {
+                flex-direction: column;
+                margin: 17em auto;
+            }
+        }
+
+        @media (max-width: 710px) {
+            body {
+                font-size: calc(8px*(18/28));
+                padding: 0 32px;
+            }
+            a.twitter > svg, a.email > svg {
+                transform: scale(0.62, 0.72);
+                top: 0.76em;
+            }
+            a.twitter:hover > svg, a.twitter:focus > svg,
+            a.email:hover > svg, a.email:focus > svg {
+                transform: scale(0.62, 1.72);
+            }
+        }
+
+        /* old website after this */
+
 
         h1 {
             text-align: center;
@@ -115,7 +230,6 @@
             height: 350px;
             background-size: cover;
         }
-        a { color: blue; text-decoration: underline }
 
         /** POST PAGE **/
         .page-post {
