@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workout App</title>
+
+    <style>
+        script {
+            display: block;
+            white-space: pre;
+            background: #ffde00;
+            max-width: 700px;
+            padding: 24px;
+        }
+    </style>
+</head>
+<body>
+<script>const EXERCISE_DURATION = 40 * 1000
+const REST_DURATION = 20 * 1000
+
+let exercise_i = -1
+let exercises = ['jumping jacks', 'high knees', 'bench dip', 'push ups', 'diamond incline', 'plank', 'lunges']
+.map(e => new SpeechSynthesisUtterance(e))
+
+function nextExercise () {
+    exercise_i += 1
+    speechSynthesis.speak(exercises[exercise_i % exercises.length])
+    setTimeout(rest, EXERCISE_DURATION)
+}
+
+function rest () {
+    speechSynthesis.speak(new SpeechSynthesisUtterance('Rest'))
+    setTimeout(nextExercise, REST_DURATION)
+}</script> 
+
+<p>Use to console to modify variables and execute `nextExercise()` to start.</p>
+</body>
+</html>
