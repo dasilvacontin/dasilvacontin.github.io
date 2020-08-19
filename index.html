@@ -28,6 +28,12 @@ layout: default
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
     }
+    p {
+        letter-spacing: -0.04em;
+    }
+    nav {
+        letter-spacing: -0.03em;
+    }
 
     body {
         padding: 0 5vw;
@@ -96,7 +102,10 @@ layout: default
         opacity: 0;
     }
     h1:hover {
-        cursor: grabbing;
+        cursor: grab;
+    }
+    body.image-being-held, body.image-being-held * {
+        cursor: grabbing !important;
     }
 
     p {
@@ -402,21 +411,54 @@ layout: default
         // flipImageInterval = setInterval(flipImage, 380)
         flipImageInterval = setInterval(flipImage, 400)
     }
+
+    let grabStartX
+    let grabStartIndex
+    const X_DIST = 24
     function updateImageIsBeingHeld (e) {
         const isMouseEvent = (e.type.indexOf('mouse') === 0)
         imageIsBeingHeld = isMouseEvent
-            ? (e.type === 'mouseover')
+            ? (e.type === 'mousedown')
             : (e.touches.length > 0)
         clearInterval(flipImageInterval)
         if (!imageIsBeingHeld) {
             setupFlipImageInterval()
         }
+        document.body.classList.toggle('image-being-held', imageIsBeingHeld)
+        
+        if (e.type === 'mousedown' || e.type === 'touchstart') {
+            grabStartX = e.clientX
+            grabStartIndex = currentImageIndex
+        }
     }
+
+    function updateImageIsScrobbled (e) {
+        if (!imageIsBeingHeld) return
+
+        let targetIndex = grabStartIndex
+        const offsetX = grabStartX - e.clientX
+        let skips = Math.floor(Math.abs(offsetX / X_DIST)) * Math.sign(offsetX)
+        while (skips < 0) {
+            targetIndex--
+            skips++
+            if (targetIndex < 0) targetIndex += images.length
+        }
+        while (skips > 0) {
+            targetIndex = (targetIndex + 1) % images.length
+            skips--
+        }
+        if (targetIndex !== currentImageIndex) {
+            currentImageIndex = targetIndex
+            flagImagePaint()
+        }
+    }
+
     setupFlipImageInterval()
     document.body.addEventListener('touchstart', updateImageIsBeingHeld)
     document.body.addEventListener('touchend', updateImageIsBeingHeld)
-    h1.addEventListener('mouseover', updateImageIsBeingHeld)
-    h1.addEventListener('mouseout', updateImageIsBeingHeld)
+    h1.addEventListener('mousedown', updateImageIsBeingHeld)
+    document.body.addEventListener('mousemove', updateImageIsScrobbled)
+    document.body.addEventListener('mouseup', updateImageIsBeingHeld)
 
     images.forEach(params => params.img.onload = flagImagePaint)
     document.fonts.ready.then(flagImagePaint)
