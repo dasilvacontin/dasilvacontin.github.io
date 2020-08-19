@@ -298,7 +298,9 @@ layout: default
     NodeList.prototype.forEach = Array.prototype.forEach
 
     let previewingLink = false
+    const activePreviewImages = []
     function showLinkPreview () {
+        if (hasTouchEvents) return
         previewingLink = true
         const previewID = this.dataset.preview
         const previewImage = document.getElementById(`${previewID}-preview`)
@@ -307,12 +309,15 @@ layout: default
         previewImage.style.left = Math.random() * xrange + 'px'
         previewImage.style.top = 35 + Math.random() * yrange + 'px'
         previewImage.classList.add('link-preview-active')
+        activePreviewImages.push(previewImage)
     }
     function hideLinkPreview () {
         previewingLink = false
         const previewID = this.dataset.preview
-        const preview = document.getElementById(`${previewID}-preview`)
-        preview.classList.remove('link-preview-active')
+        const previewImage = document.getElementById(`${previewID}-preview`)
+        previewImage.classList.remove('link-preview-active')
+        const indexInArray = activePreviewImages.indexOf(previewImage)
+        if (index > -1) activePreviewImages.splice(indexInArray, 1)
     }
 
     navLinks.forEach(navLink => {
@@ -414,7 +419,12 @@ layout: default
     let grabStartX
     let grabStartIndex
     const X_DIST = 24
+    let hasTouchEvents = false
     function updateImageIsBeingHeld (e) {
+        if (!hasTouchEvents) {
+            hasTouchEvents = (e.type === 'touchstart')
+        }
+
         const isMouseEvent = (e.type.indexOf('mouse') === 0)
         imageIsBeingHeld = isMouseEvent
             ? (e.type === 'mousedown')
@@ -424,10 +434,17 @@ layout: default
             setupFlipImageInterval()
         }
         document.body.classList.toggle('image-being-held', imageIsBeingHeld)
-        
+
         if (e.type === 'mousedown' || e.type === 'touchstart') {
             grabStartX = (e.clientX || e.touches[0].clientX)
             grabStartIndex = currentImageIndex
+        }
+        if (e.type === 'touchend') {
+            console.log('deactivating preview images')
+            while (activePreviewImages.length) {
+                const previewImage = activePreviewImages.pop()
+                previewImage.classList.remove('link-preview-active')
+            }
         }
     }
 
