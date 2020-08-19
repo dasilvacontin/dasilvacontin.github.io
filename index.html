@@ -202,6 +202,23 @@ layout: default
                 user-select: none; /* Non-prefixed version, currently
                                     supported by Chrome, Edge, Opera and Firefox */
     }
+
+    .link-preview {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 10;
+        pointer-events: none;
+        /* transition: transform 0.5s;
+        transform: rotate(-5deg);
+        transform-origin: center; */
+        transition: opacity 0.3s ease-out;
+        opacity: 0;
+    }
+    .link-preview-active {
+        /* transform: rotate(0deg); */
+        opacity: 1;
+    }
 </style>
 
 
@@ -227,11 +244,11 @@ layout: default
 
     <nav id="mobile-top-nav">
         <a href="" alt="dasilvacontin">dasilvacontin</a>
-        <a href="http://dasilvacont.in/artpluscode/" alt="art+code">art+code</a>
+        <a href="http://dasilvacont.in/artpluscode/" alt="art+code" data-preview="art">art+code</a>
     </nav>
     <nav id="mobile-bottom-nav">
-        <a href="https://www.dropbox.com/s/n4qw2fcaljvwgqn/David-dasilvacontin-resume-2020.pdf?dl=0" alt="résumé">résume</a>
-        <a href="https://www.dropbox.com/s/tzoo11z6eqz4cxa/david-dasilvacontin-portfolio.pdf?dl=0" alt="portfolio">portfolio</a>
+        <a href="https://www.dropbox.com/s/n4qw2fcaljvwgqn/David-dasilvacontin-resume-2020.pdf?dl=0" alt="résumé" data-preview="resume">résume</a>
+        <a href="https://www.dropbox.com/s/tzoo11z6eqz4cxa/david-dasilvacontin-portfolio.pdf?dl=0" alt="portfolio" data-preview="portfolio">portfolio</a>
         <a href="https://www.linkedin.com/in/dasilvacontin/" alt="linkedin">linkedin</a>
         <a href="mailto:dasilvacontin@gmail.com" alt="send me an email">email</a>
     </nav>
@@ -242,15 +259,18 @@ layout: default
         </div>
 
         <div>
-            <a href="http://dasilvacont.in/artpluscode/" alt="art+code">art+code</a>
-            <a href="https://www.dropbox.com/s/n4qw2fcaljvwgqn/David-dasilvacontin-resume-2020.pdf?dl=0" alt="résumé">résume</a>
-            <a href="https://www.dropbox.com/s/tzoo11z6eqz4cxa/david-dasilvacontin-portfolio.pdf?dl=0" alt="portfolio">portfolio</a>
+            <a href="http://dasilvacont.in/artpluscode/" alt="art+code" data-preview="art">art+code</a>
+            <a href="https://www.dropbox.com/s/n4qw2fcaljvwgqn/David-dasilvacontin-resume-2020.pdf?dl=0" alt="résumé" data-preview="resume">résume</a>
+            <a href="https://www.dropbox.com/s/tzoo11z6eqz4cxa/david-dasilvacontin-portfolio.pdf?dl=0" alt="portfolio" data-preview="portfolio">portfolio</a>
             <a href="https://www.linkedin.com/in/dasilvacontin/" alt="linkedin">linkedin</a>
             <a href="mailto:dasilvacontin@gmail.com" alt="send me an email">email</a>
         </div>
     </nav>
 </div>
 
+<img id="art-preview" class="link-preview" src="images/summer-2020/art-preview.png" width="676" height="254">
+<img id="resume-preview" class="link-preview" src="images/summer-2020/resume-preview.png" width="426" height="602">
+<img id="portfolio-preview" class="link-preview" src="images/summer-2020/portfolio-preview.png" width="545" height="344">
 
 
 
@@ -265,6 +285,34 @@ layout: default
     const canvas = document.createElement('canvas')
     const ctx = canvas.getContext('2d')
     const h1 = document.getElementsByTagName('h1')[0]
+    const navLinks = document.querySelectorAll('nav a')
+    NodeList.prototype.forEach = Array.prototype.forEach
+
+    let previewingLink = false
+    function showLinkPreview () {
+        previewingLink = true
+        const previewID = this.dataset.preview
+        const previewImage = document.getElementById(`${previewID}-preview`)
+        const xrange = iWidth - previewImage.width - 35
+        const yrange = iHeight - previewImage.height
+        previewImage.style.left = Math.random() * xrange + 'px'
+        previewImage.style.top = 35 + Math.random() * yrange + 'px'
+        previewImage.classList.add('link-preview-active')
+    }
+    function hideLinkPreview () {
+        previewingLink = false
+        const previewID = this.dataset.preview
+        const preview = document.getElementById(`${previewID}-preview`)
+        preview.classList.remove('link-preview-active')
+    }
+
+    navLinks.forEach(navLink => {
+        if (navLink.dataset.preview) {
+            console.log(navLink.dataset.preview)
+            navLink.addEventListener('mouseover', showLinkPreview)
+            navLink.addEventListener('mouseout', hideLinkPreview)
+        }
+    })
 
     let doImagePaint = true
     function flagImagePaint () {
@@ -343,6 +391,7 @@ layout: default
     */
     let flipImageInterval
     function flipImage () {
+        if (previewingLink) return
         const nextImageIndex = (currentImageIndex + 1) % images.length
         if (!imageIsBeingHeld && images[nextImageIndex].img.width) {
             currentImageIndex = nextImageIndex
