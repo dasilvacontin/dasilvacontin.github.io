@@ -317,7 +317,6 @@ layout: default
 
     navLinks.forEach(navLink => {
         if (navLink.dataset.preview) {
-            console.log(navLink.dataset.preview)
             navLink.addEventListener('mouseover', showLinkPreview)
             navLink.addEventListener('mouseout', hideLinkPreview)
         }
@@ -427,7 +426,7 @@ layout: default
         document.body.classList.toggle('image-being-held', imageIsBeingHeld)
         
         if (e.type === 'mousedown' || e.type === 'touchstart') {
-            grabStartX = e.clientX
+            grabStartX = (e.clientX || e.touches[0].clientX)
             grabStartIndex = currentImageIndex
         }
     }
@@ -436,7 +435,7 @@ layout: default
         if (!imageIsBeingHeld) return
 
         let targetIndex = grabStartIndex
-        const offsetX = grabStartX - e.clientX
+        const offsetX = grabStartX - (e.clientX || e.touches[0].clientX)
         let skips = Math.floor(Math.abs(offsetX / X_DIST)) * Math.sign(offsetX)
         while (skips < 0) {
             targetIndex--
@@ -455,6 +454,7 @@ layout: default
 
     setupFlipImageInterval()
     document.body.addEventListener('touchstart', updateImageIsBeingHeld)
+    document.body.addEventListener('touchmove', updateImageIsScrobbled)
     document.body.addEventListener('touchend', updateImageIsBeingHeld)
     h1.addEventListener('mousedown', updateImageIsBeingHeld)
     document.body.addEventListener('mousemove', updateImageIsScrobbled)
@@ -676,7 +676,6 @@ layout: default
     }
 
     function imagePaint () {
-        console.log('>imagePaint')
         doImagePaint = false
         ctx.save()
         // ctx.fillStyle = '#FFFAEB'
