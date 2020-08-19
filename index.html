@@ -3,68 +3,652 @@ layout: default
 ---
 
 <style>
+    @font-face {
+        font-family: 'Neue Machina';
+        src: url(fonts/NeueMachina-Regular.otf);
+        font-weight: normal;
+    }
+    @font-face {
+        font-family: 'Neue Machina';
+        src: url(fonts/NeueMachina-Ultrabold.otf);
+        font-weight: bold;
+    }
+
     html, body {
         margin: 0;
         padding: 0;
         width: 100%;
         height: 100%;
-        background: #FFFAEB;
         overflow: hidden;
+
+        font-family: 'Neue Machina', sans-serif;
+        letter-spacing: -0.06em;
+        align-items: center;
+        color: #2D3959;
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
     }
 
     body {
+        padding: 0 5vw;
+    }
+
+    body, .wrapper {
         display: flex;
+        flex-direction: column;
+        justify-content: center;
         align-items: center;
         justify-content: center;
+        box-sizing: border-box;
     }
 
-    #ui-mobile, #ui-desktop {
-        display: none;
+    #background {
+        position: fixed;
+        z-index: -3;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: #FFFAEB;
     }
 
-    @media only screen and (orientation: portrait) {
-        #ui-mobile {
-            display: block;
-            height: 100%;
-            width: auto;
+    #desktop-nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+
+    }
+    #mobile-top-nav {
+        top: 0;
+    }
+    #mobile-bottom-nav {
+        bottom: 0;
+    }
+    #mobile-top-nav, #mobile-bottom-nav {
+        position: fixed;
+        left: 0;
+        right: 0;
+
+        padding: 0 5vw;
+        height: 15vw;
+
+        font-size: 4.06vw;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    nav a {
+        text-decoration: none;
+        color: #5D657B;
+    }
+    a:active, a:hover, a:focus {
+        color: inherit;
+        font-weight: normal;
+    }
+
+    h1 {
+        color: #223F8B;
+        font-size: 11.8vw;
+        padding: 22.7vw 0;
+        margin: 0;
+        margin-bottom: 8.6vw;
+        opacity: 0;
+    }
+    h1:hover {
+        cursor: grabbing;
+    }
+
+    p {
+        color: #5B6479;
+        font-size: 4.6vw;
+        line-height: 165%;
+        margin: 0;
+        padding-bottom: 5.6vw;
+    }
+
+    @media only screen and (max-width: 830px) {
+        /* mobile / tablet */
+        #desktop-nav {
+            display: none;
         }
     }
 
-    @media only screen and (orientation: landscape) {
+    @media only screen and (min-width: 500px) and (max-width: 830px) {
+        /* limit mobile/tablet growth */
         body {
-            align-items: flex-start;
+            padding: 0 25px;
         }
 
-        #ui-desktop {
-            display: block;
-            width: 100%;
-            height: auto;
+        #mobile-top-nav, #mobile-bottom-nav {
+            height: 75px;
+            padding: 0 25px;
         }
+
+        nav a {
+            font-size: 20px;
+        }
+
+        h1 {
+            line-height: 300px;
+            margin-bottom: 42px;
+            padding: 0;
+        }
+
+        p {
+            font-size: 21px;
+            max-width: 460px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 59px;
+        }
+    }
+
+    @media only screen and (min-width: 831px) {
+        /* desktop */
+        #mobile-top-nav, #mobile-bottom-nav {
+            display: none;
+        }
+
+        body {
+            padding: 0;
+        }
+
+        .wrapper {
+            box-sizing: border-box;
+            padding: 0 32px;
+            padding-top: 106px;
+            width: 100%;
+            max-width: calc(1100px + 2*32px);
+        }
+
+        h1 {
+            font-size: 104px;
+            line-height: 427px;
+            margin: 0;
+            padding: 0;
+            margin-bottom: 40px;
+        }
+
+        p {
+            font-size: 21px;
+            text-align: center;
+        }
+
+        nav {
+            font-size: 17px;
+            display: flex;
+            justify-content: space-between;
+            height: 72px;
+            align-items: center;
+            padding: 0 32px;
+        }
+        nav div {
+            display: flex;
+        }
+        nav div:nth-child(2) a {
+            margin-left: 32px;
+        }
+    }
+
+    body {
+    -webkit-touch-callout: none; /* iOS Safari */
+        -webkit-user-select: none; /* Safari */
+        -khtml-user-select: none; /* Konqueror HTML */
+        -moz-user-select: none; /* Old versions of Firefox */
+            -ms-user-select: none; /* Internet Explorer/Edge */
+                user-select: none; /* Non-prefixed version, currently
+                                    supported by Chrome, Edge, Opera and Firefox */
     }
 </style>
 
-<script src="js/imageMapResizer.min.js"></script>
-<img id="ui-mobile" usemap="#mobile-map" src="images/mobile.png?20200817">
-<img id="ui-desktop" usemap="#desktop-map" src="images/desktop.png?20200817">
 
-<!-- Image Map Generated by http://www.image-map.net/ -->
-<map name="desktop-map">
-    <area target="_blank" alt="Portfolio" title="Portfolio" href="https://www.dropbox.com/s/tzoo11z6eqz4cxa/david-dasilvacontin-portfolio.pdf?dl=0" coords="7963,112,7108,458" shape="rect">
-    <area target="_blank" alt="art+code" title="art+code" href="http://dasilvacont.in/artpluscode/" coords="8737,112,8014,448" shape="rect">
-    <area target="_blank" alt="Résumé" title="Résumé" href="https://www.dropbox.com/s/n4qw2fcaljvwgqn/David-dasilvacontin-resume-2020.pdf?dl=0" coords="9520,112,8798,448" shape="rect">
-    <area target="_blank" alt="LinkedIn" title="LinkedIn" href="https://www.linkedin.com/in/dasilvacontin/" coords="10314,112,9551,438" shape="rect">
-    <area target="_blank" alt="Send me an email" title="Send me an email" href="mailto:dasilvacontin@gmail.com" coords="10976,102,10365,438" shape="rect">
-</map>
 
-<!-- Image Map Generated by http://www.image-map.net/ -->
 
-<map name="mobile-map">
-    <area target="_blank" alt="art generated by code" title="art generated by code" href="http://dasilvacont.in/artpluscode/" coords="2507,45,1889,362" shape="rect">
-    <area target="_blank" alt="résumé" title="résumé" href="https://www.dropbox.com/s/n4qw2fcaljvwgqn/David-dasilvacontin-resume-2020.pdf?dl=0" coords="12,3553,598,3838" shape="rect">
-    <area target="_blank" alt="portfolio" title="portfolio" href="https://www.dropbox.com/s/tzoo11z6eqz4cxa/david-dasilvacontin-portfolio.pdf?dl=0" coords="623,3836,1313,3553" shape="rect">
-    <area target="_blank" alt="linkedin" title="linkedin" href="https://www.linkedin.com/in/dasilvacontin/" coords="1340,3556,2009,3836" shape="rect">
-    <area target="_blank" alt="send me an email" title="send me an email" href="mailto:dasilvacontin@gmail.com" coords="2034,3836,2523,3556" shape="rect">
-</map>
+
+
+<!--
+┌┬┐┬ ┬┌─┐  ┬ ┬┌┬┐┌┬┐┬  
+ │ ├─┤├┤   ├─┤ │ ││││  
+ ┴ ┴ ┴└─┘  ┴ ┴ ┴ ┴ ┴┴─┘
+-->
+<div id="background"></div>
+
+<div class="wrapper">
+    <h1 class="noselect">David&nbsp;da&nbsp;Silva</h1>
+
+    <p>
+        User Researcher & Experience Designer,<br>
+        3 years of experience working remotely for startups and agencies.<br>
+        Plus 4 years designing and building services as a Software Engineer.
+    </p>
+
+    <nav id="mobile-top-nav">
+        <a href="" alt="dasilvacontin">dasilvacontin</a>
+        <a href="http://dasilvacont.in/artpluscode/" alt="art+code">art+code</a>
+    </nav>
+    <nav id="mobile-bottom-nav">
+        <a href="https://www.dropbox.com/s/n4qw2fcaljvwgqn/David-dasilvacontin-resume-2020.pdf?dl=0" alt="résumé">résume</a>
+        <a href="https://www.dropbox.com/s/tzoo11z6eqz4cxa/david-dasilvacontin-portfolio.pdf?dl=0" alt="portfolio">portfolio</a>
+        <a href="https://www.linkedin.com/in/dasilvacontin/" alt="linkedin">linkedin</a>
+        <a href="mailto:dasilvacontin@gmail.com" alt="send me an email">email</a>
+    </nav>
+
+    <nav id="desktop-nav">
+        <div>
+            <a href="" alt="dasilvacontin">dasilvacontin</a>
+        </div>
+
+        <div>
+            <a href="http://dasilvacont.in/artpluscode/" alt="art+code">art+code</a>
+            <a href="https://www.dropbox.com/s/n4qw2fcaljvwgqn/David-dasilvacontin-resume-2020.pdf?dl=0" alt="résumé">résume</a>
+            <a href="https://www.dropbox.com/s/tzoo11z6eqz4cxa/david-dasilvacontin-portfolio.pdf?dl=0" alt="portfolio">portfolio</a>
+            <a href="https://www.linkedin.com/in/dasilvacontin/" alt="linkedin">linkedin</a>
+            <a href="mailto:dasilvacontin@gmail.com" alt="send me an email">email</a>
+        </div>
+    </nav>
+</div>
+
+
+
+
+
+
+<!--
+┌┬┐┬ ┬┌─┐  ┌─┐┌─┐┬─┐┬┌─┐┌┬┐┌─┐
+ │ ├─┤├┤   └─┐│  ├┬┘│├─┘ │ └─┐
+ ┴ ┴ ┴└─┘  └─┘└─┘┴└─┴┴   ┴ └─┘
+-->
+<script>
+    const canvas = document.createElement('canvas')
+    const ctx = canvas.getContext('2d')
+    const h1 = document.getElementsByTagName('h1')[0]
+
+    let doImagePaint = true
+    function flagImagePaint () {
+        doImagePaint = true
+    }
+
+    let iWidth, iHeight
+    function onResize () {
+        iWidth = window.innerWidth
+        iHeight = window.innerHeight
+        const dpx = window.devicePixelRatio
+
+        canvas.width = iWidth * dpx
+        canvas.height = iHeight * dpx
+
+        document.body.parentElement.style.width =
+        document.body.style.width =
+        canvas.style.width = iWidth + 'px'
+
+        document.body.parentElement.style.height =
+        document.body.style.height =
+        canvas.style.height = iHeight + 'px'
+        ctx.scale(devicePixelRatio, devicePixelRatio)
+        doImagePaint = true
+
+        setTimeout(() => {
+            if (iWidth !== window.innerWidth || iHeight !== window.innerHeight) {
+                onResize()
+            }
+        }, 100)
+    }
+    window.onresize = onResize
+    onResize()
+
+    canvas.style.position = 'fixed'
+    canvas.style.top = canvas.style.left = canvas.style.right = canvas.style.bottom = 0
+    canvas.style.pointerEvents = 'none'
+    canvas.style.zIndex = -2
+    document.body.appendChild(canvas)
+
+    function ImageWithSource (src) {
+        const img = new Image()
+        img.onload = flagImagePaint
+        img.src = src
+        return img
+    }
+    const images = [
+        {
+            img: ImageWithSource('images/summer-2020/varien.png'),
+            h1Color: '#223F8B'
+        },
+        {
+            img: ImageWithSource('images/summer-2020/design-thinking-workshop.jpg'),
+            h1Color: '#2D3959'
+        },
+        {
+            img: ImageWithSource('images/summer-2020/longboard.jpg'),
+            h1Color: '#D7DFE5'
+        },
+    ]
+    let currentImageIndex = 0
+
+    let imageIsBeingHeld = false
+    /* only if h1 is held 
+    function updateImageIsBeingHeld (e) {
+        for (let i = 0; i < e.touches.length; ++i) {
+            if (e.touches[i].target === h1) {
+                imageIsBeingHeld = true
+                e.preventDefault()
+                return
+            }
+        }
+        imageIsBeingHeld = false
+        return
+    }
+    */
+    let flipImageInterval
+    function flipImage () {
+        const nextImageIndex = (currentImageIndex + 1) % images.length
+        if (!imageIsBeingHeld && images[nextImageIndex].img.width) {
+            currentImageIndex = nextImageIndex
+            flagImagePaint()
+        }
+    }
+    function setupFlipImageInterval () {
+        // flipImageInterval = setInterval(flipImage, 380)
+        flipImageInterval = setInterval(flipImage, 400)
+    }
+    function updateImageIsBeingHeld (e) {
+        const isMouseEvent = (e.type.indexOf('mouse') === 0)
+        imageIsBeingHeld = isMouseEvent
+            ? (e.type === 'mouseover')
+            : (e.touches.length > 0)
+        clearInterval(flipImageInterval)
+        if (!imageIsBeingHeld) {
+            setupFlipImageInterval()
+        }
+    }
+    setupFlipImageInterval()
+    document.body.addEventListener('touchstart', updateImageIsBeingHeld)
+    document.body.addEventListener('touchend', updateImageIsBeingHeld)
+    h1.addEventListener('mouseover', updateImageIsBeingHeld)
+    h1.addEventListener('mouseout', updateImageIsBeingHeld)
+
+    images.forEach(params => params.img.onload = flagImagePaint)
+    document.fonts.ready.then(flagImagePaint)
+
+    /* WIGGLY LINES */
+    const wigglyLine0 = { // mobile bottom line
+        dataPoints: [],
+        offsetsY: [],
+        params: {
+            p0x: () => iWidth >= 500 ? 25 : window.innerWidth * 0.05,
+            py: () => window.innerHeight - (iWidth >= 500 ? 75 : window.innerWidth * 0.15),
+            p1x: () => iWidth >= 500 ? iWidth - 25 : window.innerWidth * 0.95,
+            offsetX: 0,
+            bgcolor: '#FFFAEB',
+            color: '#A9ABAF',
+            lineWidth: 1.5,
+            lineCap: 'round',
+            segments: 6,
+            amplitude: 5,
+            offsetYAmplitude: 5,//10,
+            pinnedEnding: false,
+            growWhenLonger: false,
+            speed: 0.04
+        }
+    }
+    const wigglyLine1 = { // mobile top line
+        dataPoints: [],
+        offsetsY: [],
+        params: {
+            p0x: () => iWidth >= 500 ? 165 : 106 / 320 * iWidth,
+            py: () => iWidth >= 500 ? 37 : 0.075 * window.innerWidth,
+            p1x: () => iWidth > 500 ? iWidth - 119 : 244 / 320 * iWidth,
+            offsetX: 0,
+            bgcolor: '#FFFAEB',
+            color: '#A9ABAF',
+            lineWidth: 1.5,
+            lineCap: 'round',
+            segments: 6,
+            amplitude: 5,
+            offsetYAmplitude: 5,//10,
+            pinnedEnding: true,
+            growWhenLonger: false,
+            speed: 0.02
+        }
+    }
+
+    /*
+    const desktopWigglyLine = {
+        dataPoints: [],
+        offsetsY: [],
+        params: {
+            p0x: () => Math.max((iWidth - 1100)/2, 32) + 112,
+            py: () => 34,
+            p1x: () => iWidth - Math.max((iWidth - 1100)/2, 32) - 455,
+            offsetX: 0,
+            bgcolor: '#FFFAEB',
+            color: '#A9ABAF',
+            lineWidth: 1.5,
+            lineCap: 'round',
+            segments: 6,
+            amplitude: 5,
+            offsetYAmplitude: 5,//10,
+            pinnedEnding: true,
+            speed: 0.02
+        }
+    }
+    */
+
+    const desktopWigglyLine = {
+        dataPoints: [],
+        offsetsY: [],
+        params: {
+            p0x: () => 32 + 112 + 8,
+            py: () => 36,
+            p1x: () => {
+                const _p0x = desktopWigglyLine.params.p0x()
+                let _p1x = iWidth - 32 - 455 - 4
+                if (_p1x - _p0x > 300) {
+                    _p1x = _p0x + 300
+                }
+                return _p1x
+            },
+            offsetX: 0,
+            bgcolor: '#FFFAEB',
+            color: '#A9ABAF',
+            lineWidth: 1,
+            lineCap: 'round',
+            segments: 6,
+            amplitude: 8,
+            offsetYAmplitude: 5,//10,
+            pinnedEnding: false,
+            growWhenLonger: true,
+            speed: 0.02
+        }
+    }
+
+
+
+    // Math.random = mulberry32(0);
+
+    function renderWigglyLine(wigglyLine, delta) {
+      with (wigglyLine) { with (params) {
+        while (dataPoints.length <= segments) {
+            dataPoints.push(Math.random())
+            offsetsY.push(Math.random() - 0.5)
+        }
+
+        const _p0x = p0x()
+        const _p1x = p1x()
+        const _py = py()
+
+        const waveWidth = Math.ceil(_p1x - _p0x)
+        const segmentWidth = Math.ceil(waveWidth / segments)
+        const halfSegmentWidth = Math.ceil(segmentWidth / 2)
+
+        ctx.save()
+
+        ctx.fillStyle = bgcolor
+        ctx.fillRect(
+            Math.floor(_p0x - lineWidth),
+            Math.floor(_py - 1.5 * (amplitude + offsetYAmplitude)),
+            Math.ceil(waveWidth + waveWidth / segments + lineWidth),
+            Math.ceil(3 * (amplitude + offsetYAmplitude))
+        )
+
+        ctx.strokeStyle = color
+        ctx.lineWidth = lineWidth
+        ctx.lineCap = lineCap
+        ctx.translate(_p0x, _py)
+
+        /* debug middle line
+        ctx.beginPath()
+        ctx.moveTo(0, 0)
+        ctx.lineTo(waveWidth, 0)
+        ctx.stroke()
+        */
+
+        ctx.beginPath()
+        ctx.moveTo(0, 0)
+        let prevx = 0
+        let prevy = 0
+        offsetX += delta * speed
+        let offsetY = 0
+
+        if (offsetX > segmentWidth) {
+          offsetX -= segmentWidth
+          dataPoints.unshift(Math.random())
+          offsetsY.unshift(Math.random() - 0.5)
+        }
+
+        for (let i = 0; i < (pinnedEnding ? segments : segments + 1); ++i) {
+          let targetX = i * segmentWidth + offsetX
+          let targetY = dataPoints[i] * amplitude
+          let segmentWidthFactor = 1
+          if (i === 0) {
+            // make first point smoother
+            segmentWidthFactor = offsetX / segmentWidth
+            targetY *= segmentWidthFactor
+          }
+          offsetY += (offsetsY[i] * segmentWidthFactor)
+          offsetY = Math.min(1, offsetY)
+          offsetY = Math.max(-1, offsetY)
+          if ((dataPoints.length % 2 == 0) !== (i % 2 == 0)) targetY *= -1
+          targetY += (offsetY * offsetYAmplitude)
+          if (growWhenLonger) {
+              targetY *= ((i * segmentWidth + offsetX) / waveWidth)
+          }
+          if (pinnedEnding && i === segments - 1) {
+            // if you want for it to finish in center
+            targetY *= (segmentWidth - offsetX) / segmentWidth
+          }
+          const midPointX = Math.round(prevx + halfSegmentWidth * segmentWidthFactor)
+          targetX = targetX
+          targetY = targetY
+          ctx.bezierCurveTo(
+            midPointX, prevy,
+            midPointX, targetY,
+            targetX, targetY)
+          prevx = targetX
+          prevy = targetY
+
+          /* debugging values
+          ctx.fillStyle = color
+          ctx.font = '16px Helvetica'
+          ctx.fillText(`${offsetsY[i].toFixed(2)}`, targetX, targetY)
+          */
+        }
+
+        if (pinnedEnding) {
+            // finish in center
+            const targetX = waveWidth
+            const targetY = 0
+            const segmentWidthFactor = (segmentWidth - offsetX) / segmentWidth
+            const midPointX = prevx + (segmentWidth / 2) * segmentWidthFactor
+            ctx.bezierCurveTo(
+            midPointX, prevy,
+            midPointX, targetY,
+            targetX, targetY)
+        }
+
+        ctx.stroke()
+
+        if (!pinnedEnding) {
+            // erase "tail"
+            ctx.fillRect(
+                Math.ceil(waveWidth),
+                Math.floor(- 1.5 * (amplitude + offsetYAmplitude)),
+                Math.ceil(waveWidth / segments),
+                Math.ceil(3 * (amplitude + offsetYAmplitude))
+            )
+        }
+
+        ctx.restore()
+      }}
+    }
+
+    function imagePaint () {
+        console.log('>imagePaint')
+        doImagePaint = false
+        ctx.save()
+        // ctx.fillStyle = '#FFFAEB'
+        // ctx.fillRect(0, 0, canvas.width, canvas.height)
+        ctx.clearRect(0, 0, canvas.width, canvas.height)
+
+        const backdropImage = images[currentImageIndex]
+
+        const rect = h1.getBoundingClientRect()
+        const centerX = rect.left + rect.width / 2
+        const centerY = rect.top + rect.height / 2
+        const edge = 0.6 * window.innerWidth
+        
+        const h1Style = getComputedStyle(h1)
+        ctx.font = `bold ${h1Style.fontSize} ${h1Style.fontFamily}`
+        ctx.fillStyle = backdropImage.h1Color
+        ctx.textAlign = 'center'
+        ctx.textBaseline = 'middle'
+        ctx.fillText('David da Silva', centerX, centerY + 3)
+
+        const isDesktop = (iWidth > 830)
+        if (backdropImage.img.width) {
+            const imageHeight = isDesktop
+                ? 427
+                : (iWidth >= 500 ? 300 : (193 / 320) * window.innerWidth)
+            const imageWidth = (imageHeight / backdropImage.img.height) * backdropImage.img.width
+            ctx.globalCompositeOperation = 'xor'
+            ctx.drawImage(
+                backdropImage.img,
+                centerX - imageWidth/2, centerY - imageHeight/2,
+                imageWidth, imageHeight
+            )
+        }
+        ctx.restore()
+    }
+
+    let last = Date.now()
+    function renderLoop () {
+        requestAnimationFrame(renderLoop)
+        const now = Date.now()
+        const delta = Math.min(now - last, 32)
+        last = now
+
+        if (iWidth !== window.innerWidth || iHeight !== window.innerHeight) {
+            onResize()
+            setTimeout(imagePaint, 100)
+            return
+        }
+
+        if (doImagePaint) imagePaint()
+
+        if (iWidth >= 831) {
+            // desktop
+            renderWigglyLine(desktopWigglyLine, delta)
+        } else {
+            // mobile / tablet
+            renderWigglyLine(wigglyLine0, delta)
+            renderWigglyLine(wigglyLine1, delta)
+        }
+    }
+    requestAnimationFrame(renderLoop)
+
+</script>
 
 <!-- Hotjar Tracking Code for https://dasilvacont.in/ -->
 <script>
@@ -76,7 +660,4 @@ layout: default
         r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
         a.appendChild(r);
     })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
-</script>
-<script>
-    imageMapResize()
 </script>
