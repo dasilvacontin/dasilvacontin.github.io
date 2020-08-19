@@ -317,7 +317,7 @@ layout: default
         const previewImage = document.getElementById(`${previewID}-preview`)
         previewImage.classList.remove('link-preview-active')
         const indexInArray = activePreviewImages.indexOf(previewImage)
-        if (index > -1) activePreviewImages.splice(indexInArray, 1)
+        if (indexInArray > -1) activePreviewImages.splice(indexInArray, 1)
     }
 
     navLinks.forEach(navLink => {
