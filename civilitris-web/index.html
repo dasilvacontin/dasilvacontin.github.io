@@ -11,6 +11,16 @@
     <script>
       var unityInstance = UnityLoader.instantiate("unityContainer", "Build/civilitris-web.json", {onProgress: UnityProgress});
     </script>
+    <style>
+      .webgl-content, #unityContainer {
+        width: 100% !important;
+        height: 100% !important;
+      }
+
+      body {
+        margin: 0 !important;
+      }
+    </style>
   </head>
   <body>
     <div class="webgl-content">
