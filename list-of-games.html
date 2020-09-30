@@ -153,6 +153,38 @@
     </li>
 </div>
 
+<script>
+    // polyfill
+    if (NodeList.prototype.forEach == null) {
+        NodeList.prototype.forEach = Array.prototype.forEach
+    }
+
+    // Make the projects accessible, for those who can't scroll laterally
+    const links = document.querySelectorAll('a')
+    links.forEach(link => { link.onclick = stopPropagration })
+    function stopPropagration (e) {
+        e.stopPropagration()
+    }
+
+    const list = document.querySelector('div.list')
+    const projects = document.querySelectorAll('div.list > li')
+    projects.forEach(project => { project.onclick = onClickProject })
+
+
+    function onClickProject () {
+        // center project on viewport
+        // margin left of list is 64px
+        // clientWidth is width of item
+
+        const pointToCenter = this.offsetLeft + this.clientWidth/2
+        document.body.scrollTo({
+            top: document.body.scrollTop,
+            left: pointToCenter - window.innerWidth/2,
+            behavior: 'smooth'
+        })
+    }
+</script>
+
 </body>
 
 </html>
