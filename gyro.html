@@ -7,10 +7,7 @@
         DeviceOrientationEvent.requestPermission()
         .then(permissionState => {
           if (permissionState === 'granted') {
-            window.addEventListener('deviceorientation', () => {
-              console.log(arguments)
-              debug.innerHTML = JSON.stringify(arguments)
-            });
+            window.addEventListener('deviceorientation', handleOrientation, true)
           }
         })
         .catch(console.error);
@@ -19,5 +16,17 @@
       }
     }
     document.body.onclick = onClick
+
+    function handleOrientation (event) {
+      const alpha = event.alpha;
+      const beta = event.beta;
+      const gamma = event.gamma;
+
+      debug.innerHTML = `
+        alpha (z, -360 to 360): ${alpha}<br>
+        beta (x, -180 to 180): ${beta}<br>
+        gamma (y, -90 to 90): ${gamma}
+      `
+    }
   </script>
 </body>
