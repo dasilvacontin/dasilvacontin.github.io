@@ -1,6 +1,11 @@
+<head>
+<script src="http://172.20.10.14:3000/socket.io/socket.io.js"></script>
+</head>
 <body>
   <p id="debug"></p>
   <script>
+    const socket = io('http://172.20.10.14:3000')
+
     function onClick() {
       // feature detect
       if (typeof DeviceOrientationEvent.requestPermission === 'function') {
@@ -21,6 +26,8 @@
       const alpha = event.alpha;
       const beta = event.beta;
       const gamma = event.gamma;
+
+      socket.emit('gyro', { alpha, beta, gamma })
 
       debug.innerHTML = `
         alpha (z, -360 to 360): ${alpha}<br>
