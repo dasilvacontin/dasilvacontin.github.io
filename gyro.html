@@ -1,0 +1,23 @@
+<body>
+  <p id="debug"></p>
+  <script>
+    function onClick() {
+      // feature detect
+      if (typeof DeviceOrientationEvent.requestPermission === 'function') {
+        DeviceOrientationEvent.requestPermission()
+        .then(permissionState => {
+          if (permissionState === 'granted') {
+            window.addEventListener('deviceorientation', () => {
+              console.log(arguments)
+              debug.innerHTML = JSON.stringify(arguments)
+            });
+          }
+        })
+        .catch(console.error);
+      } else {
+        // handle regular non iOS 13+ devices
+      }
+    }
+    document.body.onclick = onClick
+  </script>
+</body>
