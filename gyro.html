@@ -127,9 +127,9 @@
       // paint circle
       // assume offscreen1 is the one with the last frame
       ctxOffscreen2.clearRect(0, 0, window.innerWidth, window.innerHeight)
-      ctxOffscreen2.globalAlpha = 0.5
 
       // paint old frame with lower opacity
+      ctxOffscreen2.globalAlpha = 0.95
       ctxOffscreen2.drawImage(offscreen1, 0, 0, window.innerWidth, window.innerHeight)
       ctxOffscreen2.globalAlpha = 1
 
