@@ -37,21 +37,22 @@
     let ctxOffscreen1 = offscreen1.getContext('2d')
     let ctxOffscreen2 = offscreen2.getContext('2d')
 
-    function addToLog (msg) {
-      log.push(msg.toUpperCase())
-      render()
-    }
-
     window.onresize = function () {
       offscreen1.width = offscreen2.width = canvas.width = window.innerWidth * 2
       offscreen1.height = offscreen2.height = canvas.height = window.innerHeight * 2
+      canvas.style.width = offscreen1.style.width = offscreen2.style.width = `${window.innerWidth}px`
+      canvas.style.height = offscreen1.style.height = offscreen2.style.height = `${window.innerHeight}px`
       ctx.scale(2, 2)
       ctxOffscreen1.scale(2, 2)
       ctxOffscreen2.scale(2, 2)
     }
     window.onresize()
 
-    addToLog(`init`)
+    function addToLog (msg) {
+      log.push(msg.toUpperCase())
+      render()
+    }
+    addToLog('tap to proceed')
 
     function onClick() {
       socket = io(serverURL)
@@ -77,7 +78,6 @@
             }
           })
           .catch(function (e) {
-            debugger
             addToLog(e.message)
             console.error(e.message)
           });
@@ -91,7 +91,6 @@
       document.body.onclick = null
     }
     document.body.onclick = onClick
-    addToLog('tap to proceed')
 
     function handleOrientation (event) {
       const alpha = event.alpha.toFixed(2);
@@ -116,7 +115,7 @@
       for (let i = 0; i < window.innerHeight / 12 + 1; ++i) {
         const message = log[log.length - i - 1]
         if (message == null) break;
-        ctx.fillText(message, 0, i * 12 - 2)
+        ctx.fillText(message, 0, i * 12 - 2 + 12)
       }
 
       // paint lines
@@ -151,13 +150,13 @@
         // paint offscreen 2 into main canvas
         ctx.drawImage(offscreen2, 0, 0, window.innerWidth, window.innerHeight)
 
-        // leave offscreen canvas 2 on the place of the first one 
+        // swap offscreen 1 with offscreen 2 so that last good frame remains
+        // at offescreen 1
         const tempOffscreen = offscreen1
-        offscreen1 = offscreen2
-        offscreen2 = tempOffscreen
-
         const tempCtx = ctxOffscreen1
+        offscreen1 = offscreen2
         ctxOffscreen1 = ctxOffscreen2
+        offscreen2 = tempOffscreen
         ctxOffscreen2 = tempCtx
       }
     }
