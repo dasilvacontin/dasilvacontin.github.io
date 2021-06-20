@@ -23,34 +23,48 @@
   <canvas id="myCanvas"></canvas>
   <script>
     const log = []
-    function addToLog (msg) {
-      log.push(msg.toUpperCase())
-    }
+    let lastAlpha = 0
+    let lastBeta = 0
+    let lastGamma = 0
+    const serverURL = 'https://172.20.10.14:3000'
+    let socket = null
 
     const canvas = document.getElementById('myCanvas')
     const ctx = canvas.getContext('2d')
+
+    let offscreen1 = document.createElement('canvas')
+    let offscreen2 = document.createElement('canvas')
+    let ctxOffscreen1 = offscreen1.getContext('2d')
+    let ctxOffscreen2 = offscreen2.getContext('2d')
+
+    function addToLog (msg) {
+      log.push(msg.toUpperCase())
+      render()
+    }
+
     window.onresize = function () {
-      canvas.width = window.innerWidth * 2
-      canvas.height = window.innerHeight * 2
+      offscreen1.width = offscreen2.width = canvas.width = window.innerWidth * 2
+      offscreen1.height = offscreen2.height = canvas.height = window.innerHeight * 2
       ctx.scale(2, 2)
+      ctxOffscreen1.scale(2, 2)
+      ctxOffscreen2.scale(2, 2)
     }
     window.onresize()
 
     addToLog(`init`)
 
-    const serverURL = 'https://172.20.10.14:3000'
-    const socket = io(serverURL)
-    addToLog(`connecting to ${serverURL}`)
-
-    socket.on('connect', function () {
-      addToLog(`connected to ${serverURL}`)
-    })
-
-    socket.on('disconnect', function () {
-      addToLog(`disconnected from ${serverURL}`)
-    })
-
     function onClick() {
+      socket = io(serverURL)
+      addToLog(`connecting to ${serverURL}`)
+
+      socket.on('connect', function () {
+        addToLog(`connected to ${serverURL}`)
+      })
+
+      socket.on('disconnect', function () {
+        addToLog(`disconnected from ${serverURL}`)
+      })
+
       // feature detect
       try {
         if (typeof DeviceOrientationEvent.requestPermission === 'function') {
@@ -73,13 +87,12 @@
       } catch (e) {
         addToLog(e.message)
       }
+
+      document.body.onclick = null
     }
     document.body.onclick = onClick
-    addToLog(`tap to engage gyroscope`)
+    addToLog('tap to proceed')
 
-    let lastAlpha = 0
-    let lastBeta = 0
-    let lastGamma = 0
     function handleOrientation (event) {
       const alpha = event.alpha.toFixed(2);
       const beta = event.beta.toFixed(2);
@@ -93,9 +106,11 @@
     }
 
     function render () {
-      requestAnimationFrame(render)
+      // clear screen
       ctx.fillStyle = 'black'
       ctx.fillRect(0, 0, window.innerWidth, window.innerHeight)
+
+      // paint log
       ctx.fillStyle = 'white'
       ctx.font = '10px TeenyTinyPixls'
       for (let i = 0; i < window.innerHeight / 12 + 1; ++i) {
@@ -104,23 +119,52 @@
         ctx.fillText(message, 0, i * 12 - 2)
       }
 
+      // paint lines
       let x = Math.floor(window.innerWidth / 2)
       let y = Math.floor(window.innerHeight / 2)
       ctx.fillRect(x, 0, 2, window.innerHeight) 
       ctx.fillRect(0, y, window.innerWidth, 2) 
 
-      ctx.fillStyle = 'magenta'
-      ctx.beginPath()
-      ctx.arc(
-        (lastGamma/90 + 1)/2 * window.innerWidth,
-        (lastBeta/90 + 1)/2 * window.innerHeight,
-        56/2,
-        0,
-        2 * Math.PI
-      )
-      ctx.closePath()
-      ctx.fill()
+      // paint circle
+      // assume offscreen1 is the one with the last frame
+      ctxOffscreen2.clearRect(0, 0, window.innerWidth, window.innerHeight)
+      ctxOffscreen2.globalAlpha = 0.5
+
+      // paint old frame with lower opacity
+      ctxOffscreen2.drawImage(offscreen1, 0, 0, window.innerWidth, window.innerHeight)
+      ctxOffscreen2.globalAlpha = 1
+
+      if (socket) {
+        // paint new circle
+        ctxOffscreen2.fillStyle = 'magenta'
+        ctxOffscreen2.beginPath()
+        ctxOffscreen2.arc(
+          (lastGamma/90 + 1)/2 * window.innerWidth,
+          (lastBeta/90 + 1)/2 * window.innerHeight,
+          56/2,
+          0,
+          2 * Math.PI
+        )
+        ctxOffscreen2.closePath()
+        ctxOffscreen2.fill()
+
+        // paint offscreen 2 into main canvas
+        ctx.drawImage(offscreen2, 0, 0, window.innerWidth, window.innerHeight)
+
+        // leave offscreen canvas 2 on the place of the first one 
+        const tempOffscreen = offscreen1
+        offscreen1 = offscreen2
+        offscreen2 = tempOffscreen
+
+        const tempCtx = ctxOffscreen1
+        ctxOffscreen1 = ctxOffscreen2
+        ctxOffscreen2 = tempCtx
+      }
     }
-    render()
+    function mainLoop () {
+      requestAnimationFrame(mainLoop)
+      render()
+    }
+    mainLoop()
   </script>
 </body>
