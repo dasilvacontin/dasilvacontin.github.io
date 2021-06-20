@@ -1,9 +1,12 @@
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="/js/socket.io.js"></script>
   <style>
     html, body {
       padding: 0;
       margin: 0;
+      overflow: hidden;
     }
     canvas {
       width: 100%;
@@ -110,7 +113,7 @@
       ctx.beginPath()
       ctx.arc(
         (lastGamma/90 + 1)/2 * window.innerWidth,
-        (lastBeta/90 * -1 + 1)/2 * window.innerHeight,
+        (lastBeta/90 + 1)/2 * window.innerHeight,
         56/2,
         0,
         2 * Math.PI
