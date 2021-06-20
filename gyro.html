@@ -1,39 +1,123 @@
 <head>
-<script src="/js/socket.io.js"></script>
+  <script src="/js/socket.io.js"></script>
+  <style>
+    html, body {
+      padding: 0;
+      margin: 0;
+    }
+    canvas {
+      width: 100%;
+      height: 100%;
+    }
+
+    @font-face {
+      font-family: TeenyTinyPixls;
+      src: url(TeenyTinyPixls.ttf);
+    }
+  </style>
 </head>
 <body>
-  <p id="debug"></p>
+  <canvas id="myCanvas"></canvas>
   <script>
-    const socket = io('https://172.20.10.14:3000')
+    const log = []
+    function addToLog (msg) {
+      log.push(msg.toUpperCase())
+    }
+
+    const canvas = document.getElementById('myCanvas')
+    const ctx = canvas.getContext('2d')
+    window.onresize = function () {
+      canvas.width = window.innerWidth * 2
+      canvas.height = window.innerHeight * 2
+      ctx.scale(2, 2)
+    }
+    window.onresize()
+
+    addToLog(`init`)
+
+    const serverURL = 'https://172.20.10.14:3000'
+    const socket = io(serverURL)
+    addToLog(`connecting to ${serverURL}`)
+
+    socket.on('connect', function () {
+      addToLog(`connected to ${serverURL}`)
+    })
+
+    socket.on('disconnect', function () {
+      addToLog(`disconnected from ${serverURL}`)
+    })
 
     function onClick() {
       // feature detect
-      if (typeof DeviceOrientationEvent.requestPermission === 'function') {
-        DeviceOrientationEvent.requestPermission()
-        .then(permissionState => {
-          if (permissionState === 'granted') {
-            window.addEventListener('deviceorientation', handleOrientation, true)
-          }
-        })
-        .catch(console.error);
-      } else {
-        // handle regular non iOS 13+ devices
+      try {
+        if (typeof DeviceOrientationEvent.requestPermission === 'function') {
+          addToLog(`requesting deviceorientationevent permission`)
+          DeviceOrientationEvent.requestPermission()
+          .then(permissionState => {
+            if (permissionState === 'granted') {
+              window.addEventListener('deviceorientation', handleOrientation, true)
+              addToLog(`deviceorientationevent permission granted`)
+            }
+          })
+          .catch(function (e) {
+            debugger
+            addToLog(e.message)
+            console.error(e.message)
+          });
+        } else {
+          // handle regular non iOS 13+ devices
+        }
+      } catch (e) {
+        addToLog(e.message)
       }
     }
     document.body.onclick = onClick
+    addToLog(`tap to engage gyroscope`)
 
+    let lastAlpha = 0
+    let lastBeta = 0
+    let lastGamma = 0
     function handleOrientation (event) {
-      const alpha = event.alpha;
-      const beta = event.beta;
-      const gamma = event.gamma;
+      const alpha = event.alpha.toFixed(2);
+      const beta = event.beta.toFixed(2);
+      const gamma = event.gamma.toFixed(2);
+      lastAlpha = alpha
+      lastBeta = beta
+      lastGamma = gamma
+      addToLog(`alpha ${alpha}; beta ${beta}; gamma ${gamma};`)
 
       socket.emit('gyro', { alpha, beta, gamma })
-
-      debug.innerHTML = `
-        alpha (z, -360 to 360): ${alpha}<br>
-        beta (x, -180 to 180): ${beta}<br>
-        gamma (y, -90 to 90): ${gamma}
-      `
     }
+
+    function render () {
+      requestAnimationFrame(render)
+      ctx.fillStyle = 'black'
+      ctx.fillRect(0, 0, window.innerWidth, window.innerHeight)
+      ctx.fillStyle = 'white'
+      ctx.font = '10px TeenyTinyPixls'
+      for (let i = 0; i < window.innerHeight / 12; ++i) {
+        const message = log[log.length - i - 1]
+        if (message == null) break;
+        ctx.fillText(message, 0, i * 12 - 2)
+      }
+
+      let x = Math.floor(window.innerWidth / 2)
+      let y = Math.floor(window.innerHeight / 2)
+      ctx.fillRect(x, 0, 2, window.innerHeight) 
+      ctx.fillRect(0, y, window.innerWidth, 2) 
+
+      ctx.fillStyle = 'magenta'
+      ctx.beginPath()
+      ctx.arc(
+        (lastGamma/90 + 1)/2 * window.innerWidth,
+        (lastBeta/90 * -1 + 1)/2 * window.innerHeight,
+        56/2,
+        0,
+        2 * Math.PI
+      )
+      ctx.closePath()
+      ctx.fill()
+    }
+    render()
   </script>
 </body>
