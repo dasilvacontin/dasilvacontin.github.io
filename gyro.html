@@ -98,7 +98,7 @@
       ctx.fillRect(0, 0, window.innerWidth, window.innerHeight)
       ctx.fillStyle = 'white'
       ctx.font = '10px TeenyTinyPixls'
-      for (let i = 0; i < window.innerHeight / 12; ++i) {
+      for (let i = 0; i < window.innerHeight / 12 + 1; ++i) {
         const message = log[log.length - i - 1]
         if (message == null) break;
         ctx.fillText(message, 0, i * 12 - 2)
