@@ -13,49 +13,72 @@ layout: default
         src: url(fonts/NeueMachina-Ultrabold.otf);
         font-weight: bold;
     }
+    :root {
+        --background-color: #EEF8FF;
+        --primary-color: #223F8B;
+        --accent-color: #A4F7FA;
+    }
 
     html, body {
         margin: 0;
         padding: 0;
-        width: 100%;
-        height: 100%;
-        overflow: hidden;
 
         font-family: 'Neue Machina', sans-serif;
         letter-spacing: -0.06em;
-        align-items: center;
-        color: #2D3959;
+        color: var(--primary-color);
+        background: var(--background-color);
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
     }
-    p {
-        letter-spacing: -0.04em;
+
+    body, nav {
+        padding: 0 40px;
     }
+
+    .wrapper {
+        max-width: 1360px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
     nav {
-        letter-spacing: -0.03em;
-    }
-
-    body {
-        padding: 0 5vw;
-    }
-
-    body, .wrapper {
         display: flex;
-        flex-direction: column;
-        justify-content: center;
+        justify-content: space-between;
+        height: 69px;
+        border-bottom: 1px solid #E1EDF8;
+        background: var(--background-color);
+    }
+    nav div {
+        display: flex;
         align-items: center;
-        justify-content: center;
-        box-sizing: border-box;
+        gap: 40px;
+    }
+    nav a:visited {
+        color: var(--primary-color);
     }
 
-    #background {
-        position: fixed;
-        z-index: -3;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: #FFFAEB;
+    p {
+        font-size: 64px;
+        letter-spacing: -0.04em;
+        line-height: 115%;
+    }
+    .wrapper p {
+        margin: 276px 0;
+    }
+    p small {
+        font-size: 16px;
+        letter-spacing: 0;
+    }
+
+    a {
+        text-decoration: underline;
+        color: var(--primary-color);
+    }
+    a:hover, a:focus {
+        color: var(--accent-color);
+    }
+    nav a {
+        text-decoration: none;
     }
 
     #desktop-nav {
@@ -63,7 +86,6 @@ layout: default
         top: 0;
         left: 0;
         right: 0;
-
     }
     #mobile-top-nav {
         top: 0;
@@ -84,37 +106,6 @@ layout: default
         justify-content: space-between;
         align-items: center;
     }
-    nav a {
-        text-decoration: none;
-        color: #5D657B;
-    }
-    a:active, a:hover, a:focus {
-        color: inherit;
-        font-weight: normal;
-    }
-
-    h1 {
-        color: #223F8B;
-        font-size: 11.8vw;
-        padding: 22.7vw 0;
-        margin: 0;
-        margin-bottom: 8.6vw;
-        opacity: 0;
-    }
-    h1:hover {
-        cursor: grab;
-    }
-    body.image-being-held, body.image-being-held * {
-        cursor: grabbing !important;
-    }
-
-    p {
-        color: #5B6479;
-        font-size: 4.6vw;
-        line-height: 165%;
-        margin: 0;
-        padding-bottom: 5.6vw;
-    }
 
     @media only screen and (max-width: 830px) {
         /* mobile / tablet */
@@ -125,33 +116,9 @@ layout: default
 
     @media only screen and (min-width: 500px) and (max-width: 830px) {
         /* limit mobile/tablet growth */
-        body {
-            padding: 0 25px;
-        }
-
         #mobile-top-nav, #mobile-bottom-nav {
             height: 75px;
             padding: 0 25px;
-        }
-
-        nav a {
-            font-size: 20px;
-        }
-
-        h1 {
-            line-height: 300px;
-            margin-bottom: 42px;
-            padding: 0;
-        }
-
-        p {
-            font-size: 21px;
-            max-width: 460px;
-            margin: 0 auto;
-        }
-
-        h1 {
-            font-size: 59px;
         }
     }
 
@@ -160,56 +127,6 @@ layout: default
         #mobile-top-nav, #mobile-bottom-nav {
             display: none;
         }
-
-        body {
-            padding: 0;
-        }
-
-        .wrapper {
-            box-sizing: border-box;
-            padding: 0 32px;
-            padding-top: 106px;
-            width: 100%;
-            max-width: calc(1100px + 2*32px);
-        }
-
-        h1 {
-            font-size: 104px;
-            line-height: 427px;
-            margin: 0;
-            padding: 0;
-            margin-bottom: 40px;
-        }
-
-        p {
-            font-size: 21px;
-            text-align: center;
-        }
-
-        nav {
-            font-size: 17px;
-            display: flex;
-            justify-content: space-between;
-            height: 72px;
-            align-items: center;
-            padding: 0 32px;
-        }
-        nav div {
-            display: flex;
-        }
-        nav div:nth-child(2) a {
-            margin-left: 32px;
-        }
-    }
-
-    body {
-    -webkit-touch-callout: none; /* iOS Safari */
-        -webkit-user-select: none; /* Safari */
-        -khtml-user-select: none; /* Konqueror HTML */
-        -moz-user-select: none; /* Old versions of Firefox */
-            -ms-user-select: none; /* Internet Explorer/Edge */
-                user-select: none; /* Non-prefixed version, currently
-                                    supported by Chrome, Edge, Opera and Firefox */
     }
 
     .link-preview {
@@ -240,30 +157,28 @@ layout: default
  │ ├─┤├┤   ├─┤ │ ││││  
  ┴ ┴ ┴└─┘  ┴ ┴ ┴ ┴ ┴┴─┘
 -->
-<div id="background"></div>
-
 <div class="wrapper">
-    <h1 class="noselect">David&nbsp;da&nbsp;Silva</h1>
+    <p><b>David da Silva</b> counters climate change at <a href="https://emitwise.com/">Emitwise</a>, where he accelerates the journey of businesses’ towards <a href="">carbon net zero</a>. A Product Designer with a background in Computer Science, his designs riff on AI and ML, delivering magical innovation.</p>
 
     <p>
         8 years designing and building products
     </p>
 
     <nav id="mobile-top-nav">
-        <a href="" alt="dasilvacontin">dasilvacontin</a>
+        <a href="" alt="dasilvacontin"><b>dasilvacontin</b></a>
         <a href="https://dasilvacont.in/artpluscode/" alt="art+code" data-preview="art">art+code</a>
     </nav>
     <nav id="mobile-bottom-nav">
-        <a href="https://www.dropbox.com/s/4l1o5idaf0jv69x/David-dasilvacontin-resume-2020.pdf?dl=0" alt="résumé" data-preview="resume">résume</a>
-        <a href="https://www.dropbox.com/s/tzoo11z6eqz4cxa/david-dasilvacontin-portfolio.pdf?dl=0" alt="portfolio" data-preview="portfolio">portfolio</a>
-        <a href="https://www.linkedin.com/in/dasilvacontin/" alt="linkedin">linkedin</a>
+        <a href="" alt="portfolio" data-preview="portfolio">blog</a>
+        <a href="https://www.linkedin.com/in/dasilvacontin/" alt="linkedin">twitter</a>
         <a href="mailto:dasilvacontin@gmail.com" alt="send me an email">email</a>
     </nav>
 
     <nav id="desktop-nav">
-        <div>
-            <a href="" alt="dasilvacontin">dasilvacontin</a>
-        </div>
+        <div class="wrapper" style="width: 100%">
+            <div>
+                <a href="" alt="dasilvacontin"><b>dasilvacontin</b></a>
+            </div>
 
         <div>
             <a href="/artpluscode/" alt="art+code" data-preview="art">art+code</a>
@@ -339,12 +254,8 @@ layout: default
         canvas.width = iWidth * dpx
         canvas.height = iHeight * dpx
 
-        document.body.parentElement.style.width =
-        document.body.style.width =
         canvas.style.width = iWidth + 'px'
 
-        document.body.parentElement.style.height =
-        document.body.style.height =
         canvas.style.height = iHeight + 'px'
         ctx.scale(devicePixelRatio, devicePixelRatio)
         doImagePaint = true

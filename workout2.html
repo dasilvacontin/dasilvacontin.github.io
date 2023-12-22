@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workout App</title>
+
+    <style>
+        script {
+            display: block;
+            white-space: pre;
+            background: #ffde00;
+            max-width: 700px;
+            padding: 24px;
+        }
+    </style>
+</head>
+<body>
+<script>const EXERCISE_DURATION = 80 * 1000
+const REST_DURATION = 4 * 1000
+
+let exercise_i = -1
+let exercises = [
+    'Exercise 1: lay on your back and breathe',
+    'Exercise 2: push your knees',
+    'Exercise 3: keep your buttom up',
+    'Exercise 4: foot on your knee, and push towards you',
+    'Exercise 5: laying on your back, elastic band on your feet',
+    'Exercise 6: laying on your left side, elastic band on your feet',
+    'Exercise 6: laying on your right side, elastic band on your feet',
+    'Exercise 7: push your knees towards you and rock like a baby',
+    'Exercise 8: push your right knee towards you and extend your leg',
+    'Exercise 8: push your left knee towards you and extend your leg',
+    'Exercise 9: cat & cow',
+    'Exercise 10: pray',
+    'Exercise 11: downward dog',
+    'Exercise 12: sit with your back on the wall'
+]
+.map(e => new SpeechSynthesisUtterance(e))
+
+function nextExercise () {
+    console.log('nextExercise')
+    exercise_i += 1
+    speechSynthesis.speak(exercises[exercise_i % exercises.length])
+    setTimeout(nextExercise, EXERCISE_DURATION)
+}
+
+function rest () {
+    console.log('rest')
+    speechSynthesis.speak(new SpeechSynthesisUtterance('Rest'))
+    setTimeout(nextExercise, REST_DURATION)
+}</script> 
+
+<p>Use to console to modify variables and execute `nextExercise()` to start.</p>
+
+<button onclick="nextExercise()">Start workout</button>
+</body>
+</html>
