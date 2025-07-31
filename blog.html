@@ -1,0 +1,297 @@
+---
+layout: default
+title: Blog
+---
+
+<style>
+    @font-face {
+        font-family: 'Neue Machina';
+        src: url(fonts/NeueMachina-Regular.otf);
+        font-weight: normal;
+    }
+    @font-face {
+        font-family: 'Neue Machina';
+        src: url(fonts/NeueMachina-Ultrabold.otf);
+        font-weight: bold;
+    }
+    :root {
+        --background-color: #EEF8FF;
+        --primary-color: #223F8B;
+        --accent-color: #A4F7FA;
+    }
+
+    html, body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Neue Machina', sans-serif;
+        letter-spacing: -0.06em;
+        color: var(--primary-color);
+        background: var(--background-color);
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    body, nav {
+        padding: 0 40px;
+    }
+
+    nav {
+        display: flex;
+        justify-content: space-between;
+        height: 69px;
+        border-bottom: 1px solid #E1EDF8;
+        background: var(--background-color);
+    }
+    nav div {
+        display: flex;
+        align-items: center;
+        gap: 40px;
+    }
+    nav a:visited {
+        color: var(--primary-color);
+    }
+
+    a {
+        text-decoration: underline;
+        color: var(--primary-color);
+    }
+    a:hover, a:focus {
+        color: var(--accent-color);
+    }
+    nav a {
+        text-decoration: none;
+    }
+
+    #desktop-nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        background: var(--background-color);
+    }
+    #mobile-top-nav {
+        top: 0;
+    }
+    #mobile-bottom-nav {
+        bottom: 0;
+    }
+    #mobile-top-nav, #mobile-bottom-nav {
+        position: fixed;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+
+        padding: 0 5vw;
+        height: 15vw;
+
+        font-size: 4.06vw;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: var(--background-color);
+    }
+
+    @media only screen and (max-width: 830px) {
+        /* mobile / tablet */
+        #desktop-nav {
+            display: none;
+        }
+    }
+
+    @media only screen and (min-width: 500px) and (max-width: 830px) {
+        /* limit mobile/tablet growth */
+        #mobile-top-nav, #mobile-bottom-nav {
+            height: 75px;
+            padding: 0 25px;
+        }
+    }
+
+    @media only screen and (min-width: 831px) {
+        /* desktop */
+        #mobile-top-nav, #mobile-bottom-nav {
+            display: none;
+        }
+    }
+
+    .blog-wrapper {
+        max-width: 1420px;
+        margin-left: auto;
+        margin-right: auto;
+        padding-top: 100px;
+        padding-bottom: 60px;
+    }
+
+    .blog-header {
+        margin-bottom: 80px;
+    }
+
+    .blog-title {
+        font-size: 64px;
+        letter-spacing: -0.04em;
+        line-height: 115%;
+        margin: 0 0 20px 0;
+        font-weight: bold;
+    }
+
+    .blog-subtitle {
+        font-size: 24px;
+        letter-spacing: -0.02em;
+        line-height: 130%;
+        margin: 0;
+        color: #666;
+    }
+
+    .blog-posts {
+        display: flex;
+        flex-direction: column;
+        gap: 60px;
+    }
+
+    .blog-post {
+        border-bottom: 1px solid #E1EDF8;
+        padding-bottom: 60px;
+    }
+
+    .blog-post:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+    }
+
+    .post-date {
+        font-size: 16px;
+        color: #666;
+        margin-bottom: 20px;
+        letter-spacing: 0;
+    }
+
+    .post-title {
+        font-size: 36px;
+        letter-spacing: -0.03em;
+        line-height: 120%;
+        margin: 0 0 20px 0;
+        font-weight: bold;
+    }
+
+    .post-title a {
+        color: var(--primary-color);
+        text-decoration: none;
+        transition: color 0.2s ease;
+    }
+
+    .post-title a:hover {
+        color: var(--accent-color);
+    }
+
+    .post-excerpt {
+        font-size: 20px;
+        letter-spacing: -0.01em;
+        line-height: 140%;
+        color: #555;
+        margin: 0;
+    }
+
+    .back-link {
+        font-size: 18px;
+        margin-bottom: 40px;
+        display: inline-block;
+        color: var(--primary-color);
+        text-decoration: none;
+        transition: color 0.2s ease;
+    }
+
+    .back-link:hover {
+        color: var(--accent-color);
+    }
+
+    /* Mobile responsive */
+    @media only screen and (max-width: 830px) {
+        body, nav {
+            padding: 0 20px;
+        }
+        
+        .blog-wrapper {
+            padding-top: 80px;
+            padding-bottom: 40px;
+        }
+        
+        .blog-title {
+            font-size: 48px;
+        }
+        
+        .blog-subtitle {
+            font-size: 20px;
+        }
+        
+        .post-title {
+            font-size: 28px;
+        }
+        
+        .post-excerpt {
+            font-size: 18px;
+        }
+    }
+
+    @media only screen and (max-width: 500px) {
+        .blog-title {
+            font-size: 36px;
+        }
+        
+        .post-title {
+            font-size: 24px;
+        }
+        
+        .post-excerpt {
+            font-size: 16px;
+        }
+    }
+    </style>
+
+    <nav id="mobile-top-nav">
+        <a href="/" alt="dasilvacontin"><b>dasilvacontin</b></a>
+        <a href="/artpluscode/" alt="art+code" data-preview="art">art+code</a>
+    </nav>
+    <nav id="mobile-bottom-nav">
+        <a href="/blog.html" alt="blog">blog</a>
+        <a href="https://www.linkedin.com/in/dasilvacontin/" alt="linkedin">twitter</a>
+        <a href="mailto:dasilvacontin@gmail.com" alt="send me an email">email</a>
+    </nav>
+
+    <nav id="desktop-nav">
+        <div style="width: 100%; max-width: 1420px; margin-left: auto; margin-right: auto; display: flex; justify-content: space-between; align-items: center;">
+            <div>
+                <a href="/" alt="dasilvacontin"><b>dasilvacontin</b></a>
+            </div>
+
+        <div>
+            <a href="/blog.html" alt="blog">blog</a>
+            <a href="/artpluscode/" data-preview="art" alt="art+code">art+code</a>
+            <a href="/list-of-games.html" alt="games">games</a>
+            <a href="https://twitter.com/dasilvacontin" alt="twitter">twitter</a>
+            <a href="https://www.linkedin.com/in/dasilvacontin/" alt="linkedin">linkedin</a>
+            <a href="mailto:dasilvacontin@gmail.com" alt="send me an email">email</a>
+        </div>
+    </nav>
+    
+    <div class="blog-wrapper">
+    <a href="/" class="back-link">← Back to home</a>
+    
+    <div class="blog-header">
+        <h1 class="blog-title">Blog</h1>
+        <p class="blog-subtitle">Thoughts on design, technology, and building products that matter.</p>
+    </div>
+    
+    <div class="blog-posts">
+        {% for post in site.posts %}
+        <article class="blog-post">
+            <div class="post-date">{{ post.date | date: "%B %d, %Y" }}</div>
+            <h2 class="post-title">
+                <a href="{{ post.url }}">{{ post.title }}</a>
+            </h2>
+            <div class="post-excerpt">
+                {{ post.excerpt | strip_html | truncatewords: 40 }}
+            </div>
+        </article>
+        {% endfor %}
+    </div>
+</div> 
