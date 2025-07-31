@@ -1,13 +1,27 @@
 # Site settings
-title: David da Silva Contín – Product Designer and UX Strategist based in London
+title: David da Silva Contín – Technical Product Designer with expertise in AI and Scope 3 Decarbonisation
 email: dasilvacontin@gmail.com
 description: > # this means to ignore newlines until "baseurl:"
   I've discovered and exploited opportunities for clients like ITGallery, conducted research for the likes of the3million and Improbable, and helped companies like Toggl reduce their costs in over £50,000 per year.
 baseurl: "" # the subpath of your site, e.g. /blog/
-url: "http://dasilvacont.in" # the base hostname & protocol for your site
+url: "https://dasilvacontin.github.io" # the base hostname & protocol for your site
 twitter_username: dasilvacontin
-github_username:  dasilvacontin
+github_username: dasilvacontin
 
 # Build settings
 permalink: /blog/:year/:month/:day/:title
 markdown: kramdown
+
+# GitHub Pages settings
+plugins:
+  - jekyll-feed
+
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
