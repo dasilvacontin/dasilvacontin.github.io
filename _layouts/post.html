@@ -3,78 +3,341 @@
 
 {% include head.html %}
 
-<body class="page-post">
-
-  <!-- <img src="/images/blog.png" style="position: fixed; top: 0; left: -350px; opacity: 0.1; z-index: -1;" /> -->
-
-  <div class="wallpaper">
-  <a class="go-home-bar" href="/">&lt; &lt; &lt; back to dasilvacontin's home &lt; &lt; &lt;</a>
-
-  <div class="container">
-    <small>
-      <img class="avatar" src="/images/avatar.jpg">
-      <p>デイビッド</p>
-    </small>
-
-    <div class="post">
-      <header class="post-header">
-        <h1 class="post-title">{{ page.title }}</h1>
-        <p class="post-meta">{{ page.date | date: "%B %-d, %Y" }}</p>
-        <p class="post-meta">{{ page.reading-time }} min. reading time</p>
-      </header>
-
-      <article class="post-content">
-        {{ content }}
-      </article>
-    </div>
-
-    <div>
-      <!-- Go to www.addthis.com/dashboard to customize your tools -->
-      <!-- <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5b7595602155b131"></script> -->
-      <!-- AddToAny BEGIN 
-      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
-        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
-        <a class="a2a_button_facebook"></a>
-        <a class="a2a_button_twitter"></a>
-        <a class="a2a_button_linkedin"></a>
-        <a class="a2a_button_telegram"></a>
-      </div>
-      <script async src="https://static.addtoany.com/menu/page.js"></script>
-      <!-- AddToAny END -->
-    </div>
-  </div>
-
-  {% include author-about.html %}
-
-  {% include footer.html %}
-
-  </div><!-- wallpaper -->
-  <script>
-    const f = Math.floor
-    const backHeader = document.getElementsByClassName('go-home-bar')[0]
-    const pulledColor = [0,255,255]//[91, 197, 253]//[59, 209, 253]//[0, 0, 255]
-    const dasilvaMagenta = [122, 45, 255] 
-
-    function updateHeaderColor () {
-      requestAnimationFrame(updateHeaderColor)
-
-      const factor = Math.min(
-        1,
-        Math.max(0, -document.body.scrollTop) / (window.innerHeight*3/4)
-      )
-
-      const colorArray = [0,0,0].map((_, i) =>
-        (pulledColor[i] - dasilvaMagenta[i]) * factor + dasilvaMagenta[i]
-      )
-
-      const color = `rgb(${f(colorArray[0])}, ${f(colorArray[1])}, ${f(colorArray[2])})`
-
-      document.body.style.background = color
-      backHeader.style.background = color
+<style>
+    @font-face {
+        font-family: 'Neue Machina';
+        src: url(fonts/NeueMachina-Regular.otf);
+        font-weight: normal;
     }
-    requestAnimationFrame(updateHeaderColor)
+    @font-face {
+        font-family: 'Neue Machina';
+        src: url(fonts/NeueMachina-Ultrabold.otf);
+        font-weight: bold;
+    }
+    :root {
+        --background-color: #EEF8FF;
+        --primary-color: #223F8B;
+        --accent-color: #A4F7FA;
+    }
 
-  </script>
+    html, body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Neue Machina', sans-serif;
+        letter-spacing: -0.06em;
+        color: var(--primary-color);
+        background: var(--background-color);
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    body, nav {
+        padding: 0 40px;
+    }
+
+    nav {
+        display: flex;
+        justify-content: space-between;
+        height: 69px;
+        border-bottom: 1px solid #E1EDF8;
+        background: var(--background-color);
+    }
+    nav div {
+        display: flex;
+        align-items: center;
+        gap: 40px;
+    }
+    nav a:visited {
+        color: var(--primary-color);
+    }
+
+    a {
+        text-decoration: underline;
+        color: var(--primary-color);
+    }
+    a:hover, a:focus {
+        color: var(--accent-color);
+    }
+    nav a {
+        text-decoration: none;
+    }
+
+    #desktop-nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        background: var(--background-color);
+    }
+    #mobile-top-nav {
+        top: 0;
+    }
+    #mobile-bottom-nav {
+        bottom: 0;
+    }
+    #mobile-top-nav, #mobile-bottom-nav {
+        position: fixed;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+
+        padding: 0 5vw;
+        height: 15vw;
+
+        font-size: 4.06vw;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: var(--background-color);
+    }
+
+    @media only screen and (max-width: 830px) {
+        /* mobile / tablet */
+        #desktop-nav {
+            display: none;
+        }
+    }
+
+    @media only screen and (min-width: 500px) and (max-width: 830px) {
+        /* limit mobile/tablet growth */
+        #mobile-top-nav, #mobile-bottom-nav {
+            height: 75px;
+            padding: 0 25px;
+        }
+    }
+
+    @media only screen and (min-width: 831px) {
+        /* desktop */
+        #mobile-top-nav, #mobile-bottom-nav {
+            display: none;
+        }
+    }
+
+    .post-wrapper {
+        max-width: 1420px;
+        margin-left: auto;
+        margin-right: auto;
+        padding-top: 100px;
+        padding-bottom: 60px;
+    }
+
+    .back-link {
+        font-size: 18px;
+        margin-bottom: 40px;
+        display: inline-block;
+        color: var(--primary-color);
+        text-decoration: none;
+        transition: color 0.2s ease;
+    }
+
+    .back-link:hover {
+        color: var(--accent-color);
+    }
+
+    .post-header {
+        margin-bottom: 60px;
+    }
+
+    .post-title {
+        font-size: 64px;
+        letter-spacing: -0.04em;
+        line-height: 115%;
+        margin: 0 0 20px 0;
+        font-weight: bold;
+    }
+
+    .post-meta {
+        font-size: 18px;
+        color: #666;
+        margin: 0 0 10px 0;
+        letter-spacing: 0;
+    }
+
+    .post-content {
+        font-size: 20px;
+        letter-spacing: -0.01em;
+        line-height: 160%;
+        color: var(--primary-color);
+    }
+
+    .post-content p {
+        margin: 0 0 30px 0;
+    }
+
+    .post-content h1, .post-content h2, .post-content h3, .post-content h4, .post-content h5, .post-content h6 {
+        font-weight: bold;
+        margin: 40px 0 20px 0;
+        letter-spacing: -0.02em;
+    }
+
+    .post-content h1 {
+        font-size: 36px;
+        line-height: 120%;
+    }
+
+    .post-content h2 {
+        font-size: 28px;
+        line-height: 125%;
+    }
+
+    .post-content h3 {
+        font-size: 24px;
+        line-height: 130%;
+    }
+
+    .post-content ul, .post-content ol {
+        margin: 20px 0;
+        padding-left: 30px;
+    }
+
+    .post-content li {
+        margin-bottom: 10px;
+    }
+
+    .post-content blockquote {
+        border-left: 3px solid var(--accent-color);
+        padding-left: 20px;
+        margin: 30px 0;
+        font-style: italic;
+        color: #666;
+    }
+
+    .post-content code {
+        background: #f0f0f0;
+        padding: 2px 6px;
+        border-radius: 3px;
+        font-family: 'Monaco', 'Menlo', monospace;
+        font-size: 16px;
+    }
+
+    .post-content pre {
+        background: #f0f0f0;
+        padding: 20px;
+        border-radius: 5px;
+        overflow-x: auto;
+        margin: 30px 0;
+    }
+
+    .post-content pre code {
+        background: none;
+        padding: 0;
+    }
+
+    .post-content a {
+        color: var(--primary-color);
+        text-decoration: underline;
+        transition: color 0.2s ease;
+    }
+
+    .post-content a:hover {
+        color: var(--accent-color);
+    }
+
+    .post-content strong {
+        font-weight: bold;
+    }
+
+    .post-content em {
+        font-style: italic;
+    }
+
+    /* Mobile responsive */
+    @media only screen and (max-width: 830px) {
+        body, nav {
+            padding: 0 20px;
+        }
+        
+        .post-wrapper {
+            padding-top: 80px;
+            padding-bottom: 40px;
+        }
+        
+        .post-title {
+            font-size: 48px;
+        }
+        
+        .post-content {
+            font-size: 18px;
+        }
+        
+        .post-content h1 {
+            font-size: 32px;
+        }
+        
+        .post-content h2 {
+            font-size: 26px;
+        }
+        
+        .post-content h3 {
+            font-size: 22px;
+        }
+    }
+
+    @media only screen and (max-width: 500px) {
+        .post-title {
+            font-size: 36px;
+        }
+        
+        .post-content {
+            font-size: 16px;
+        }
+        
+        .post-content h1 {
+            font-size: 28px;
+        }
+        
+        .post-content h2 {
+            font-size: 24px;
+        }
+        
+        .post-content h3 {
+            font-size: 20px;
+        }
+    }
+    </style>
+
+<body class="page-post">
+    <nav id="mobile-top-nav">
+        <a href="/" alt="dasilvacontin"><b>dasilvacontin</b></a>
+        <a href="/artpluscode/" alt="art+code" data-preview="art">art+code</a>
+    </nav>
+    <nav id="mobile-bottom-nav">
+        <a href="/blog.html" alt="blog">blog</a>
+        <a href="https://www.linkedin.com/in/dasilvacontin/" alt="linkedin">twitter</a>
+        <a href="mailto:dasilvacontin@gmail.com" alt="send me an email">email</a>
+    </nav>
+
+    <nav id="desktop-nav">
+        <div style="width: 100%; max-width: 1420px; margin-left: auto; margin-right: auto; display: flex; justify-content: space-between; align-items: center;">
+            <div>
+                <a href="/" alt="dasilvacontin"><b>dasilvacontin</b></a>
+            </div>
+
+        <div>
+            <a href="/blog.html" alt="blog">blog</a>
+            <a href="/artpluscode/" data-preview="art" alt="art+code">art+code</a>
+            <a href="/list-of-games.html" alt="games">games</a>
+            <a href="https://twitter.com/dasilvacontin" alt="twitter">twitter</a>
+            <a href="https://www.linkedin.com/in/dasilvacontin/" alt="linkedin">linkedin</a>
+            <a href="mailto:dasilvacontin@gmail.com" alt="send me an email">email</a>
+        </div>
+    </nav>
+    <div class="post-wrapper">
+        <a href="/blog.html" class="back-link">← Back to blog</a>
+        
+        <header class="post-header">
+            <h1 class="post-title">{{ page.title }}</h1>
+            <p class="post-meta">{{ page.date | date: "%B %d, %Y" }}</p>
+            {% if page.reading-time %}
+            <p class="post-meta">{{ page.reading-time }} min read</p>
+            {% endif %}
+        </header>
+
+        <article class="post-content">
+            {{ content }}
+        </article>
+    </div>
 </body>
 
 </html>
