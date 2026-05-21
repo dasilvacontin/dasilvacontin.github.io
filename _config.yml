@@ -18,6 +18,7 @@ plugins:
 
 # Exclude from processing
 exclude:
+  - .cursor
   - Gemfile
   - Gemfile.lock
   - node_modules

@@ -111,9 +111,12 @@
     var style = document.createElement('style');
     style.id = 'custom-cursor';
     style.textContent =
-      '@media (hover: hover) and (pointer: fine) { html, html *:not(#sticky-note):not(.sticky-note) { cursor: ' +
+      '@media (hover: hover) and (pointer: fine) {' +
+      'html, html *:not(#sticky-note):not(.sticky-note):not(.home-header-nav a) { cursor: ' +
       cursorValue +
-      ', auto; } }';
+      ', auto; }' +
+      '.home-header-nav a { cursor: pointer; }' +
+      '}';
 
     document.head.appendChild(style);
   }

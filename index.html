@@ -3,6 +3,11 @@ layout: default
 ---
 
 <style>
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: calc(var(--size--32) + 72px);
+}
+
 html, body {
     margin: 0;
     padding: 0;
@@ -67,21 +72,28 @@ body {
     height: auto;
 }
 
-.home-header-links {
+.home-header-nav {
     display: flex;
+    align-items: center;
     gap: var(--size--16);
-    list-style: none;
-    margin: 0;
-    padding: 0;
+    flex-wrap: wrap;
+    justify-content: flex-end;
 }
 
-.home-header-links a {
-    color: contrast-color(var(--color--background));
-}
-
-.home-header-links a:hover {
+.home-header-nav a {
     color: var(--color--text-primary);
-    color: contrast-color(var(--color--accent));
+    text-decoration: none;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.home-header-nav a:hover {
+    color: var(--color--accent);
+}
+
+.hero,
+.profile-section {
+    scroll-margin-top: calc(var(--size--32) + 72px);
 }
 
 .home-signature {
@@ -109,7 +121,7 @@ body {
 
 .home-signature img {
     display: block;
-    width: 95px;
+    width: 100px;
     height: auto;
 }
 
@@ -218,6 +230,7 @@ body {
 >
 
 <script src="{{ '/js/home-nav.js' | prepend: site.baseurl }}?v=2"></script>
+<script src="{{ '/js/home-nav-contrast.js' | prepend: site.baseurl }}"></script>
 <script src="{{ '/js/sticky-note.js' | prepend: site.baseurl }}?v=6" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/dat.gui@0.7.9/build/dat.gui.min.js"></script>
 <script src="{{ '/js/home-gallery-gui.js' | prepend: site.baseurl }}"></script>

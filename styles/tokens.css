@@ -123,7 +123,7 @@
     --quote--body-paragraph-gap: var(--size--16);
     --quote--avatar-width: var(--size--72);
     --quote--avatar-height: calc(var(--size--56) + var(--size--32));
-    --quote--attribution-gap: var(--size--24);
+    --quote--attribution-gap: var(--size--16);
 
     /* Tag layout */
     --tag--padding-y: var(--size--4);
