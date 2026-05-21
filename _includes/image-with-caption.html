@@ -1,0 +1,11 @@
+<figure class="image-with-caption">
+    <img
+        class="image-with-caption__image home-gallery-image"
+        src="{{ include.src | prepend: site.baseurl }}"
+        alt="{{ include.alt }}"
+        width="{{ include.width }}"
+        height="{{ include.height }}"
+        loading="lazy"
+    >
+    <figcaption class="image-with-caption__caption">{{ include.caption }}</figcaption>
+</figure>

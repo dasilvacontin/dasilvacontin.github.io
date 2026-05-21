@@ -40,7 +40,8 @@ body {
 .home {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    column-gap: var(--size--32);
+    grid-template-rows: 100dvh auto;
+    column-gap: var(--size--56);
     row-gap: var(--size--48);
     padding-bottom: 50vh;
     align-items: start;
@@ -55,7 +56,12 @@ body {
     top: var(--size--32);
     left: 0;
     right: 0;
-    z-index: 100;
+    z-index: 1050;
+}
+
+.home-header.is-dev-guide-visible .home-header-inner {
+    position: relative;
+    z-index: 1;
 }
 
 .home-header-inner {
@@ -64,6 +70,11 @@ body {
     align-items: center;
 }
 
+
+.home-content,
+.home-gallery {
+    margin-top: calc(-1 * (var(--size--48) + 80px));
+}
 
 .home-content {
     grid-column: 1 / span 2;
@@ -78,14 +89,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: var(--size--32);
-    margin-top: var(--home-gallery-margin-top, 116px);
     min-width: 0;
-}
-
-.home-gallery-image {
-    display: block;
-    width: 100%;
-    height: auto;
 }
 
 .home-header-nav {
@@ -96,15 +100,33 @@ body {
     justify-content: flex-end;
 }
 
+.home-nav-dev-guide {
+    display: none;
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: var(--color--accent);
+    opacity: 0.55;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.home-header.is-dev-guide-visible .home-nav-dev-guide {
+    display: block;
+}
+
 .home-header-nav a {
-    color: var(--color--text-primary);
+    color: var(--color--text-secondary);
     text-decoration: none;
     white-space: nowrap;
     cursor: pointer;
 }
 
 .home-header-nav a:hover {
-    color: var(--color--accent);
+    color: var(--color--accent) !important;
+    text-decoration: underline;
+    text-underline-offset: 0.15em;
 }
 
 .hero,
@@ -119,6 +141,8 @@ body {
     opacity: 1;
     transition: opacity 0.25s ease;
     pointer-events: auto;
+    position: relative;
+    top: 1px;
 }
 
 .home-signature.is-hidden {
@@ -142,15 +166,33 @@ body {
 }
 
 .hero {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    column-gap: var(--size--56);
+    align-items: center;
+    height: 100%;
+    min-height: 0;
+    overflow: visible;
+    padding: 0;
+    box-sizing: border-box;
+    text-align: left;
+}
+
+.hero__copy {
+    grid-column: 1 / span 2;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
-    text-align: left;
     gap: var(--size--16);
-    min-height: 100dvh;
-    padding: 0;
-    box-sizing: border-box;
+    min-width: 0;
+}
+
+.hero__media {
+    grid-column: 3 / -1;
+    min-width: 0;
 }
 
 .hero .hero-title {
@@ -168,7 +210,7 @@ body {
 }
 
 .quote-block.quote-home-margins.quote-home-first {
-    margin-top: -140px;
+    margin-top: 0;
 }
 
 .sticky-note-anchor {
@@ -197,11 +239,26 @@ body {
     margin: 0;
     padding: 0;
     border: none;
-    pointer-events: auto;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.35s ease;
+    pointer-events: none;
     cursor: grab;
     touch-action: none;
     -webkit-user-drag: none;
     user-select: none;
+}
+
+.sticky-note.is-visible {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .sticky-note {
+        transition: none;
+    }
 }
 
 .sticky-note.is-dragging {
@@ -221,6 +278,18 @@ body {
         grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     }
 
+    .hero {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    }
+
+    .hero__copy {
+        grid-column: 1;
+    }
+
+    .hero__media {
+        grid-column: 2;
+    }
+
     .home-content {
         grid-column: 1;
     }
@@ -233,11 +302,29 @@ body {
 @media (max-width: 1024px) {
     .home {
         grid-template-columns: 1fr;
+        grid-template-rows: auto;
+    }
+
+    .hero {
+        grid-template-columns: 1fr;
+        height: auto;
+        padding-block: var(--size--48);
+        row-gap: var(--size--32);
+    }
+
+    .hero__copy,
+    .hero__media {
+        grid-column: 1 / -1;
     }
 
     .home-content,
     .home-gallery {
         grid-column: 1 / -1;
+    }
+
+    .home-content,
+    .home-gallery {
+        margin-top: 0;
     }
 }
 
@@ -266,6 +353,6 @@ body {
 
 <script src="{{ '/js/home-nav.js' | prepend: site.baseurl }}?v=2"></script>
 <script src="{{ '/js/home-nav-contrast.js' | prepend: site.baseurl }}"></script>
-<script src="{{ '/js/sticky-note.js' | prepend: site.baseurl }}?v=6" defer></script>
+<script src="{{ '/js/sticky-note.js' | prepend: site.baseurl }}?v=13" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/dat.gui@0.7.9/build/dat.gui.min.js"></script>
 <script src="{{ '/js/home-gallery-gui.js' | prepend: site.baseurl }}"></script>

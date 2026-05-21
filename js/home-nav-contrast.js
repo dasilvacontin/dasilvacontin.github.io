@@ -141,18 +141,46 @@
     return 1;
   }
 
+  function getSecondaryTextColor() {
+    return (
+      getComputedStyle(document.documentElement)
+        .getPropertyValue('--color--text-secondary')
+        .trim() || '#939393'
+    );
+  }
+
   function contrastColor(lum) {
-    return lum < LUMINANCE_THRESHOLD ? '#ffffff' : '#000000';
+    return lum < LUMINANCE_THRESHOLD ? '#ffffff' : getSecondaryTextColor();
+  }
+
+  function navBackdropLuminance() {
+    var links = document.querySelectorAll('.home-header-nav a');
+    var total = 0;
+    var count = 0;
+    var i;
+    var link;
+    var rect;
+    var x;
+    var y;
+
+    for (i = 0; i < links.length; i += 1) {
+      link = links[i];
+      rect = link.getBoundingClientRect();
+      x = rect.left + rect.width / 2;
+      y = rect.top + rect.height / 2;
+      total += backdropLuminanceAt(x, y);
+      count += 1;
+    }
+
+    return count ? total / count : 1;
   }
 
   function updateLinks() {
     var links = document.querySelectorAll('.home-header-nav a');
+    var color = contrastColor(navBackdropLuminance());
+
     links.forEach(function (link) {
-      var rect = link.getBoundingClientRect();
-      var x = rect.left + rect.width / 2;
-      var y = rect.top + rect.height / 2;
-      var lum = backdropLuminanceAt(x, y);
-      link.style.color = contrastColor(lum);
+      link.style.color = color;
     });
   }
 

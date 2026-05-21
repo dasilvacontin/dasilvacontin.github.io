@@ -9,6 +9,22 @@ export function createSectionFootnote(text) {
   return el;
 }
 
+function createTagList(tags) {
+  const tagList = document.createElement('span');
+  tagList.className = 'tag-list';
+  tagList.setAttribute('role', 'list');
+
+  tags.forEach(({ className, label }) => {
+    const tag = document.createElement('span');
+    tag.className = `tag ${className}`;
+    tag.setAttribute('role', 'listitem');
+    tag.textContent = label;
+    tagList.append(tag);
+  });
+
+  return tagList;
+}
+
 export function createEntry({ primary, leftMeta, rightMeta, tags = [] }) {
   const row = document.createElement('div');
   row.className = 'entry-row';
@@ -16,32 +32,27 @@ export function createEntry({ primary, leftMeta, rightMeta, tags = [] }) {
   const left = document.createElement('div');
   left.className = 'entry-left';
 
-  if (tags.length) {
-    const tagList = document.createElement('ul');
-    tagList.className = 'tag-list';
-    tags.forEach(({ className, label }) => {
-      const item = document.createElement('li');
-      const tag = document.createElement('span');
-      tag.className = `tag ${className}`;
-      tag.textContent = label;
-      item.append(tag);
-      tagList.append(item);
-    });
-    left.append(tagList);
-  }
-
   if (primary) {
     const primaryEl = document.createElement('span');
-    primaryEl.className = isSectionFootnoteText(primary) ? 'section-footnote' : 'entry';
-    primaryEl.textContent = primary;
-    left.append(primaryEl);
-  }
+    const isFootnote = isSectionFootnoteText(primary);
+    primaryEl.className = isFootnote ? 'section-footnote' : 'entry';
 
-  if (leftMeta) {
-    const leftMetaEl = document.createElement('span');
-    leftMetaEl.className = 'hero-context entry-metadata';
-    leftMetaEl.textContent = leftMeta;
-    left.append(leftMetaEl);
+    if (leftMeta && !isFootnote) {
+      primaryEl.append(document.createTextNode(`${primary} `));
+      const leftMetaEl = document.createElement('span');
+      leftMetaEl.className = 'hero-context entry-metadata';
+      leftMetaEl.textContent = leftMeta;
+      primaryEl.append(leftMetaEl);
+    } else {
+      primaryEl.textContent = primary;
+    }
+
+    if (tags.length && !isFootnote) {
+      primaryEl.append(document.createTextNode(' '));
+      primaryEl.append(createTagList(tags));
+    }
+
+    left.append(primaryEl);
   }
 
   if (rightMeta) {

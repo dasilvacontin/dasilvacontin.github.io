@@ -126,8 +126,8 @@
     --quote--attribution-gap: var(--size--16);
 
     /* Tag layout */
-    --tag--padding-y: var(--size--4);
-    --tag--padding-x: var(--size--12);
+    --tag--padding-y: var(--size--2);
+    --tag--padding-x: var(--size--8);
     --tag--border-radius: var(--size--40);
     --tag--gap: var(--size--4);
 

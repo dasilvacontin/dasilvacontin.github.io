@@ -8,32 +8,94 @@
     return;
   }
 
-  var defaultMarginTop = 116;
-  var marginTopStorageKey = 'home-gallery-margin-top';
+  var navGuideOffsetStorageKey = 'home-nav-guide-offset';
   var guiVisibleStorageKey = 'home-gallery-gui-visible';
 
-  var storedMarginTop = parseInt(localStorage.getItem(marginTopStorageKey), 10);
+  var storedNavGuideOffset = parseInt(
+    localStorage.getItem(navGuideOffsetStorageKey),
+    10
+  );
   var settings = {
-    marginTop: Number.isFinite(storedMarginTop) ? storedMarginTop : defaultMarginTop,
+    navGuideOffset: Number.isFinite(storedNavGuideOffset)
+      ? storedNavGuideOffset
+      : 0,
   };
 
-  function applyMarginTop(value) {
-    document.documentElement.style.setProperty(
-      '--home-gallery-margin-top',
-      value + 'px'
-    );
-    localStorage.setItem(marginTopStorageKey, String(value));
+  function getNavGuideLine() {
+    var header = document.querySelector('.home-header');
+    if (!header) {
+      return null;
+    }
+
+    var guide = header.querySelector('.home-nav-dev-guide');
+    if (!guide) {
+      guide = document.createElement('span');
+      guide.className = 'home-nav-dev-guide';
+      guide.setAttribute('aria-hidden', 'true');
+      header.appendChild(guide);
+    }
+
+    return guide;
   }
 
-  applyMarginTop(settings.marginTop);
+  function updateNavGuideLine() {
+    var header = document.querySelector('.home-header');
+    var nav = document.querySelector('.home-header-nav');
+    var guide = getNavGuideLine();
+    var links;
+    var headerRect;
+    var minTop = Infinity;
+    var maxBottom = -Infinity;
+    var i;
+    var rect;
+
+    if (!header || !nav || !guide) {
+      return;
+    }
+
+    links = nav.querySelectorAll('a');
+    if (!links.length) {
+      return;
+    }
+
+    headerRect = header.getBoundingClientRect();
+
+    for (i = 0; i < links.length; i += 1) {
+      rect = links[i].getBoundingClientRect();
+      minTop = Math.min(minTop, rect.top);
+      maxBottom = Math.max(maxBottom, rect.bottom);
+    }
+
+    guide.style.top =
+      (minTop + maxBottom) / 2 - headerRect.top + settings.navGuideOffset + 'px';
+    guide.style.transform = 'translateY(-50%)';
+  }
+
+  function setNavGuideVisible(visible) {
+    var header = document.querySelector('.home-header');
+
+    if (!header) {
+      return;
+    }
+
+    if (visible) {
+      header.classList.add('is-dev-guide-visible');
+      updateNavGuideLine();
+    } else {
+      header.classList.remove('is-dev-guide-visible');
+    }
+  }
 
   var gui = new dat.GUI({ name: 'Home layout' });
 
   gui
-    .add(settings, 'marginTop', 0, 800, 1)
-    .name('Gallery margin top')
+    .add(settings, 'navGuideOffset', -50, 50, 1)
+    .name('Nav guide offset Y')
     .onChange(function (value) {
-      applyMarginTop(value);
+      localStorage.setItem(navGuideOffsetStorageKey, String(value));
+      if (!guiHidden) {
+        updateNavGuideLine();
+      }
     });
 
   var guiHidden = localStorage.getItem(guiVisibleStorageKey) === 'false';
@@ -42,9 +104,22 @@
     gui.domElement.style.display = visible ? '' : 'none';
     guiHidden = !visible;
     localStorage.setItem(guiVisibleStorageKey, String(visible));
+    setNavGuideVisible(visible);
   }
 
   setGuiVisible(!guiHidden);
+
+  window.addEventListener('resize', function () {
+    if (!guiHidden) {
+      updateNavGuideLine();
+    }
+  });
+
+  window.addEventListener('load', function () {
+    if (!guiHidden) {
+      updateNavGuideLine();
+    }
+  });
 
   document.addEventListener('keydown', function (event) {
     if (event.key !== 'd' || event.metaKey || event.ctrlKey || event.altKey) {

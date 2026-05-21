@@ -35,28 +35,114 @@
     };
   }
 
-  function getBounds() {
+  function getRailOrigin() {
+    var rail = note.closest('.home-layout-rail');
+    var scroll = getPageOffset();
+
+    if (!rail) {
+      return { x: 0, y: scroll.y };
+    }
+
+    var rect = rail.getBoundingClientRect();
+    return {
+      x: rect.left + scroll.x,
+      y: rect.top + scroll.y,
+    };
+  }
+
+  function getNoteSize() {
     var rect = note.getBoundingClientRect();
-    var width = rect.width || NOTE_WIDTH;
-    var height = rect.height || Math.round((NOTE_WIDTH * 580) / 600);
+    return {
+      width: rect.width || NOTE_WIDTH,
+      height: rect.height || Math.round((NOTE_WIDTH * 580) / 600),
+    };
+  }
+
+  function hasSideBySideColumns() {
+    var gallery = document.querySelector('.home-gallery');
+    var content = document.querySelector('.home-content');
+
+    if (!gallery || !content) {
+      return false;
+    }
+
+    return (
+      gallery.getBoundingClientRect().left >=
+      content.getBoundingClientRect().right - 2
+    );
+  }
+
+  function getBounds() {
+    var size = getNoteSize();
     var page = getPageSize();
-    var maxX = Math.max(0, page.width - width);
-    var maxY = Math.max(0, page.height - height);
-    var minX = Math.min(Math.floor(page.width / 2), maxX);
+    var scroll = getPageOffset();
+    var maxX = Math.max(0, page.width - size.width);
+    var maxY = Math.max(0, page.height - size.height);
+    var minX = 0;
+    var boundsMaxX = maxX;
+
+    if (hasSideBySideColumns()) {
+      var gallery = document.querySelector('.home-gallery');
+      var galleryRect = gallery.getBoundingClientRect();
+      minX = galleryRect.left + scroll.x;
+      boundsMaxX = galleryRect.right + scroll.x - size.width;
+    } else {
+      minX = Math.min(Math.floor(page.width / 2), maxX);
+      boundsMaxX = maxX;
+    }
+
+    minX = Math.max(0, minX);
+    boundsMaxX = Math.min(maxX, Math.max(minX, boundsMaxX));
 
     return {
       minX: minX,
-      maxX: maxX,
+      maxX: boundsMaxX,
       minY: Math.min(MIN_TOP, maxY),
       maxY: maxY,
     };
   }
 
-  function setNotePosition(left, top) {
+  function getSpawnBounds() {
+    var bounds = getBounds();
+    var size = getNoteSize();
+    var scroll = getPageOffset();
+    var viewportHeight = window.innerHeight;
+    var minX = bounds.minX;
+    var maxX = bounds.maxX;
+    var foldTop = scroll.y + viewportHeight;
+    var maxSpawnY = scroll.y + 2 * viewportHeight - size.height;
+    var spawnMinY = foldTop;
+    var spawnMaxY = Math.min(bounds.maxY, maxSpawnY);
+
+    if (hasSideBySideColumns()) {
+      var gallery = document.querySelector('.home-gallery');
+      var galleryRect = gallery.getBoundingClientRect();
+      minX = Math.max(bounds.minX, galleryRect.left + scroll.x);
+      maxX = Math.min(bounds.maxX, galleryRect.right + scroll.x - size.width);
+      spawnMinY = Math.max(foldTop, galleryRect.top + scroll.y);
+      spawnMaxY = Math.min(
+        spawnMaxY,
+        galleryRect.bottom + scroll.y - size.height
+      );
+    }
+
+    spawnMaxY = Math.max(spawnMinY, spawnMaxY);
+
+    return {
+      minX: minX,
+      maxX: Math.max(minX, maxX),
+      minY: spawnMinY,
+      maxY: spawnMaxY,
+    };
+  }
+
+  function setNotePagePosition(pageLeft, pageTop) {
+    var origin = getRailOrigin();
+
     note.style.right = 'auto';
     note.style.bottom = 'auto';
-    note.style.left = left + 'px';
-    note.style.top = top + 'px';
+    note.style.left = pageLeft - origin.x + 'px';
+    note.style.top = pageTop - origin.y + 'px';
   }
 
   function getNotePagePosition() {
@@ -69,39 +155,36 @@
     };
   }
 
-  function getSpawnBounds() {
-    var bounds = getBounds();
-    var rect = note.getBoundingClientRect();
-    var height = rect.height || Math.round((NOTE_WIDTH * 580) / 600);
-    var scroll = getPageOffset();
-    var foldMaxY = scroll.y + window.innerHeight - height;
-    var spawnMinY = Math.max(bounds.minY, scroll.y + MIN_TOP);
-    var spawnMaxY = Math.min(bounds.maxY, foldMaxY);
-
-    return {
-      minX: bounds.minX,
-      maxX: bounds.maxX,
-      minY: Math.min(spawnMinY, spawnMaxY),
-      maxY: Math.max(spawnMinY, spawnMaxY),
-    };
-  }
-
   function placeRandomly() {
     var spawn = getSpawnBounds();
     var xRange = spawn.maxX - spawn.minX;
     var yRange = spawn.maxY - spawn.minY;
 
-    setNotePosition(
+    setNotePagePosition(
       Math.round(spawn.minX + Math.random() * xRange),
       Math.round(spawn.minY + Math.random() * yRange)
     );
+  }
+
+  function revealNote() {
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        note.classList.add('is-visible');
+      });
+    });
+  }
+
+  function placeAndReveal() {
+    note.classList.remove('is-visible');
+    placeRandomly();
+    revealNote();
   }
 
   function clampToPage() {
     var bounds = getBounds();
     var position = getNotePagePosition();
 
-    setNotePosition(
+    setNotePagePosition(
       clamp(position.left, bounds.minX, bounds.maxX),
       clamp(position.top, bounds.minY, bounds.maxY)
     );
@@ -111,7 +194,7 @@
     var bounds = getBounds();
     var scroll = getPageOffset();
 
-    setNotePosition(
+    setNotePagePosition(
       clamp(clientX - offsetX + scroll.x, bounds.minX, bounds.maxX),
       clamp(clientY - offsetY + scroll.y, bounds.minY, bounds.maxY)
     );
@@ -151,7 +234,7 @@
     offsetX = event.clientX + getPageOffset().x - position.left;
     offsetY = event.clientY + getPageOffset().y - position.top;
 
-    setNotePosition(position.left, position.top);
+    setNotePagePosition(position.left, position.top);
 
     document.addEventListener('pointermove', onMove);
     document.addEventListener('pointerup', onEnd);
@@ -161,5 +244,9 @@
   note.addEventListener('pointerdown', onStart);
   window.addEventListener('resize', clampToPage);
 
-  requestAnimationFrame(placeRandomly);
+  if (document.readyState === 'complete') {
+    placeAndReveal();
+  } else {
+    window.addEventListener('load', placeAndReveal, { once: true });
+  }
 })();

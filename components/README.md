@@ -27,13 +27,19 @@ Base class: `tag`. Color variants: `tag--gray`, `tag--brown`, `tag--yellow`, `ta
 
 Markup reference: [`components/entry/entry.html`](entry/entry.html). Preview in Storybook under **Components → Entry**.
 
-Layout: `entry-row` (flex, space-between), `entry-left`, `entry-right`. Content: `entry` (primary), `hero-context entry-metadata` (left/right meta), `tag` + entry tag variant inside `tag-list`. After a section list: `section-footnote` (secondary closing line, e.g. “Countless more”).
+Layout: `entry-row` (flex, space-between), `entry-left`, `entry-right`. Content: `entry` (primary; left meta and `tag-list` nested inside as inline spans), right meta in `entry-right`. Tags use `span.tag-list` + `span.tag` with list roles (valid inside `span.entry`). Standalone tag demos may still use `ul.tag-list`. After a section list: `section-footnote` (secondary closing line, e.g. “Countless more”).
 
 ### Profile section
 
 Markup reference: [`components/profile-section/profile-section.html`](profile-section/profile-section.html). Preview in Storybook under **Components → ProfileSection**.
 
 Wraps `section-title` + `profile-section-entries` (8px gap after title and between `entry-row` items).
+
+### Image with caption
+
+Markup reference: [`components/image-with-caption/image-with-caption.html`](image-with-caption/image-with-caption.html). Preview in Storybook under **Components → ImageWithCaption**.
+
+Gallery figure: `image-with-caption`, `image-with-caption__image` (+ `home-gallery-image` for nav contrast sampling), `image-with-caption__caption` (12px, secondary, sans). Jekyll: `{% include image-with-caption.html src='…' alt='…' caption='…' width='…' height='…' %}`.
 
 ### Text content
 

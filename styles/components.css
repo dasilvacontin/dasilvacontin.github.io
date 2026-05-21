@@ -49,6 +49,33 @@ a:hover {
     color: var(--color--photo-caption-text);
 }
 
+.image-with-caption {
+    display: flex;
+    flex-direction: column;
+    gap: var(--size--8);
+    margin: 0;
+    width: 100%;
+    min-width: 0;
+}
+
+.image-with-caption__image {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    height: auto;
+}
+
+.image-with-caption__caption {
+    margin: 0;
+    text-align: right;
+    font-family: var(--font-family);
+    font-size: var(--size--12);
+    font-weight: var(--text--body-font-weight);
+    line-height: var(--text--body-line-height);
+    color: var(--color--text-secondary);
+}
+
 .quote {
     font-family: var(--font-family);
     font-size: var(--text--quote-body-font-size);
@@ -79,12 +106,23 @@ a:hover {
 }
 
 .tag-list {
-    display: flex;
+    display: inline-flex;
     flex-wrap: wrap;
+    align-items: center;
     gap: var(--tag--gap);
     margin: 0;
     padding: 0;
     list-style: none;
+    vertical-align: baseline;
+}
+
+ul.tag-list {
+    display: flex;
+}
+
+ul.tag-list li {
+    display: inline-flex;
+    line-height: 1;
 }
 
 .tag--gray {
@@ -159,6 +197,14 @@ a:hover {
     color: var(--color--entry-metadata-text);
 }
 
+.entry .entry-metadata {
+    line-height: inherit;
+}
+
+.entry-right .entry-metadata {
+    line-height: var(--text--entry-line-height);
+}
+
 .section-footnote {
     font-family: var(--font-family);
     font-size: var(--text--section-footnote-font-size);
@@ -192,8 +238,7 @@ a:hover {
     flex-shrink: 0;
 }
 
-.entry-row .tag-list {
-    display: inline-flex;
+.entry .tag-list {
     margin-left: 4px;
     position: relative;
     top: 0.5px;

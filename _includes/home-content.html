@@ -1,19 +1,30 @@
-    <div class="home-content">
     <section class="hero" id="about-me">
-        <h1 class="hero-title">
-            <span class="visually-hidden">David da Silva Contín is a </span>
-            Highly-technical <span class="accent">Staff&nbsp;Product&nbsp;Designer</span><br>
-            Former <span class="accent">Software&nbsp;Engineer</span> &amp; <span class="accent">Open&nbsp;Source&nbsp;Maintainer</span>.<br>
-            5.5 years in complex <span class="accent">B2B</span>.
-        </h1>
-        <ul class="hero-context">
-            <li>Coding since 2011.</li>
-            <li>Prototyping in code since 2019.</li>
-            <li>Building AI agents since 2023 (pre-Agent-APIs).</li>
-            <li>Cursor advocate since 2024.</li>
-        </ul>
+        <div class="hero__copy">
+            <h1 class="hero-title">
+                <span class="visually-hidden">David da Silva Contín is a </span>
+                Highly-technical <span class="accent">Staff&nbsp;Product&nbsp;Designer</span>.<br>
+                Former <span class="accent">Software&nbsp;Engineer</span> &amp; <span class="accent">Open&nbsp;Source&nbsp;Maintainer</span>.<br>
+                5.5 years in complex <span class="accent">B2B</span>.
+            </h1>
+            <ul class="hero-context">
+                <li>Coding since 2011.</li>
+                <li>Prototyping in code since 2019.</li>
+                <li>Building AI agents since 2023 (before agent APIs).</li>
+                <li>Cursor advocate since 2024.</li>
+            </ul>
+        </div>
+        <div class="hero__media">
+            {% include image-with-caption.html
+                src='/images/gallery-brooklyn-product-design-talk@2x.png'
+                alt='Talk at Brooklyn Product Design on bridging design and production with Cursor prototyping and handover'
+                caption='Talk at Brooklyn Product Design on AI-powered workflows. 100+ PDs in the audience. 2025.'
+                width='1024'
+                height='568'
+            %}
+        </div>
     </section>
 
+    <div class="home-content">
     <figure class="quote-block quote-home-margins quote-home-first">
         <p class="quote-title">David is the most mission-driver designer I know.</p>
         <blockquote class="quote">
@@ -35,125 +46,85 @@
         <div class="profile-section-entries">
             <div class="entry-row">
                 <div class="entry-left">
-                    <span class="entry">Staff PD / Design Engineer</span>
-                    <span class="hero-context entry-metadata">@ Green Project</span>
-                    <ul class="tag-list">
-                        <li><span class="tag tag--b2b">B2B</span></li>
-                    </ul>
+                    <span class="entry">Staff PD / Design Engineer <span class="hero-context entry-metadata">@ Green Project</span> <span class="tag-list" role="list"><span class="tag tag--b2b" role="listitem">B2B</span></span></span>
                 </div>
                 <div class="entry-right"><span class="hero-context entry-metadata">2026-Present</span></div>
             </div>
             <div class="entry-row">
                 <div class="entry-left">
-                    <span class="entry">Senior PD / Design Engineer</span>
-                    <span class="hero-context entry-metadata">@ Green Project</span>
-                    <ul class="tag-list">
-                        <li><span class="tag tag--b2b">B2B</span></li>
-                    </ul>
+                    <span class="entry">Senior PD / Design Engineer <span class="hero-context entry-metadata">@ Green Project</span> <span class="tag-list" role="list"><span class="tag tag--b2b" role="listitem">B2B</span></span></span>
                 </div>
                 <div class="entry-right"><span class="hero-context entry-metadata">2025-2026</span></div>
             </div>
             <div class="entry-row">
                 <div class="entry-left">
-                    <span class="entry">Senior PD</span>
-                    <span class="hero-context entry-metadata">@ Emitwise </span>
-                    <ul class="tag-list">
-                        <li><span class="tag tag--b2b">B2B</span></li>
-                    </ul>
+                    <span class="entry">Senior PD <span class="hero-context entry-metadata">@ Emitwise </span> <span class="tag-list" role="list"><span class="tag tag--b2b" role="listitem">B2B</span></span></span>
                 </div>
                 <div class="entry-right"><span class="hero-context entry-metadata">2022-2025</span></div>
             </div>
             <div class="entry-row">
                 <div class="entry-left">
-                    <span class="entry">Product Designer</span>
-                    <span class="hero-context entry-metadata">@ Emitwise </span>
-                    <ul class="tag-list">
-                        <li><span class="tag tag--b2b">B2B</span></li>
-                    </ul>
+                    <span class="entry">Product Designer <span class="hero-context entry-metadata">@ Emitwise </span> <span class="tag-list" role="list"><span class="tag tag--b2b" role="listitem">B2B</span></span></span>
                 </div>
                 <div class="entry-right"><span class="hero-context entry-metadata">2021-2022</span></div>
             </div>
             <div class="entry-row">
                 <div class="entry-left">
-                    <span class="entry">Product Designer Consultant</span>
-                    <ul class="tag-list">
-                        <li><span class="tag tag--b2c">B2C</span></li>
-                    </ul>
+                    <span class="entry">Product Designer Consultant <span class="tag-list" role="list"><span class="tag tag--b2c" role="listitem">B2C</span></span></span>
                 </div>
                 <div class="entry-right"><span class="hero-context entry-metadata">2020</span></div>
             </div>
             <div class="entry-row">
                 <div class="entry-left">
-                    <span class="entry">Product Designer</span>
-                    <span class="hero-context entry-metadata">@ Sensa</span>
-                    <ul class="tag-list">
-                        <li><span class="tag tag--b2c">B2C</span></li>
-                    </ul>
+                    <span class="entry">Product Designer <span class="hero-context entry-metadata">@ Sensa</span> <span class="tag-list" role="list"><span class="tag tag--b2c" role="listitem">B2C</span></span></span>
                 </div>
                 <div class="entry-right"><span class="hero-context entry-metadata">2018-2020</span></div>
             </div>
             <div class="entry-row">
                 <div class="entry-left">
-                    <span class="entry">UX Researcher</span>
-                    <span class="hero-context entry-metadata">@ the3million</span>
+                    <span class="entry">UX Researcher <span class="hero-context entry-metadata">@ the3million</span></span>
                 </div>
                 <div class="entry-right"><span class="hero-context entry-metadata">2019</span></div>
             </div>
             <div class="entry-row">
                 <div class="entry-left">
-                    <span class="entry">Software Engineer</span>
-                    <span class="hero-context entry-metadata">@ Improbable</span>
-                    <ul class="tag-list">
-                        <li><span class="tag tag--b2b">B2B</span></li>
-                    </ul>
+                    <span class="entry">Software Engineer <span class="hero-context entry-metadata">@ Improbable</span> <span class="tag-list" role="list"><span class="tag tag--b2b" role="listitem">B2B</span></span></span>
                 </div>
                 <div class="entry-right"><span class="hero-context entry-metadata">2017</span></div>
             </div>
             <div class="entry-row">
                 <div class="entry-left">
-                    <span class="entry">Senior Front-end Engineer</span>
-                    <span class="hero-context entry-metadata">@ Toggl</span>
-                    <ul class="tag-list">
-                        <li><span class="tag tag--b2b">B2B</span></li>
-                    </ul>
+                    <span class="entry">Senior Front-end Engineer <span class="hero-context entry-metadata">@ Toggl</span> <span class="tag-list" role="list"><span class="tag tag--b2b" role="listitem">B2B</span></span></span>
                 </div>
                 <div class="entry-right"><span class="hero-context entry-metadata">2015-2016</span></div>
             </div>
             <div class="entry-row">
                 <div class="entry-left">
-                    <span class="entry">Software Engineer / Core OSS Maintainer</span>
-                    <span class="hero-context entry-metadata">@ Mocha.js</span>
+                    <span class="entry">Software Engineer / Core OSS Maintainer <span class="hero-context entry-metadata">@ Mocha.js</span></span>
                 </div>
                 <div class="entry-right"><span class="hero-context entry-metadata">2014-2015</span></div>
             </div>
             <div class="entry-row">
                 <div class="entry-left">
-                    <span class="entry">Design Director and Organiser</span>
-                    <span class="hero-context entry-metadata">@ HackUPC</span>
+                    <span class="entry">Design Director and Organiser <span class="hero-context entry-metadata">@ HackUPC</span></span>
                 </div>
                 <div class="entry-right"><span class="hero-context entry-metadata">201X-201Y</span></div>
             </div>
             <div class="entry-row">
                 <div class="entry-left">
-                    <span class="entry">Course Designer and Teacher</span>
-                    <span class="hero-context entry-metadata">@ VGAFIB</span>
+                    <span class="entry">Course Designer and Teacher <span class="hero-context entry-metadata">@ VGAFIB</span></span>
                 </div>
                 <div class="entry-right"><span class="hero-context entry-metadata">201X-201Y</span></div>
             </div>
             <div class="entry-row">
                 <div class="entry-left">
-                    <span class="entry">Lead iOS Developer</span>
-                    <span class="hero-context entry-metadata">@ Incubio</span>
-                    <ul class="tag-list">
-                        <li><span class="tag tag--b2c">B2C</span></li>
-                    </ul>
+                    <span class="entry">Lead iOS Developer <span class="hero-context entry-metadata">@ Incubio</span> <span class="tag-list" role="list"><span class="tag tag--b2c" role="listitem">B2C</span></span></span>
                 </div>
                 <div class="entry-right"><span class="hero-context entry-metadata">2013-2014</span></div>
             </div>
             <div class="entry-row">
                 <div class="entry-left">
-                    <span class="entry">Front-end Developer</span>
-                    <span class="hero-context entry-metadata">@ Infinitum</span>
+                    <span class="entry">Front-end Developer <span class="hero-context entry-metadata">@ Infinitum</span></span>
                 </div>
                 <div class="entry-right"><span class="hero-context entry-metadata">2011-2013</span></div>
             </div>
@@ -165,118 +136,73 @@
         <div class="profile-section-entries">
             <div class="entry-row">
                 <div class="entry-left">
-                    <span class="entry">AI Explainability</span>
-                    <span class="hero-context entry-metadata">@ Green Project Tech</span>
-                    <ul class="tag-list">
-                        <li><span class="tag tag--b2b">B2B</span></li>
-                    </ul>
+                    <span class="entry">AI Explainability <span class="hero-context entry-metadata">@ Green Project Tech</span> <span class="tag-list" role="list"><span class="tag tag--b2b" role="listitem">B2B</span></span></span>
                 </div>
                 <div class="entry-right"><span class="hero-context entry-metadata">2026</span></div>
             </div>
             <div class="entry-row">
                 <div class="entry-left">
-                    <span class="entry">Decarbonization AI Agent</span>
-                    <span class="hero-context entry-metadata">@ Green Project Tech</span>
-                    <ul class="tag-list">
-                        <li><span class="tag tag--b2b">B2B</span></li>
-                    </ul>
+                    <span class="entry">Decarbonization AI Agent <span class="hero-context entry-metadata">@ Green Project Tech</span> <span class="tag-list" role="list"><span class="tag tag--b2b" role="listitem">B2B</span></span></span>
                 </div>
                 <div class="entry-right"><span class="hero-context entry-metadata">2026</span></div>
             </div>
             <div class="entry-row">
                 <div class="entry-left">
-                    <span class="entry">Agentic Impact Calculator</span>
-                    <span class="hero-context entry-metadata">@ Emitwise</span>
-                    <ul class="tag-list">
-                        <li><span class="tag tag--b2b">B2B</span></li>
-                    </ul>
+                    <span class="entry">Agentic Impact Calculator <span class="hero-context entry-metadata">@ Emitwise</span> <span class="tag-list" role="list"><span class="tag tag--b2b" role="listitem">B2B</span></span></span>
                 </div>
                 <div class="entry-right"><span class="hero-context entry-metadata">2025</span></div>
             </div>
             <div class="entry-row">
                 <div class="entry-left">
-                    <span class="entry">Pantry Agent v2</span>
-                    <ul class="tag-list">
-                        <li><span class="tag tag--for-fun">For fun! 🥳</span></li>
-                    </ul>
+                    <span class="entry">Pantry Agent v2 <span class="tag-list" role="list"><span class="tag tag--for-fun" role="listitem">For fun! 🥳</span></span></span>
                 </div>
                 <div class="entry-right"><span class="hero-context entry-metadata">2025</span></div>
             </div>
             <div class="entry-row">
                 <div class="entry-left">
-                    <span class="entry">Procurement AI Agent</span>
-                    <span class="hero-context entry-metadata">@ Emitwise</span>
-                    <ul class="tag-list">
-                        <li><span class="tag tag--b2b">B2B</span></li>
-                    </ul>
+                    <span class="entry">Procurement AI Agent <span class="hero-context entry-metadata">@ Emitwise</span> <span class="tag-list" role="list"><span class="tag tag--b2b" role="listitem">B2B</span></span></span>
                 </div>
                 <div class="entry-right"><span class="hero-context entry-metadata">2025</span></div>
             </div>
             <div class="entry-row">
                 <div class="entry-left">
-                    <span class="entry">RFP AI Agent</span>
-                    <span class="hero-context entry-metadata">@ Emitwise</span>
-                    <ul class="tag-list">
-                        <li><span class="tag tag--b2b">B2B</span></li>
-                    </ul>
+                    <span class="entry">RFP AI Agent <span class="hero-context entry-metadata">@ Emitwise</span> <span class="tag-list" role="list"><span class="tag tag--b2b" role="listitem">B2B</span></span></span>
                 </div>
                 <div class="entry-right"><span class="hero-context entry-metadata">2025</span></div>
             </div>
             <div class="entry-row">
                 <div class="entry-left">
-                    <span class="entry">AI Supplier Matching, Merging, and Screening</span>
-                    <span class="hero-context entry-metadata">@ Emitwise</span>
-                    <ul class="tag-list">
-                        <li><span class="tag tag--b2b">B2B</span></li>
-                    </ul>
+                    <span class="entry">AI Supplier Matching, Merging, and Screening <span class="hero-context entry-metadata">@ Emitwise</span> <span class="tag-list" role="list"><span class="tag tag--b2b" role="listitem">B2B</span></span></span>
                 </div>
                 <div class="entry-right"><span class="hero-context entry-metadata">2025</span></div>
             </div>
             <div class="entry-row">
                 <div class="entry-left">
-                    <span class="entry">Pantry Agent v1</span>
-                    <ul class="tag-list">
-                        <li><span class="tag tag--for-fun">For fun! 🥳</span></li>
-                    </ul>
+                    <span class="entry">Pantry Agent v1 <span class="tag-list" role="list"><span class="tag tag--for-fun" role="listitem">For fun! 🥳</span></span></span>
                 </div>
                 <div class="entry-right"><span class="hero-context entry-metadata">2024</span></div>
             </div>
             <div class="entry-row">
                 <div class="entry-left">
-                    <span class="entry">PCF AI Benchmarks</span>
-                    <span class="hero-context entry-metadata">@ Emitwise</span>
-                    <ul class="tag-list">
-                        <li><span class="tag tag--b2b">B2B</span></li>
-                    </ul>
+                    <span class="entry">PCF AI Benchmarks <span class="hero-context entry-metadata">@ Emitwise</span> <span class="tag-list" role="list"><span class="tag tag--b2b" role="listitem">B2B</span></span></span>
                 </div>
                 <div class="entry-right"><span class="hero-context entry-metadata">2024</span></div>
             </div>
             <div class="entry-row">
                 <div class="entry-left">
-                    <span class="entry">PCF Calculator</span>
-                    <span class="hero-context entry-metadata">@ Emitwise</span>
-                    <ul class="tag-list">
-                        <li><span class="tag tag--b2b">B2B</span></li>
-                    </ul>
+                    <span class="entry">PCF Calculator <span class="hero-context entry-metadata">@ Emitwise</span> <span class="tag-list" role="list"><span class="tag tag--b2b" role="listitem">B2B</span></span></span>
                 </div>
                 <div class="entry-right"><span class="hero-context entry-metadata">2024</span></div>
             </div>
             <div class="entry-row">
                 <div class="entry-left">
-                    <span class="entry">Initiatives AI Assistant</span>
-                    <span class="hero-context entry-metadata">@ Emitwise</span>
-                    <ul class="tag-list">
-                        <li><span class="tag tag--b2b">B2B</span></li>
-                    </ul>
+                    <span class="entry">Initiatives AI Assistant <span class="hero-context entry-metadata">@ Emitwise</span> <span class="tag-list" role="list"><span class="tag tag--b2b" role="listitem">B2B</span></span></span>
                 </div>
                 <div class="entry-right"><span class="hero-context entry-metadata">2024</span></div>
             </div>
             <div class="entry-row">
                 <div class="entry-left">
-                    <span class="entry">Personal AI Agent</span>
-                    <ul class="tag-list">
-                        <li><span class="tag tag--for-fun">For fun! 🥳</span></li>
-                    </ul>
+                    <span class="entry">Personal AI Agent <span class="tag-list" role="list"><span class="tag tag--for-fun" role="listitem">For fun! 🥳</span></span></span>
                 </div>
                 <div class="entry-right"><span class="hero-context entry-metadata">May 2023</span></div>
             </div>
@@ -322,84 +248,55 @@
         <div class="profile-section-entries">
             <div class="entry-row">
                 <div class="entry-left">
-                    <span class="entry">Accelerating Discovery with Claude Code</span>
-                    <ul class="tag-list">
-                        <li><span class="tag tag--internal">Internal</span></li>
-                    </ul>
+                    <span class="entry">Accelerating Discovery with Claude Code <span class="tag-list" role="list"><span class="tag tag--internal" role="listitem">Internal</span></span></span>
                 </div>
                 <div class="entry-right"><span class="hero-context entry-metadata">2026</span></div>
             </div>
             <div class="entry-row">
                 <div class="entry-left">
-                    <span class="entry">Using Cursor to Write Notion Documents</span>
-                    <ul class="tag-list">
-                        <li><span class="tag tag--internal">Internal</span></li>
-                    </ul>
+                    <span class="entry">Using Cursor to Write Notion Documents <span class="tag-list" role="list"><span class="tag tag--internal" role="listitem">Internal</span></span></span>
                 </div>
                 <div class="entry-right"><span class="hero-context entry-metadata">2026</span></div>
             </div>
             <div class="entry-row">
                 <div class="entry-left">
-                    <span class="entry">Bridging Design and Production: Prototyping &amp; Handover with Cursor</span>
-                    <span class="hero-context entry-metadata">@ Brooklyn Product Design, NYC</span>
-                    <ul class="tag-list">
-                        <li><span class="tag tag--external">External • 100+ PDs</span></li>
-                    </ul>
+                    <span class="entry">Bridging Design and Production: Prototyping &amp; Handover with Cursor <span class="hero-context entry-metadata">@ Brooklyn Product Design, NYC</span> <span class="tag-list" role="list"><span class="tag tag--external" role="listitem">External • 100+ PDs</span></span></span>
                 </div>
                 <div class="entry-right"><span class="hero-context entry-metadata">2025</span></div>
             </div>
             <div class="entry-row">
                 <div class="entry-left">
-                    <span class="entry">Creating Vision Prototypes with Replit</span>
-                    <ul class="tag-list">
-                        <li><span class="tag tag--internal">Internal</span></li>
-                    </ul>
+                    <span class="entry">Creating Vision Prototypes with Replit <span class="tag-list" role="list"><span class="tag tag--internal" role="listitem">Internal</span></span></span>
                 </div>
                 <div class="entry-right"><span class="hero-context entry-metadata">2025</span></div>
             </div>
             <div class="entry-row">
                 <div class="entry-left">
-                    <span class="entry">De-risking AI Features with Evals and Humanloop</span>
-                    <ul class="tag-list">
-                        <li><span class="tag tag--internal">Internal</span></li>
-                    </ul>
+                    <span class="entry">De-risking AI Features with Evals and Humanloop <span class="tag-list" role="list"><span class="tag tag--internal" role="listitem">Internal</span></span></span>
                 </div>
                 <div class="entry-right"><span class="hero-context entry-metadata">2025</span></div>
             </div>
             <div class="entry-row">
                 <div class="entry-left">
-                    <span class="entry">AI-Powered Features Beyond the Chatbot</span>
-                    <ul class="tag-list">
-                        <li><span class="tag tag--internal">Internal</span></li>
-                    </ul>
+                    <span class="entry">AI-Powered Features Beyond the Chatbot <span class="tag-list" role="list"><span class="tag tag--internal" role="listitem">Internal</span></span></span>
                 </div>
                 <div class="entry-right"><span class="hero-context entry-metadata">2024</span></div>
             </div>
             <div class="entry-row">
                 <div class="entry-left">
-                    <span class="entry">Speaking with Impact</span>
-                    <ul class="tag-list">
-                        <li><span class="tag tag--internal">Internal</span></li>
-                    </ul>
+                    <span class="entry">Speaking with Impact <span class="tag-list" role="list"><span class="tag tag--internal" role="listitem">Internal</span></span></span>
                 </div>
                 <div class="entry-right"><span class="hero-context entry-metadata">2023</span></div>
             </div>
             <div class="entry-row">
                 <div class="entry-left">
-                    <span class="entry">Mastering Figma</span>
-                    <ul class="tag-list">
-                        <li><span class="tag tag--internal">Internal</span></li>
-                        <li><span class="tag tag--internal">Workshop • 4 designers</span></li>
-                    </ul>
+                    <span class="entry">Mastering Figma <span class="tag-list" role="list"><span class="tag tag--internal" role="listitem">Internal</span><span class="tag tag--internal" role="listitem">Workshop • 4 designers</span></span></span>
                 </div>
                 <div class="entry-right"><span class="hero-context entry-metadata">2022</span></div>
             </div>
             <div class="entry-row">
                 <div class="entry-left">
-                    <span class="entry">Make Multiplayer Online Games</span>
-                    <ul class="tag-list">
-                        <li><span class="tag tag--external">Course • 100+ students</span></li>
-                    </ul>
+                    <span class="entry">Make Multiplayer Online Games <span class="tag-list" role="list"><span class="tag tag--external" role="listitem">Course • 100+ students</span></span></span>
                 </div>
                 <div class="entry-right"><span class="hero-context entry-metadata">2014</span></div>
             </div>
@@ -411,91 +308,61 @@
         <div class="profile-section-entries">
             <div class="entry-row">
                 <div class="entry-left">
-                    <span class="entry">Initiatives analytics</span>
-                    <ul class="tag-list">
-                        <li><span class="tag tag--sales-prototype">Sales Prototype</span></li>
-                    </ul>
+                    <span class="entry">Supplier Initiatives Analytics <span class="tag-list" role="list"><span class="tag tag--sales-prototype" role="listitem">Sales Prototype</span></span></span>
                 </div>
                 <div class="entry-right"><span class="hero-context entry-metadata">2026</span></div>
             </div>
             <div class="entry-row">
                 <div class="entry-left">
-                    <span class="entry">Emissions forecasting</span>
-                    <ul class="tag-list">
-                        <li><span class="tag tag--sales-prototype">Sales Prototype</span></li>
-                    </ul>
+                    <span class="entry">Emissions forecasting <span class="tag-list" role="list"><span class="tag tag--sales-prototype" role="listitem">Sales Prototype</span></span></span>
                 </div>
                 <div class="entry-right"><span class="hero-context entry-metadata">2026</span></div>
             </div>
             <div class="entry-row">
                 <div class="entry-left">
-                    <span class="entry">Custom ChartTile Legend</span>
-                    <ul class="tag-list">
-                        <li><span class="tag tag--design-system">Design System</span></li>
-                    </ul>
+                    <span class="entry">Custom ChartTile Legend <span class="tag-list" role="list"><span class="tag tag--design-system" role="listitem">Design System</span></span></span>
                 </div>
                 <div class="entry-right"><span class="hero-context entry-metadata">2026</span></div>
             </div>
             <div class="entry-row">
                 <div class="entry-left">
-                    <span class="entry">Service Carbon Footprint</span>
-                    <ul class="tag-list">
-                        <li><span class="tag tag--sales-prototype">Sales Prototype</span></li>
-                    </ul>
+                    <span class="entry">Service Carbon Footprint <span class="tag-list" role="list"><span class="tag tag--sales-prototype" role="listitem">Sales Prototype</span></span></span>
                 </div>
                 <div class="entry-right"><span class="hero-context entry-metadata">2026</span></div>
             </div>
             <div class="entry-row">
                 <div class="entry-left">
-                    <span class="entry">Table Cell Components</span>
-                    <ul class="tag-list">
-                        <li><span class="tag tag--design-system">Design System</span></li>
-                    </ul>
+                    <span class="entry">Table Cell Components <span class="tag-list" role="list"><span class="tag tag--design-system" role="listitem">Design System</span></span></span>
                 </div>
                 <div class="entry-right"><span class="hero-context entry-metadata">2026</span></div>
             </div>
             <div class="entry-row">
                 <div class="entry-left">
-                    <span class="entry">Write Nudge</span>
-                    <ul class="tag-list">
-                        <li><span class="tag tag--feature">Feature</span></li>
-                    </ul>
+                    <span class="entry">Write Nudge <span class="tag-list" role="list"><span class="tag tag--feature" role="listitem">Feature</span></span></span>
                 </div>
                 <div class="entry-right"><span class="hero-context entry-metadata">2026</span></div>
             </div>
             <div class="entry-row">
                 <div class="entry-left">
-                    <span class="entry">Customer Requests Details View</span>
-                    <ul class="tag-list">
-                        <li><span class="tag tag--feature">Feature</span></li>
-                    </ul>
+                    <span class="entry">Customer Requests Details View <span class="tag-list" role="list"><span class="tag tag--feature" role="listitem">Feature</span></span></span>
                 </div>
                 <div class="entry-right"><span class="hero-context entry-metadata">2026</span></div>
             </div>
             <div class="entry-row">
                 <div class="entry-left">
-                    <span class="entry">Components for new Company Profile</span>
-                    <ul class="tag-list">
-                        <li><span class="tag tag--design-system">Design System</span></li>
-                    </ul>
+                    <span class="entry">Components for new Company Profile <span class="tag-list" role="list"><span class="tag tag--design-system" role="listitem">Design System</span></span></span>
                 </div>
                 <div class="entry-right"><span class="hero-context entry-metadata">2025</span></div>
             </div>
             <div class="entry-row">
                 <div class="entry-left">
-                    <span class="entry">Fix our Cursor Rules set up</span>
-                    <ul class="tag-list">
-                        <li><span class="tag tag--design-system">Design System</span></li>
-                    </ul>
+                    <span class="entry">Fix our Cursor Rules set up <span class="tag-list" role="list"><span class="tag tag--design-system" role="listitem">Design System</span></span></span>
                 </div>
                 <div class="entry-right"><span class="hero-context entry-metadata">2025</span></div>
             </div>
             <div class="entry-row">
                 <div class="entry-left">
-                    <span class="entry">10+ Cursor Skills, Commands...</span>
-                    <ul class="tag-list">
-                        <li><span class="tag tag--design-system">Design System</span></li>
-                    </ul>
+                    <span class="entry">10+ Cursor Skills, Commands... <span class="tag-list" role="list"><span class="tag tag--design-system" role="listitem">Design System</span></span></span>
                 </div>
                 <div class="entry-right"><span class="hero-context entry-metadata">2025-2026</span></div>
             </div>
@@ -534,55 +401,37 @@
         <div class="profile-section-entries">
             <div class="entry-row">
                 <div class="entry-left">
-                    <span class="entry">UX Architecture Vision</span>
-                    <ul class="tag-list">
-                        <li><span class="tag tag--b2b">B2B</span></li>
-                    </ul>
+                    <span class="entry">UX Architecture Vision <span class="tag-list" role="list"><span class="tag tag--b2b" role="listitem">B2B</span></span></span>
                 </div>
                 <div class="entry-right"><span class="hero-context entry-metadata">2026</span></div>
             </div>
             <div class="entry-row">
                 <div class="entry-left">
-                    <span class="entry">Service Carbon Footprint – Emissions Allocation</span>
-                    <ul class="tag-list">
-                        <li><span class="tag tag--b2b">B2B</span></li>
-                    </ul>
+                    <span class="entry">Service Carbon Footprint – Emissions Allocation <span class="tag-list" role="list"><span class="tag tag--b2b" role="listitem">B2B</span></span></span>
                 </div>
                 <div class="entry-right"><span class="hero-context entry-metadata">2026</span></div>
             </div>
             <div class="entry-row">
                 <div class="entry-left">
-                    <span class="entry">Product Carbon Footprint Calculator</span>
-                    <ul class="tag-list">
-                        <li><span class="tag tag--b2b">B2B</span></li>
-                    </ul>
+                    <span class="entry">Product Carbon Footprint Calculator <span class="tag-list" role="list"><span class="tag tag--b2b" role="listitem">B2B</span></span></span>
                 </div>
                 <div class="entry-right"><span class="hero-context entry-metadata">2026</span></div>
             </div>
             <div class="entry-row">
                 <div class="entry-left">
-                    <span class="entry">Sidepanel’s drag to resize</span>
-                    <ul class="tag-list">
-                        <li><span class="tag tag--b2b">B2B</span></li>
-                    </ul>
+                    <span class="entry">Sidepanel’s drag to resize <span class="tag-list" role="list"><span class="tag tag--b2b" role="listitem">B2B</span></span></span>
                 </div>
                 <div class="entry-right"><span class="hero-context entry-metadata">2026</span></div>
             </div>
             <div class="entry-row">
                 <div class="entry-left">
-                    <span class="entry">Marketplace v2</span>
-                    <ul class="tag-list">
-                        <li><span class="tag tag--b2b">B2B</span></li>
-                    </ul>
+                    <span class="entry">Marketplace v2 <span class="tag-list" role="list"><span class="tag tag--b2b" role="listitem">B2B</span></span></span>
                 </div>
                 <div class="entry-right"><span class="hero-context entry-metadata">2025</span></div>
             </div>
             <div class="entry-row">
                 <div class="entry-left">
-                    <span class="entry">Supplier Matching &amp; Merging</span>
-                    <ul class="tag-list">
-                        <li><span class="tag tag--b2b">B2B</span></li>
-                    </ul>
+                    <span class="entry">Supplier Matching &amp; Merging <span class="tag-list" role="list"><span class="tag tag--b2b" role="listitem">B2B</span></span></span>
                 </div>
                 <div class="entry-right"><span class="hero-context entry-metadata">2025</span></div>
             </div>
@@ -635,41 +484,25 @@
         <div class="profile-section-entries">
             <div class="entry-row">
                 <div class="entry-left">
-                    <span class="entry">Kipos</span>
-                    <span class="hero-context entry-metadata">80k+ downloads, 4.5/5★ avg.</span>
-                    <ul class="tag-list">
-                        <li><span class="tag tag--for-fun">For fun! 🥳</span></li>
-                    </ul>
+                    <span class="entry">Kipos <span class="hero-context entry-metadata">80k+ downloads, 4.5/5★ avg.</span> <span class="tag-list" role="list"><span class="tag tag--for-fun" role="listitem">For fun! 🥳</span></span></span>
                 </div>
                 <div class="entry-right"><span class="hero-context entry-metadata">2012</span></div>
             </div>
             <div class="entry-row">
                 <div class="entry-left">
-                    <span class="entry">AG-Drift</span>
-                    <span class="hero-context entry-metadata">Multiplayer racing game, 47 MAU</span>
-                    <ul class="tag-list">
-                        <li><span class="tag tag--for-fun">For fun! 🥳</span></li>
-                    </ul>
+                    <span class="entry">AG-Drift <span class="hero-context entry-metadata">Multiplayer racing game, 47 MAU</span> <span class="tag-list" role="list"><span class="tag tag--for-fun" role="listitem">For fun! 🥳</span></span></span>
                 </div>
-                <div class="entry-right"><span class="hero-context entry-metadata">2016</span></div>
+                <div class="entry-right"><span class="hero-context entry-metadata">2016–</span></div>
             </div>
             <div class="entry-row">
                 <div class="entry-left">
-                    <span class="entry">Civilitris</span>
-                    <span class="hero-context entry-metadata">Top 6% in Fun and Innovation @ LudumDare 2020</span>
-                    <ul class="tag-list">
-                        <li><span class="tag tag--for-fun">For fun! 🥳</span></li>
-                    </ul>
+                    <span class="entry">Civilitris <span class="hero-context entry-metadata">Top 6% in Fun and Innovation @ LudumDare 2020</span> <span class="tag-list" role="list"><span class="tag tag--for-fun" role="listitem">For fun! 🥳</span></span></span>
                 </div>
                 <div class="entry-right"><span class="hero-context entry-metadata">2020</span></div>
             </div>
             <div class="entry-row">
                 <div class="entry-left">
-                    <span class="entry">FoxyFight</span>
-                    <span class="hero-context entry-metadata">Party game</span>
-                    <ul class="tag-list">
-                        <li><span class="tag tag--for-fun">For fun! 🥳</span></li>
-                    </ul>
+                    <span class="entry">FoxyFight <span class="hero-context entry-metadata">Party game</span> <span class="tag-list" role="list"><span class="tag tag--for-fun" role="listitem">For fun! 🥳</span></span></span>
                 </div>
                 <div class="entry-right"><span class="hero-context entry-metadata">2019</span></div>
             </div>
@@ -686,73 +519,49 @@
         <div class="profile-section-entries">
             <div class="entry-row">
                 <div class="entry-left">
-                    <span class="entry">Hands-Free Chinese Listening Practice App</span>
-                    <ul class="tag-list">
-                        <li><span class="tag tag--for-fun">For fun! 🥳</span></li>
-                    </ul>
+                    <span class="entry">Hands-Free Chinese Listening Practice App <span class="tag-list" role="list"><span class="tag tag--for-fun" role="listitem">For fun! 🥳</span></span></span>
                 </div>
                 <div class="entry-right"><span class="hero-context entry-metadata">2026</span></div>
             </div>
             <div class="entry-row">
                 <div class="entry-left">
-                    <span class="entry">App controlled only by eye blinking</span>
-                    <ul class="tag-list">
-                        <li><span class="tag tag--for-fun">For fun! 🥳</span></li>
-                    </ul>
+                    <span class="entry">App controlled only by eye blinking <span class="tag-list" role="list"><span class="tag tag--for-fun" role="listitem">For fun! 🥳</span></span></span>
                 </div>
                 <div class="entry-right"><span class="hero-context entry-metadata">2025</span></div>
             </div>
             <div class="entry-row">
                 <div class="entry-left">
-                    <span class="entry">Pokemon TCG Draft Cube Builder</span>
-                    <ul class="tag-list">
-                        <li><span class="tag tag--for-fun">For fun! 🥳</span></li>
-                    </ul>
+                    <span class="entry">Pokemon TCG Draft Cube Builder <span class="tag-list" role="list"><span class="tag tag--for-fun" role="listitem">For fun! 🥳</span></span></span>
                 </div>
                 <div class="entry-right"><span class="hero-context entry-metadata">2025</span></div>
             </div>
             <div class="entry-row">
                 <div class="entry-left">
-                    <span class="entry">Groceries Automation</span>
-                    <ul class="tag-list">
-                        <li><span class="tag tag--for-fun">For fun! 🥳</span></li>
-                    </ul>
+                    <span class="entry">Groceries Automation <span class="tag-list" role="list"><span class="tag tag--for-fun" role="listitem">For fun! 🥳</span></span></span>
                 </div>
                 <div class="entry-right"><span class="hero-context entry-metadata">2025</span></div>
             </div>
             <div class="entry-row">
                 <div class="entry-left">
-                    <span class="entry">Rallyman: Dirt Coach</span>
-                    <ul class="tag-list">
-                        <li><span class="tag tag--for-fun">For fun! 🥳</span></li>
-                    </ul>
+                    <span class="entry">Rallyman: Dirt Coach <span class="tag-list" role="list"><span class="tag tag--for-fun" role="listitem">For fun! 🥳</span></span></span>
                 </div>
                 <div class="entry-right"><span class="hero-context entry-metadata">2025</span></div>
             </div>
             <div class="entry-row">
                 <div class="entry-left">
-                    <span class="entry">DJ Song Guessing Game</span>
-                    <ul class="tag-list">
-                        <li><span class="tag tag--for-fun">For fun! 🥳</span></li>
-                    </ul>
+                    <span class="entry">DJ Song Guessing Game <span class="tag-list" role="list"><span class="tag tag--for-fun" role="listitem">For fun! 🥳</span></span></span>
                 </div>
                 <div class="entry-right"><span class="hero-context entry-metadata">2025</span></div>
             </div>
             <div class="entry-row">
                 <div class="entry-left">
-                    <span class="entry">Videogame Skateboard Controller</span>
-                    <ul class="tag-list">
-                        <li><span class="tag tag--for-fun">For fun! 🥳</span></li>
-                    </ul>
+                    <span class="entry">Videogame Skateboard Controller <span class="tag-list" role="list"><span class="tag tag--for-fun" role="listitem">For fun! 🥳</span></span></span>
                 </div>
                 <div class="entry-right"><span class="hero-context entry-metadata">2022</span></div>
             </div>
             <div class="entry-row">
                 <div class="entry-left">
-                    <span class="entry">Spatial Augmented Reality Boardgame</span>
-                    <ul class="tag-list">
-                        <li><span class="tag tag--for-fun">For fun! 🥳</span></li>
-                    </ul>
+                    <span class="entry">Spatial Augmented Reality Boardgame <span class="tag-list" role="list"><span class="tag tag--for-fun" role="listitem">For fun! 🥳</span></span></span>
                 </div>
                 <div class="entry-right"><span class="hero-context entry-metadata">2018</span></div>
             </div>
@@ -771,14 +580,67 @@
     </div>
 
     <aside class="home-gallery" aria-label="Work samples">
-        {% for i in (1..10) %}
-        <img
-            class="home-gallery-image"
-            src="{{ '/images/portfolio-carbon-insights.png' | prepend: site.baseurl }}"
-            alt="Carbon Insights &amp; Recommendations Report — Emitwise"
-            width="1920"
-            height="1080"
-            loading="lazy"
-        >
-        {% endfor %}
+        {% include image-with-caption.html
+            src='/images/gallery-agentic-impact-calculator@2x.png'
+            alt='Electric Fleet Transition calculator with AI chat, lifetime benefit chart, solar charging slider, and AI explained modal for EV electricity cost'
+            caption='Agentic Impact Calculator, 2025'
+            width='1440'
+            height='874'
+        %}
+
+        {% include image-with-caption.html
+            src='/images/gallery-initiatives-ai-assistant@2x.png'
+            alt='Reduction Initiatives Assistant beta recommending methane reduction measures over emissions by facility country dashboard'
+            caption='Initiatives AI Assistant, 2024'
+            width='1440'
+            height='762'
+        %}
+
+        {% include image-with-caption.html
+            src='/images/gallery-carbon-insights@2x.png'
+            alt='Carbon Insights and Recommendations Report slide with world map arc from London to NYC and emissions equivalents'
+            caption='Carbon Insights &amp; Recommendations Report, 2021'
+            width='1440'
+            height='810'
+        %}
+
+        {% include image-with-caption.html
+            src='/images/gallery-artpluscode@2x.png'
+            alt='Generative art created with code'
+            caption='Art generated using code, 2017'
+            width='1440'
+            height='1199'
+        %}
+
+        {% include image-with-caption.html
+            src='/images/gallery-ag-drift@2x.png'
+            alt='AG-Drift multiplayer racing game screenshot'
+            caption='AG-Drift, 47 MAU, 2016–'
+            width='1926'
+            height='1041'
+        %}
+
+        {% include image-with-caption.html
+            src='/images/gallery-downhill-longboarding@2x.jpg'
+            alt='Downhill longboarder in a leather suit and pink helmet sliding on a mountain road'
+            caption='Downhill longboarding, 2019–'
+            width='1024'
+            height='889'
+        %}
+
+        {% include image-with-caption.html
+            src='/images/gallery-pokemon-tcg@2x.jpg'
+            alt='Pokémon Trading Card Game match with Mewtwo, Jynx, Abra, and Doduo on a wooden table'
+            caption='Pokémon TCG, 2025'
+            width='768'
+            height='1024'
+        %}
+
+        {% include image-with-caption.html
+            src='/images/gallery-mmo-project@2x.png'
+            alt='Top-down pixel art MMO game with forest map, player character, inventory bar, and day-night clock'
+            caption='MMO Project Example, 2025'
+            width='985'
+            height='1024'
+        %}
     </aside>
