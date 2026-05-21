@@ -18,7 +18,17 @@ body {
 }
 
 :root {
-    --home-margin-inline: var(--size--32);
+    --home-max-width: 1480px;
+    --home-margin-left: var(--size--32);
+    --home-margin-right: var(--size--32);
+}
+
+.home-layout-rail {
+    width: 100%;
+    max-width: var(--home-max-width);
+    margin-inline: auto;
+    padding-inline: var(--home-margin-left) var(--home-margin-right);
+    box-sizing: border-box;
 }
 
 .hero-context {
@@ -32,17 +42,23 @@ body {
     grid-template-columns: repeat(5, 1fr);
     column-gap: var(--size--32);
     row-gap: var(--size--48);
-    padding: 0 var(--home-margin-inline) 50vh;
-    box-sizing: border-box;
+    padding-bottom: 50vh;
     align-items: start;
+}
+
+.dg {
+    z-index: 1100 !important;
 }
 
 .home-header {
     position: fixed;
     top: var(--size--32);
-    left: var(--home-margin-inline);
-    right: var(--home-margin-inline);
+    left: 0;
+    right: 0;
     z-index: 100;
+}
+
+.home-header-inner {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -75,7 +91,7 @@ body {
 .home-header-nav {
     display: flex;
     align-items: center;
-    gap: var(--size--16);
+    gap: var(--size--24);
     flex-wrap: wrap;
     justify-content: flex-end;
 }
@@ -155,10 +171,24 @@ body {
     margin-top: -140px;
 }
 
-.sticky-note {
+.sticky-note-anchor {
     position: absolute;
     top: var(--size--32);
-    right: var(--home-margin-inline);
+    left: 0;
+    right: 0;
+    pointer-events: none;
+    z-index: 1000;
+}
+
+.sticky-note-anchor .home-layout-rail {
+    position: relative;
+    pointer-events: none;
+}
+
+.sticky-note {
+    position: absolute;
+    top: 0;
+    right: 0;
     left: auto;
     bottom: auto;
     display: block;
@@ -167,7 +197,7 @@ body {
     margin: 0;
     padding: 0;
     border: none;
-    z-index: 1000;
+    pointer-events: auto;
     cursor: grab;
     touch-action: none;
     -webkit-user-drag: none;
@@ -181,7 +211,8 @@ body {
 
 @media (max-width: 729px) {
     :root {
-        --home-margin-inline: var(--size--16);
+        --home-margin-left: var(--size--16);
+        --home-margin-right: var(--size--16);
     }
 }
 
@@ -215,19 +246,23 @@ body {
 <div id="home-scroll-sentinel" class="home-scroll-sentinel" aria-hidden="true"></div>
 {% include home-header.html %}
 
-<main class="home">
+<main class="home home-layout-rail">
     {% include home-content.html %}
 </main>
 
-<img
-    id="sticky-note"
-    class="sticky-note"
-    src="{{ '/images/sticky-note.png' | prepend: site.baseurl }}"
-    alt=""
-    width="290"
-    height="280"
-    draggable="false"
->
+<div class="sticky-note-anchor">
+    <div class="home-layout-rail">
+        <img
+            id="sticky-note"
+            class="sticky-note"
+            src="{{ '/images/sticky-note.png' | prepend: site.baseurl }}"
+            alt=""
+            width="290"
+            height="280"
+            draggable="false"
+        >
+    </div>
+</div>
 
 <script src="{{ '/js/home-nav.js' | prepend: site.baseurl }}?v=2"></script>
 <script src="{{ '/js/home-nav-contrast.js' | prepend: site.baseurl }}"></script>

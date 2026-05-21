@@ -9,11 +9,12 @@
   }
 
   var defaultMarginTop = 116;
-  var storageKey = 'home-gallery-margin-top';
+  var marginTopStorageKey = 'home-gallery-margin-top';
   var guiVisibleStorageKey = 'home-gallery-gui-visible';
-  var stored = parseInt(localStorage.getItem(storageKey), 10);
+
+  var storedMarginTop = parseInt(localStorage.getItem(marginTopStorageKey), 10);
   var settings = {
-    marginTop: Number.isFinite(stored) ? stored : defaultMarginTop,
+    marginTop: Number.isFinite(storedMarginTop) ? storedMarginTop : defaultMarginTop,
   };
 
   function applyMarginTop(value) {
@@ -21,16 +22,19 @@
       '--home-gallery-margin-top',
       value + 'px'
     );
-    localStorage.setItem(storageKey, String(value));
+    localStorage.setItem(marginTopStorageKey, String(value));
   }
 
   applyMarginTop(settings.marginTop);
 
   var gui = new dat.GUI({ name: 'Home layout' });
+
   gui
     .add(settings, 'marginTop', 0, 800, 1)
     .name('Gallery margin top')
-    .onChange(applyMarginTop);
+    .onChange(function (value) {
+      applyMarginTop(value);
+    });
 
   var guiHidden = localStorage.getItem(guiVisibleStorageKey) === 'false';
 
