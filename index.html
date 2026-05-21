@@ -15,26 +15,48 @@ html, body {
 }
 
 .home {
-    display: flex;
-    flex-direction: column;
-    gap: var(--size--48);
-    padding: var(--size--40);
-    padding-bottom: 50vh;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    column-gap: var(--size--32);
+    row-gap: var(--size--48);
+    padding: 0 var(--size--32) 50vh;
     box-sizing: border-box;
-    align-items: center;
-}
-
-.home > * {
-    max-width: 580px;
-    width: 100%;
-    box-sizing: border-box;
+    align-items: start;
 }
 
 .home-header {
+    position: fixed;
+    top: var(--size--32);
+    left: var(--size--32);
+    right: var(--size--32);
+    z-index: 100;
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+
+.home-content {
+    grid-column: 1 / span 2;
+    display: flex;
+    flex-direction: column;
+    gap: var(--size--48);
+    min-width: 0;
+}
+
+.home-gallery {
+    grid-column: 3 / -1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--size--32);
+    margin-top: var(--home-gallery-margin-top, 116px);
+    min-width: 0;
+}
+
+.home-gallery-image {
+    display: block;
     width: 100%;
+    height: auto;
 }
 
 .home-header-links {
@@ -45,10 +67,36 @@ html, body {
     padding: 0;
 }
 
+.home-header-links a {
+    color: contrast-color(var(--color--background));
+}
+
+.home-header-links a:hover {
+    color: var(--color--text-primary);
+    color: contrast-color(var(--color--accent));
+}
+
 .home-signature {
     display: block;
     line-height: 0;
     text-decoration: none;
+    opacity: 1;
+    transition: opacity 0.25s ease;
+    pointer-events: auto;
+}
+
+.home-signature.is-hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.home-scroll-sentinel {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1px;
+    height: 1px;
+    pointer-events: none;
 }
 
 .home-signature img {
@@ -60,10 +108,13 @@ html, body {
 .hero {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    text-align: center;
+    align-items: flex-start;
+    justify-content: center;
+    text-align: left;
     gap: var(--size--16);
-    padding: 80px 0;
+    min-height: 100dvh;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 .hero .hero-title {
@@ -80,12 +131,16 @@ html, body {
     margin: var(--size--64) 0;
 }
 
-.home > .quote-block.quote-home-margins:first-of-type {
-    margin-top: 0;
+.quote-block.quote-home-margins.quote-home-first {
+    margin-top: -140px;
 }
 
 .sticky-note {
     position: fixed;
+    top: 0;
+    left: 0;
+    right: auto;
+    bottom: auto;
     display: block;
     width: 290px;
     height: auto;
@@ -104,14 +159,21 @@ html, body {
     user-select: none;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
     .home {
-        padding-left: var(--size--16);
-        padding-right: var(--size--16);
+        grid-template-columns: 1fr;
+    }
+
+    .home-content,
+    .home-gallery {
+        grid-column: 1 / -1;
     }
 }
 
 </style>
+
+<div id="home-scroll-sentinel" class="home-scroll-sentinel" aria-hidden="true"></div>
+{% include home-header.html %}
 
 <main class="home">
     {% include home-content.html %}
@@ -127,4 +189,7 @@ html, body {
     draggable="false"
 >
 
-<script src="{{ '/js/sticky-note.js' | prepend: site.baseurl }}" defer></script>
+<script src="{{ '/js/home-nav.js' | prepend: site.baseurl }}?v=2"></script>
+<script src="{{ '/js/sticky-note.js' | prepend: site.baseurl }}?v=3" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/dat.gui@0.7.9/build/dat.gui.min.js"></script>
+<script src="{{ '/js/home-gallery-gui.js' | prepend: site.baseurl }}"></script>

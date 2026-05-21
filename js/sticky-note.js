@@ -18,34 +18,56 @@
     var rect = note.getBoundingClientRect();
     var width = rect.width || NOTE_WIDTH;
     var height = rect.height || Math.round((NOTE_WIDTH * 580) / 600);
+    var maxX = Math.max(0, window.innerWidth - width);
+    var maxY = Math.max(0, window.innerHeight - height);
+    var minX = Math.min(Math.floor(window.innerWidth / 2), maxX);
 
-    return {
-      maxX: Math.max(0, window.innerWidth - width),
-      maxY: Math.max(0, window.innerHeight - height),
-    };
+    return { minX: minX, maxX: maxX, maxY: maxY };
+  }
+
+  function setNotePosition(left, top) {
+    note.style.right = 'auto';
+    note.style.bottom = 'auto';
+    note.style.left = left + 'px';
+    note.style.top = top + 'px';
   }
 
   function placeRandomly() {
     var bounds = getBounds();
+    var xRange = bounds.maxX - bounds.minX;
 
-    note.style.left = Math.round(Math.random() * bounds.maxX) + 'px';
-    note.style.top = Math.round(Math.random() * bounds.maxY) + 'px';
+    setNotePosition(
+      Math.round(bounds.minX + Math.random() * xRange),
+      Math.round(Math.random() * bounds.maxY)
+    );
   }
 
   function clampToViewport() {
     var bounds = getBounds();
-    var left = parseFloat(note.style.left) || 0;
-    var top = parseFloat(note.style.top) || 0;
+    var left = parseFloat(note.style.left);
+    var top = parseFloat(note.style.top);
 
-    note.style.left = clamp(left, 0, bounds.maxX) + 'px';
-    note.style.top = clamp(top, 0, bounds.maxY) + 'px';
+    if (!Number.isFinite(left)) {
+      left = bounds.minX;
+    }
+
+    if (!Number.isFinite(top)) {
+      top = 0;
+    }
+
+    setNotePosition(
+      clamp(left, 0, bounds.maxX),
+      clamp(top, 0, bounds.maxY)
+    );
   }
 
   function setPosition(clientX, clientY) {
     var bounds = getBounds();
 
-    note.style.left = clamp(clientX - offsetX, 0, bounds.maxX) + 'px';
-    note.style.top = clamp(clientY - offsetY, 0, bounds.maxY) + 'px';
+    setNotePosition(
+      clamp(clientX - offsetX, 0, bounds.maxX),
+      clamp(clientY - offsetY, 0, bounds.maxY)
+    );
   }
 
   function onMove(event) {
@@ -82,6 +104,8 @@
     offsetX = event.clientX - rect.left;
     offsetY = event.clientY - rect.top;
 
+    setNotePosition(rect.left, rect.top);
+
     document.addEventListener('pointermove', onMove);
     document.addEventListener('pointerup', onEnd);
     document.addEventListener('pointercancel', onEnd);
@@ -90,5 +114,7 @@
   note.addEventListener('pointerdown', onStart);
   window.addEventListener('resize', clampToViewport);
 
+  note.style.right = 'auto';
+  note.style.bottom = 'auto';
   requestAnimationFrame(placeRandomly);
 })();

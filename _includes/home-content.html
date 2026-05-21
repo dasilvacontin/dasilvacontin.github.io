@@ -1,20 +1,4 @@
-<header class="home-header">
-        <a href="{{ '/' | prepend: site.baseurl }}" class="home-signature">
-            <img
-                src="{{ '/images/signature.png' | prepend: site.baseurl }}"
-                alt="David da Silva Contín"
-                width="191"
-                height="101"
-            >
-        </a>
-        <nav class="home-header-links hero-context">
-            <a href="https://www.linkedin.com/in/dasilvacontin/">LinkedIn</a>
-            <a href="mailto:dasilvacontin@gmail.com">Email</a>
-        </nav>
-    </header>
-
-    <div class="home-photo" aria-hidden="true"></div>
-
+    <div class="home-content">
     <section class="hero">
         <h1 class="hero-title">
             Highly-technical <span class="accent">Staff&nbsp;Product&nbsp;Designer</span><br>
@@ -29,9 +13,7 @@
         </ul>
     </section>
 
-    <div class="home-photo home-photo--small" aria-hidden="true"></div>
-
-    <figure class="quote-block quote-home-margins">
+    <figure class="quote-block quote-home-margins quote-home-first">
         <p class="quote-title">David is the most mission-driver designer I know.</p>
         <blockquote class="quote">
             <p>Always reflecting on how our work drives value and how to push it further—never just ticking boxes.</p>
@@ -786,3 +768,17 @@
         <h2 class="text-content-title">HOBBIES</h2>
         <p class="text-content-body">DJing, Downhill Longboarding, Chess, Boardgames, Videogames, Pokémon TCG, Surfing, Tennis, Badminton</p>
     </section>
+    </div>
+
+    <aside class="home-gallery" aria-label="Work samples">
+        {% for i in (1..10) %}
+        <img
+            class="home-gallery-image"
+            src="{{ '/images/portfolio-carbon-insights.png' | prepend: site.baseurl }}"
+            alt="Carbon Insights &amp; Recommendations Report — Emitwise"
+            width="1920"
+            height="1080"
+            loading="lazy"
+        >
+        {% endfor %}
+    </aside>
