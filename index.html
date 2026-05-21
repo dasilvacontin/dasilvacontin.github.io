@@ -3,1162 +3,128 @@ layout: default
 ---
 
 <style>
-    @font-face {
-        font-family: 'Neue Machina';
-        src: url(fonts/NeueMachina-Regular.otf);
-        font-weight: normal;
-    }
-    @font-face {
-        font-family: 'Neue Machina';
-        src: url(fonts/NeueMachina-Ultrabold.otf);
-        font-weight: bold;
-    }
-    :root {
-        --background-color: #EEF8FF;
-        --primary-color: #223F8B;
-        --accent-color: #A4F7FA;
-    }
+html, body {
+    margin: 0;
+    padding: 0;
+}
 
-    html, body {
-        margin: 0;
-        padding: 0;
-        font-family: 'Neue Machina', sans-serif;
-        letter-spacing: -0.06em;
-        color: var(--primary-color);
-        background: var(--background-color);
-        -moz-osx-font-smoothing: grayscale;
-        -webkit-font-smoothing: antialiased;
-    }
+.hero-context {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
 
-    body, nav {
-        padding: 0 40px;
-    }
+.home {
+    display: flex;
+    flex-direction: column;
+    gap: var(--size--48);
+    padding: var(--size--40);
+    padding-bottom: 50vh;
+    box-sizing: border-box;
+    align-items: center;
+}
 
-    .wrapper {
-        max-width: 1420px;
-        margin-left: auto;
-        margin-right: auto;
-        min-height: calc(100vh - 69px - 24px);
-        max-height: calc(100vh - 69px - 24px);
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-    }
+.home > * {
+    max-width: 580px;
+    width: 100%;
+    box-sizing: border-box;
+}
 
-    .blog-section {
-        max-width: 1420px;
-        margin-left: auto;
-        margin-right: auto;
-        margin-bottom: 40vh
-    }
+.home-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
 
-    .blog-header {
-        margin-bottom: 24px;
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-        gap: 40px;
-    }
+.home-header-links {
+    display: flex;
+    gap: var(--size--16);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
 
-    .blog-title {
-        font-size: 20px;
-        letter-spacing: -0.03em;
-        line-height: 120%;
-        margin: 0;
-        font-weight: bold;
-        position: relative;
-        top: 5px;
-    }
+.home-signature {
+    display: block;
+    line-height: 0;
+    text-decoration: none;
+}
 
-    .tag-filters {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px;
-        align-items: flex-start;
-    }
+.home-signature img {
+    display: block;
+    width: 95px;
+    height: auto;
+}
 
-    .tag-filters span {
-        letter-spacing: -0.1px;
-    }
+.hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: var(--size--16);
+    padding: 80px 0;
+}
 
-    .filter-tag {
-        background: white;
-        color: #666;
-        padding: 6px 12px;
-        border-radius: 20px;
-        font-size: 14px;
-        font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-        font-weight: bold;
-        letter-spacing: 0;
-        text-decoration: none;
-        transition: all 0.2s ease;
-        cursor: pointer;
-        border: 2px solid transparent;
-        transform: scale(1);
-        transition: all 0.15s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    }
+.hero .hero-title {
+    margin: 0;
+}
 
-    .filter-tag:active {
-        transform: scale(0.95);
-    }
+.hero .hero-title + .hero-title {
+    font-size: var(--text--hero-title-font-size);
+    font-weight: var(--text--hero-title-font-weight);
+    line-height: var(--text--hero-title-line-height);
+}
 
-    .filter-tag:hover {
-        background: var(--accent-color);
-        color: var(--primary-color);
-    }
+.quote-home-margins {
+    margin: var(--size--64) 0;
+}
 
-    .filter-tag.active {
-        background: var(--accent-color);
-        color: var(--primary-color);
-    }
+.home > .quote-block.quote-home-margins:first-of-type {
+    margin-top: 0;
+}
 
-    .blog-posts {
-        display: flex;
-        flex-direction: column;
-        gap: 24px;
-    }
+.sticky-note {
+    position: fixed;
+    display: block;
+    width: 290px;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    border: none;
+    z-index: 1000;
+    cursor: grab;
+    touch-action: none;
+    -webkit-user-drag: none;
+    user-select: none;
+}
 
-    .blog-post {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 16px;
-        position: relative;
-    }
+.sticky-note.is-dragging {
+    cursor: grabbing;
+    user-select: none;
+}
 
-    .post-separator {
-        width: 1px;
-        height: 1px;
-        background: #E1EDF8;
-        flex-shrink: 0;
-        flex-grow: 1;
+@media (max-width: 768px) {
+    .home {
+        padding-left: var(--size--16);
+        padding-right: var(--size--16);
     }
+}
 
-    .blog-post:last-child {
-        border-bottom: none;
-        padding-bottom: 0;
-    }
-
-    .post-main {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .post-tags {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px;
-        justify-content: flex-end;
-        align-items: flex-start;
-    }
-
-
-
-    .post-tag {
-        background: white;
-        color: #666;
-        padding: 6px 12px;
-        border-radius: 20px;
-        font-size: 14px;
-        font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-        font-weight: bold;
-        letter-spacing: 0;
-        text-decoration: none;
-        transition: all 0.2s ease;
-        border: 2px solid transparent;
-        cursor: pointer;
-        transform: scale(1);
-        transition: all 0.15s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    }
-
-    .post-tag:active {
-        transform: scale(0.95);
-    }
-
-    .post-tag:hover {
-        background: var(--accent-color);
-        color: var(--primary-color);
-    }
-
-    .post-tag.active {
-        background: var(--accent-color);
-        color: var(--primary-color);
-    }
-
-    .post-tag:hover {
-        opacity: 0.8;
-    }
-
-    .post-title {
-        font-size: 20px;
-        letter-spacing: -0.02em;
-        line-height: 125%;
-        margin: 0;
-        flex-grow: 0;
-    }
-
-    .post-title a {
-        color: var(--primary-color);
-        text-decoration: none;
-        transition: color 0.2s ease;
-    }
-
-    .post-title a:hover {
-        color: var(--accent-color);
-    }
-
-    .post-excerpt {
-        font-size: 18px;
-        letter-spacing: -0.01em;
-        line-height: 140%;
-        color: #555;
-        margin: 0;
-    }
-
-    /* Mobile responsive for blog section */
-    @media only screen and (max-width: 830px) {
-        .blog-section {
-            padding: 60px 0 40px 0;
-        }
-        
-        .blog-header {
-            flex-direction: column;
-            gap: 20px;
-        }
-        
-        .blog-title {
-            font-size: 36px;
-        }
-        
-        .blog-subtitle {
-            font-size: 18px;
-        }
-        
-        .tag-filters {
-            justify-content: flex-start;
-        }
-
-        
-        .post-title {
-            font-size: 24px;
-        }
-        
-        .post-excerpt {
-            font-size: 16px;
-        }
-        
-        .blog-post {
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 15px;
-        }
-        
-        .post-separator {
-            display: none;
-        }
-        
-        .post-tags {
-            justify-content: flex-start;
-            flex-grow: 0;
-        }
-        
-        .post-date {
-            text-align: left;
-        }
-    }
-
-    @media only screen and (max-width: 500px) {
-        .blog-title {
-            font-size: 28px;
-        }
-        
-        .post-title {
-            font-size: 20px;
-        }
-        
-        .post-excerpt {
-            font-size: 14px;
-        }
-        
-        .post-sidebar {
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 8px;
-        }
-        
-        .post-tags {
-            justify-content: flex-start;
-        }
-    }
-
-    nav {
-        display: flex;
-        justify-content: space-between;
-        height: 69px;
-        border-bottom: 1px solid #E1EDF8;
-        background: var(--background-color);
-    }
-    nav div {
-        display: flex;
-        align-items: center;
-        gap: 40px;
-    }
-    nav a:visited {
-        color: var(--primary-color);
-    }
-
-    p {
-        font-size: 64px;
-        letter-spacing: -0.04em;
-        line-height: 115%;
-        margin: 0;
-    }
-    .wrapper p {
-        margin: 0 0 40px 0;
-    }
-    p small {
-        font-size: 16px;
-        letter-spacing: 0;
-    }
-
-    a {
-        text-decoration: underline;
-        color: var(--primary-color);
-    }
-    a:hover, a:focus {
-        color: var(--accent-color);
-    }
-    nav a {
-        text-decoration: none;
-    }
-
-    #desktop-nav {
-        position: sticky;
-        top: 0;
-        z-index: 1000;
-        background: var(--background-color);
-        margin: 0 -40px;
-        padding: 0 40px;
-    }
-    #mobile-top-nav {
-        position: sticky;
-        top: 0;
-        z-index: 1000;
-        background: var(--background-color);
-        margin: 0 -40px;
-        padding: 0 40px;
-        height: 69px;
-        font-size: 18px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-    
-    #mobile-bottom-nav {
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        z-index: 1000;
-        padding: 0 5vw;
-        height: 15vw;
-        font-size: 4.06vw;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        background: var(--background-color);
-    }
-
-    @media only screen and (max-width: 830px) {
-        /* mobile / tablet */
-        #desktop-nav {
-            display: none;
-        }
-        
-        body, nav {
-            padding: 0 20px;
-        }
-        
-        #mobile-top-nav {
-            margin: 0 -20px;
-            padding: 0 20px;
-        }
-    }
-
-    @media only screen and (min-width: 500px) and (max-width: 830px) {
-        /* limit mobile/tablet growth */
-        #mobile-bottom-nav {
-            height: 75px;
-            padding: 0 25px;
-        }
-    }
-
-    @media only screen and (min-width: 831px) {
-        /* desktop */
-        #mobile-top-nav, #mobile-bottom-nav {
-            display: none;
-        }
-    }
-
-    .link-preview {
-        position: fixed;
-        top: 0;
-        left: 0;
-        z-index: 10;
-        pointer-events: none;
-        /* transition: transform 0.5s;
-        transform: rotate(-5deg);
-        transform-origin: center; */
-        transition: opacity 0.3s ease-out;
-        opacity: 0;
-    }
-    .link-preview-active {
-        /* transform: rotate(0deg); */
-        opacity: 1;
-    }
 </style>
 
-
-
-
-
-
-<!--
-┌┬┐┬ ┬┌─┐  ┬ ┬┌┬┐┌┬┐┬  
- │ ├─┤├┤   ├─┤ │ ││││  
- ┴ ┴ ┴└─┘  ┴ ┴ ┴ ┴ ┴┴─┘
--->
-<nav id="mobile-top-nav">
-    <a href="" alt="dasilvacontin"><b>dasilvacontin</b></a>
-    <a href="/artpluscode/" alt="art+code" data-preview="art">art+code</a>
-</nav>
-<nav id="mobile-bottom-nav">
-    <a href="https://www.linkedin.com/in/dasilvacontin/" alt="linkedin">twitter</a>
-    <a href="mailto:dasilvacontin@gmail.com" alt="send me an email">email</a>
-</nav>
-
-<nav id="desktop-nav">
-    <div style="width: 100%; max-width: 1420px; margin-left: auto; margin-right: auto; display: flex; justify-content: space-between; align-items: center;">
-        <div>
-            <a href="" alt="dasilvacontin"><b>dasilvacontin</b></a>
-        </div>
-
-    <div>
-        <a href="/artpluscode/" data-preview="art" alt="art+code">art+code</a>
-        <a href="/list-of-games.html" alt="games">games</a>
-        <a href="https://twitter.com/dasilvacontin" alt="twitter">twitter</a>
-        <a href="https://www.linkedin.com/in/dasilvacontin/" alt="linkedin">linkedin</a>
-        <a href="mailto:dasilvacontin@gmail.com" alt="send me an email">email</a>
-    </div>
-</nav>
-
-<div class="wrapper">
-    <p><b>David da Silva</b> counters climate change at <a href="https://www.greenprojecttech.com/">Green Project</a>, where he accelerates the journey of businesses’ towards <a href="">carbon net zero</a>.</p>
-    <p>A Product Designer with a background in Computer Science and Software Engineering, his designs riff on AI and ML, delivering magical innovation.</p>
-</div>
-
-
-
-<img id="art-preview" class="link-preview" src="images/summer-2020/art-preview.png" width="676" height="254">
-<img id="resume-preview" class="link-preview" src="images/summer-2020/resume-preview.png" width="426" height="602">
-<img id="portfolio-preview" class="link-preview" src="images/summer-2020/portfolio-preview.png" width="545" height="344">
-
-<section class="blog-section">
-    <div class="blog-header">
-        <h2 class="blog-title">Articles</h2>
-        <div class="tag-filters" id="tagFilters">
-            <span style="font-size: 16px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #666; margin-right: 12px; align-self: center;">Filter by:</span>
-            <!-- Tags will be populated by JavaScript -->
-        </div>
-    </div>
-    
-    <div class="blog-posts">
-        {% for post in site.posts %}
-        <article class="blog-post">
-            <div class="post-main">
-                <p class="post-title">
-                    <a href="{{ post.url }}">{{ post.title }}</a>
-                </p>
-            </div>
-            <div class="post-separator"></div>
-            <div class="post-tags">
-                {% if post.tags %}
-                {% for tag in post.tags %}
-                <span class="post-tag">{{ tag }}</span>
-                {% endfor %}
-                {% endif %}
-            </div>
-        </article>
-        {% endfor %}
-    </div>
-    
-    <div style="margin-top: 60px; padding: 40px; background: #f8f9fa; border-radius: 8px; text-align: center;">
-        <h3 style="font-size: 24px; margin: 0 0 16px 0; color: var(--primary-color);">Subscribe to my articles</h3>
-        <p style="font-size: 16px; margin: 0 0 32px 0; color: #666; line-height: 1.5;">Choose what you want to follow and copy the RSS feed URL to your reader.</p>
-        
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 24px;">
-            <div style="background: white; padding: 20px; border-radius: 6px; border: 1px solid #e1e5e9;">
-                <h4 style="font-size: 16px; margin: 0 0 8px 0; color: var(--primary-color); font-weight: bold;">All Articles</h4>
-                <p style="font-size: 14px; margin: 0 0 12px 0; color: #666;">Everything I publish</p>
-                <button onclick="copyToClipboard('https://dasilvacontin.github.io/feed.xml')" style="background: var(--primary-color); color: white; border: none; padding: 8px 16px; border-radius: 4px; font-size: 14px; cursor: pointer; transition: background-color 0.2s ease;">Copy RSS URL</button>
-            </div>
-            
-            <div style="background: white; padding: 20px; border-radius: 6px; border: 1px solid #e1e5e9;">
-                <h4 style="font-size: 16px; margin: 0 0 8px 0; color: var(--primary-color); font-weight: bold;">Design</h4>
-                <p style="font-size: 14px; margin: 0 0 12px 0; color: #666;">UX, product design, design systems</p>
-                <button onclick="copyToClipboard('https://dasilvacontin.github.io/feed-design.xml')" style="background: var(--primary-color); color: white; border: none; padding: 8px 16px; border-radius: 4px; font-size: 14px; cursor: pointer; transition: background-color 0.2s ease;">Copy RSS URL</button>
-            </div>
-            
-            <div style="background: white; padding: 20px; border-radius: 6px; border: 1px solid #e1e5e9;">
-                <h4 style="font-size: 16px; margin: 0 0 8px 0; color: var(--primary-color); font-weight: bold;">AI</h4>
-                <p style="font-size: 14px; margin: 0 0 12px 0; color: #666;">AI, machine learning, emerging patterns</p>
-                <button onclick="copyToClipboard('https://dasilvacontin.github.io/feed-ai.xml')" style="background: var(--primary-color); color: white; border: none; padding: 8px 16px; border-radius: 4px; font-size: 14px; cursor: pointer; transition: background-color 0.2s ease;">Copy RSS URL</button>
-            </div>
-            
-            <div style="background: white; padding: 20px; border-radius: 6px; border: 1px solid #e1e5e9;">
-                <h4 style="font-size: 16px; margin: 0 0 8px 0; color: var(--primary-color); font-weight: bold;">Announcements</h4>
-                <p style="font-size: 14px; margin: 0 0 12px 0; color: #666;">Career updates and news</p>
-                <button onclick="copyToClipboard('https://dasilvacontin.github.io/feed-announcement.xml')" style="background: var(--primary-color); color: white; border: none; padding: 8px 16px; border-radius: 4px; font-size: 14px; cursor: pointer; transition: background-color 0.2s ease;">Copy RSS URL</button>
-            </div>
-        </div>
-        
-        <p style="font-size: 14px; color: #666; margin: 0;">Paste the URL into your favorite RSS reader like Feedly, Inoreader, or NetNewsWire</p>
-    </div>
-</section>
-
-
-
-
-
-<!--
-┌┬┐┬ ┬┌─┐  ┌─┐┌─┐┬─┐┬┌─┐┌┬┐┌─┐
- │ ├─┤├┤   └─┐│  ├┬┘│├─┘ │ └─┐
- ┴ ┴ ┴└─┘  └─┘└─┘┴└─┴┴   ┴ └─┘
--->
-<script>
-    const canvas = document.createElement('canvas')
-    const ctx = canvas.getContext('2d')
-    const h1 = document.getElementsByTagName('h1')[0]
-    const navLinks = document.querySelectorAll('nav a')
-    NodeList.prototype.forEach = Array.prototype.forEach
-
-    let previewingLink = false
-    const activePreviewImages = []
-    function showLinkPreview () {
-        if (hasTouchEvents) return
-        previewingLink = true
-        const previewID = this.dataset.preview
-        const previewImage = document.getElementById(`${previewID}-preview`)
-        const xrange = iWidth - previewImage.width - 35
-        const yrange = iHeight - previewImage.height
-        previewImage.style.left = Math.random() * xrange + 'px'
-        previewImage.style.top = 35 + Math.random() * yrange + 'px'
-        previewImage.classList.add('link-preview-active')
-        activePreviewImages.push(previewImage)
-    }
-    function hideLinkPreview () {
-        previewingLink = false
-        const previewID = this.dataset.preview
-        const previewImage = document.getElementById(`${previewID}-preview`)
-        previewImage.classList.remove('link-preview-active')
-        const indexInArray = activePreviewImages.indexOf(previewImage)
-        if (indexInArray > -1) activePreviewImages.splice(indexInArray, 1)
-    }
-
-    navLinks.forEach(navLink => {
-        if (navLink.dataset.preview) {
-            navLink.addEventListener('mouseover', showLinkPreview)
-            navLink.addEventListener('mouseout', hideLinkPreview)
-        }
-    })
-
-    let doImagePaint = true
-    function flagImagePaint () {
-        doImagePaint = true
-    }
-
-    let iWidth, iHeight
-    function onResize () {
-        iWidth = window.innerWidth
-        iHeight = window.innerHeight
-        const dpx = window.devicePixelRatio
-
-        canvas.width = iWidth * dpx
-        canvas.height = iHeight * dpx
-
-        canvas.style.width = iWidth + 'px'
-
-        canvas.style.height = iHeight + 'px'
-        ctx.scale(devicePixelRatio, devicePixelRatio)
-        doImagePaint = true
-
-        setTimeout(() => {
-            if (iWidth !== window.innerWidth || iHeight !== window.innerHeight) {
-                onResize()
-            }
-        }, 100)
-    }
-    window.onresize = onResize
-    onResize()
-
-    canvas.style.position = 'fixed'
-    canvas.style.top = canvas.style.left = canvas.style.right = canvas.style.bottom = 0
-    canvas.style.pointerEvents = 'none'
-    canvas.style.zIndex = -2
-    document.body.appendChild(canvas)
-
-    function ImageWithSource (src) {
-        const img = new Image()
-        img.onload = flagImagePaint
-        img.src = src
-        return img
-    }
-    const images = [
-        {
-            img: ImageWithSource('images/summer-2020/varien.png'),
-            h1Color: '#223F8B'
-        },
-        {
-            img: ImageWithSource('images/summer-2020/design-thinking-workshop.jpg'),
-            h1Color: '#2D3959'
-        },
-        {
-            img: ImageWithSource('images/summer-2020/longboard.jpg'),
-            h1Color: '#D7DFE5'
-        },
-        {
-            img: ImageWithSource('images/summer-2020/civilitris.jpg'),
-            h1Color: '#6CC4FF'
-        },
-        {
-            img: ImageWithSource('images/summer-2020/enhance-ux-boardgame.jpg'),
-            h1Color: '#CCB5CE'
-        },
-        {
-            img: ImageWithSource('images/summer-2020/footters.jpg'),
-            h1Color: '#000000'
-        },
-        {
-            img: ImageWithSource('images/summer-2020/itgallery.jpg'),
-            h1Color: '#E94C1F'
-        },
-        {
-            img: ImageWithSource('images/summer-2020/workshop.jpg'),
-            h1Color: '#1F35F5'
-        },
-        {
-            img: ImageWithSource('images/summer-2020/zdog.jpg'),
-            h1Color: '#9FD51F'
-        },
-        {
-            img: ImageWithSource('images/summer-2020/dealflow.jpg'),
-            h1Color: '#6CC7FF'
-        },
-        {
-            img: ImageWithSource('images/summer-2020/the3million.jpg'),
-            h1Color: '#F5B714'
-        },
-    ]
-    let currentImageIndex = 0
-
-    let imageIsBeingHeld = false
-    /* only if h1 is held 
-    function updateImageIsBeingHeld (e) {
-        for (let i = 0; i < e.touches.length; ++i) {
-            if (e.touches[i].target === h1) {
-                imageIsBeingHeld = true
-                e.preventDefault()
-                return
-            }
-        }
-        imageIsBeingHeld = false
-        return
-    }
-    */
-    let flipImageInterval
-    function flipImage () {
-        if (previewingLink) return
-        const nextImageIndex = (currentImageIndex + 1) % images.length
-        if (!imageIsBeingHeld && images[nextImageIndex].img.width) {
-            currentImageIndex = nextImageIndex
-            flagImagePaint()
-        }
-    }
-    function setupFlipImageInterval () {
-        return // maybe I don't like it to be changing all the time
-        // flipImageInterval = setInterval(flipImage, 380)
-        flipImageInterval = setInterval(flipImage, 400)
-    }
-
-    let grabStartX
-    let grabStartIndex
-    const X_DIST = 24
-    let hasTouchEvents = false
-    function updateImageIsBeingHeld (e) {
-        if (!hasTouchEvents) {
-            hasTouchEvents = (e.type === 'touchstart')
-        }
-
-        const isMouseEvent = (e.type.indexOf('mouse') === 0)
-        imageIsBeingHeld = isMouseEvent
-            ? (e.type === 'mousedown')
-            : (e.touches.length > 0)
-        clearInterval(flipImageInterval)
-        if (!imageIsBeingHeld) {
-            setupFlipImageInterval()
-        }
-        document.body.classList.toggle('image-being-held', imageIsBeingHeld)
-
-        if (e.type === 'mousedown' || e.type === 'touchstart') {
-            grabStartX = (e.clientX || e.touches[0].clientX)
-            grabStartIndex = currentImageIndex
-        }
-        if (e.type === 'touchend') {
-            console.log('deactivating preview images')
-            while (activePreviewImages.length) {
-                const previewImage = activePreviewImages.pop()
-                previewImage.classList.remove('link-preview-active')
-            }
-        }
-    }
-
-    function updateImageIsScrobbled (e) {
-        if (!imageIsBeingHeld) return
-
-        let targetIndex = grabStartIndex
-        const offsetX = grabStartX - (e.clientX || e.touches[0].clientX)
-        let skips = Math.floor(Math.abs(offsetX / X_DIST)) * Math.sign(offsetX)
-        while (skips < 0) {
-            targetIndex--
-            skips++
-            if (targetIndex < 0) targetIndex += images.length
-        }
-        while (skips > 0) {
-            targetIndex = (targetIndex + 1) % images.length
-            skips--
-        }
-        if (targetIndex !== currentImageIndex) {
-            currentImageIndex = targetIndex
-            flagImagePaint()
-        }
-    }
-
-    setupFlipImageInterval()
-    document.body.addEventListener('touchstart', updateImageIsBeingHeld)
-    document.body.addEventListener('touchmove', updateImageIsScrobbled)
-    document.body.addEventListener('touchend', updateImageIsBeingHeld)
-    h1.addEventListener('mousedown', updateImageIsBeingHeld)
-    document.body.addEventListener('mousemove', updateImageIsScrobbled)
-    document.body.addEventListener('mouseup', updateImageIsBeingHeld)
-
-    images.forEach(params => params.img.onload = flagImagePaint)
-    document.fonts.ready.then(flagImagePaint)
-
-    /* WIGGLY LINES */
-    const wigglyLine0 = { // mobile bottom line
-        dataPoints: [],
-        offsetsY: [],
-        params: {
-            p0x: () => iWidth >= 500 ? 25 : window.innerWidth * 0.05,
-            py: () => window.innerHeight - (iWidth >= 500 ? 75 : window.innerWidth * 0.15),
-            p1x: () => iWidth >= 500 ? iWidth - 25 : window.innerWidth * 0.95,
-            offsetX: 0,
-            bgcolor: '#FFFAEB',
-            color: '#A9ABAF',
-            lineWidth: 1.5,
-            lineCap: 'round',
-            segments: 6,
-            amplitude: 5,
-            offsetYAmplitude: 5,//10,
-            pinnedEnding: false,
-            growWhenLonger: false,
-            speed: 0.04
-        }
-    }
-    const wigglyLine1 = { // mobile top line
-        dataPoints: [],
-        offsetsY: [],
-        params: {
-            p0x: () => iWidth >= 500 ? 165 : 106 / 320 * iWidth,
-            py: () => iWidth >= 500 ? 37 : 0.075 * window.innerWidth,
-            p1x: () => iWidth > 500 ? iWidth - 119 : 244 / 320 * iWidth,
-            offsetX: 0,
-            bgcolor: '#FFFAEB',
-            color: '#A9ABAF',
-            lineWidth: 1.5,
-            lineCap: 'round',
-            segments: 6,
-            amplitude: 5,
-            offsetYAmplitude: 5,//10,
-            pinnedEnding: true,
-            growWhenLonger: false,
-            speed: 0.02
-        }
-    }
-
-    /*
-    const desktopWigglyLine = {
-        dataPoints: [],
-        offsetsY: [],
-        params: {
-            p0x: () => Math.max((iWidth - 1100)/2, 32) + 112,
-            py: () => 34,
-            p1x: () => iWidth - Math.max((iWidth - 1100)/2, 32) - 455,
-            offsetX: 0,
-            bgcolor: '#FFFAEB',
-            color: '#A9ABAF',
-            lineWidth: 1.5,
-            lineCap: 'round',
-            segments: 6,
-            amplitude: 5,
-            offsetYAmplitude: 5,//10,
-            pinnedEnding: true,
-            speed: 0.02
-        }
-    }
-    */
-
-    const desktopWigglyLine = {
-        dataPoints: [],
-        offsetsY: [],
-        params: {
-            p0x: () => 32 + 112 + 8,
-            py: () => 36,
-            p1x: () => {
-                const _p0x = desktopWigglyLine.params.p0x()
-                let _p1x = iWidth - 32 - 455 - 4
-                if (_p1x - _p0x > 300) {
-                    _p1x = _p0x + 300
-                }
-                return _p1x
-            },
-            offsetX: 0,
-            bgcolor: '#FFFAEB',
-            color: '#A9ABAF',
-            lineWidth: 1,
-            lineCap: 'round',
-            segments: 6,
-            amplitude: 8,
-            offsetYAmplitude: 5,//10,
-            pinnedEnding: false,
-            growWhenLonger: true,
-            speed: 0.02
-        }
-    }
-
-
-
-    // Math.random = mulberry32(0);
-
-    function renderWigglyLine(wigglyLine, delta) {
-      with (wigglyLine) { with (params) {
-        while (dataPoints.length <= segments) {
-            dataPoints.push(Math.random())
-            offsetsY.push(Math.random() - 0.5)
-        }
-
-        const _p0x = p0x()
-        const _p1x = p1x()
-        const _py = py()
-
-        const waveWidth = Math.ceil(_p1x - _p0x)
-        const segmentWidth = Math.ceil(waveWidth / segments)
-        const halfSegmentWidth = Math.ceil(segmentWidth / 2)
-
-        ctx.save()
-
-        ctx.fillStyle = bgcolor
-        ctx.fillRect(
-            Math.floor(_p0x - lineWidth),
-            Math.floor(_py - 1.5 * (amplitude + offsetYAmplitude)),
-            Math.ceil(waveWidth + waveWidth / segments + lineWidth),
-            Math.ceil(3 * (amplitude + offsetYAmplitude))
-        )
-
-        ctx.strokeStyle = color
-        ctx.lineWidth = lineWidth
-        ctx.lineCap = lineCap
-        ctx.translate(_p0x, _py)
-
-        /* debug middle line
-        ctx.beginPath()
-        ctx.moveTo(0, 0)
-        ctx.lineTo(waveWidth, 0)
-        ctx.stroke()
-        */
-
-        ctx.beginPath()
-        ctx.moveTo(0, 0)
-        let prevx = 0
-        let prevy = 0
-        offsetX += delta * speed
-        let offsetY = 0
-
-        if (offsetX > segmentWidth) {
-          offsetX -= segmentWidth
-          dataPoints.unshift(Math.random())
-          offsetsY.unshift(Math.random() - 0.5)
-        }
-
-        for (let i = 0; i < (pinnedEnding ? segments : segments + 1); ++i) {
-          let targetX = i * segmentWidth + offsetX
-          let targetY = dataPoints[i] * amplitude
-          let segmentWidthFactor = 1
-          if (i === 0) {
-            // make first point smoother
-            segmentWidthFactor = offsetX / segmentWidth
-            targetY *= segmentWidthFactor
-          }
-          offsetY += (offsetsY[i] * segmentWidthFactor)
-          offsetY = Math.min(1, offsetY)
-          offsetY = Math.max(-1, offsetY)
-          if ((dataPoints.length % 2 == 0) !== (i % 2 == 0)) targetY *= -1
-          targetY += (offsetY * offsetYAmplitude)
-          if (growWhenLonger) {
-              targetY *= ((i * segmentWidth + offsetX) / waveWidth)
-          }
-          if (pinnedEnding && i === segments - 1) {
-            // if you want for it to finish in center
-            targetY *= (segmentWidth - offsetX) / segmentWidth
-          }
-          const midPointX = Math.round(prevx + halfSegmentWidth * segmentWidthFactor)
-          targetX = targetX
-          targetY = targetY
-          ctx.bezierCurveTo(
-            midPointX, prevy,
-            midPointX, targetY,
-            targetX, targetY)
-          prevx = targetX
-          prevy = targetY
-
-          /* debugging values
-          ctx.fillStyle = color
-          ctx.font = '16px Helvetica'
-          ctx.fillText(`${offsetsY[i].toFixed(2)}`, targetX, targetY)
-          */
-        }
-
-        if (pinnedEnding) {
-            // finish in center
-            const targetX = waveWidth
-            const targetY = 0
-            const segmentWidthFactor = (segmentWidth - offsetX) / segmentWidth
-            const midPointX = prevx + (segmentWidth / 2) * segmentWidthFactor
-            ctx.bezierCurveTo(
-            midPointX, prevy,
-            midPointX, targetY,
-            targetX, targetY)
-        }
-
-        ctx.stroke()
-
-        if (!pinnedEnding) {
-            // erase "tail"
-            ctx.fillRect(
-                Math.ceil(waveWidth),
-                Math.floor(- 1.5 * (amplitude + offsetYAmplitude)),
-                Math.ceil(waveWidth / segments),
-                Math.ceil(3 * (amplitude + offsetYAmplitude))
-            )
-        }
-
-        ctx.restore()
-      }}
-    }
-
-    function imagePaint () {
-        doImagePaint = false
-        ctx.save()
-        // ctx.fillStyle = '#FFFAEB'
-        // ctx.fillRect(0, 0, canvas.width, canvas.height)
-        ctx.clearRect(0, 0, canvas.width, canvas.height)
-
-        const backdropImage = images[currentImageIndex]
-
-        const rect = h1.getBoundingClientRect()
-        const centerX = rect.left + rect.width / 2
-        const centerY = rect.top + rect.height / 2
-        const edge = 0.6 * window.innerWidth
-        
-        const h1Style = getComputedStyle(h1)
-        ctx.font = `bold ${h1Style.fontSize} ${h1Style.fontFamily}`
-        ctx.fillStyle = backdropImage.h1Color
-        ctx.textAlign = 'center'
-        ctx.textBaseline = 'middle'
-        ctx.fillText('David da Silva', centerX, centerY + 3)
-
-        const isDesktop = (iWidth > 830)
-        if (backdropImage.img.width) {
-            const imageHeight = isDesktop
-                ? 427
-                : (iWidth >= 500 ? 300 : (193 / 320) * window.innerWidth)
-            const imageWidth = (imageHeight / backdropImage.img.height) * backdropImage.img.width
-            ctx.globalCompositeOperation = 'xor'
-            ctx.drawImage(
-                backdropImage.img,
-                centerX - imageWidth/2, centerY - imageHeight/2,
-                imageWidth, imageHeight
-            )
-        }
-        ctx.restore()
-    }
-
-    let last = Date.now()
-    function renderLoop () {
-        requestAnimationFrame(renderLoop)
-        const now = Date.now()
-        const delta = Math.min(now - last, 32)
-        last = now
-
-        if (iWidth !== window.innerWidth || iHeight !== window.innerHeight) {
-            onResize()
-            setTimeout(imagePaint, 100)
-            return
-        }
-
-        if (doImagePaint) imagePaint()
-
-        if (iWidth >= 831) {
-            // desktop
-            renderWigglyLine(desktopWigglyLine, delta)
-        } else {
-            // mobile / tablet
-            renderWigglyLine(wigglyLine0, delta)
-            renderWigglyLine(wigglyLine1, delta)
-        }
-    }
-    requestAnimationFrame(renderLoop)
-
-</script>
-
-<script>
-    // Tag filtering functionality
-    document.addEventListener('DOMContentLoaded', function() {
-        const tagFilters = document.getElementById('tagFilters');
-        const blogPosts = document.querySelectorAll('.blog-post');
-        
-        // Collect all unique tags from posts
-        const allTags = new Set();
-        blogPosts.forEach(post => {
-            const tags = post.querySelectorAll('.post-tag');
-            tags.forEach(tag => {
-                allTags.add(tag.textContent.trim());
-            });
-        });
-        
-        // Create filter buttons
-        allTags.forEach(tag => {
-            const filterBtn = document.createElement('button');
-            filterBtn.className = 'filter-tag';
-            filterBtn.textContent = tag;
-            filterBtn.addEventListener('click', () => toggleFilter(tag, filterBtn));
-            tagFilters.appendChild(filterBtn);
-        });
-        
-        // Track active filters
-        let activeFilters = new Set();
-        
-        function toggleFilter(tag, button) {
-            // Force the animation to trigger
-            button.style.transform = 'scale(0.95)';
-            setTimeout(() => {
-                button.style.transform = '';
-            }, 1000/60);
-            
-            if (activeFilters.has(tag)) {
-                activeFilters.delete(tag);
-                button.classList.remove('active');
-            } else {
-                activeFilters.add(tag);
-                button.classList.add('active');
-            }
-            
-            updatePostTagStates();
-            filterPosts();
-        }
-        
-        function updatePostTagStates() {
-            // Update all post tags to show active state
-            document.querySelectorAll('.post-tag').forEach(postTag => {
-                const tagText = postTag.textContent.trim();
-                if (activeFilters.has(tagText)) {
-                    postTag.classList.add('active');
-                } else {
-                    postTag.classList.remove('active');
-                }
-            });
-        }
-        
-        function filterPosts() {
-            blogPosts.forEach(post => {
-                const postTags = Array.from(post.querySelectorAll('.post-tag')).map(tag => tag.textContent.trim());
-                
-                if (activeFilters.size === 0) {
-                    // No filters active, show all posts
-                    post.style.display = 'flex';
-                } else {
-                    // Check if post has any of the active filter tags
-                    const hasMatchingTag = postTags.some(tag => activeFilters.has(tag));
-                    post.style.display = hasMatchingTag ? 'flex' : 'none';
-                }
-            });
-        }
-        
-        // Add click handlers to post tags
-        document.querySelectorAll('.post-tag').forEach(postTag => {
-            postTag.addEventListener('click', (e) => {
-                e.preventDefault(); // Prevent navigation
-                e.stopPropagation(); // Stop event bubbling
-                
-                // Force the animation to trigger
-                postTag.style.transform = 'scale(0.95)';
-                setTimeout(() => {
-                    postTag.style.transform = '';
-                }, 150);
-                
-                const tagText = postTag.textContent.trim();
-                const filterBtn = Array.from(document.querySelectorAll('.filter-tag')).find(btn => btn.textContent === tagText);
-                if (filterBtn) {
-                    toggleFilter(tagText, filterBtn);
-                }
-            });
-        });
-    });
-    
-    // Copy RSS URL to clipboard
-    function copyToClipboard(text) {
-        navigator.clipboard.writeText(text).then(function() {
-            // Show feedback (optional)
-            const button = event.target;
-            const originalText = button.textContent;
-            button.textContent = 'Copied!';
-            button.style.background = '#28a745';
-            
-            setTimeout(function() {
-                button.textContent = originalText;
-                button.style.background = '';
-            }, 2000);
-        }).catch(function(err) {
-            console.error('Could not copy text: ', err);
-            // Fallback for older browsers
-            const textArea = document.createElement('textarea');
-            textArea.value = text;
-            document.body.appendChild(textArea);
-            textArea.select();
-            document.execCommand('copy');
-            document.body.removeChild(textArea);
-        });
-    }
-</script>
-
-<!-- Hotjar Tracking Code for https://dasilvacont.in/ -->
-<script>
-    (function(h,o,t,j,a,r){
-        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
-        h._hjSettings={hjid:1929563,hjsv:6};
-        a=o.getElementsByTagName('head')[0];
-        r=o.createElement('script');r.async=1;
-        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
-        a.appendChild(r);
-    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
-</script>
+<main class="home">
+    {% include home-content.html %}
+</main>
+
+<img
+    id="sticky-note"
+    class="sticky-note"
+    src="{{ '/images/sticky-note.png' | prepend: site.baseurl }}"
+    alt=""
+    width="290"
+    height="280"
+    draggable="false"
+>
+
+<script src="{{ '/js/sticky-note.js' | prepend: site.baseurl }}" defer></script>

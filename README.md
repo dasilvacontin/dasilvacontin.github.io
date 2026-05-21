@@ -34,6 +34,17 @@ This is my personal website built with Jekyll and hosted on GitHub Pages.
 
 3. Open your browser and navigate to `http://localhost:4000`
 
+### Storybook (components)
+
+Develop HTML components in isolation with Storybook:
+
+```bash
+npm install          # once
+npm run storybook    # http://localhost:6006
+```
+
+Add stories under `components/**/*.stories.js`. See `components/README.md`.
+
 ### Building for Production
 
 To build the site for production:

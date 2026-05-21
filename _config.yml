@@ -21,6 +21,12 @@ exclude:
   - Gemfile
   - Gemfile.lock
   - node_modules
+  - package.json
+  - package-lock.json
+  - .storybook
+  - storybook
+  - storybook-static
+  - components
   - vendor/bundle/
   - vendor/cache/
   - vendor/gems/

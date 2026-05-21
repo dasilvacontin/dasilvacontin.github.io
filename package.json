@@ -1,0 +1,25 @@
+{
+  "name": "dasilvacontin.github.io",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "This is my personal website built with Jekyll and hosted on GitHub Pages.",
+  "scripts": {
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dasilvacontin/dasilvacontin.github.io.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dasilvacontin/dasilvacontin.github.io/issues"
+  },
+  "homepage": "https://github.com/dasilvacontin/dasilvacontin.github.io#readme",
+  "devDependencies": {
+    "storybook": "^10.4.0",
+    "@storybook/html-vite": "^10.4.0"
+  }
+}

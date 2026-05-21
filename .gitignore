@@ -5,3 +5,7 @@ node_modules
 .DS_Store
 dashboard
 .jekyll-cache
+
+*storybook.log
+debug-storybook.log
+storybook-static

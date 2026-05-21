@@ -1,0 +1,169 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=IBM+Plex+Sans:ital,wght@0,400;0,600;1,400&display=swap');
+
+:root {
+    /* Colors — base */
+    --color--accent: #6427FF;
+    --color--primary: #000000;
+    --color--secondary: #939393;
+    --color--background: #FFFFFF;
+    --color--background-accent: #F3F1FE;
+
+    /* Colors — text */
+    --color--text-primary: var(--color--primary);
+    --color--text-secondary: var(--color--secondary);
+    --color--text-accent: var(--color--accent);
+    --color--text-link: var(--color--accent);
+    --color--tag-text: var(--color--text-primary);
+    --color--hero-title-text: var(--color--text-primary);
+    --color--hero-context-text: var(--color--text-primary);
+    --color--photo-caption-text: var(--color--text-primary);
+    --color--quote-body-text: var(--color--text-primary);
+    --color--entry-text: var(--color--text-primary);
+    --color--quote-title-text: var(--color--text-primary);
+    --color--quote-author-name-text: var(--color--text-primary);
+    --color--quote-author-role-text: var(--color--text-primary);
+    --color--quote-author-title-text: var(--color--text-accent);
+    --color--section-title-text: var(--color--text-primary);
+
+    /* Colors — secondary palette */
+    --color--secondary-gray: #DDDDDD;
+    --color--secondary-brown: #F2C8A9;
+    --color--secondary-yellow: #FFF975;
+    --color--secondary-blue: #9CEDFF;
+    --color--secondary-purple: #F4D1FC;
+    --color--secondary-pink: #FEE6DF;
+    --color--secondary-green: #9FFBA6;
+
+    /* Colors — tag backgrounds */
+    --color--tag-gray-background: var(--color--secondary-gray);
+    --color--tag-brown-background: var(--color--secondary-brown);
+    --color--tag-yellow-background: var(--color--secondary-yellow);
+    --color--tag-blue-background: var(--color--secondary-blue);
+    --color--tag-purple-background: var(--color--secondary-purple);
+    --color--tag-pink-background: var(--color--secondary-pink);
+    --color--tag-green-background: var(--color--secondary-green);
+
+    /* Sizes */
+    --size--1: 1px;
+    --size--2: 2px;
+    --size--4: 4px;
+    --size--8: 8px;
+    --size--12: 12px;
+    --size--16: 16px;
+    --size--24: 24px;
+    --size--32: 32px;
+    --size--40: 40px;
+    --size--48: 48px;
+    --size--56: 56px;
+    --size--64: 64px;
+    --size--72: 72px;
+    --size--80: 80px;
+
+    /* Typography — families & body scale */
+    --font-family: 'IBM Plex Sans', sans-serif;
+    --font-family-mono: 'IBM Plex Mono', monospace;
+    --font-size-body: 16px;
+    --line-height-body: 1.5;
+
+    --text--body-font-size: var(--font-size-body);
+    --text--body-font-weight: 400;
+    --text--body-line-height: var(--line-height-body);
+
+    --text--hero-title-font-size: 24px;
+    --text--hero-title-font-weight: 600;
+    --text--hero-title-line-height: 1.3;
+
+    --text--tag-font-size: 14px;
+    --text--tag-font-weight: 400;
+    --text--tag-line-height: 1;
+
+    --text--entry-font-size: var(--text--body-font-size);
+    --text--entry-font-weight: var(--text--body-font-weight);
+    --text--entry-line-height: 1.1;
+
+    --text--hero-context-font-size: var(--text--body-font-size);
+    --text--hero-context-font-weight: var(--text--body-font-weight);
+    --text--hero-context-line-height: var(--text--body-line-height);
+
+    --text--photo-caption-font-family: var(--font-family-mono);
+    --text--photo-caption-font-size: var(--text--body-font-size);
+    --text--photo-caption-font-weight: var(--text--body-font-weight);
+    --text--photo-caption-line-height: var(--text--body-line-height);
+
+    --text--quote-body-font-size: var(--text--body-font-size);
+    --text--quote-body-font-weight: var(--text--body-font-weight);
+    --text--quote-body-line-height: var(--text--body-line-height);
+
+    --text--quote-title-font-size: 20px;
+    --text--quote-title-font-weight: 600;
+    --text--quote-title-line-height: var(--text--body-line-height);
+
+    --text--quote-author-name-font-size: var(--font-size-body);
+    --text--quote-author-name-font-weight: 600;
+    --text--quote-author-name-line-height: var(--text--body-line-height);
+
+    --text--quote-author-role-font-size: var(--text--body-font-size);
+    --text--quote-author-role-font-weight: var(--text--body-font-weight);
+    --text--quote-author-role-line-height: var(--text--body-line-height);
+
+    --text--section-title-font-size: 14px;
+    --text--section-title-font-weight: 600;
+    --text--section-title-line-height: 1.5;
+
+    /* Quote layout */
+    --quote--border-radius: var(--size--32);
+    --quote--background: var(--color--background-accent);
+    /* --quote--background:
+        radial-gradient(ellipse 90% 72% at 8% 14%, rgb(100 39 255 / 0.08) 0%, transparent 62%),
+        radial-gradient(ellipse 78% 68% at 92% 86%, rgb(156 237 255 / 0.12) 0%, transparent 60%),
+        radial-gradient(ellipse 62% 48% at 98% 6%, rgb(244 209 252 / 0.35) 0%, transparent 55%),
+        linear-gradient(158deg, #f8f6fe 0%, var(--color--background-accent) 42%, #e8e4fe 100%); */
+    --quote--padding: var(--size--40);
+    --quote--section-gap: var(--size--16);
+    --quote--body-paragraph-gap: var(--size--16);
+    --quote--avatar-width: var(--size--72);
+    --quote--avatar-height: calc(var(--size--56) + var(--size--32));
+    --quote--attribution-gap: var(--size--24);
+
+    /* Tag layout */
+    --tag--padding-y: var(--size--4);
+    --tag--padding-x: var(--size--12);
+    --tag--border-radius: var(--size--40);
+    --tag--gap: var(--size--4);
+
+    /* Tag — color variant backgrounds */
+    --tag--gray-background: var(--color--tag-gray-background);
+    --tag--brown-background: var(--color--tag-brown-background);
+    --tag--yellow-background: var(--color--tag-yellow-background);
+    --tag--blue-background: var(--color--tag-blue-background);
+    --tag--purple-background: var(--color--tag-purple-background);
+    --tag--pink-background: var(--color--tag-pink-background);
+    --tag--green-background: var(--color--tag-green-background);
+
+    /* Tag — entry variants (alias color variants) */
+    --tag--b2b-background: var(--tag--gray-background);
+    --tag--b2c-background: var(--tag--brown-background);
+    --tag--for-fun-background: var(--tag--yellow-background);
+    --tag--internal-background: var(--tag--gray-background);
+    --tag--external-background: var(--tag--blue-background);
+    --tag--design-system-background: var(--tag--purple-background);
+    --tag--feature-background: var(--tag--pink-background);
+    --tag--sales-prototype-background: var(--tag--green-background);
+
+    /* Entry layout */
+    --entry--left-gap: var(--size--4);
+    --color--entry-metadata-text: var(--color--text-secondary);
+
+    /* Section footnote (secondary line after a profile-section list) */
+    --text--section-footnote-font-size: var(--text--entry-font-size);
+    --text--section-footnote-font-weight: var(--text--entry-font-weight);
+    --text--section-footnote-line-height: var(--text--entry-line-height);
+    --color--section-footnote-text: var(--color--entry-metadata-text);
+
+    /* Profile section layout */
+    --profile-section--title-gap: var(--size--8);
+    --profile-section--entries-gap: var(--size--8);
+
+    /* Text content (title + body prose blocks) */
+    --text-content--gap: var(--size--8);
+}
