@@ -10,6 +10,7 @@
 
   var defaultMarginTop = 116;
   var storageKey = 'home-gallery-margin-top';
+  var guiVisibleStorageKey = 'home-gallery-gui-visible';
   var stored = parseInt(localStorage.getItem(storageKey), 10);
   var settings = {
     marginTop: Number.isFinite(stored) ? stored : defaultMarginTop,
@@ -31,12 +32,15 @@
     .name('Gallery margin top')
     .onChange(applyMarginTop);
 
-  var guiHidden = false;
+  var guiHidden = localStorage.getItem(guiVisibleStorageKey) === 'false';
 
   function setGuiVisible(visible) {
     gui.domElement.style.display = visible ? '' : 'none';
     guiHidden = !visible;
+    localStorage.setItem(guiVisibleStorageKey, String(visible));
   }
+
+  setGuiVisible(!guiHidden);
 
   document.addEventListener('keydown', function (event) {
     if (event.key !== 'd' || event.metaKey || event.ctrlKey || event.altKey) {

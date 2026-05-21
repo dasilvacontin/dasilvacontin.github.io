@@ -7,6 +7,18 @@ body {
     background: var(--color--background);
 }
 
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
 a {
     color: var(--color--text-link);
     text-decoration: underline;
@@ -173,6 +185,10 @@ a:hover {
 }
 
 .entry-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    align-self: flex-start;
     flex-shrink: 0;
 }
 

@@ -8,6 +8,14 @@ html, body {
     padding: 0;
 }
 
+body {
+    position: relative;
+}
+
+:root {
+    --home-margin-inline: var(--size--32);
+}
+
 .hero-context {
     list-style: none;
     padding: 0;
@@ -19,7 +27,7 @@ html, body {
     grid-template-columns: repeat(5, 1fr);
     column-gap: var(--size--32);
     row-gap: var(--size--48);
-    padding: 0 var(--size--32) 50vh;
+    padding: 0 var(--home-margin-inline) 50vh;
     box-sizing: border-box;
     align-items: start;
 }
@@ -27,8 +35,8 @@ html, body {
 .home-header {
     position: fixed;
     top: var(--size--32);
-    left: var(--size--32);
-    right: var(--size--32);
+    left: var(--home-margin-inline);
+    right: var(--home-margin-inline);
     z-index: 100;
     display: flex;
     justify-content: space-between;
@@ -136,10 +144,10 @@ html, body {
 }
 
 .sticky-note {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: auto;
+    position: absolute;
+    top: var(--size--32);
+    right: var(--home-margin-inline);
+    left: auto;
     bottom: auto;
     display: block;
     width: 290px;
@@ -157,6 +165,26 @@ html, body {
 .sticky-note.is-dragging {
     cursor: grabbing;
     user-select: none;
+}
+
+@media (max-width: 729px) {
+    :root {
+        --home-margin-inline: var(--size--16);
+    }
+}
+
+@media (max-width: 1299px) {
+    .home {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    }
+
+    .home-content {
+        grid-column: 1;
+    }
+
+    .home-gallery {
+        grid-column: 2;
+    }
 }
 
 @media (max-width: 1024px) {
@@ -190,6 +218,6 @@ html, body {
 >
 
 <script src="{{ '/js/home-nav.js' | prepend: site.baseurl }}?v=2"></script>
-<script src="{{ '/js/sticky-note.js' | prepend: site.baseurl }}?v=3" defer></script>
+<script src="{{ '/js/sticky-note.js' | prepend: site.baseurl }}?v=6" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/dat.gui@0.7.9/build/dat.gui.min.js"></script>
 <script src="{{ '/js/home-gallery-gui.js' | prepend: site.baseurl }}"></script>

@@ -45,10 +45,13 @@ export function createEntry({ primary, leftMeta, rightMeta, tags = [] }) {
   }
 
   if (rightMeta) {
+    const right = document.createElement('div');
+    right.className = 'entry-right';
     const rightMetaEl = document.createElement('span');
-    rightMetaEl.className = 'hero-context entry-metadata entry-right';
+    rightMetaEl.className = 'hero-context entry-metadata';
     rightMetaEl.textContent = rightMeta;
-    row.append(left, rightMetaEl);
+    right.append(rightMetaEl);
+    row.append(left, right);
   } else {
     row.append(left);
   }
