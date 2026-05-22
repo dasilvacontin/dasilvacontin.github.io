@@ -11,6 +11,7 @@ html {
 html, body {
     margin: 0;
     padding: 0;
+    text-wrap: pretty;
 }
 
 body {
@@ -303,12 +304,15 @@ body {
     .home {
         grid-template-columns: 1fr;
         grid-template-rows: auto;
+        row-gap: 0;
     }
 
     .hero {
         grid-template-columns: 1fr;
         height: auto;
-        padding-block: var(--size--48);
+        min-height: 0;
+        padding-top: 160px;
+        padding-bottom: 0;
         row-gap: var(--size--32);
     }
 
@@ -320,10 +324,18 @@ body {
     .home-content,
     .home-gallery {
         grid-column: 1 / -1;
+        margin-top: 0;
     }
 
-    .home-content,
+    .home-content {
+        margin-top: 160px;
+    }
+
     .home-gallery {
+        margin-top: var(--size--48);
+    }
+
+    .quote-block.quote-home-margins.quote-home-first {
         margin-top: 0;
     }
 }

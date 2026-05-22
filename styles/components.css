@@ -58,6 +58,23 @@ a:hover {
     min-width: 0;
 }
 
+.image-with-caption__frame {
+    display: block;
+    position: relative;
+    line-height: 0;
+    width: 100%;
+    min-width: 0;
+}
+
+.image-with-caption__frame::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border: 1px solid var(--color--secondary-gray);
+    box-sizing: border-box;
+    pointer-events: none;
+}
+
 .image-with-caption__image {
     display: block;
     width: 100%;
