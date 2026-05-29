@@ -139,6 +139,7 @@ body {
     display: block;
     line-height: 0;
     text-decoration: none;
+    cursor: pointer;
     opacity: 1;
     transition: opacity 0.25s ease;
     pointer-events: auto;
@@ -164,6 +165,7 @@ body {
     display: block;
     width: 100px;
     height: auto;
+    cursor: pointer;
 }
 
 .hero {
@@ -212,6 +214,34 @@ body {
 
 .quote-block.quote-home-margins.quote-home-first {
     margin-top: 0;
+}
+
+.cs-callout {
+    display: flex;
+    flex-direction: column;
+    gap: var(--size--4);
+    padding: var(--size--16);
+    border: 1px solid var(--color--secondary-gray);
+    border-radius: var(--size--8);
+    text-decoration: none;
+    color: var(--color--text-primary);
+    transition: border-color 0.15s ease;
+}
+
+.cs-callout:hover {
+    border-color: var(--color--accent);
+}
+
+.cs-callout__label {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color--accent);
+}
+
+.cs-callout__title {
+    font-size: var(--text--body-font-size);
 }
 
 .sticky-note-anchor {
@@ -355,22 +385,7 @@ body {
     {% include home-content.html %}
 </main>
 
-<div class="sticky-note-anchor">
-    <div class="home-layout-rail">
-        <img
-            id="sticky-note"
-            class="sticky-note"
-            src="{{ '/images/sticky-note.png' | prepend: site.baseurl }}"
-            alt=""
-            width="290"
-            height="280"
-            draggable="false"
-        >
-    </div>
-</div>
-
 <script src="{{ '/js/home-nav.js' | prepend: site.baseurl }}?v=2"></script>
 <script src="{{ '/js/home-nav-contrast.js' | prepend: site.baseurl }}"></script>
-<script src="{{ '/js/sticky-note.js' | prepend: site.baseurl }}?v=13" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/dat.gui@0.7.9/build/dat.gui.min.js"></script>
 <script src="{{ '/js/home-gallery-gui.js' | prepend: site.baseurl }}"></script>

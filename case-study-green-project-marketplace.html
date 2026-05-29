@@ -1,0 +1,1786 @@
+---
+layout: default
+title: "Case Study — Green Project Decarbonization Marketplace"
+---
+
+<style>
+html, body {
+    margin: 0;
+    padding: 0;
+    text-wrap: pretty;
+}
+
+:root {
+    --home-max-width: 1480px;
+    --home-margin-left: var(--size--32);
+    --home-margin-right: var(--size--32);
+    --cs-col-gap: var(--size--56);
+}
+
+.home-layout-rail {
+    width: 100%;
+    max-width: var(--home-max-width);
+    margin-inline: auto;
+    padding-inline: var(--home-margin-left) var(--home-margin-right);
+    box-sizing: border-box;
+}
+
+/* ── Header ── */
+.home-header {
+    position: fixed;
+    top: var(--size--32);
+    left: 0;
+    right: 0;
+    z-index: 1050;
+}
+
+.home-header-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.home-signature {
+    display: block;
+    line-height: 0;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.home-signature img {
+    display: block;
+    width: 100px;
+    height: auto;
+    cursor: pointer;
+}
+
+.home-header-nav {
+    display: flex;
+    align-items: center;
+    gap: var(--size--24);
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+
+.home-header-nav a {
+    color: var(--color--text-secondary);
+    text-decoration: none;
+    white-space: nowrap;
+    cursor: pointer;
+    font-size: var(--text--body-font-size);
+}
+
+.home-header-nav a:hover {
+    color: var(--color--accent) !important;
+    text-decoration: underline;
+    text-underline-offset: 0.15em;
+}
+
+/* ── Page shell ── */
+.cs-page {
+    padding-top: 120px;
+    padding-bottom: 6rem;
+    padding-inline: var(--home-margin-left) var(--home-margin-right);
+    box-sizing: border-box;
+    max-width: var(--home-max-width);
+    margin-inline: auto;
+}
+
+/* ── 5-column grid shared by hero + sections ── */
+.cs-hero,
+.cs-section {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    column-gap: var(--cs-col-gap);
+    align-items: start;
+}
+
+/* ── Hero ── */
+.cs-hero {
+    padding-bottom: var(--size--48);
+    border-bottom: 1px solid var(--color--secondary-gray);
+}
+
+.cs-hero-content {
+    grid-column: 1 / span 2;
+    display: flex;
+    flex-direction: column;
+    gap: var(--size--16);
+}
+
+.cs-hero-media {
+    grid-column: 3 / -1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--size--16);
+}
+
+/* ── Sections ── */
+.cs-section {
+    padding-block: var(--size--48);
+    border-bottom: 1px solid var(--color--secondary-gray);
+}
+
+.cs-section:last-of-type {
+    border-bottom: none;
+}
+
+.cs-section-content {
+    grid-column: 1 / span 2;
+    display: flex;
+    flex-direction: column;
+    gap: var(--size--16);
+}
+
+.cs-section-media {
+    grid-column: 3 / -1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--size--16);
+}
+
+/* ── Persona list ── */
+.cs-persona-list {
+    padding-left: var(--size--24);
+    display: flex;
+    flex-direction: column;
+    gap: var(--size--8);
+}
+
+/* ── Image captions ── */
+.image-with-caption__caption {
+    text-align: left;
+}
+
+/* ── No-border image variant ── */
+.cs-image-no-border .image-with-caption__frame::after {
+    display: none;
+}
+
+/* ── Tags footer ── */
+.cs-tags-footer {
+    padding-top: var(--size--48);
+}
+
+/* ── Inline video (looping, like an image) ── */
+.cs-video {
+    display: flex;
+    flex-direction: column;
+    gap: var(--size--8);
+    width: 100%;
+    min-width: 0;
+    margin: 0;
+}
+
+.cs-video__frame {
+    display: block;
+    position: relative;
+    line-height: 0;
+    width: 100%;
+}
+
+.cs-video__frame video {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.cs-video__frame::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border: 1px solid var(--color--secondary-gray);
+    box-sizing: border-box;
+    pointer-events: none;
+}
+
+.cs-image-no-border .cs-video__frame::after {
+    display: none;
+}
+
+.cs-video__caption {
+    font-size: var(--size--12);
+    color: var(--color--text-secondary);
+    margin: 0;
+}
+
+/* ── TODO callout ── */
+.cs-todo-callout {
+    background: #FFFDE6;
+    border: 2px dashed #E6C700;
+    border-radius: var(--size--8);
+    padding: var(--size--16);
+}
+
+.cs-todo-callout-label {
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #806E00;
+    margin: 0 0 var(--size--8);
+}
+
+.cs-todo-callout-body {
+    font-size: 14px;
+    color: #4D4200;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* ── Mockup frame ── */
+.cs-mockup {
+    background: #F5F5F5;
+    border: 1px solid #DEDEDE;
+    border-radius: 10px;
+    overflow: hidden;
+    font-family: var(--font-family);
+    font-size: 11px;
+    color: #333;
+}
+
+.cs-mockup-titlebar {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 7px 10px;
+    background: #E8E8E8;
+    border-bottom: 1px solid #DEDEDE;
+}
+
+.cs-mockup-titlebar-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #C8C8C8;
+    flex-shrink: 0;
+}
+
+.cs-mockup-titlebar-label {
+    font-size: 10px;
+    color: #888;
+    margin-left: 4px;
+    flex: 1;
+    text-align: center;
+}
+
+.cs-mockup-body {
+    padding: 10px 12px;
+}
+
+/* Mockup UI primitives */
+.cs-mockup-nav {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0 0 8px;
+    border-bottom: 1px solid #E8E8E8;
+    margin-bottom: 10px;
+}
+
+.cs-mockup-nav-title {
+    font-weight: 600;
+    font-size: 11px;
+    color: #111;
+}
+
+.cs-mockup-nav-pill {
+    background: #6427FF;
+    color: white;
+    border-radius: 4px;
+    padding: 2px 6px;
+    font-size: 9px;
+    font-weight: 600;
+    margin-left: auto;
+}
+
+.cs-mockup-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+}
+
+.cs-mockup-card {
+    background: white;
+    border: 1px solid #E8E8E8;
+    border-radius: 6px;
+    padding: 7px 8px;
+}
+
+.cs-mockup-card-tag {
+    font-size: 9px;
+    font-weight: 600;
+    color: #6427FF;
+    background: #F0EBFF;
+    border-radius: 3px;
+    padding: 1px 4px;
+    display: inline-block;
+    margin-bottom: 4px;
+}
+
+.cs-mockup-card-title {
+    font-size: 10px;
+    font-weight: 600;
+    color: #111;
+    margin-bottom: 2px;
+}
+
+.cs-mockup-card-sub {
+    font-size: 9px;
+    color: #888;
+}
+
+.cs-mockup-card-price {
+    font-size: 10px;
+    font-weight: 600;
+    color: #111;
+    margin-top: 5px;
+}
+
+.cs-mockup-card--locked {
+    opacity: 0.5;
+}
+
+.cs-mockup-card--locked .cs-mockup-card-tag {
+    background: #EEE;
+    color: #888;
+}
+
+.cs-mockup-success {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 12px;
+    text-align: center;
+}
+
+.cs-mockup-success-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #E8F5E9;
+    border: 2px solid #4CAF50;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+
+.cs-mockup-success-title {
+    font-size: 12px;
+    font-weight: 600;
+    color: #111;
+    margin-bottom: 3px;
+}
+
+.cs-mockup-success-sub {
+    font-size: 10px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.cs-mockup-confetti {
+    display: flex;
+    gap: 4px;
+    justify-content: center;
+}
+
+.cs-mockup-confetti span {
+    width: 6px;
+    height: 6px;
+    border-radius: 2px;
+    display: block;
+}
+
+/* V1→V2 comparison */
+.cs-v1v2 {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.cs-v1v2-label {
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #888;
+    margin: 0 0 6px;
+}
+
+.cs-v1v2-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 0;
+    color: #999;
+    font-size: 18px;
+}
+
+.cs-mockup-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.cs-mockup-table th {
+    font-size: 9px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #888;
+    padding: 4px 6px;
+    border-bottom: 1px solid #E8E8E8;
+    text-align: left;
+}
+
+.cs-mockup-table td {
+    font-size: 10px;
+    color: #333;
+    padding: 4px 6px;
+    border-bottom: 1px solid #F0F0F0;
+}
+
+.cs-mockup-dashed {
+    border: 2px dashed #C8C8C8;
+    border-radius: 8px;
+    padding: 18px 12px;
+    text-align: center;
+    color: #AAA;
+    font-size: 11px;
+    font-style: italic;
+    background: #FAFAFA;
+}
+
+/* Roadmap mockup */
+.cs-mockup-roadmap {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.cs-mockup-roadmap-header {
+    display: flex;
+    gap: 0;
+    border-bottom: 1px solid #E8E8E8;
+    padding-bottom: 5px;
+    margin-bottom: 4px;
+}
+
+.cs-mockup-roadmap-quarter {
+    flex: 1;
+    font-size: 9px;
+    font-weight: 600;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.cs-mockup-roadmap-row {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    min-height: 20px;
+}
+
+.cs-mockup-initiative {
+    border-radius: 4px;
+    padding: 3px 6px;
+    font-size: 10px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.cs-mockup-initiative--blue {
+    background: #E8EFFF;
+    color: #2952CC;
+}
+
+.cs-mockup-initiative--green {
+    background: #E6FAF0;
+    color: #1A7A45;
+}
+
+.cs-mockup-initiative--new {
+    background: #6427FF;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.cs-mockup-initiative-badge {
+    background: #FFD700;
+    color: #333;
+    border-radius: 3px;
+    padding: 0px 3px;
+    font-size: 8px;
+    font-weight: 700;
+}
+
+/* Vision workshop mockup */
+.cs-mockup-workshop {
+    padding: 10px;
+}
+
+.cs-mockup-workshop-timeline {
+    display: flex;
+    gap: 6px;
+    align-items: flex-start;
+}
+
+.cs-mockup-workshop-col {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.cs-mockup-workshop-col-label {
+    font-size: 9px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #888;
+    padding-bottom: 5px;
+    border-bottom: 2px solid #E8E8E8;
+    margin-bottom: 2px;
+}
+
+.cs-mockup-postit {
+    border-radius: 3px;
+    padding: 4px 6px;
+    font-size: 9px;
+    line-height: 1.3;
+}
+
+.cs-mockup-postit--yellow {
+    background: #FFFACC;
+    border-top: 2px solid #E6D800;
+    color: #555;
+}
+
+.cs-mockup-postit--blue {
+    background: #E0EEFF;
+    border-top: 2px solid #90B8FF;
+    color: #333;
+}
+
+.cs-mockup-postit--green {
+    background: #E6F9EE;
+    border-top: 2px solid #80D8A0;
+    color: #333;
+}
+
+/* Miro board mockup */
+.cs-mockup-miro {
+    display: flex;
+    gap: 5px;
+    overflow-x: auto;
+    padding: 4px 0 4px;
+}
+
+.cs-mockup-miro-col {
+    flex-shrink: 0;
+    width: 68px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.cs-mockup-miro-col-label {
+    font-size: 8px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #555;
+    padding: 3px 4px;
+    background: #EEE;
+    border-radius: 3px;
+    text-align: center;
+    line-height: 1.2;
+}
+
+.cs-mockup-miro-postit {
+    border-radius: 3px;
+    padding: 4px 5px;
+    font-size: 8px;
+    line-height: 1.3;
+    color: #444;
+}
+
+.cs-mockup-miro-status {
+    display: inline-block;
+    border-radius: 2px;
+    padding: 1px 4px;
+    font-size: 7px;
+    font-weight: 600;
+    margin-top: 2px;
+}
+
+.cs-mockup-miro-status--todo     { background: #FFE8A0; color: #7A5800; }
+.cs-mockup-miro-status--doing    { background: #C0E0FF; color: #003D7A; }
+.cs-mockup-miro-status--done     { background: #B8F0C8; color: #1A5C30; }
+.cs-mockup-miro-status--delete   { background: #FFD0D0; color: #7A1A1A; text-decoration: line-through; }
+
+/* Calendar mockup */
+.cs-mockup-calendar {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.cs-mockup-calendar th {
+    font-size: 9px;
+    font-weight: 600;
+    text-align: center;
+    padding: 3px 4px;
+    color: #888;
+    border-bottom: 1px solid #E8E8E8;
+}
+
+.cs-mockup-calendar td {
+    font-size: 8px;
+    padding: 2px 3px;
+    vertical-align: top;
+    border-bottom: 1px solid #F5F5F5;
+    color: #666;
+    text-align: center;
+}
+
+.cs-mockup-cal-event {
+    border-radius: 2px;
+    padding: 2px 3px;
+    font-size: 7px;
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 1px 0;
+}
+
+.cs-mockup-cal-event--gray    { background: #E8E8E8; color: #444; }
+.cs-mockup-cal-event--purple  { background: #EAE0FF; color: #5014CC; }
+.cs-mockup-cal-event--highlight { background: #6427FF; color: white; }
+
+/* Slack mockup */
+.cs-mockup-slack {
+    background: white;
+    border: 1px solid #E8E8E8;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.cs-mockup-slack-header {
+    background: #3F0E40;
+    color: white;
+    padding: 6px 10px;
+    font-size: 10px;
+    font-weight: 600;
+}
+
+.cs-mockup-slack-body {
+    padding: 10px;
+    display: flex;
+    gap: 8px;
+}
+
+.cs-mockup-slack-avatar {
+    width: 28px;
+    height: 28px;
+    border-radius: 5px;
+    background: #6427FF;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.cs-mockup-slack-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.cs-mockup-slack-name {
+    font-size: 11px;
+    font-weight: 700;
+    color: #111;
+    margin-bottom: 5px;
+}
+
+.cs-mockup-slack-name span {
+    font-size: 9px;
+    font-weight: 400;
+    color: #999;
+    margin-left: 4px;
+}
+
+.cs-mockup-slack-section-title {
+    font-size: 10px;
+    font-weight: 700;
+    color: #111;
+    margin: 6px 0 3px;
+}
+
+.cs-mockup-slack-item {
+    display: flex;
+    gap: 4px;
+    font-size: 10px;
+    color: #333;
+    line-height: 1.4;
+    margin-bottom: 2px;
+}
+
+.cs-mockup-slack-item::before {
+    content: '•';
+    color: #999;
+    flex-shrink: 0;
+}
+
+/* Version dropdown mockup */
+.cs-mockup-proto-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #1A1A1A;
+    padding: 7px 12px;
+    border-radius: 6px 6px 0 0;
+}
+
+.cs-mockup-proto-bar-logo {
+    width: 16px;
+    height: 16px;
+    background: #6427FF;
+    border-radius: 3px;
+    flex-shrink: 0;
+}
+
+.cs-mockup-proto-bar-title {
+    font-size: 10px;
+    font-weight: 600;
+    color: white;
+    flex: 1;
+}
+
+.cs-mockup-proto-dropdown {
+    background: #333;
+    border-radius: 4px;
+    padding: 3px 8px;
+    font-size: 10px;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+}
+
+.cs-mockup-proto-dropdown-arrow {
+    opacity: 0.6;
+    font-size: 8px;
+}
+
+.cs-mockup-proto-dropdown-menu {
+    background: #2A2A2A;
+    border-radius: 6px;
+    overflow: hidden;
+    margin-top: 3px;
+}
+
+.cs-mockup-proto-dropdown-item {
+    padding: 6px 12px;
+    font-size: 10px;
+    color: #CCC;
+    border-bottom: 1px solid #3A3A3A;
+}
+
+.cs-mockup-proto-dropdown-item:last-child {
+    border-bottom: none;
+}
+
+.cs-mockup-proto-dropdown-item--active {
+    color: white;
+    background: #6427FF;
+}
+
+/* Vision vs Slice 1 */
+.cs-mockup-compare {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+}
+
+.cs-mockup-compare-col {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.cs-mockup-compare-label {
+    font-size: 9px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #888;
+    padding-bottom: 4px;
+    border-bottom: 2px solid #E0E0E0;
+    margin-bottom: 2px;
+}
+
+.cs-mockup-compare-label--active {
+    color: #6427FF;
+    border-color: #6427FF;
+}
+
+/* De-risking variants */
+.cs-mockup-variants {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+}
+
+.cs-mockup-variant-label {
+    font-size: 9px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #888;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.cs-mockup-variant-label--winner {
+    color: #1A7A45;
+}
+
+.cs-mockup-variant-winner-badge {
+    background: #E6FAF0;
+    color: #1A7A45;
+    border-radius: 3px;
+    padding: 1px 5px;
+    font-size: 8px;
+    font-weight: 700;
+    margin-left: 4px;
+}
+
+.cs-mockup-direct-manip {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 8px;
+}
+
+.cs-mockup-slider {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.cs-mockup-slider-label {
+    font-size: 8px;
+    color: #666;
+    font-weight: 600;
+}
+
+.cs-mockup-slider-track {
+    height: 6px;
+    background: #E8E8E8;
+    border-radius: 3px;
+    position: relative;
+}
+
+.cs-mockup-slider-fill {
+    height: 100%;
+    background: #6427FF;
+    border-radius: 3px;
+}
+
+.cs-mockup-slider-thumb {
+    position: absolute;
+    right: 30%;
+    top: 50%;
+    transform: translate(50%, -50%);
+    width: 10px;
+    height: 10px;
+    background: white;
+    border: 2px solid #6427FF;
+    border-radius: 50%;
+}
+
+.cs-mockup-rules-form {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 8px;
+}
+
+.cs-mockup-form-row {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.cs-mockup-form-label {
+    font-size: 8px;
+    color: #666;
+    font-weight: 600;
+}
+
+.cs-mockup-form-input {
+    background: white;
+    border: 1px solid #D0D0D0;
+    border-radius: 4px;
+    padding: 4px 6px;
+    font-size: 9px;
+    color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.cs-mockup-form-input-arrow {
+    color: #AAA;
+    font-size: 8px;
+}
+
+/* Test plan */
+.cs-mockup-testplan {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 8px;
+}
+
+.cs-mockup-testplan-header {
+    font-size: 10px;
+    font-weight: 700;
+    color: #111;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #E8E8E8;
+    margin-bottom: 3px;
+}
+
+.cs-mockup-testplan-task {
+    display: flex;
+    gap: 6px;
+    align-items: flex-start;
+}
+
+.cs-mockup-testplan-num {
+    width: 16px;
+    height: 16px;
+    background: #F0EBFF;
+    color: #6427FF;
+    border-radius: 3px;
+    font-size: 9px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.cs-mockup-testplan-text {
+    font-size: 9px;
+    color: #444;
+    line-height: 1.4;
+}
+
+.cs-mockup-testplan-meta {
+    font-size: 8px;
+    color: #999;
+    padding-top: 6px;
+    border-top: 1px solid #F0F0F0;
+    margin-top: 2px;
+}
+
+/* Drake meme */
+.cs-mockup-drake {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    overflow: hidden;
+}
+
+.cs-mockup-drake-panel {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    border-bottom: 1px solid #E8E8E8;
+}
+
+.cs-mockup-drake-panel:last-child {
+    border-bottom: none;
+}
+
+.cs-mockup-drake-panel--yes {
+    background: #F0EBFF;
+}
+
+.cs-mockup-drake-emoji {
+    font-size: 28px;
+    flex-shrink: 0;
+}
+
+.cs-mockup-drake-text {
+    font-size: 11px;
+    font-weight: 500;
+    color: #111;
+    line-height: 1.4;
+}
+
+.cs-mockup-drake-reaction {
+    font-size: 18px;
+    flex-shrink: 0;
+    opacity: 0.7;
+}
+
+/* Feedback thread */
+.cs-mockup-thread {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 10px;
+}
+
+.cs-mockup-thread-msg {
+    display: flex;
+    gap: 6px;
+}
+
+.cs-mockup-thread-avatar {
+    width: 22px;
+    height: 22px;
+    border-radius: 4px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 9px;
+    font-weight: 700;
+    color: white;
+}
+
+.cs-mockup-thread-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.cs-mockup-thread-name {
+    font-size: 10px;
+    font-weight: 700;
+    color: #111;
+    margin-bottom: 2px;
+}
+
+.cs-mockup-thread-text {
+    font-size: 10px;
+    color: #444;
+    line-height: 1.4;
+}
+
+.cs-mockup-thread-reply {
+    font-size: 9px;
+    color: #6427FF;
+    margin-top: 2px;
+    cursor: pointer;
+}
+
+/* Purchase screen */
+.cs-mockup-purchase {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.cs-mockup-purchase-header {
+    padding: 6px 10px;
+    background: #F5F5F5;
+    border-bottom: 1px solid #E8E8E8;
+    font-size: 10px;
+    color: #666;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.cs-mockup-purchase-breadcrumb-sep {
+    color: #CCC;
+}
+
+.cs-mockup-purchase-body {
+    padding: 10px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.cs-mockup-purchase-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #111;
+}
+
+.cs-mockup-purchase-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: #E6FAF0;
+    border-radius: 4px;
+    padding: 3px 8px;
+    font-size: 10px;
+    font-weight: 600;
+    color: #1A7A45;
+    align-self: flex-start;
+}
+
+.cs-mockup-purchase-rows {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.cs-mockup-purchase-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 3px 0;
+    border-bottom: 1px solid #F0F0F0;
+    font-size: 10px;
+}
+
+.cs-mockup-purchase-row-label {
+    color: #888;
+}
+
+.cs-mockup-purchase-row-value {
+    font-weight: 500;
+    color: #111;
+    background: #EEE;
+    border-radius: 3px;
+    padding: 1px 6px;
+    filter: blur(4px);
+}
+
+.cs-mockup-purchase-row-value--visible {
+    filter: none;
+    background: none;
+    color: #1A7A45;
+    font-weight: 600;
+}
+
+/* Mockup note */
+.cs-mockup-note {
+    font-size: 12px;
+    color: var(--color--text-secondary);
+    line-height: 1.65;
+    margin: var(--size--8) 0 0;
+    font-style: italic;
+}
+
+/* ── Responsive: collapse to single column ── */
+@media (max-width: 1024px) {
+    .cs-hero,
+    .cs-section {
+        grid-template-columns: 1fr;
+    }
+
+    .cs-hero-content,
+    .cs-hero-media,
+    .cs-section-content,
+    .cs-section-media {
+        grid-column: 1;
+    }
+}
+
+@media (max-width: 729px) {
+    :root {
+        --home-margin-left: var(--size--16);
+        --home-margin-right: var(--size--16);
+    }
+
+    .cs-page {
+        padding-top: 100px;
+    }
+}
+</style>
+
+{% include home-header.html %}
+
+<main class="cs-page">
+    <article class="cs-article">
+
+        <!-- ── HERO ────────────────────────────────────────────────────── -->
+        <div class="cs-hero">
+            <div class="cs-hero-content">
+                <p class="eyebrow">Green Project · Staff product designer</p>
+                <h1 class="cs-heading cs-heading--hero">Designing a decarbonization marketplace from zero</h1>
+                <p class="cs-body">How I led discovery, shaped product strategy, and shipped a marketplace that closed a partnership with an aviation company — while working solo across two continents.</p>
+                <ul class="cs-meta">
+                    <li class="cs-meta-item">
+                        <span class="cs-meta-label">Company</span>
+                        <span class="cs-meta-value">Green Project</span>
+                    </li>
+                    <li class="cs-meta-item">
+                        <span class="cs-meta-label">Role</span>
+                        <span class="cs-meta-value">Sole designer</span>
+                    </li>
+                    <li class="cs-meta-item">
+                        <span class="cs-meta-label">Scope</span>
+                        <span class="cs-meta-value">Discovery → shipped product</span>
+                    </li>
+                    <li class="cs-meta-item">
+                        <span class="cs-meta-label">Team</span>
+                        <span class="cs-meta-value">UK + US cross-timezone</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="cs-hero-media">
+                {% include image-with-caption.html
+                    src='/images/marketplace@2x.png'
+                    alt='The v2 Marketplace page showing commodity cards for different decarbonization products'
+                    caption='The Marketplace page — designed to scale to multiple commodity types from day one.'
+                    width='1168'
+                    height='653'
+                %}
+
+            </div>
+        </div>
+
+        <!-- ── TEAM ─────────────────────────────────────────────────────── -->
+        <div class="cs-section">
+            <div class="cs-section-content">
+                <div class="cs-team-grid">
+                    <div class="cs-team-col">
+                        <p class="cs-team-col-label">US team</p>
+                        <div class="cs-team-member">
+                            <span class="cs-team-name">Scott</span>
+                            <span class="cs-team-role">PM · corporate carbon accounting &amp; marketplace</span>
+                        </div>
+                        <div class="cs-team-member">
+                            <span class="cs-team-name">Shivani</span>
+                            <span class="cs-team-role">PO · marketplace</span>
+                        </div>
+                        <div class="cs-team-member">
+                            <span class="cs-team-name">Chris</span>
+                            <span class="cs-team-role">PO · corporate carbon accounting</span>
+                        </div>
+                        <div class="cs-team-member">
+                            <span class="cs-team-name">Will</span>
+                            <span class="cs-team-role">Co-founder &amp; COO · domain expert</span>
+                        </div>
+                        <div class="cs-team-member">
+                            <span class="cs-team-name">Adam</span>
+                            <span class="cs-team-role">Operations · marketplace</span>
+                        </div>
+                        <div class="cs-team-member">
+                            <span class="cs-team-name">Luke</span>
+                            <span class="cs-team-role">Co-founder &amp; CTO · domain expert</span>
+                        </div>
+                        <div class="cs-team-member">
+                            <span class="cs-team-name">Jeff</span>
+                            <span class="cs-team-role">Tech lead</span>
+                        </div>
+                        <div class="cs-team-member">
+                            <span class="cs-team-name">Austin, Jack, Jess, Kamira, Mario, Michael</span>
+                            <span class="cs-team-role">Software engineers</span>
+                        </div>
+                        <div class="cs-team-member">
+                            <span class="cs-team-name">Aysu, Olga</span>
+                            <span class="cs-team-role">QA engineers</span>
+                        </div>
+                    </div>
+                    <div class="cs-team-col">
+                        <p class="cs-team-col-label">UK team</p>
+                        <div class="cs-team-member">
+                            <span class="cs-team-name">Ed</span>
+                            <span class="cs-team-role">PM · supplier engagement &amp; product carbon footprinting</span>
+                        </div>
+                        <div class="cs-team-member">
+                            <span class="cs-team-name">Ben</span>
+                            <span class="cs-team-role">Tech lead</span>
+                        </div>
+                        <p class="cs-team-col-label">Design team</p>
+                        <div class="cs-team-member">
+                            <span class="cs-team-name">David</span>
+                            <span class="cs-team-role">Staff product designer</span>
+                        </div>
+                        <p class="cs-team-col-label">ACT Group (parent company)</p>
+                        <div class="cs-team-member">
+                            <span class="cs-team-name">Jop</span>
+                            <span class="cs-team-role">VP of Digital</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ── THE PROBLEM ──────────────────────────────────────────────── -->
+        <div class="cs-section">
+            <div class="cs-section-content">
+                <p class="eyebrow">The problem</p>
+                <h2 class="cs-heading">A v2 migration: a once-only window to get the foundations right — with a team I'd never worked with before</h2>
+                <p class="cs-body">The US team was mid-migration from v1 to v2 of their products. They were finishing the migration of their carbon accounting product, and the marketplace one would be next. It was a natural moment to rethink the design — to build something with higher conversion, a more intuitive experience than v1, and a system that would stand the test of time.</p>
+                <p class="cs-body">But there was no discovery time allocated, no shared vision, and I was parachuting in to work with a US-based team for the first time.</p>
+                <p class="cs-body">Adding to the complexity, the Marketplace serves four distinct <span class="accent">personas</span> — each with a different driver and different available data:</p>
+                <ul class="cs-body cs-persona-list">
+                    <li><strong>Sustainability Managers</strong> — already using our corporate carbon accounting product; already have electricity data in the platform</li>
+                    <li><strong>Suppliers</strong> — coming from our supply chain engagement product to fulfil customer requests; varied ages, varied tech adoption, no electricity data in the platform</li>
+                    <li><strong>ACT Referrals</strong> — coming from our trading arm, primarily to execute a transaction; we don't need their electricity data</li>
+                    <li><strong>Partner Users</strong> — arriving via third-party partners; we are not allowed to show or upsell other parts of the platform</li>
+                </ul>
+            </div>
+            <div class="cs-section-media cs-image-no-border">
+                {% include image-with-caption.html
+                    src='/images/cs-gp-problem-v1-v2@2x.png'
+                    alt='V1 marketplace screenshot on the left (table-based UI), with V2 and Vision placeholders on the right showing the blank slate we were designing into'
+                    caption='v1 (left) — a real screenshot of the existing product. v2 and Vision (right) — blank slates at the start of discovery.'
+                    width='512'
+                    height='357'
+                %}
+            </div>
+        </div>
+
+        <!-- ── DESIGN LEADERSHIP ─────────────────────────────────────────── -->
+        <div class="cs-section">
+            <div class="cs-section-content">
+                <p class="eyebrow">Design leadership</p>
+                <h2 class="cs-heading">I created the conditions for good design: I influenced starting discovery early and aligning on a long-term vision</h2>
+                <p class="cs-body">My approach to new product areas follows a consistent principle: think big, start small. Establish a shared vision first, then carve out the smallest meaningful slice to build from. In my experience, this yields systems that scale, patterns that get reused, and a north star that makes every subsequent decision easier to make.</p>
+                <p class="cs-body">I made the case in a company-wide leadership meeting: if we didn't start discovery early, we'd ship a lower-conversion product built on shaky foundations — and engineers would hit build kickoff with no specs, no direction, and a designer still iterating to catch up. The real cost was building twice. Leadership agreed. I then pushed for a long-term vision workshop, which the marketplace PM ran.</p>
+            </div>
+            <div class="cs-section-media cs-image-no-border">
+                {% include image-with-caption.html
+                    src='/images/miro-product-roadmap.png'
+                    alt='Product roadmap in Miro showing the Marketplace v2 initiative, with a dashed "No discovery!?" placeholder immediately before it — highlighting the gap that needed to be filled'
+                    caption='The product roadmap as it stood. "No discovery!?" — the gap I flagged in the leadership meeting.'
+                    width='1416'
+                    height='776'
+                %}
+                {% include image-with-caption.html
+                    src='/images/mir-marketplace-vision.png'
+                    alt='Marketplace Product Vision board in Miro with post-its grouped under 6 months, 1 year, and 2 years timeframes'
+                    caption='Vision workshop output — the long-term direction translated into a structured Miro board.'
+                    width='1416'
+                    height='776'
+                %}
+            </div>
+        </div>
+
+        <!-- ── SYSTEMS THINKING ──────────────────────────────────────────── -->
+        <div class="cs-section">
+            <div class="cs-section-content">
+                <p class="eyebrow">Systems thinking</p>
+                <h2 class="cs-heading">I mapped an entirely new domain before touching a design tool</h2>
+                <p class="cs-body">Renewable energy certificates were completely new to me. Before any wireframe, I independently mapped the domain — objects, attributes, relationships, and calls-to-action — learning what I could without using a colleague's time.</p>
+            </div>
+            <div class="cs-section-media cs-image-no-border">
+                {% include image-with-caption.html
+                    src='/images/gallery-renewable-energy-domain@2x.png'
+                    alt='Domain model mapping the objects, attributes, relationships, and calls-to-action for renewable energy certificates (RECs)'
+                    caption='Domain model from Miro — the system map of RECs before any design began.'
+                    width='1440'
+                    height='1087'
+                %}
+            </div>
+        </div>
+
+        <!-- ── RISK-LED DISCOVERY ────────────────────────────────────────── -->
+        <div class="cs-section">
+            <div class="cs-section-content">
+                <p class="eyebrow">Risk-led discovery</p>
+                <h2 class="cs-heading">I sorted every unknown by blast radius and drove discovery accordingly</h2>
+                <p class="cs-body">I captured every open question on a Miro board and ranked them by how much rework a wrong answer would cause. The most foundational unknowns — the ones that would force a redesign if answered late — I resolved first. I used this to structure recurring sessions with the PM and PO, called out missing jobs-to-be-done in the PRD, created the out-of-scope section, and pushed for alignment on what slice 1 would and wouldn't include.</p>
+            </div>
+            <div class="cs-section-media cs-image-no-border">
+                {% include image-with-caption.html
+                    src='/images/risk-led-discovery.png'
+                    alt='Miro board with columns of post-its representing open questions sorted by blast radius, each tagged with a status: To do, In progress, Done, or Delete'
+                    caption='Open questions board — every unknown captured, ranked by rework cost, and systematically resolved.'
+                    width='1085'
+                    height='587'
+                %}
+            </div>
+        </div>
+
+        <!-- ── CROSS-TIMEZONE ────────────────────────────────────────────── -->
+        <div class="cs-section">
+            <div class="cs-section-content">
+                <p class="eyebrow">Cross-timezone collaboration</p>
+                <h2 class="cs-heading">I kept two continents aligned, autonomously</h2>
+                <p class="cs-body">Working from the UK with a US team meant a narrow daily overlap window. In week one, I booked daily reserved time blocks — not meetings, just protected space for questions or workshops whenever I needed them. I published weekly Slack updates so anyone could stay across the design direction without a meeting. The PM never had to chase me.</p>
+            </div>
+            <div class="cs-section-media cs-image-no-border">
+                {% include image-with-caption.html
+                    src='/images/holds-reserving-sync-time-across-all-week-in-calendar.png'
+                    alt='Google Calendar week view showing daily holds blocking time across the whole week for design sync'
+                    caption='Week 1 — a daily hold across the whole week, keeping overlap time protected for the US team.'
+                    width='963'
+                    height='426'
+                %}
+                {% include image-with-caption.html
+                    src='/images/weekly-slack-update-example.png'
+                    alt='Slack message showing a weekly design update with sections for this week, next week, and decisions needed'
+                    caption='Weekly Slack update — self-initiated, every week, without being asked.'
+                    width='721'
+                    height='585'
+                %}
+            </div>
+        </div>
+
+        <!-- ── VISION & DIRECTION ────────────────────────────────────────── -->
+        <div class="cs-section">
+            <div class="cs-section-content">
+                <p class="eyebrow">Vision &amp; Direction</p>
+                <h2 class="cs-heading">I diverged, prototyped, and aligned stakeholders on a long-term and short-term UX direction</h2>
+                <p class="cs-body">I translated the workshop output into a UX vision in Miro, aligned stakeholders on it, then built a live-coded prototype to bring it to life. The prototype included a version dropdown — letting anyone switch between the full long-term vision and the scope for each slice. One artifact that held both the ambition and the plan, and made the distinction between them impossible to misread.</p>
+                <p class="cs-body">Rather than jumping to solutions, I explored divergent directions and pressure-tested them with the team. The result was a shared UX direction covering both what we'd ship in slice 1 and how the product would evolve — including a Marketplace page I proposed, anticipating future commodities. The co-founder pushed for it to be included in slice 1 for its sales and partnership value.</p>
+            </div>
+            <div class="cs-section-media">
+                {% include image-with-caption.html
+                    src='/images/wip1.png'
+                    alt='Work in progress screen 1 — early design exploration for the marketplace'
+                    caption=''
+                    width='2052'
+                    height='1110'
+                %}
+                {% include image-with-caption.html
+                    src='/images/wip2.png'
+                    alt='Work in progress screen 2 — early design exploration for the marketplace'
+                    caption=''
+                    width='1086'
+                    height='900'
+                %}
+                {% include image-with-caption.html
+                    src='/images/wip3.png'
+                    alt='Work in progress screen 3 — early design exploration for the marketplace'
+                    caption=''
+                    width='1374'
+                    height='824'
+                %}
+                {% include image-with-caption.html
+                    src='/images/wip4.png'
+                    alt='Work in progress screen 4 — early design exploration for the marketplace'
+                    caption=''
+                    width='1016'
+                    height='1276'
+                %}
+                {% include image-with-caption.html
+                    src='/images/wip5.png'
+                    alt='Work in progress screen 5 — early design exploration for the marketplace'
+                    caption=''
+                    width='1436'
+                    height='1214'
+                %}
+                {% include image-with-caption.html
+                    src='/images/prototype-version-selector@2x.png'
+                    alt='The live-coded prototype showing the version selector dropdown open, with options for Vision (Full), Slice 1, and Slice 2'
+                    caption='The version dropdown — one prototype artifact holding both the long-term vision and the near-term scope.'
+                    width='1120'
+                    height='740'
+                %}
+                {% include image-with-caption.html
+                    src='/images/review-your-order-screen.png'
+                    alt='Review your order screen from the v2 marketplace prototype'
+                    caption='Review your order — one of the key screens in the purchase flow.'
+                    width='2962'
+                    height='1684'
+                %}
+                <figure class="cs-video">
+                    <span class="cs-video__frame">
+                        <video autoplay loop muted playsinline>
+                            <source src="{{ '/images/purchase-complete-short.mov' | prepend: site.baseurl }}" type="video/mp4">
+                        </video>
+                    </span>
+                    <figcaption class="cs-video__caption">Purchase complete — the celebration moment at the end of the flow.</figcaption>
+                </figure>
+            </div>
+        </div>
+
+        <!-- ── DE-RISKING ────────────────────────────────────────────────── -->
+        <div class="cs-section">
+            <div class="cs-section-content">
+                <p class="eyebrow">De-risking the hardest decision</p>
+                <h2 class="cs-heading">I identified the highest-risk UX area and resolved it through structured user testing</h2>
+                <p class="cs-body">The bundle configuration controls were the highest-risk interaction in the design. I designed a few competing directions, prototyped them, and ran a user test with task-based scenarios. Direct manipulation won: more intuitive, more visual, giving users immediate transparency over what their choices would produce.</p>
+            </div>
+            <div class="cs-section-media">
+                <div style="display:none">
+                <!-- Variant A vs B -->
+                <div class="cs-mockup">
+                    <div class="cs-mockup-titlebar">
+                        <div class="cs-mockup-titlebar-dot"></div>
+                        <div class="cs-mockup-titlebar-dot"></div>
+                        <div class="cs-mockup-titlebar-dot"></div>
+                        <span class="cs-mockup-titlebar-label">Bundle configuration — directions</span>
+                    </div>
+                    <div class="cs-mockup-body">
+                        <div class="cs-mockup-variants">
+                            <div>
+                                <div class="cs-mockup-variant-label cs-mockup-variant-label--winner">
+                                    Variant A — Direct manipulation
+                                    <span class="cs-mockup-variant-winner-badge">Winner</span>
+                                </div>
+                                <div class="cs-mockup" style="background:white">
+                                    <div class="cs-mockup-direct-manip">
+                                        <div class="cs-mockup-slider">
+                                            <div class="cs-mockup-slider-label">Volume (MWh)</div>
+                                            <div class="cs-mockup-slider-track">
+                                                <div class="cs-mockup-slider-fill" style="width:70%"></div>
+                                                <div class="cs-mockup-slider-thumb"></div>
+                                            </div>
+                                        </div>
+                                        <div class="cs-mockup-slider">
+                                            <div class="cs-mockup-slider-label">Vintage year</div>
+                                            <div class="cs-mockup-slider-track">
+                                                <div class="cs-mockup-slider-fill" style="width:50%"></div>
+                                                <div class="cs-mockup-slider-thumb"></div>
+                                            </div>
+                                        </div>
+                                        <div class="cs-mockup-slider">
+                                            <div class="cs-mockup-slider-label">Energy source</div>
+                                            <div class="cs-mockup-slider-track">
+                                                <div class="cs-mockup-slider-fill" style="width:40%"></div>
+                                                <div class="cs-mockup-slider-thumb"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="cs-mockup-variant-label">Variant B — Rules-based</div>
+                                <div class="cs-mockup" style="background:white">
+                                    <div class="cs-mockup-rules-form">
+                                        <div class="cs-mockup-form-row">
+                                            <div class="cs-mockup-form-label">Volume (MWh)</div>
+                                            <div class="cs-mockup-form-input">Enter amount <span class="cs-mockup-form-input-arrow">▼</span></div>
+                                        </div>
+                                        <div class="cs-mockup-form-row">
+                                            <div class="cs-mockup-form-label">Vintage year</div>
+                                            <div class="cs-mockup-form-input">Select year <span class="cs-mockup-form-input-arrow">▼</span></div>
+                                        </div>
+                                        <div class="cs-mockup-form-row">
+                                            <div class="cs-mockup-form-label">Energy source</div>
+                                            <div class="cs-mockup-form-input">Select type <span class="cs-mockup-form-input-arrow">▼</span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p class="cs-mockup-note">Real image: a side-by-side of the two competing bundle configuration directions — Variant A (direct manipulation: sliders, draggable zones, visual controls that give immediate feedback on what the bundle will look like) and Variant B (rules-based: a form with dropdowns and inputs). Both should come from the actual prototype, at the same screen/state. Label them clearly as Variant A and Variant B. Mark the winner (Variant A) with a visual indicator. The contrast should make immediately clear why one won: Variant A shows you the result as you configure; Variant B makes you imagine it.</p>
+
+                <!-- Test plan -->
+                <div class="cs-mockup">
+                    <div class="cs-mockup-titlebar">
+                        <div class="cs-mockup-titlebar-dot"></div>
+                        <div class="cs-mockup-titlebar-dot"></div>
+                        <div class="cs-mockup-titlebar-dot"></div>
+                        <span class="cs-mockup-titlebar-label">User test plan</span>
+                    </div>
+                    <div class="cs-mockup-body">
+                        <div class="cs-mockup-testplan">
+                            <div class="cs-mockup-testplan-header">Bundle Configuration — User Test</div>
+                            <div class="cs-mockup-testplan-task">
+                                <div class="cs-mockup-testplan-num">1</div>
+                                <div class="cs-mockup-testplan-text">"You need to offset your company's 2023 electricity. Configure a bundle for 500 MWh from wind sources."</div>
+                            </div>
+                            <div class="cs-mockup-testplan-task">
+                                <div class="cs-mockup-testplan-num">2</div>
+                                <div class="cs-mockup-testplan-text">"Adjust the bundle to split equally between wind and solar, keeping the same vintage year."</div>
+                            </div>
+                            <div class="cs-mockup-testplan-task">
+                                <div class="cs-mockup-testplan-num">3</div>
+                                <div class="cs-mockup-testplan-text">"Change the delivery year to 2024 and confirm the updated price estimate."</div>
+                            </div>
+                            <div class="cs-mockup-testplan-meta">5 participants · Mix of Sustainability Manager + Supplier personas · Think-aloud protocol</div>
+                        </div>
+                    </div>
+                </div>
+                <p class="cs-mockup-note">Real image: a screenshot of the actual user test plan document — either from Notion, a Google Doc, or wherever it was written. Key elements to show: the task scenarios (written as realistic user goals, not feature instructions), the participant criteria (how many, what personas), and the testing protocol (think-aloud, task completion, etc.). This is evidence that the decision wasn't made by gut — it was validated with real users against realistic scenarios.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ── HANDOFF ───────────────────────────────────────────────────── -->
+        <div class="cs-section">
+            <div class="cs-section-content">
+                <p class="eyebrow">Handoff</p>
+                <h2 class="cs-heading">I handed over a prototype, not a Figma file — a first for the US team, and the right call</h2>
+                <p class="cs-body">The US design system was in poor shape — not built by a designer, and with an uncertain future. I made the case to the PM and tech lead to skip Figma entirely and hand over the coded prototype directly, with state dropdowns to explore UI variations. Engineers used their judgment on components; I did a light feedback pass. The bet paid off — the US design system is now being replaced with IBM Carbon.</p>
+            </div>
+            <div class="cs-section-media">
+                <div style="display:none">
+                <!-- Drake meme -->
+                <div class="cs-mockup" style="overflow:hidden">
+                    <div class="cs-mockup-drake">
+                        <div class="cs-mockup-drake-panel" style="background:#F5F5F5;border-right:1px solid #E8E8E8">
+                            <div class="cs-mockup-drake-emoji">😒</div>
+                            <div style="font-size:9px;color:#888;font-style:italic">nah</div>
+                        </div>
+                        <div class="cs-mockup-drake-panel" style="background:#F5F5F5">
+                            <div style="flex:1">
+                                <div style="font-size:10px;font-weight:600;color:#333;margin-bottom:2px">Figma file handoff</div>
+                                <div style="font-size:9px;color:#888">Components, specs, redlines...</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="height:1px;background:#E8E8E8"></div>
+                    <div class="cs-mockup-drake">
+                        <div class="cs-mockup-drake-panel" style="background:#F0EBFF;border-right:1px solid #E8E8E8">
+                            <div class="cs-mockup-drake-emoji">😍</div>
+                            <div style="font-size:9px;color:#6427FF;font-weight:600">yes</div>
+                        </div>
+                        <div class="cs-mockup-drake-panel" style="background:#F0EBFF">
+                            <div style="flex:1">
+                                <div style="font-size:10px;font-weight:600;color:#333;margin-bottom:2px">Coded prototype handoff</div>
+                                <div style="font-size:9px;color:#666">Live in browser, state dropdowns, zero Figma</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p class="cs-mockup-note">Real image: a Drake-style reaction meme (the "Hotline Bling" format — two panels, top panel Drake waving away something, bottom panel Drake pointing approvingly). Top panel: "Figma file handoff" (redrawn/text overlay). Bottom panel: "Coded prototype with state dropdowns" (redrawn/text overlay). The meme tone is intentional — it's honest about the unconventional choice and signals design confidence. Could be made with a real Drake image or as an illustrated/typographic version to keep it clean for a portfolio context.</p>
+
+                <!-- Feedback thread -->
+                <div class="cs-mockup-slack">
+                    <div class="cs-mockup-slack-header">#marketplace-feedback</div>
+                    <div class="cs-mockup-thread">
+                        <div class="cs-mockup-thread-msg">
+                            <div class="cs-mockup-thread-avatar" style="background:#E07B39">J</div>
+                            <div class="cs-mockup-thread-content">
+                                <div class="cs-mockup-thread-name">Jeff</div>
+                                <div class="cs-mockup-thread-text">For the filter component on the bundle config — should it use the existing pill component or are we building new?</div>
+                                <div class="cs-mockup-thread-reply">Reply</div>
+                            </div>
+                        </div>
+                        <div class="cs-mockup-thread-msg">
+                            <div class="cs-mockup-thread-avatar" style="background:#6427FF">D</div>
+                            <div class="cs-mockup-thread-content">
+                                <div class="cs-mockup-thread-name">David</div>
+                                <div class="cs-mockup-thread-text">Good catch — use the existing pill. The new interaction is in the slider, not the filter UI.</div>
+                            </div>
+                        </div>
+                        <div class="cs-mockup-thread-msg">
+                            <div class="cs-mockup-thread-avatar" style="background:#2E7D32">A</div>
+                            <div class="cs-mockup-thread-content">
+                                <div class="cs-mockup-thread-name">Austin</div>
+                                <div class="cs-mockup-thread-text">Date input on the vintage year selector — should this accept free text or only calendar picker?</div>
+                                <div class="cs-mockup-thread-reply">Reply</div>
+                            </div>
+                        </div>
+                        <div class="cs-mockup-thread-msg">
+                            <div class="cs-mockup-thread-avatar" style="background:#6427FF">D</div>
+                            <div class="cs-mockup-thread-content">
+                                <div class="cs-mockup-thread-name">David</div>
+                                <div class="cs-mockup-thread-text">Year-only dropdown — no free text. Values are constrained to available inventory years.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p class="cs-mockup-note">Real image: a screenshot of the actual Slack (or GitHub / Linear / Notion) feedback thread where engineers asked clarification questions after receiving the prototype. The thread should show the back-and-forth: an engineer raises a component or behaviour question, David answers quickly and precisely. This demonstrates that the prototype handoff worked — questions were specific and implementable, not "wait, what are we even building?" The light feedback pass was a real thing; this is the evidence.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ── OUTCOMES ──────────────────────────────────────────────────── -->
+        <div class="cs-section">
+            <div class="cs-section-content">
+                <p class="eyebrow">Outcomes</p>
+                <h2 class="cs-heading">Higher conversion, an aviation partnership, and a US team that now trusts me to lead</h2>
+            </div>
+            <div class="cs-section-media">
+                <div class="cs-outcomes-grid">
+                    <div class="cs-outcome-card">
+                        <p class="cs-outcome-card-value">Aviation partnership</p>
+                        <p class="cs-outcome-card-label">Closed using the Marketplace as a sales and partnership tool</p>
+                    </div>
+                    <div class="cs-outcome-card">
+                        <p class="cs-outcome-card-value">Scales to new commodities</p>
+                        <p class="cs-outcome-card-label">Architecture designed for future expansion beyond RECs</p>
+                    </div>
+                    <div class="cs-outcome-card">
+                        <p class="cs-outcome-card-value">More intuitive than v1</p>
+                        <p class="cs-outcome-card-label">The experience is on rails with low cognitive load.</p>
+                    </div>
+                    <div class="cs-outcome-card">
+                        <p class="cs-outcome-card-value">Self-running</p>
+                        <p class="cs-outcome-card-label">PM follows the design direction without needing ongoing input</p>
+                    </div>
+                    <div class="cs-outcome-card">
+                        <p class="cs-outcome-card-value">Cross-team trust earned</p>
+                        <p class="cs-outcome-card-label">US team went from strangers to full confidence in design leadership</p>
+                    </div>
+                </div>
+
+                <div style="display:none">
+                <!-- Purchase confirmation -->
+                <div class="cs-mockup">
+                    <div class="cs-mockup-titlebar">
+                        <div class="cs-mockup-titlebar-dot"></div>
+                        <div class="cs-mockup-titlebar-dot"></div>
+                        <div class="cs-mockup-titlebar-dot"></div>
+                        <span class="cs-mockup-titlebar-label">Order confirmed · v2</span>
+                    </div>
+                    <div class="cs-mockup-purchase">
+                        <div class="cs-mockup-purchase-header">
+                            My Bundles <span class="cs-mockup-purchase-breadcrumb-sep">›</span> <strong style="color:#333">Order #████</strong>
+                        </div>
+                        <div class="cs-mockup-purchase-body">
+                            <div class="cs-mockup-purchase-title">REC Bundle — 2023 Vintage</div>
+                            <div class="cs-mockup-purchase-status">✓ &nbsp;Purchase complete</div>
+                            <div class="cs-mockup-purchase-rows">
+                                <div class="cs-mockup-purchase-row">
+                                    <span class="cs-mockup-purchase-row-label">Partner</span>
+                                    <span class="cs-mockup-purchase-row-value">████████████</span>
+                                </div>
+                                <div class="cs-mockup-purchase-row">
+                                    <span class="cs-mockup-purchase-row-label">Volume</span>
+                                    <span class="cs-mockup-purchase-row-value">████ MWh</span>
+                                </div>
+                                <div class="cs-mockup-purchase-row">
+                                    <span class="cs-mockup-purchase-row-label">Energy source</span>
+                                    <span class="cs-mockup-purchase-row-value">████████</span>
+                                </div>
+                                <div class="cs-mockup-purchase-row">
+                                    <span class="cs-mockup-purchase-row-label">Total</span>
+                                    <span class="cs-mockup-purchase-row-value">$██,███</span>
+                                </div>
+                                <div class="cs-mockup-purchase-row">
+                                    <span class="cs-mockup-purchase-row-label">Status</span>
+                                    <span class="cs-mockup-purchase-row-value cs-mockup-purchase-row-value--visible">Complete</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p class="cs-mockup-note">Real image: a screenshot of an actual completed purchase in the v2 Marketplace — ideally the aviation partnership order or one of the first real transactions processed through the new system. Blur or redact any commercially sensitive details (partner name, volume, total price) but keep the structural UI visible — the order header, the "Purchase complete" status badge, the row layout. The point is not the data; it's that the system was used to close a real deal. A real screenshot with blurred numbers is more powerful than a clean mockup.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ── REFLECTION ────────────────────────────────────────────────── -->
+        <div class="cs-section" style="display:none">
+            <div class="cs-section-content">
+                <p class="eyebrow">Reflection</p>
+                <h2 class="cs-heading">What I'd do differently</h2>
+                <p class="cs-body">I spent too long making the prototype perform real calculations. With vibe-coding tools it's easy to keep refining — the prototype works, it feels real, and the pull to improve it is addictive. But calculation accuracy had zero impact on design decisions or stakeholder alignment. The discipline is in knowing exactly what you need to achieve your goal — and not touching anything that doesn't contribute to it.</p>
+            </div>
+        </div>
+
+        <!-- ── TAGS ──────────────────────────────────────────────────────── -->
+        <div class="cs-tags-footer" style="display:none">
+            <ul class="tag-list">
+                <li><span class="tag tag--gray">Discovery leadership</span></li>
+                <li><span class="tag tag--gray">Cross-timezone collaboration</span></li>
+                <li><span class="tag tag--gray">Vision to shipped product</span></li>
+                <li><span class="tag tag--gray">User testing</span></li>
+                <li><span class="tag tag--gray">Strategic influence</span></li>
+                <li><span class="tag tag--gray">Prototype-led handoff</span></li>
+                <li><span class="tag tag--gray">New domain</span></li>
+            </ul>
+        </div>
+
+    </article>
+</main>

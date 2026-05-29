@@ -166,4 +166,34 @@
 
     /* Text content (title + body prose blocks) */
     --text-content--gap: var(--size--8);
+
+    /* Colors — secondary backgrounds */
+    --color--background-secondary: #F5F5F5;
+
+    /* Typography — eyebrow (small uppercase pre-title label) */
+    --text--eyebrow-font-size: 11px;
+    --text--eyebrow-font-weight: 600;
+    --text--eyebrow-line-height: 1.5;
+    --color--eyebrow-text: var(--color--accent);
+
+    /* Typography — case study headings */
+    --text--cs-heading-font-size: 22px;
+    --text--cs-heading-font-weight: 400;
+    --text--cs-heading-line-height: 1.3;
+    --text--cs-hero-heading-font-size: 30px;
+    --text--cs-hero-heading-line-height: 1.2;
+
+    /* Typography — case study body (slightly more generous line-height for reading) */
+    --text--cs-body-line-height: 1.75;
+
+    /* Outcome card */
+    --cs-outcome-card--padding: var(--size--16);
+    --cs-outcome-card--border-radius: var(--size--8);
+    --cs-outcome-card--background: var(--color--background-secondary);
+
+    /* External link button */
+    --ext-link--padding-y: var(--size--8);
+    --ext-link--padding-x: var(--size--16);
+    --ext-link--border-radius: var(--size--8);
+    --ext-link--border-color: var(--color--secondary-gray);
 }

@@ -7,6 +7,15 @@ body {
     background: var(--color--background);
 }
 
+/* Pointer cursor for interactive elements — !important to override custom cursor JS */
+.home-header-nav a,
+.home-signature,
+.home-signature *,
+.cs-callout,
+.cs-callout * {
+    cursor: pointer !important;
+}
+
 .visually-hidden {
     position: absolute;
     width: 1px;
@@ -388,4 +397,227 @@ ul.tag-list li {
 
 .text-content-title {
     font-weight: 600;
+}
+
+/* ─── Eyebrow ───────────────────────────────────────────────────────────────
+   Small uppercase pre-title label, used above section headings.
+   ────────────────────────────────────────────────────────────────────────── */
+.eyebrow {
+    font-family: var(--font-family);
+    font-size: var(--text--eyebrow-font-size);
+    font-weight: var(--text--eyebrow-font-weight);
+    line-height: var(--text--eyebrow-line-height);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color--accent);
+    margin: 0;
+}
+
+/* ─── Case study heading ─────────────────────────────────────────────────────
+   Narrative section heading for case studies and prose pages. Italic for
+   typographic contrast against the upright, bold surrounding text.
+   ────────────────────────────────────────────────────────────────────────── */
+.cs-heading {
+    font-family: var(--font-family);
+    font-size: var(--text--cs-heading-font-size);
+    font-weight: var(--text--cs-heading-font-weight);
+    font-style: italic;
+    line-height: var(--text--cs-heading-line-height);
+    color: var(--color--text-primary);
+    margin: 0;
+}
+
+.cs-heading--hero {
+    font-size: var(--text--cs-hero-heading-font-size);
+    line-height: var(--text--cs-hero-heading-line-height);
+}
+
+/* ─── Case study body ────────────────────────────────────────────────────────
+   Reading-focused body text with slightly more generous line-height.
+   ────────────────────────────────────────────────────────────────────────── */
+.cs-body {
+    font-family: var(--font-family);
+    font-size: var(--text--body-font-size);
+    font-weight: var(--text--body-font-weight);
+    line-height: var(--text--cs-body-line-height);
+    color: var(--color--text-primary);
+    margin: 0;
+}
+
+/* ─── Case study meta ────────────────────────────────────────────────────────
+   Horizontal list of metadata items (role, scope, team, etc.).
+   ────────────────────────────────────────────────────────────────────────── */
+.cs-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--size--32);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.cs-meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: var(--size--4);
+}
+
+.cs-meta-label {
+    font-size: var(--text--eyebrow-font-size);
+    font-weight: var(--text--eyebrow-font-weight);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color--eyebrow-text);
+    margin: 0;
+}
+
+.cs-meta-value {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color--text-primary);
+    margin: 0;
+}
+
+/* ─── Outcome card ───────────────────────────────────────────────────────────
+   Card used in outcomes grids to surface a key result or metric.
+   ────────────────────────────────────────────────────────────────────────── */
+.cs-outcome-card {
+    background: var(--cs-outcome-card--background);
+    border-radius: var(--cs-outcome-card--border-radius);
+    padding: var(--cs-outcome-card--padding);
+}
+
+.cs-outcome-card-value {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color--text-primary);
+    line-height: 1.3;
+    margin: 0 0 var(--size--4);
+}
+
+.cs-outcome-card-label {
+    font-size: 13px;
+    color: var(--color--text-secondary);
+    line-height: 1.5;
+    margin: 0;
+}
+
+.cs-outcomes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: var(--size--8);
+}
+
+/* ─── Visual slot ────────────────────────────────────────────────────────────
+   Dashed placeholder for images or screen recordings not yet available.
+   ────────────────────────────────────────────────────────────────────────── */
+.cs-visual-slot {
+    border: 1.5px dashed var(--color--secondary-gray);
+    border-radius: var(--size--8);
+    padding: var(--size--16);
+}
+
+.cs-visual-slot-label {
+    font-size: var(--text--eyebrow-font-size);
+    font-weight: var(--text--eyebrow-font-weight);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color--eyebrow-text);
+    margin: 0 0 var(--size--4);
+}
+
+.cs-visual-slot-desc {
+    font-size: 14px;
+    font-style: italic;
+    color: var(--color--text-secondary);
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* ─── Team grid ──────────────────────────────────────────────────────────────
+   Two-column layout for listing team members by region or function.
+   ────────────────────────────────────────────────────────────────────────── */
+.cs-team-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--size--32);
+}
+
+.cs-team-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.cs-team-col-label {
+    font-size: var(--text--eyebrow-font-size);
+    font-weight: var(--text--eyebrow-font-weight);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color--eyebrow-text);
+    margin: 0 0 var(--size--12);
+}
+
+.cs-team-col-label + .cs-team-col-label,
+.cs-team-member + .cs-team-col-label {
+    margin-top: var(--size--24);
+}
+
+.cs-team-member {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin-bottom: var(--size--8);
+}
+
+.cs-team-member:last-child {
+    margin-bottom: 0;
+}
+
+.cs-team-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color--text-primary);
+    margin: 0;
+}
+
+.cs-team-role {
+    font-size: 13px;
+    color: var(--color--text-secondary);
+    line-height: 1.4;
+    margin: 0;
+}
+
+@media (max-width: 560px) {
+    .cs-team-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ─── External link button ───────────────────────────────────────────────────
+   Bordered pill button for linking to prototypes, demos, or external tools.
+   ────────────────────────────────────────────────────────────────────────── */
+.ext-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--size--8);
+    font-family: var(--font-family);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color--text-primary);
+    text-decoration: none;
+    padding: var(--ext-link--padding-y) var(--ext-link--padding-x);
+    border: 1px solid var(--ext-link--border-color);
+    border-radius: var(--ext-link--border-radius);
+    transition: background 0.15s, border-color 0.15s;
+}
+
+.ext-link:hover {
+    color: var(--color--text-primary);
+    background: var(--color--background-secondary);
+    border-color: #bbb;
+}
+
+.ext-link svg {
+    flex-shrink: 0;
+    display: block;
 }

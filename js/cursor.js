@@ -115,7 +115,7 @@
       'html, html *:not(#sticky-note):not(.sticky-note):not(.home-header-nav a) { cursor: ' +
       cursorValue +
       ', auto; }' +
-      '.home-header-nav a { cursor: pointer; }' +
+      '' +
       '}';
 
     document.head.appendChild(style);
